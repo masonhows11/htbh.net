@@ -8,10 +8,12 @@
     @include('front.include.header_style')
 </head>
 <body>
+@include('front.include.nav-bar')
 @yield('main-content')
 
 
+
+@include('front.include.footer')
 @include('front.include.footer-scripts')
-@include('front.front.include.footer')
 </body>
 </html>
