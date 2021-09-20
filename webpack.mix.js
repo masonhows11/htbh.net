@@ -10,14 +10,11 @@ const mix = require('laravel-mix');
  | file for the application as well as bundling up all the JS files.
  |
  */
+let productionSourceMaps = false;
 
 mix.js('resources/js/app.js', 'public/js')
+    .sourceMaps(productionSourceMaps, 'source-map')
    .sass('resources/sass/app.scss','public/css')
     .postCss('resources/css/app.css', 'public/css',[
-        require('tailwindcss'),
-    ])
+        require('tailwindcss'),])
     .copy('node_modules/@fortawesome/fontawesome-free/webfonts','public/webfonts');
-
-// .postCss('resources/css/app.css', 'public/css', [
-//     //
-// ])
