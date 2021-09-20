@@ -13,10 +13,16 @@
         "axios": "^0.21",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
-        "postcss": "^8.1.14"
+        "postcss": "^8.1.14",
+        "resolve-url-loader": "^4.0.0",
+        "sass": "^1.41.1",
+        "sass-loader": "^11.0.1",
+        "tailwindcss": "^2.2.15"
     },
     "dependencies": {
+        "@fortawesome/fontawesome-free": "^5.15.4",
         "@popperjs/core": "^2.10.1",
+        "aos": "^2.3.4",
         "bootstrap": "^5.1.1",
         "jquery": "^3.6.0"
     }
