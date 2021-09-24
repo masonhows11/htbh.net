@@ -1,0 +1,56 @@
+@font-face {
+    font-family:'yekan';
+    src: url('../font/Yekan.eot') format('opentype');
+    src: url("../font/Yekan.ttf")format("truetype"),
+       url("../font/Yekan.woff")format('woff');
+
+}
+@font-face {
+    font-family:'Yekan-regular';
+    src: url('../font/yekan-regular.eot')format('opentype');
+    src: url("../font/yekan-regular.ttf")format("truetype"),
+    url("../font/yekan-regular.woff")format('woff');
+
+}
+
+@font-face {
+    font-family:'BYekan';
+    src: url('../font/BYekan.eot')format('opentype');
+    src: url('../font/BYekan.ttf')format('truetype');
+    src: url('../font/BYekan.woff')format('woff');
+    font-size: larger;
+}
+
+@font-face {
+    font-family:'iransansdn';
+    src: url("../font/eot/iransansdn.eot")format('opentype');
+    src: url("../font/ttf/iransansdn.ttf")format('truetype');
+    src: url("../font/woff/iransansdn.woff")format('woff');
+
+}
+
+
+@font-face {
+    font-family:'iransansbold';
+    src: url("../font/eot/iransansdnbold.eot")format('opentype');
+    src: url("../font/ttf/iransansdnbold.ttf")format('truetype');
+    src: url("../font/woff/iransansdnbold.woff")format('woff');
+}
+@font-face {
+    font-family:'iransanslight';
+    src: url("../font/eot/iransansdnlight.eot")format('opentype');
+    src: url("../font/ttf/iransansdnlight.ttf")format('truetype');
+    src: url("../font/woff/iransansdnlight.woff")format('woff');
+}
+@font-face {
+    font-family: 'iransans_num';
+    src: url("../font/number/IRANSansDN_Fa_Num.ttf")format('truetype');
+}
+@font-face {
+    font-family: 'iransans_num_bold';
+    src: url("../font/number/IRANSansDN_FaNum-Bold.ttf")format('truetype');
+}
+@font-face {
+    font-family: 'iransans_num_light';
+    src: url("../font/number/IRANSansDN_FaNum_Light.ttf")format('truetype');
+}
