@@ -1,4 +1,4 @@
-/*********** custom style**********/
+
 body {
     font-family: 'iransansdn', sans-serif;
 }
@@ -153,7 +153,10 @@ body {
 .most-visited-title .col-lg-2,
 .latest-course-title .col-lg-2 {
     border-bottom: 2px solid #212529;
+    padding:10px 0 18px 0;
+
 }
+
 
 .most-visited-course .paid-status,
 .latest-course .paid-status {

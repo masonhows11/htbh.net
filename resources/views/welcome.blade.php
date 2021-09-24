@@ -8,7 +8,7 @@
         <div class="container mt-5 latest-course-title">
             <div class="row">
                 <div class="col-lg-2">
-                    <h4>آخرین دوره ها......</h4>
+                    <h4 class="h4">آخرین دوره ها......</h4>
                 </div>
             </div>
         </div>
@@ -105,7 +105,7 @@
         <div class="container mt-5 most-visited-title">
             <div class="row">
                 <div class="col-lg-2">
-                    <h4>پربازدیدترین ها......</h4>
+                    <h4 class="h4">پربازدیدترین ها......</h4>
                 </div>
             </div>
         </div>
@@ -197,7 +197,7 @@
         <div class="container mt-5 article-title">
             <div class="row">
                 <div class="col-lg-2">
-                    <h4>آخرین مقالات......</h4>
+                    <h4 class="h4">آخرین مقالات......</h4>
                 </div>
             </div>
         </div>
