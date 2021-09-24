@@ -35,7 +35,7 @@
     </div>
 </nav>
 <!------------------------- search section --------------------->
-<header class="py-3 mb-3 bg-indigo-900 search-section">
+<header class="py-3 mb-3  search-section">
 
     <div class="container ">
 

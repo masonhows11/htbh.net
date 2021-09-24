@@ -14,6 +14,7 @@ let productionSourceMaps = false;
 
 mix.js('resources/js/app.js', 'public/js')
     .sourceMaps(productionSourceMaps, 'source-map')
+    .css('resources/css/app_style.css','public/css')
    .sass('resources/sass/app.scss','public/css')
     .postCss('resources/css/app.css', 'public/css',[
         require('tailwindcss'),])

@@ -1,0 +1,255 @@
+/*********** custom style**********/
+body {
+    font-family: 'iransansdn', sans-serif;
+}
+
+/******* header section style ********/
+.search-section {
+    height: 100px;
+}
+
+.search-section .text-slogan {
+    text-decoration: none;
+}
+
+.navbar-collapse .nav-link {
+    text-decoration: none;
+}
+
+.navbar-collapse .nav-link::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #F5421E;
+    transition: width .3s;
+}
+
+.navbar-collapse .nav-link:hover::after {
+    width: 100%;
+}
+
+.search-section,
+.navbar-dark {
+    background-color: #110945;
+}
+
+.hero-section .row {
+    height: auto;
+    border-radius: 15px;
+    background-color: #110945;
+}
+
+.hero-section .hero-image, .hero-text {
+    height: auto;
+}
+
+.hero-text .hero-text-item {
+    margin-top: 4rem;
+    transition: all .2s ease-in-out;
+}
+
+.hero-text .hero-text-item:hover {
+    transform: scale(1.1);
+}
+
+.hero-text-item {
+    line-height: 38px;
+}
+
+.navigation-boxes .interest-practice .card-title {
+    color: #5FA2FE;
+}
+
+.navigation-boxes .road-map .card-title {
+    color: #B8C75E;
+}
+
+.navigation-boxes .card .card-text {
+    min-height: 220px;
+    line-height: 25px;
+    font-size: 0.9rem;
+}
+
+.category-menu {
+    min-height: 80px;
+    background-color: #110945;
+}
+
+.category-menu .nav .nav-item .nav-link {
+    color: white;
+}
+
+.category-menu .dropdown-item:hover {
+    background-color: #F7938E;
+    color: white;
+}
+
+.category-menu .nav-link {
+    text-decoration: none;
+}
+
+.category-menu .nav-link::before {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #ffffff;
+    transition: width .3s;
+}
+
+.category-menu .nav-link:hover::before {
+    width: 100%;
+}
+
+/****************** road map style *********************/
+.learn-linux .linux-text,
+.learn-ceh .ceh-text,
+.learn-programming .programming-text,
+.learn-practice .practice-text,
+.learn-network .network-text {
+    transition: ease-in-out .5s;
+    margin-bottom: 0;
+    text-align: justify;
+    color: white;
+}
+
+.learn-linux .linux-text:hover,
+.learn-ceh .ceh-text:hover,
+.learn-programming .programming-text:hover,
+.learn-practice .practice-text:hover,
+.learn-network .network-text:hover {
+    margin-bottom: 20px;
+}
+
+.learn-linux .linux-img img,
+.learn-ceh .ceh-img img,
+.learn-programming .programming-img img,
+.learn-practice .practice-img img,
+.learn-network .network-img img {
+    border-radius: 10px;
+
+}
+
+.learn-linux,
+.learn-ceh,
+.learn-programming,
+.learn-network,
+.learn-practice {
+    background-color: #212529;
+}
+
+.continue-link{
+    text-decoration: none;
+    color: white;
+}
+
+.continue-link:hover {
+    color: tomato;
+}
+
+/*********** articles and courses style ************/
+.article-title .col-lg-2,
+.most-visited-title .col-lg-2,
+.latest-course-title .col-lg-2 {
+    border-bottom: 2px solid #212529;
+}
+
+.most-visited-course .paid-status,
+.latest-course .paid-status {
+    width: 100px;
+    height: 30px;
+    text-align: center;
+    background-color: orangered;
+    border-radius: 5px;
+}
+
+.most-visited-course .continue-link a,
+.latest-course .continue-link a{
+    text-decoration:none;
+    color: tomato;
+    font-size:1.1rem;
+}
+.most-visited-course .paid-status a,
+.latest-course .paid-status a{
+    font-family: 'BYekan',sans-serif;
+}
+.most-visited-course .paid-status a,
+.latest-course .paid-status a {
+    line-height: 28px;
+    text-decoration: none;
+    color: white;
+}
+
+.article-content .card .continue a {
+    color: tomato;
+    line-height: 28px;
+    text-decoration: none;
+    font-size: .9rem;
+    font-weight: bold;
+}
+
+.article-content .card .writer i{
+    font-size:25px;
+
+}
+
+/*************** footer style***********/
+.footer{
+
+    height:auto;
+
+}
+
+.footer .navigation-site .nav-link {
+    color: white;
+}
+.footer .navigation-site .nav-link:hover{
+    color:tomato;
+}
+
+.link-social .bi-telegram {
+    font-size:2rem;
+    color:deepskyblue;
+}
+
+.link-social .bi-youtube {
+    font-size:2rem;
+    color:red;
+}
+
+.link-social .bi-whatsapp{
+    font-size:2rem;
+    color:green;
+}
+.link-social,
+.contact-us{
+    height: 100px;
+}
+.contact-us .col-md{
+    color: white;
+}
+.contact-us .mobile{
+    color: white;
+    font-family: 'BYekan',sans-serif;
+}
+.contact-us .row{
+    margin-top:2.1rem;
+}
+/******** section media query **********/
+@media screen and (max-width: 991px) {
+
+    .search-section .search-btn {
+        display: flex;
+        justify-content: center;
+    }
+
+    .navbar-collapse .nav-link {
+        width: 200px;
+        text-align: center;
+        margin: 0 auto 0 auto !important;
+    }
+}
+
+
+/*# sourceMappingURL=app_style.css.map*/
