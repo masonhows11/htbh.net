@@ -199,6 +199,11 @@ body {
     font-size: 25px;
 
 }
+.latest-course .card-img-top,
+.most-visited-course .card-img-top,
+.article-content .card-img-top {
+    height: 300px;
+}
 
 /*************** footer style***********/
 .footer {

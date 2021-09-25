@@ -24,72 +24,60 @@
 
 
                 <div class="col-lg">
-                    <div class="card h-100">
+                    <div class="card">
                         <img src="images/image-course-test.jpg" class="card-img-top" alt="...">
-
                         <div class="card-body">
                             <h5 class="card-title">عنوان دوره</h5>
-                            <div class="teacher mt-5"> مدرس : <span>mason</span></div>
+                            <div class="teacher mt-2"> مدرس : <span>mason</span></div>
                         </div>
-
                         <div class="card-footer d-flex justify-content-between">
                             <div class="paid-status"><a href="#">رایگان</a></div>
                             <div class="continue-link"><a href="#">ادامه....</a></div>
                         </div>
-
                     </div>
                 </div>
 
 
                 <div class="col-lg">
-                    <div class="card h-100">
+                    <div class="card">
                         <img src="images/image-course-test.jpg" class="card-img-top" alt="...">
-
                         <div class="card-body">
                             <h5 class="card-title">عنوان دوره</h5>
-                            <div class="teacher mt-5"> مدرس : <span>mason</span></div>
+                            <div class="teacher mt-2"> مدرس : <span>mason</span></div>
                         </div>
-
-                        <div class="card-footer d-flex justify-content-between">
-                            <div class="paid-status"><a href="#">200.000</a></div>
-                            <div class="continue-link"><a href="#">ادامه....</a></div>
-                        </div>
-
-                    </div>
-                </div>
-
-
-                <div class="col-lg">
-                    <div class="card h-100">
-                        <img src="images/image-course-test.jpg" class="card-img-top" alt="...">
-
-                        <div class="card-body">
-                            <h5 class="card-title">عنوان دوره</h5>
-                            <div class="teacher mt-5"> مدرس : <span>mason</span></div>
-                        </div>
-
                         <div class="card-footer d-flex justify-content-between">
                             <div class="paid-status"><a href="#">رایگان</a></div>
                             <div class="continue-link"><a href="#">ادامه....</a></div>
                         </div>
+                    </div>
+                </div>
 
+
+                <div class="col-lg">
+                    <div class="card">
+                        <img src="images/image-course-test.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">عنوان دوره</h5>
+                            <div class="teacher mt-2"> مدرس : <span>mason</span></div>
+                        </div>
+                        <div class="card-footer d-flex justify-content-between">
+                            <div class="paid-status"><a href="#">رایگان</a></div>
+                            <div class="continue-link"><a href="#">ادامه....</a></div>
+                        </div>
                     </div>
                 </div>
 
                 <div class="col-lg">
-                    <div class="card h-100">
+                    <div class="card">
                         <img src="images/image-course-test.jpg" class="card-img-top" alt="...">
-
                         <div class="card-body">
                             <h5 class="card-title">عنوان دوره</h5>
-                            <div class="teacher mt-5"> مدرس : <span>mason</span></div>
+                            <div class="teacher mt-2"> مدرس : <span>mason</span></div>
                         </div>
-
                         <div class="card-footer d-flex justify-content-between">
-                            <div class="paid-status"><a href="#">350.000</a></div>
+                            <div class="paid-status"><a href="#">رایگان</a></div>
                             <div class="continue-link"><a href="#">ادامه....</a></div>
                         </div>
-
                     </div>
                 </div>
 
@@ -118,70 +106,62 @@
             <div class="row rows-cols-1 row-cols-md-4 rows-col-lg-4 g-4">
 
                 <div class="col-lg">
-                    <div class="card h-100">
+                    <div class="card">
                         <img src="images/image-course-test.jpg" class="card-img-top" alt="...">
 
                         <div class="card-body">
                             <h5 class="card-title">عنوان دوره</h5>
-                            <div class="teacher mt-5"> مدرس : <span>mason</span></div>
+                            <div class="teacher mt-2"> مدرس : <span>mason</span></div>
                         </div>
-
                         <div class="card-footer d-flex justify-content-between">
-                            <div class="paid-status"><a href="#">350.000</a></div>
+                            <div class="paid-status"><a href="#">300.000</a></div>
                             <div class="continue-link"><a href="#">ادامه....</a></div>
                         </div>
-
                     </div>
                 </div>
 
                 <div class="col-lg">
-                    <div class="card h-100">
+                    <div class="card">
                         <img src="images/image-course-test.jpg" class="card-img-top" alt="...">
 
                         <div class="card-body">
                             <h5 class="card-title">عنوان دوره</h5>
-                            <div class="teacher mt-5"> مدرس : <span>mason</span></div>
+                            <div class="teacher mt-2"> مدرس : <span>mason</span></div>
                         </div>
-
                         <div class="card-footer d-flex justify-content-between">
                             <div class="paid-status"><a href="#">رایگان</a></div>
                             <div class="continue-link"><a href="#">ادامه....</a></div>
                         </div>
-
                     </div>
                 </div>
 
                 <div class="col-lg">
-                    <div class="card h-100">
+                    <div class="card">
                         <img src="images/image-course-test.jpg" class="card-img-top" alt="...">
 
                         <div class="card-body">
                             <h5 class="card-title">عنوان دوره</h5>
-                            <div class="teacher mt-5"> مدرس : <span>mason</span></div>
+                            <div class="teacher mt-2"> مدرس : <span>mason</span></div>
                         </div>
-
                         <div class="card-footer d-flex justify-content-between">
-                            <div class="paid-status"><a href="#">150.000</a></div>
+                            <div class="paid-status"><a href="#">250.000</a></div>
                             <div class="continue-link"><a href="#">ادامه....</a></div>
                         </div>
-
                     </div>
                 </div>
 
                 <div class="col-lg">
-                    <div class="card h-100">
+                    <div class="card">
                         <img src="images/image-course-test.jpg" class="card-img-top" alt="...">
 
                         <div class="card-body">
                             <h5 class="card-title">عنوان دوره</h5>
-                            <div class="teacher mt-5"> مدرس : <span>mason</span></div>
+                            <div class="teacher mt-2"> مدرس : <span>mason</span></div>
                         </div>
-
                         <div class="card-footer d-flex justify-content-between">
                             <div class="paid-status"><a href="#">رایگان</a></div>
                             <div class="continue-link"><a href="#">ادامه....</a></div>
                         </div>
-
                     </div>
                 </div>
 
