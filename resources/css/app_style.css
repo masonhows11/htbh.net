@@ -70,7 +70,7 @@ body {
     line-height: 25px;
     font-size: 0.9rem;
 }
-
+.category-menu-wrapper,
 .category-menu {
     min-height: 80px;
     background-color: #110945;

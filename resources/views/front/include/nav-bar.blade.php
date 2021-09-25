@@ -34,22 +34,3 @@
 
     </div>
 </nav>
-<!------------------------- search section --------------------->
-<header class="py-3 mb-3  search-section">
-
-    <div class="container ">
-
-        <form action="#" class="row d-flex justify-content-center row-cols-lg-auto g-1 align-items-center">
-
-            <div class="col-lg-6">
-                <input type="search" class="form-control" placeholder="دنبال چی هستی...." aria-label="Search">
-            </div>
-
-            <div class="col-lg-2 d-flex search-btn">
-                <button type="submit" class="btn btn-outline-danger mt">بگرد..</button>
-            </div>
-
-        </form>
-    </div>
-
-</header>
