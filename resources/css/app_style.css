@@ -70,6 +70,7 @@ body {
     line-height: 25px;
     font-size: 0.9rem;
 }
+
 .category-menu-wrapper,
 .category-menu {
     min-height: 80px;
@@ -139,7 +140,7 @@ body {
     background-color: #212529;
 }
 
-.continue-link{
+.continue-link {
     text-decoration: none;
     color: white;
 }
@@ -153,7 +154,7 @@ body {
 .most-visited-title .col-lg-2,
 .latest-course-title .col-lg-2 {
     border-bottom: 2px solid #212529;
-    padding:10px 0 18px 0;
+    padding: 10px 0 18px 0;
 
 }
 
@@ -168,15 +169,17 @@ body {
 }
 
 .most-visited-course .continue-link a,
-.latest-course .continue-link a{
-    text-decoration:none;
+.latest-course .continue-link a {
+    text-decoration: none;
     color: tomato;
-    font-size:1.1rem;
+    font-size: 1.1rem;
 }
+
 .most-visited-course .paid-status a,
-.latest-course .paid-status a{
-    font-family: 'BYekan',sans-serif;
+.latest-course .paid-status a {
+    font-family: 'BYekan', sans-serif;
 }
+
 .most-visited-course .paid-status a,
 .latest-course .paid-status a {
     line-height: 28px;
@@ -192,53 +195,59 @@ body {
     font-weight: bold;
 }
 
-.article-content .card .writer i{
-    font-size:25px;
+.article-content .card .writer i {
+    font-size: 25px;
 
 }
 
 /*************** footer style***********/
-.footer{
+.footer {
 
-    height:auto;
+    height: auto;
 
 }
 
 .footer .navigation-site .nav-link {
     color: white;
 }
-.footer .navigation-site .nav-link:hover{
-    color:tomato;
+
+.footer .navigation-site .nav-link:hover {
+    color: tomato;
 }
 
 .link-social .bi-telegram {
-    font-size:2rem;
-    color:deepskyblue;
+    font-size: 2rem;
+    color: deepskyblue;
 }
 
 .link-social .bi-youtube {
-    font-size:2rem;
-    color:red;
+    font-size: 2rem;
+    color: red;
 }
 
-.link-social .bi-whatsapp{
-    font-size:2rem;
-    color:green;
+.link-social .bi-whatsapp {
+    font-size: 2rem;
+    color: green;
 }
+
 .link-social,
-.contact-us{
+.contact-us {
     height: 100px;
 }
-.contact-us .col-md{
+
+.contact-us .col-md {
     color: white;
 }
-.contact-us .mobile{
+
+.contact-us .mobile {
     color: white;
-    font-family: 'BYekan',sans-serif;
+    font-family: 'BYekan', sans-serif;
 }
-.contact-us .row{
-    margin-top:2.1rem;
+
+.contact-us .row {
+    margin-top: 2.1rem;
 }
+
 /******** section media query **********/
 @media screen and (max-width: 991px) {
 
@@ -253,3 +262,14 @@ body {
         margin: 0 auto 0 auto !important;
     }
 }
+
+/*
+@media screen and (max-width: 1023px) {
+ .category-menu .nav{
+
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+ }
+}
+*/

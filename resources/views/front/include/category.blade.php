@@ -5,12 +5,9 @@
 
         <form action="#" class="row d-flex justify-content-center row-cols-lg-auto g-1 align-items-center">
 
-            <div class="col-lg-6">
-                <input type="search" class="form-control" placeholder="دنبال چی هستی...." aria-label="Search">
-            </div>
-
-            <div class="col-lg-2 d-flex search-btn">
-                <button type="submit" class="btn btn-outline-danger mt">بگرد..</button>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="دنبال چی میگردی..." aria-label="Recipient's username" aria-describedby="button-addon2">
+                <button class="btn btn-outline-secondary" type="submit" id="button-addon2">بگرد...</button>
             </div>
 
         </form>
@@ -19,10 +16,10 @@
 </div>
 
 <!-------------------------------- category menu ------------------------------>
-<div class="category-menu-wrapper">
-    <div class="container category-menu d-flex justify-content-center p-y mb-5">
+<div class="category-menu-wrapper mb-5">
+    <div class="container category-menu">
 
-        <ul class="nav mt-3">
+        <ul class="nav justify-content-center py-3 ">
 
             <li class="nav-item dropdown">
                 <a href="#" class="nav-link" data-bs-toggle="dropdown" role="button" aria-expanded="false">شبکه</a>
