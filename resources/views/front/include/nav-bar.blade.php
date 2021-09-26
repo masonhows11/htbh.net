@@ -15,18 +15,18 @@
 
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link  text-white" aria-current="page" href="#">خانه</a>
+                    <a class="nav-link  text-white" aria-current="page" href="{{ route('home') }}">خانه</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="#">ورود</a>
+                    <a class="nav-link text-white" href="{{ route('loginForm') }}">ورود</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="#">ثبت نام</a>
+                    <a class="nav-link text-white" href="{{ route('registerForm') }}">ثبت نام</a>
                 </li>
             </ul>
             <ul class="navbar-nav">
                 <li class="nav-item d-flex align-items-start">
-                    <a class="nav-link text-white" href="#"> پروفایل کاربری</a>
+                    <a class="nav-link text-white" href="{{ route('profile') }}"> پروفایل کاربری</a>
                 </li>
             </ul>
 

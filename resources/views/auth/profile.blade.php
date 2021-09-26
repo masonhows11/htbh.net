@@ -1,6 +1,6 @@
 @extends('front.include.master_auth')
 @section('page_title')
-    پروفایل کاربر
+    پروفایل کاربری
 @endsection
 @section('main_content')
 @endsection

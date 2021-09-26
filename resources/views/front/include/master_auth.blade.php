@@ -1,4 +1,5 @@
 @include('front.include.header')
+@include('front.include.nav-bar')
 <div class="container">
     @yield('main_content')
 </div>
