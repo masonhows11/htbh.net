@@ -21,8 +21,9 @@ Route::get('/',[HomeController::class,'home'])->name('home');
 
 
 Route::get('/registerForm',[RegisterController::class,'registerForm'])->name('registerForm');
-
+Route::post('/register',[RegisterController::class,'register'])->name('register');
 
 Route::get('/loginForm',[LoginController::class,'loginForm'])->name('loginForm');
+Route::post('/login',[LoginController::class,'login'])->name('login');
 
 Route::get('/profile',[LoginController::class,'profile'])->name('profile');

@@ -11,11 +11,11 @@
         <h2 class="text-center h2">فرم ورود کاربران</h2>
 
         <div class="col-lg-4 d-flex justify-content-center login-image" >
-            <img src="{{asset('/images/template/vector-login.png')}}" class="img-fluid" alt="">
+            <img src="{{asset('/images/vector-login.png')}}" class="img-fluid" alt="">
         </div>
 
         <div class="col-lg-4 login-form">
-            <form action="/login" method="post">
+            <form action="{{ route('login') }}" method="post">
                 @csrf
 
                 <div class="mb-3">
