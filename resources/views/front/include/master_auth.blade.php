@@ -1,7 +1,5 @@
 @include('front.include.header')
 @include('front.include.nav-bar')
-<div class="container">
-    @yield('main_content')
-</div>
+@yield('main_content')
 @include('front.include.footer')
 @include('front.include.footer_scripts')

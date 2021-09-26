@@ -1,5 +1,11 @@
 
+html{
+    height:100%;
+}
 body {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
     font-family: 'iransansdn', sans-serif;
 }
 
@@ -207,7 +213,7 @@ body {
 
 /*************** footer style***********/
 .footer {
-
+    margin-top:auto;
     height: auto;
 
 }
