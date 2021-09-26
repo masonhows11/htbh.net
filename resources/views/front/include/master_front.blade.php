@@ -4,6 +4,6 @@
 @include('front.include.hero')
 @include('front.include.boxes')
 @include('front.include.road_map')
-@yield('main-content')
+@yield('main_content')
 @include('front.include.footer')
 @include('front.include.footer_scripts')
