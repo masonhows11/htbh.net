@@ -1,4 +1,4 @@
-@extends('front.include.master-front')
+@extends('front.include.master_front')
 @section('page-title')
     خانه
 @endsection
