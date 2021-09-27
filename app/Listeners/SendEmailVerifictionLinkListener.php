@@ -8,7 +8,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Mail;
 
-class SendEmailVerifictionLinkListener
+class SendEmailVerifictionLinkListener implements ShouldQueue
 {
     /**
      * Create the event listener.
@@ -29,8 +29,6 @@ class SendEmailVerifictionLinkListener
     public function handle(RegisterUserEvent $event)
     {
         //
-
-
        Mail::to($event->user->email)->send(new EmailVerification($event->user));
     }
 }
