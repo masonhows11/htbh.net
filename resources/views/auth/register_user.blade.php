@@ -12,6 +12,11 @@
                         <p class="text-center">{{ session('success')  }}</p>
                     </div>
                 @endif
+                    @if(session('error'))
+                        <div class="alert alert-warning" role="alert">
+                            <p class="text-center">{{ session('error')  }}</p>
+                        </div>
+                    @endif
             </div>
         </div>
     </div>
@@ -23,9 +28,9 @@
                     @csrf
                     <div class="form-group mb-4">
                         <label for="name" class="mb-2">نام کاربری</label>
-                        <input type="text" class="form-control text-left @error('user_name') is-invalid @enderror" name="user_name"
+                        <input type="text" class="form-control text-left @error('name') is-invalid @enderror" name="name"
                                id="name" value="{{ old('name') }}">
-                        @error('user_name')
+                        @error('name')
                         <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>

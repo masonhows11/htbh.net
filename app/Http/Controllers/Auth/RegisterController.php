@@ -26,7 +26,7 @@ class RegisterController extends Controller
             'password'=>'required|confirmed|max:20:mix:8',
         ],$messages = [
             'name.unique' => 'این نام کاربری تکراری است',
-            'ame.required' => 'نام کاربری را وارد کنید ',
+            'name.required' => 'نام کاربری را وارد کنید ',
             'email.required' => 'آدرس ایمیل را وارد کنید',
             'email.unique' => 'این ایمیل تکراری است',
             'password.required' => 'رمز عبور را وارد کنید',
@@ -37,7 +37,7 @@ class RegisterController extends Controller
 
         try {
             $user = User::create([
-                'user_name' => $request->name,
+                'name' => $request->name,
                 'email' => $request->email,
                 'password' => bcrypt($request->password),
                 'activation_code' => Str::random(40),

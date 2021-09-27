@@ -35,7 +35,6 @@ class EmailVerification extends Mailable
             ->with([
                 'name'=>$this->user->name,
                 'activation_code'=> $this->user->activation_code,
-                'email'=>$this->user->email
             ]);
     }
 }
