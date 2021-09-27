@@ -3,8 +3,10 @@
 namespace App\Listeners;
 
 use App\Events\RegisterUserEvent;
+use App\Mail\EmailVerification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Support\Facades\Mail;
 
 class SendEmailVerifictionLink
 {
@@ -27,6 +29,8 @@ class SendEmailVerifictionLink
     public function handle(RegisterUserEvent $event)
     {
         //
-       $user_info =  $event->user;
+
+
+       Mail::to($event->user->email)->send(new EmailVerification($event->user));
     }
 }
