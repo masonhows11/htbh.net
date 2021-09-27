@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Events\RegisterUserEvent;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -34,13 +35,22 @@ class RegisterController extends Controller
             'password.confirmed' => 'رمز عبور و تکرار آن یکی نیستند'
         ]);
 
-        $user = User::create([
-            'user_name' => $request->name,
-            'email' => $request->email,
-            'password' => bcrypt($request->password),
-            'activation_code' => Str::random(40),
-        ]);
+        try {
+            $user = User::create([
+                'user_name' => $request->name,
+                'email' => $request->email,
+                'password' => bcrypt($request->password),
+                'activation_code' => Str::random(40),
+            ]);
+        }
+        catch (\Exception $ex)
+        {
+               return redirect()->back()->with(['error'=>$ex->getMessage()]);
+        }
 
+        RegisterUserEvent::dispatch($user);
+
+        return redirect()->back()->with(['success'=>'ایمیل فعال سازی برای شما ارسال شد.']);
 
     }
 

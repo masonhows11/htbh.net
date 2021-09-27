@@ -27,5 +27,6 @@ class SendEmailVerifictionLink
     public function handle(RegisterUserEvent $event)
     {
         //
+       $user_info =  $event->user;
     }
 }
