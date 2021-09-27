@@ -4,31 +4,32 @@
 @endsection
 @section('main_content')
 
-    <div class="container">
-        <div class="row">
-            <div class="offset-lg-3 offset-md-3 offset-sm-6 col-lg-6 col-md-6 col-sm-6 mb-3 mt-3 login-msg-wrapper">
+    <div class="container mt-4 msg-wrapper">
+        <div class="row d-flex justify-content-center">
+            <div class="col-lg-6 ">
+
                 @if(session('success'))
                     <div class="alert alert-success" role="alert">
                         <p class="text-center">{{ session('success')  }}</p>
                     </div>
                 @endif
-                    @if(session('error'))
+                @if(session('error'))
                         <div class="alert alert-warning" role="alert">
                             <p class="text-center">{{ session('error')  }}</p>
                         </div>
-                    @endif
+                @endif
             </div>
         </div>
     </div>
 
-    <div class="container">
-        <div class="row">
-            <div class="offset-lg-4 offset-md-4 offset-sm-4 col-lg-5 col-md-5 col-sm-5 user-reg-wrapper">
+    <div class="container user-reg-wrapper">
+        <div class="row d-flex justify-content-center">
+            <div class="col-lg-6 user-reg-content">
                 <form action="{{ route('register') }}" method="post">
                     @csrf
                     <div class="form-group mb-4">
                         <label for="name" class="mb-2">نام کاربری</label>
-                        <input type="text" class="form-control text-left @error('name') is-invalid @enderror" name="name"
+                        <input type="text" class="form-control text-right @error('name') is-invalid @enderror" name="name"
                                id="name" value="{{ old('name') }}">
                         @error('name')
                         <div class="alert alert-danger">{{ $message }}</div>

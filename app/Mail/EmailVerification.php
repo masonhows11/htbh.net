@@ -31,7 +31,7 @@ class EmailVerification extends Mailable
      */
     public function build()
     {
-        return $this->markdown('view.emails.email_verification')
+        return $this->markdown('emails.email_verification')
             ->with([
                 'name'=>$this->user->name,
                 'activation_code'=> $this->user->activation_code,
