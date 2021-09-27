@@ -6,6 +6,7 @@ use App\Events\RegisterUserEvent;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Validation\Rules\Password;
 use Illuminate\Support\Str;
 
 class RegisterController extends Controller
@@ -23,15 +24,15 @@ class RegisterController extends Controller
         $request->validate([
             'name'=>'required|max:30|unique:users',
             'email'=>'required|email|unique:users',
-            'password'=>'required|confirmed|max:20:mix:8',
+            'password'=>['required','confirmed', Password::min(8)->mixedCase()->numbers()->symbols()],//],
         ],$messages = [
             'name.unique' => 'این نام کاربری تکراری است',
             'name.required' => 'نام کاربری را وارد کنید ',
             'email.required' => 'آدرس ایمیل را وارد کنید',
             'email.unique' => 'این ایمیل تکراری است',
             'password.required' => 'رمز عبور را وارد کنید',
-            'password.max' => 'حداکثر تعداد کاراکتر رمز عبور۲۰ کاراکتر',
-            'password.min' => 'حداقل تعداد کاراکتر رمز عبور۸  کاراکتر',
+            'password.mixedCase' => 'رمز عبور باید شامل حداقل یک کاراکتر بزرگ و یک کاراکتر کوچک باشد.',
+            'password.min' => 'حداقل تعداد کاراکتر رمز عبور ۸ کاراکتر',
             'password.confirmed' => 'رمز عبور و تکرار آن یکی نیستند'
         ]);
 
