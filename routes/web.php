@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Front\HomeController;
+use App\Http\Controllers\Auth\VerifyEmailController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,6 +23,8 @@ Route::get('/',[HomeController::class,'home'])->name('home');
 
 Route::get('/registerForm',[RegisterController::class,'registerForm'])->name('registerForm');
 Route::post('/register',[RegisterController::class,'register'])->name('register');
+
+Route::get('/verifyEmail/{activation_code}',[VerifyEmailController::class,'verifyEmail'])->name('verifyEmail');
 
 Route::get('/loginForm',[LoginController::class,'loginForm'])->name('loginForm');
 Route::post('/login',[LoginController::class,'login'])->name('login');
