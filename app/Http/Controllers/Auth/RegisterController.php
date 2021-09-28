@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Support\Str;
 
@@ -25,7 +26,20 @@ class RegisterController extends Controller
         $request->validate([
             'name'=>'required|max:30|unique:users',
             'email'=>'required|email|unique:users',
-            'password'=>['required','confirmed', Password::min(8)->mixedCase()->numbers()->symbols()],//],
+            'password'=>['required','confirmed', Password::min(8)->mixedCase()->numbers()->symbols()],
+            'g-recaptcha-response' => function ($attribute, $value, $fail) {
+                 $secretKey = config('services.recaptcha.secret');
+                 $response = $value;
+                 $userIP = $_SERVER['REMOTE_ADDR'];
+                 $url = "https://www.google.com/recaptcha/api/siteverify?secret=$secretKey&response=$response&remoteip=$userIP";
+                 $response = \file_get_contents($url);
+                 $response = json_decode($response);
+                if(!$response->success){
+                    Session::flash('g-recaptcha-response-error','گزینه من ربات نیستم را انتخاب کنید.');
+                    $fail($attribute.'google reCaptcha failed');
+                }
+
+            },
         ],$messages = [
             'name.unique' => 'این نام کاربری تکراری است',
             'name.required' => 'نام کاربری را وارد کنید ',
