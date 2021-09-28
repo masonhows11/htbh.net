@@ -37,12 +37,13 @@ class RegisterController extends Controller
             'password.confirmed' => 'رمز عبور و تکرار آن یکی نیستند'
         ]);
 
+            $codeToBeSend = Str::random();
         try {
             $user = User::create([
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' => bcrypt($request->password),
-                'activation_code' => Hash::make(Str::random(40)),
+                'activation_code' => Hash::make($codeToBeSend),
             ]);
         }
         catch (\Exception $ex)
@@ -50,7 +51,7 @@ class RegisterController extends Controller
                return redirect()->back()->with(['error'=>$ex->getMessage()]);
         }
 
-        RegisterUserEvent::dispatch($user);
+        RegisterUserEvent::dispatch($user,$codeToBeSend);
 
         return redirect()->back()->with(['success'=>'ایمیل فعال سازی برای شما ارسال شد.']);
 

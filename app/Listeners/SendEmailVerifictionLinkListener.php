@@ -36,7 +36,7 @@ class SendEmailVerifictionLinkListener //implements ShouldQueue
     public function handle(RegisterUserEvent $event)
     {
         //
-       Mail::to($event->user->email)->send(new EmailVerification($event->user));
+       Mail::to($event->user->email)->send(new EmailVerification($event->user,$event->code));
     }
    /* public function failed(RegisterUserEvent $event, $exception)
     {
