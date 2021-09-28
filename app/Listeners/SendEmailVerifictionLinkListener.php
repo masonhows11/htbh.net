@@ -41,6 +41,6 @@ class SendEmailVerifictionLinkListener implements ShouldQueue
     public function failed(RegisterUserEvent $event, $exception)
     {
         //
-        abort(500);
+        abort(500,$exception);
     }
 }
