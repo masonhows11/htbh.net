@@ -10,6 +10,13 @@ use Illuminate\Support\Facades\Mail;
 
 class SendEmailVerifictionLinkListener implements ShouldQueue
 {
+
+    use InteractsWithQueue;
+
+    public $connection = 'database';
+    public $queue = 'RegisterUserEmailVerifyListeners';
+    public $delay = 10;
+    public $tries = 5;
     /**
      * Create the event listener.
      *
@@ -30,5 +37,10 @@ class SendEmailVerifictionLinkListener implements ShouldQueue
     {
         //
        Mail::to($event->user->email)->send(new EmailVerification($event->user));
+    }
+    public function failed(RegisterUserEvent $event, $exception)
+    {
+        //
+        abort(500);
     }
 }
