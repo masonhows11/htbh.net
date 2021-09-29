@@ -6,7 +6,7 @@ use App\Events\RegisterUserEvent;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Support\Str;
@@ -57,7 +57,7 @@ class RegisterController extends Controller
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' => bcrypt($request->password),
-                'activation_code' => Hash::make($codeToBeSend),
+                'activation_code' => Crypt::encrypt($codeToBeSend),
             ]);
         }
         catch (\Exception $ex)
