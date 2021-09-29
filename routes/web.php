@@ -30,3 +30,4 @@ Route::get('/loginForm',[LoginController::class,'loginForm'])->name('loginForm')
 Route::post('/login',[LoginController::class,'login'])->name('login');
 
 Route::get('/profile',[LoginController::class,'profile'])->name('profile');
+Route::get('/logOut',[LoginController::class,'logOut'])->name('logOut');

@@ -18,6 +18,9 @@
                     <a class="nav-link  text-white" aria-current="page" href="{{ route('home') }}">خانه</a>
                 </li>
                 @if(\Illuminate\Support\Facades\Auth::check())
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{{ route('logOut') }}">خروج</a>
+                    </li>
                 @else
                     <li class="nav-item">
                         <a class="nav-link text-white" href="{{ route('loginForm') }}">ورود</a>
@@ -29,20 +32,17 @@
 
             </ul>
 
-                <ul class="navbar-nav">
-                    @if(\Illuminate\Support\Facades\Auth::check())
+                <ul class="navbar-nav ">
+
+                @if(\Illuminate\Support\Facades\Auth::check())
                     <li class="nav-item dropdown d-flex align-items-start">
-                        <a class="nav-link text-white" role="button"
-                           data-bs-toggle="dropdown"
+                        <a class="nav-link text-white"
+                           role="button"
                            aria-expanded="false"
                            id="navbarDropdownLink"
-                           href="#">
+                           href="{{ route('profile') }}">
                             {{\Illuminate\Support\Facades\Auth::user()->name }}
                         </a>
-                        <ul class="dropdown dropdown-menu" aria-labelledby="navbarDropdownLink">
-                            <li><a class="dropdown-item text-center" href="{{ route('profile') }}">پروفایل</a></li>
-                            <li><a class="dropdown-item text-center" href="{{  route('logout') }}">خروج</a></li>
-                        </ul>
                     </li>
                     @endif
                 </ul>

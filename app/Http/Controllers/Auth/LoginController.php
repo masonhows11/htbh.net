@@ -51,4 +51,9 @@ class LoginController extends Controller
     {
         return view('auth.profile');
     }
+
+    public function logOut(Request $request)
+    {
+
+    }
 }
