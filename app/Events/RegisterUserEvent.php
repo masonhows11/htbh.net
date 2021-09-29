@@ -16,19 +16,19 @@ class RegisterUserEvent
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     public $user;
-    public $code;
+    public $encrypted;
 
     /**
      * Create a new event instance.
      *
      * @param User $user
-     * @param $code
+     * @param $encrypted
      */
-    public function __construct(User $user,$code)
+    public function __construct(User $user,$encrypted)
     {
         //
         $this->user = $user;
-        $this->code = $code;
+        $this->encrypted= $encrypted;
     }
 
     /**

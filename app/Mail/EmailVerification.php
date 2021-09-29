@@ -13,19 +13,19 @@ class EmailVerification extends Mailable
     use Queueable, SerializesModels;
 
     protected $user;
-    protected $code;
+    protected $encrypted;
 
     /**
      * Create a new message instance.
      *
      * @param User $user
-     * @param $code
+     * @param $encrypted
      */
-    public function __construct(User $user,$code)
+    public function __construct(User $user,$encrypted)
     {
         //
         $this->user = $user;
-        $this->code = $code;
+        $this->encrypted = $encrypted;
     }
 
     /**
@@ -38,7 +38,7 @@ class EmailVerification extends Mailable
         return $this->subject('لینک فعال سازی حساب کاربری')->markdown('emails.email_verification')
             ->with([
                 'name'=>$this->user->name,
-                'code'=> $this->code,
+                'code'=> $this->encrypted,
                 'id' => $this->user->id,
             ]);
     }

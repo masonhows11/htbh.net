@@ -17,7 +17,7 @@ class VerifyEmailController extends Controller
 
         $isValid = CheckLinkTime::checkLinkExpireTime($id, $code);
 
-        $decrypted_code = Crypt::decrypt($code);
+        $decrypted_code = Crypt::decryptString($code);
 
         if ($isValid) {
             $user = User::where('id', $id)->where('activation_code', $decrypted_code)->first();

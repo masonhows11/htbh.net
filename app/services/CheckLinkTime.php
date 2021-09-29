@@ -12,7 +12,7 @@ class CheckLinkTime
     public static function checkLinkExpireTime($id,$code)
     {
 
-       $decrypted_code = Crypt::decrypt($code);
+       $decrypted_code = Crypt::decryptString($code);
 
         $link = DB::table('users')
             ->where('activation_code', '=', $decrypted_code)

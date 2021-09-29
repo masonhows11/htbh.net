@@ -51,21 +51,22 @@ class RegisterController extends Controller
             'password.confirmed' => 'رمز عبور و تکرار آن یکی نیستند'
         ]);
 
-            $codeToBeSend = Str::random();
+            $code = Str::random();
         try {
             $user = User::create([
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' => bcrypt($request->password),
-                'activation_code' => Crypt::encrypt($codeToBeSend),
+                'activation_code' => $code,
             ]);
+           $encrypted = Crypt::encryptString($code);
         }
         catch (\Exception $ex)
         {
                return redirect()->back()->with(['error'=>$ex->getMessage()]);
         }
 
-        RegisterUserEvent::dispatch($user,$codeToBeSend);
+        RegisterUserEvent::dispatch($user,$encrypted);
 
         return redirect()->back()->with(['success'=>'ایمیل فعال سازی برای شما ارسال شد.']);
 
