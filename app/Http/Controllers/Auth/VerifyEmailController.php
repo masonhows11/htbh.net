@@ -28,7 +28,7 @@ class VerifyEmailController extends Controller
             } elseif ($user && $user->email_verified_at == null) {
                 $user->email_verified_at = Date::now();
                 $user->save();
-                return redirect()->route('loginForm')->with('error', 'حساب کاربری شما با موفقیت فعال شد.');
+                return redirect()->route('loginForm')->with('success', 'حساب کاربری شما با موفقیت فعال شد.');
             }
         }
 

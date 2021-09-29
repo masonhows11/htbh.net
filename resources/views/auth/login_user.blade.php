@@ -6,9 +6,26 @@
 <div class="container mt-5 login">
 
 
-    <div class="row d-flex justify-content-center align-items-center ">
+        <div class="row d-flex justify-content-center">
+            <div class="col-lg-6 alert-wrapper">
 
-        <h2 class="text-center h2">فرم ورود کاربران</h2>
+                @if(session('success'))
+                    <div class="alert alert-success" role="alert">
+                        <p class="text-center">{{ session('success')  }}</p>
+                    </div>
+                @endif
+                @if(session('error'))
+                    <div class="alert alert-warning" role="alert">
+                        <p class="text-center">{{ session('error')  }}</p>
+                    </div>
+                @endif
+            </div>
+        </div>
+
+
+    <div class="row d-flex login-content justify-content-center align-items-center">
+
+       <h2 class="text-center h2">فرم ورود کاربران</h2>
 
         <div class="col-lg-4 d-flex justify-content-center login-image" >
             <img src="{{asset('/images/vector-login.png')}}" class="img-fluid" alt="">

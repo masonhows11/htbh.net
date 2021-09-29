@@ -263,7 +263,12 @@ body {
 .user-reg-wrapper{
     margin-top:120px;
 }
-
+.login-content {
+    margin-top:10px;
+}
+.alert-wrapper{
+    height:70px;
+}
 /******** section media query **********/
 @media screen and (max-width: 991px) {
 
