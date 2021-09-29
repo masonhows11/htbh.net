@@ -38,7 +38,8 @@ class EmailVerification extends Mailable
         return $this->subject('لینک فعال سازی حساب کاربری')->markdown('emails.email_verification')
             ->with([
                 'name'=>$this->user->name,
-                'activation_code'=> $this->code,
+                'code'=> $this->code,
+                'id' => $this->user->id,
             ]);
     }
 }

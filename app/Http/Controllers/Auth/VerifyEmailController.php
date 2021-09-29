@@ -8,8 +8,8 @@ use App\Http\Controllers\Controller;
 class VerifyEmailController extends Controller
 {
     //
-    public function verifyEmail($activation_code)
+    public function verifyEmail($id,$code)
     {
-        return $activation_code;
+        return $code.$id;
     }
 }
