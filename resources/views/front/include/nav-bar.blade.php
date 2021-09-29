@@ -28,13 +28,25 @@
                 @endif
 
             </ul>
-            @if(\Illuminate\Support\Facades\Auth::check())
+
                 <ul class="navbar-nav">
-                    <li class="nav-item d-flex align-items-start">
-                        <a class="nav-link text-white" href="{{ route('profile') }}">{{ Auth::user()->name }}</a>
+                    @if(\Illuminate\Support\Facades\Auth::check())
+                    <li class="nav-item dropdown d-flex align-items-start">
+                        <a class="nav-link text-white" role="button"
+                           data-bs-toggle="dropdown"
+                           aria-expanded="false"
+                           id="navbarDropdownLink"
+                           href="#">
+                            {{\Illuminate\Support\Facades\Auth::user()->name }}
+                        </a>
+                        <ul class="dropdown dropdown-menu" aria-labelledby="navbarDropdownLink">
+                            <li><a class="dropdown-item text-center" href="{{ route('profile') }}">پروفایل</a></li>
+                            <li><a class="dropdown-item text-center" href="{{  route('logout') }}">خروج</a></li>
+                        </ul>
                     </li>
+                    @endif
                 </ul>
-            @endif
+
 
 
         </div>
