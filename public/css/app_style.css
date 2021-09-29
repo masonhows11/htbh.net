@@ -260,11 +260,11 @@ body {
     margin-top: 2.1rem;
 }
 /********** register user  **********/
-.user-reg-wrapper{
-    margin-top:20px;
+.register-content{
+    margin-top:30px;
 }
 .login-content {
-    margin-top:10px;
+
 }
 .alert-wrapper{
     height:70px;

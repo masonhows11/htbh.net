@@ -5,9 +5,8 @@
 @section('main_content')
 
         <div class="container">
-            <div class="row d-flex justify-content-center">
+            <div class="row mt-2 d-flex justify-content-center">
                 <div class="col-lg-6 alert-wrapper">
-
                     @if(session('success'))
                         <div class="alert alert-success" role="alert">
                             <p class="text-center">{{ session('success')  }}</p>
@@ -24,9 +23,12 @@
 
 
 
-    <div class="container user-reg-wrapper">
+    <div class="container register-content">
         <div class="row d-flex justify-content-center">
-            <div class="col-lg-6 user-reg-content">
+            <div class="col-lg-4 d-flex justify-content-center login-image" >
+                <img src="{{asset('/images/vector-register.png')}}" class="img-fluid" alt="">
+            </div>
+            <div class="col-lg-4 user-reg-content">
                 <form action="{{ route('register') }}" method="post">
                     @csrf
                     <div class="form-group mb-3">
