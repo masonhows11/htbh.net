@@ -1,4 +1,4 @@
-<div class="footer bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900">
+<div class="footer">
 
     <div class="container">
 
