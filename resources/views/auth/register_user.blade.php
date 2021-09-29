@@ -4,23 +4,25 @@
 @endsection
 @section('main_content')
 
-    <div class="container mt-4 msg-wrapper">
-        <div class="row d-flex justify-content-center">
-            <div class="col-lg-6 ">
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+                <div class="col-lg-6 alert-wrapper">
 
-                @if(session('success'))
-                    <div class="alert alert-success" role="alert">
-                        <p class="text-center">{{ session('success')  }}</p>
-                    </div>
-                @endif
-                @if(session('error'))
+                    @if(session('success'))
+                        <div class="alert alert-success" role="alert">
+                            <p class="text-center">{{ session('success')  }}</p>
+                        </div>
+                    @endif
+                    @if(session('error'))
                         <div class="alert alert-warning" role="alert">
                             <p class="text-center">{{ session('error')  }}</p>
                         </div>
-                @endif
+                    @endif
+                </div>
             </div>
         </div>
-    </div>
+
+
 
     <div class="container user-reg-wrapper">
         <div class="row d-flex justify-content-center">

@@ -261,13 +261,14 @@ body {
 }
 /********** register user  **********/
 .user-reg-wrapper{
-    margin-top:120px;
+    margin-top:20px;
 }
 .login-content {
     margin-top:10px;
 }
 .alert-wrapper{
     height:70px;
+
 }
 /******** section media query **********/
 @media screen and (max-width: 991px) {
