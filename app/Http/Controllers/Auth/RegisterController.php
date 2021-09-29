@@ -36,7 +36,7 @@ class RegisterController extends Controller
                  $response = json_decode($response);
                 if(!$response->success){
                     Session::flash('g-recaptcha-response-error','گزینه من ربات نیستم را انتخاب کنید.');
-                    $fail($attribute.'google reCaptcha failed');
+                   // $fail($attribute.'google reCaptcha failed');
                 }
 
             },

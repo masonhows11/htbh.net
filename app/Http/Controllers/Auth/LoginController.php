@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Session;
+
 class LoginController extends Controller
 {
     //
@@ -15,6 +17,31 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
+
+
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+            'g-recaptcha-response' => function ($attribute, $value, $fail) {
+                $secretKey = config('services.recaptcha.secret');
+                $response = $value;
+                $userIP = $_SERVER['REMOTE_ADDR'];
+                $url = "https://www.google.com/recaptcha/api/siteverify?secret=$secretKey&response=$response&remoteip=$userIP";
+                $response = \file_get_contents($url);
+                $response = json_decode($response);
+                if (!$response->success) {
+                    Session::flash('g-recaptcha-response-error', 'گزینه من ربات نیستم را انتخاب کنید.');
+                    //$fail($attribute . 'google reCaptcha failed');
+                }
+            },
+        ],$messages = [
+            'email.required'=>'ایمیل خود را وارد کنید.',
+            'email.email'=>'ایمیل وارد شده معتبر نمی باشد.',
+            'password.required'=>'رمز عبور را وارد کنید.',
+
+
+        ]);
+
 
     }
     public function profile()
