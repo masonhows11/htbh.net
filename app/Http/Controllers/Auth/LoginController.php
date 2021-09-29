@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
@@ -17,7 +18,6 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-
 
         $request->validate([
             'email' => 'required|email',
@@ -38,10 +38,13 @@ class LoginController extends Controller
             'email.required'=>'ایمیل خود را وارد کنید.',
             'email.email'=>'ایمیل وارد شده معتبر نمی باشد.',
             'password.required'=>'رمز عبور را وارد کنید.',
-
-
         ]);
 
+        if(Auth::attempt(['email'=>$request->email,'password'=>$request->password],$request->remember)){
+
+            return redirect()->route('home');
+        }
+        return redirect()->back()->with('error', 'نام کاربری یا رمز عبور اشتباه است.');
 
     }
     public function profile()
