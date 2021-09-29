@@ -18,13 +18,19 @@ class CheckLinkTime
             ->where('activation_code', '=', $decrypted_code)
             ->where('id', '=', $id)->select('created_at')->first();
 
-        $expired  = Carbon::parse($link->created_at)->addMinutes(60)->isPast();
-        if($expired)
-        {
-            return  true;
-        }
-
-        return false;
+         if(!$link)
+         {
+             return false;
+         }
+         if ($link)
+         {
+             $expired  = Carbon::parse($link->created_at)->addMinutes(10)->isPast();
+             if($expired)
+             {
+                 return  false;
+             }
+         }
+        return true;
 
     }
 }
