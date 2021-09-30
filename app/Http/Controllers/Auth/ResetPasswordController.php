@@ -24,7 +24,6 @@ class ResetPasswordController extends Controller
 
     public function resetPassCheckEmail(Request $request)
     {
-        //return $request;
         $request->validate([
             'email' => 'required|email|exists:users'
         ], $messages = [
@@ -32,9 +31,7 @@ class ResetPasswordController extends Controller
             'email.email' => 'ایمیل وارد شده معتبر نمی باشد.',
             'email.exists' => 'ایمیل وارد شده وجود ندارد.'
         ]);
-
         $user = User::where('email', $request->email)->first();
-
         $token = Str::random(30);
         try {
             DB::table('password_resets')
@@ -54,12 +51,10 @@ class ResetPasswordController extends Controller
     {
 
          $isValid = CheckLinkResetPassTime::checkResetLinkExpire($email,$token);
-
          if(!$isValid){
              return redirect(route('resetPassForm'))
                  ->with('error','لینک تغییر رمز عبور معتبر نمی باشد.');
          }
-
          $user = User::where('email',$email)->first();
          return view('auth.reset_password.reset_pass_handle_form')
              ->with(['user'=>$user]);
