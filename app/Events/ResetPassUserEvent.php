@@ -29,8 +29,8 @@ class ResetPassUserEvent
      *
      * @return \Illuminate\Broadcasting\Channel|array
      */
-    public function broadcastOn()
+    /*public function broadcastOn()
     {
         return new PrivateChannel('channel-name');
-    }
+    }*/
 }
