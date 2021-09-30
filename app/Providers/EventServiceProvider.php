@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use App\Events\RegisterUserEvent;
+use App\Events\ResetPassUserEvent;
 use App\Listeners\SendEmailVerifictionLinkListener;
+use App\Listeners\SendResetPassLinkListener;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -21,7 +23,10 @@ class EventServiceProvider extends ServiceProvider
             SendEmailVerificationNotification::class,
         ],
         RegisterUserEvent::class =>[
-            SendEmailVerifictionLinkListener::class
+            SendEmailVerifictionLinkListener::class,
+        ],
+        ResetPassUserEvent::class =>[
+            SendResetPassLinkListener::class,
         ]
 
     ];
