@@ -7,9 +7,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use App\Models\User;
 use App\services\CheckLinkResetPassTime;
+use Illuminate\Validation\Rules\Password;
 
 class ResetPasswordController extends Controller
 {
@@ -60,13 +62,31 @@ class ResetPasswordController extends Controller
 
          $user = User::where('email',$email)->first();
          return view('auth.reset_password.reset_pass_handle_form')
-             ->with(['user'=>$user,'token'=>$token]);
+             ->with(['user'=>$user]);
 
 
     }
 
     public function resetPassHandle(Request $request)
     {
-        return $request;
+
+        $request->validate([
+            'password'=>['required','confirmed', Password::min(8)->mixedCase()->numbers()->symbols()],
+        ], $messages = [
+            'password.required' => 'رمز عبور را وارد کنید.',
+            'password.min' => 'حداقل تعداد کاراکتر رمز عبور ۸ کاراکتر.',
+            'password.confirmed' => 'رمز عبور و تکرار آن یکی نیستند.'
+        ]);
+        try {
+            $user = User::where('email',$request->email)->first();
+            $user->password = Hash::make($request->password);
+            $user->save();
+        }catch (\Exception $ex)
+        {
+            return $ex->getMessage();
+        }
+        return redirect(route('loginForm'))->with('success','رمز عبور با موفقیت تغییر کرد.');
+
+
     }
 }

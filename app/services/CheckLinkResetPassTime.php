@@ -22,7 +22,7 @@ class CheckLinkResetPassTime
         }
 
         if ($resetLink){
-            $expired = Carbon::parse($resetLink->created_at)->addMinutes(1)->isPast();
+            $expired = Carbon::parse($resetLink->created_at)->addMinutes(60)->isPast();
             if($expired){
                 // means link not expired
                 return false;
