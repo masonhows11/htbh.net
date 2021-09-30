@@ -3,4 +3,7 @@
     پروفایل کاربری
 @endsection
 @section('main_content')
+    <div class="container">
+        
+    </div>
 @endsection
