@@ -48,10 +48,11 @@ class VerifyEmailController extends Controller
     {
 
         $request->validate([
-            'email'=>'required|email'
+            'email'=>'required|email|exists:users'
         ],$messages = [
             'email.required'=>'ایمیل خود را وارد کنید.',
             'email.email'=>'ایمیل وارد شده معتبر نمی باشد.',
+            'email.exists'=>'ایمیل وارد شده وجود ندارد.'
         ]);
 
             return $request;

@@ -33,7 +33,7 @@
             <div class="row  d-flex login-content justify-content-center align-items-center">
 
                 <div class="col-lg-4 login-form">
-                    <form action="{{ route('checkEmail') }}" method="post">
+                    <form action="{{ route('checkEmail') }}" method="post" novalidate>
                         @csrf
 
                         <div class="mb-3">
