@@ -8,24 +8,24 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class EmailVerification extends Mailable
+class ResetUserPasswordMail extends Mailable
 {
     use Queueable, SerializesModels;
 
     protected $user;
-    protected $encrypted;
+    protected $token;
 
     /**
      * Create a new message instance.
      *
      * @param User $user
-     * @param $encrypted
+     * @param $token
      */
-    public function __construct(User $user,$encrypted)
+    public function __construct(User $user, $token)
     {
         //
         $this->user = $user;
-        $this->encrypted = $encrypted;
+        $this->token = $token;
     }
 
     /**
@@ -35,11 +35,10 @@ class EmailVerification extends Mailable
      */
     public function build()
     {
-        return $this->subject('لینک فعال سازی حساب کاربری')->markdown('emails.email_verification')
-            ->with([
+        return $this->subject('لینک تغییر رمز عبور')
+            ->markdown('emails.email_reset_pass')->with([
                 'name'=>$this->user->name,
-                'code'=> $this->encrypted,
-                'id' => $this->user->id,
+                'token'=>$this->token,
             ]);
     }
 }

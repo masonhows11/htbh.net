@@ -31,6 +31,8 @@ Route::post('/checkEmail',[VerifyEmailController::class,'checkEmailVerify'])->na
 
 Route::get('/resetPassForm',[ResetPasswordController::class,'resetPassForm'])->name('resetPassForm');
 Route::post('/resetPassCheckEmail',[ResetPasswordController::class,'resetPassCheckEmail'])->name('resetPassCheckEmail');
+Route::get('/resetPassHandleForm',[ResetPasswordController::class,'resetPassHandleForm'])->name('resetPassHandleForm');
+Route::post('/resetPassHandle',[ResetPasswordController::class,'resetPassHandle'])->name('resetPassHandle');
 
 Route::get('/loginForm',[LoginController::class,'loginForm'])->name('loginForm');
 Route::post('/login',[LoginController::class,'login'])->name('login');

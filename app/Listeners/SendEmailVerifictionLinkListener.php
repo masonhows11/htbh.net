@@ -3,7 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\RegisterUserEvent;
-use App\Mail\EmailVerification;
+use App\Mail\EmailVerificationMail;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Mail;
@@ -36,7 +36,7 @@ class SendEmailVerifictionLinkListener //implements ShouldQueue
     public function handle(RegisterUserEvent $event)
     {
         //
-       Mail::to($event->user->email)->send(new EmailVerification($event->user,$event->encrypted));
+       Mail::to($event->user->email)->send(new EmailVerificationMail($event->user,$event->encrypted));
     }
    /* public function failed(RegisterUserEvent $event, $exception)
     {
