@@ -16,7 +16,7 @@ class ResetPasswordController extends Controller
 
     public function resetPassForm()
     {
-        return view('auth.reset_pass_form');
+        return view('auth.reset_password.reset_pass_form');
     }
 
     public function resetPassCheckEmail(Request $request)
@@ -47,9 +47,11 @@ class ResetPasswordController extends Controller
 
     }
 
-    public function resetPassHandleForm(Request $request)
+    public function resetPassHandleForm($token)
     {
-        return $request;
+
+
+        return $token;
     }
 
     public function resetPassHandle(Request $request)
