@@ -1,8 +1,8 @@
 @extends('front.include.master_front')
-@section('page-title')
+@section('page_title')
     خانه
 @endsection
-@section('main-content')
+@section('main_content')
     <!---- latest course title ---->
     <div>
         <div class="container mt-5 latest-course-title">
@@ -25,7 +25,7 @@
 
                 <div class="col-lg">
                     <div class="card">
-                        <img src="images/image-course-test.jpg" class="card-img-top" alt="...">
+                        <img src="{{ asset('images/image-course-test.jpg') }}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">عنوان دوره</h5>
                             <div class="teacher mt-2"> مدرس : <span>mason</span></div>
@@ -209,7 +209,7 @@
 
                 <div class="col-lg">
                     <div class="card h-100">
-                        <img src="images/image-course-test.jpg" class="card-img-top" alt="...">
+                        <img src="{{ asset('images/image-course-test.jpg') }}" class="card-img-top" alt="...">
 
                         <div class="card-body">
                             <h5 class="card-title">عنوان مقاله</h5>
