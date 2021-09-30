@@ -42,7 +42,7 @@ class VerifyEmailController extends Controller
 
     public function resendVerifyEmailForm()
     {
-        return view('auth.resend_verify_email');
+        return view('auth.resend_verify_email_form');
     }
 
     public function checkEmailVerify(Request $request)

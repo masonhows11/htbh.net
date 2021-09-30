@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Http\Controllers\Auth\ResetPasswordController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,6 +28,9 @@ Route::post('/register',[RegisterController::class,'register'])->name('register'
 Route::get('/verifyEmail/{id}/{code}',[VerifyEmailController::class,'verifyEmail'])->name('verifyEmail');
 Route::get('/resendVerifyEmailForm',[VerifyEmailController::class,'resendVerifyEmailForm'])->name('resendVerifyEmailForm');
 Route::post('/checkEmail',[VerifyEmailController::class,'checkEmailVerify'])->name('checkEmail');
+
+Route::get('/resetPassForm',[ResetPasswordController::class,'resetPassForm'])->name('resetPassForm');
+Route::post('/resetPassCheckEmail',[ResetPasswordController::class,'resetPassCheckEmail'])->name('resetPassCheckEmail');
 
 Route::get('/loginForm',[LoginController::class,'loginForm'])->name('loginForm');
 Route::post('/login',[LoginController::class,'login'])->name('login');
