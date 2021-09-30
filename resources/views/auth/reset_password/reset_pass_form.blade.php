@@ -31,7 +31,6 @@
         </div>
 
         <div class="row  d-flex login-content justify-content-center align-items-center">
-
             <div class="col-lg-4 login-form">
                 <form action="{{ route('resetPassCheckEmail') }}" method="post" novalidate>
                     @csrf
@@ -53,6 +52,7 @@
                 </form>
             </div>
         </div>
+
     </div>
 @endsection
 
