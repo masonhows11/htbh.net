@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Auth;
 use App\Events\ResetPassUserEvent;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use App\Models\User;
 
 class ResetPasswordController extends Controller
 {
@@ -14,7 +16,6 @@ class ResetPasswordController extends Controller
 
     public function resetPassForm()
     {
-
         return view('auth.reset_pass_form');
     }
 
@@ -34,22 +35,25 @@ class ResetPasswordController extends Controller
         $token = Str::random(30);
         try {
             DB::table('password_resets')
-                ->insert(['email', $request->email, 'token' => $token]);
+                ->insert(['email'=>$request->email,
+                    'token' => $token,
+                    'created_at'=>Carbon::now()]);
 
             ResetPassUserEvent::dispatch($user, $token);
         } catch (\Exception $ex) {
             return $ex->getMessage();
         }
+        return  redirect()->back()->with('success','لینک تغییر رمز عبور با موفقیت ارسال شد.');
 
     }
 
     public function resetPassHandleForm(Request $request)
     {
-
+        return $request;
     }
 
     public function resetPassHandle(Request $request)
     {
-
+        return $request;
     }
 }
