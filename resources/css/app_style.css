@@ -263,12 +263,12 @@ body {
 .register-content{
     margin-top:30px;
 }
-.login-content {
-
-}
 .alert-wrapper{
     height:70px;
-
+}
+.forget-button:hover,
+.resend-button:hover{
+    color:white;
 }
 /******** section media query **********/
 @media screen and (max-width: 991px) {

@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\services\CheckLinkTime;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Date;
 
@@ -36,5 +37,15 @@ class VerifyEmailController extends Controller
         return redirect()->route('loginForm')->with('error','لینک فعال سازی معتبر نمی باشد.');
 
 
+    }
+
+    public function resendVerifyEmailForm()
+    {
+        return view('auth.resend_verify_email');
+    }
+
+    public function checkEmailVerify(Request $request)
+    {
+            return $request;
     }
 }

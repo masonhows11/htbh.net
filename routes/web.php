@@ -25,6 +25,8 @@ Route::get('/registerForm',[RegisterController::class,'registerForm'])->name('re
 Route::post('/register',[RegisterController::class,'register'])->name('register');
 
 Route::get('/verifyEmail/{id}/{code}',[VerifyEmailController::class,'verifyEmail'])->name('verifyEmail');
+Route::get('/resendVerifyEmailForm',[VerifyEmailController::class,'resendVerifyEmailForm'])->name('resendVerifyEmailForm');
+Route::post('/checkEmail',[VerifyEmailController::class,'checkEmailVerify'])->name('checkEmail');
 
 Route::get('/loginForm',[LoginController::class,'loginForm'])->name('loginForm');
 Route::post('/login',[LoginController::class,'login'])->name('login');

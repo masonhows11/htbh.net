@@ -91,7 +91,7 @@
 
                     <div class="mt-3">
                         <button type="submit" class="btn btn-outline-primary">ورود</button>
-                        <a href="/resetPassForm" class="btn btn-outline-info">فراموشی رمز عبور !</a>
+                        <a href="#" class="btn btn-outline-info forget-button">فراموشی رمز عبور !</a>
                     </div>
                 </form>
 

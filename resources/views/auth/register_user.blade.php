@@ -90,8 +90,12 @@
                             <br/>
                         </div>
 
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-outline-primary">ثبت نام</button>
+                            <a href="{{ route('resendVerifyEmailForm') }}"
+                               class="btn btn-outline-info resend-button">ارسال مجدد لینک فعال سازی</a>
+                        </div>
 
-                        <button type="submit" class="btn btn-outline-primary">ثبت نام</button>
                     </form>
                 </div>
 
