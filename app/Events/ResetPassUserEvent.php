@@ -2,6 +2,7 @@
 
 namespace App\Events;
 
+use App\Models\User;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
@@ -14,14 +15,20 @@ class ResetPassUserEvent
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
+    public $user;
+    public $token;
+
     /**
      * Create a new event instance.
      *
-     * @return void
+     * @param User $user
+     * @param $token
      */
-    public function __construct()
+    public function __construct(User $user,$token)
     {
         //
+        $this->user = $user;
+        $this->token = $token;
     }
 
     /**

@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Events\ResetPassUserEvent;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class ResetPasswordController extends Controller
 {
@@ -24,6 +27,21 @@ class ResetPasswordController extends Controller
             'email.email'=>'ایمیل وارد شده معتبر نمی باشد.',
             'email.exists'=>'ایمیل وارد شده وجود ندارد.'
         ]);
+
+        $user = User::where('email',$request->email)->first();
+
+        $token = Str::random(30);
+        try {
+            DB::table('password_resets')
+                ->insert(['email',$request->email,'token'=>$token]);
+
+            ResetPassUserEvent::dispatch($user,$token);
+        }catch (\Exception $ex)
+        {
+            return $ex->getMessage();
+        }
+
+
 
 
     }
