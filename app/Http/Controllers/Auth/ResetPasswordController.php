@@ -9,6 +9,7 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use App\Models\User;
+use App\services\CheckLinkResetPassTime;
 
 class ResetPasswordController extends Controller
 {
@@ -50,6 +51,16 @@ class ResetPasswordController extends Controller
     public function resetPassHandleForm($token,$email)
     {
 
+         $isValid = CheckLinkResetPassTime::checkResetLinkExpire($email,$token);
+
+         if(!$isValid){
+             return redirect(route('resetPassForm'))
+                 ->with('error','لینک تغییر رمز عبور معتبر نمی باشد.');
+         }
+
+         $user = User::where('email',$email)->first();
+         return view('auth.reset_password.reset_pass_handle_form')
+             ->with(['user'=>$user,'token'=>$token]);
 
 
     }
