@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\Auth;
 
 
+use App\Events\RegisterUserEvent;
 use App\Http\Controllers\Controller;
 use App\services\CheckLinkTime;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Date;
+use Illuminate\Support\Str;
 
 class VerifyEmailController extends Controller
 {
@@ -55,6 +57,23 @@ class VerifyEmailController extends Controller
             'email.exists'=>'ایمیل وارد شده وجود ندارد.'
         ]);
 
-            return $request;
+        $user = User::where('email',$request->email)->first();
+        $code = Str::random();
+
+        if(!$user){
+            return redirect()->back()->with(['error'=>'کاربری با ایمیل وارد شده .جود ندارد.']);
+        }
+        try {
+            if($user){
+                $user->activation_code = $code;
+                $user->save();
+                $encrypted = Crypt::encryptString($code);
+                RegisterUserEvent::dispatch($user,$encrypted);
+                return redirect(route('registerForm'))->with(['success'=>'ایمیل فعال سازی برای شما ارسال شد.']);
+            }
+        }catch (\Exception $ex){
+            return redirect()->back()->with(['error'=>$ex->getMessage()]);
+        }
+
     }
 }
