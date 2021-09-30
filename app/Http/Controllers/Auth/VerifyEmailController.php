@@ -46,6 +46,14 @@ class VerifyEmailController extends Controller
 
     public function checkEmailVerify(Request $request)
     {
+
+        $request->validate([
+            'email'=>'required|email'
+        ],$messages = [
+            'email.required'=>'ایمیل خود را وارد کنید.',
+            'email.email'=>'ایمیل وارد شده معتبر نمی باشد.',
+        ]);
+
             return $request;
     }
 }

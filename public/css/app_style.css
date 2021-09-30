@@ -270,6 +270,10 @@ body {
 .resend-button:hover{
     color:white;
 }
+/*********** validation error***********/
+.validation-error{
+    height: 70px;
+}
 /******** section media query **********/
 @media screen and (max-width: 991px) {
 

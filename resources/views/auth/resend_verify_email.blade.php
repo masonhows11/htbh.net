@@ -17,19 +17,20 @@
                             <p class="text-center">{{ session('error')  }}</p>
                         </div>
                     @endif
+                        @if ($errors->any())
+                            <div class="alert alert-danger validation-error" role="alert">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                 </div>
-                @if ($errors->any())
-                    <div class="alert alert-danger" role="alert">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
+
             </div>
 
-            <div class="row d-flex login-content justify-content-center align-items-center">
+            <div class="row  d-flex login-content justify-content-center align-items-center">
 
                 <div class="col-lg-4 login-form">
                     <form action="{{ route('checkEmail') }}" method="post">
