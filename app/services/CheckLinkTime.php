@@ -20,17 +20,17 @@ class CheckLinkTime
 
          if(!$link)
          {
-             return false;
+             return 'link not found';
          }
          if ($link)
          {
              $expired  = Carbon::parse($link->created_at)->addMinutes(1)->isPast();
              if($expired)
              {
-                 return  false;
+                 return  'link expired';
              }
          }
-        return true;
+        return 'link done';
 
     }
 }
