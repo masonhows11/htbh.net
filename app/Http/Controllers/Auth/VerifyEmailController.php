@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\services\CheckLinkTime;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Str;
@@ -19,11 +20,7 @@ class VerifyEmailController extends Controller
     {
 
         $isValid = CheckLinkTime::checkLinkExpireTime($id, $code);
-
-        return $isValid;
-
         $decrypted_code = Crypt::decryptString($code);
-
         if ($isValid == true) {
             $user = User::where('id', $id)->where('activation_code', $decrypted_code)->first();
             if (!$user) {
@@ -50,7 +47,6 @@ class VerifyEmailController extends Controller
 
     public function checkEmailVerify(Request $request)
     {
-
         $request->validate([
             'email'=>'required|email|exists:users'
         ],$messages = [
@@ -58,16 +54,15 @@ class VerifyEmailController extends Controller
             'email.email'=>'ایمیل وارد شده معتبر نمی باشد.',
             'email.exists'=>'ایمیل وارد شده وجود ندارد.'
         ]);
-
         $user = User::where('email',$request->email)->first();
-        $code = Str::random();
-
         if(!$user){
             return redirect()->back()->with(['error'=>'کاربری با ایمیل وارد شده .جود ندارد.']);
         }
         try {
             if($user){
+                $code = Str::random();
                 $user->activation_code = $code;
+                $user->created_at = Carbon::now();
                 $user->save();
                 $encrypted = Crypt::encryptString($code);
                 RegisterUserEvent::dispatch($user,$encrypted);
