@@ -38,7 +38,7 @@ class ResetUserPasswordMail extends Mailable
         return $this->subject('لینک تغییر رمز عبور')
             ->markdown('emails.email_reset_pass')->with([
                 'name'=>$this->user->name,
-                'email'=>$this->user->emal,
+                'email'=>$this->user->email,
                 'token'=>$this->token,
             ]);
     }

@@ -47,11 +47,11 @@ class ResetPasswordController extends Controller
 
     }
 
-    public function resetPassHandleForm($token)
+    public function resetPassHandleForm($token,$email)
     {
 
 
-        return $token;
+
     }
 
     public function resetPassHandle(Request $request)
