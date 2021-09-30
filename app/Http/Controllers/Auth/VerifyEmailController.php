@@ -20,9 +20,11 @@ class VerifyEmailController extends Controller
 
         $isValid = CheckLinkTime::checkLinkExpireTime($id, $code);
 
+        return $isValid;
+
         $decrypted_code = Crypt::decryptString($code);
 
-        if ($isValid) {
+        if ($isValid == true) {
             $user = User::where('id', $id)->where('activation_code', $decrypted_code)->first();
             if (!$user) {
                 return redirect()->route('loginForm')->with('error', 'کاربر مورد نظر پیدا نشد.');
