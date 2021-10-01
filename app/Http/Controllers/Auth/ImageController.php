@@ -15,19 +15,21 @@ class ImageController extends Controller
     {
         $dest = 'images/users';
         $file = $request->file('avatar');
-        $image_name_save =  'UIMG'.date('YmdHis') . uniqid('', true) . '.jpg';
-        $move = $file->move(public_path($dest),$image_name_save);
-
+        $image_name_save = 'UIMG' . date('YmdHis') . uniqid('', true) . '.jpg';
+        $move = $file->move(public_path($dest), $image_name_save);
         if (!$move) {
-            return response()->json(['status' => 500, 'message' => 'ذخیره سازی عکس موفقیت آمیز نبود.']);
-        }
-        $userInfo = User::where('id', Auth::id())->first();
-        $userPhoto = $userInfo->avatar;
-        if ($userPhoto != '') {
-            unlink($dest . $userPhoto);
-        }
-        User::where('id', Auth::id())->update(['avatar' => $image_name_save]);
+            return response()->json(['status' => 0, 'msg' => 'ذخیره سازی عکس موفقیت آمیز نبود.']);
 
-        return response()->json(['status' => 200, 'message' => 'ذخیره سازی عکس با موفقیت انجام شد.', 'name' => $image_name_save]);
+        } else {
+
+            $user = User::find(Auth::id());
+            $user_avatar = $user->avatar;
+            if ($user_avatar != '') {
+                unlink($dest.$user_avatar);
+            }
+            User::where('id', Auth::id())->update(['avatar' => $image_name_save]);
+            return response()->json(['status' => 1, 'msg' => 'ذخیره سازی عکس با موفقیت انجام شد.', 'name' => $image_name_save]);
+        }
+
     }
 }
