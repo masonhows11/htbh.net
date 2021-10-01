@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/app_style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/font/font.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/dropzone_min_css/dropzone.min.css') }}">
+
     <!-- google recaptcha -->
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>

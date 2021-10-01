@@ -11,6 +11,12 @@ class ImageController extends Controller
     //
     public function store(Request $request)
     {
-        return $request;
+        if($request->hasFile('file') && $request->file('file')->isValid()) {
+
+            $extension = $request->file('file')->getClientOriginalName();
+
+            return '$extension';
+
+        }
     }
 }

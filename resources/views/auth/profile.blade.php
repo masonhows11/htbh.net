@@ -6,17 +6,22 @@
     <div class="container">
 
         <div class="row user-profile">
+
             <div class="col-md-3 border-right">
                 <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                   {{-- <img class="rounded-circle mt-5" width="150px" src="#" alt="image_user">--}}
-                    <form action="{{ route('imageStore') }}" id="dropzoneForm" class="dropzone">
+                    <img class="mt-5 img-thumbnail"  src="#" id="profile-image" alt="image_user">
+
+                   {{-- <form action="{{ route('imageStore') }}" id="dropzoneForm" class="dropzone mt-4" enctype="multipart/form-data">
                         @csrf
-                    </form>
+                    </form>--}}
+
+
                     <span class="font-weight-bold mt-2">
                         <button type="button" id="submit_image" class="btn btn-primary profile-button">آپلود عکس</button>
                     </span>
                 </div>
             </div>
+
             <div class="col-md-5 border-right">
                 <div class="p-3 py-5">
                     <div class="d-flex justify-content-between align-items-center mb-3">
@@ -33,8 +38,16 @@
                         </div>
                     </div>
                     <div class="row mt-3">
-                        <div class="col-md-12 mt-2"><label class="labels user-name">نام کاربری</label><input type="text" class="form-control" placeholder="" value=""></div>
-                        <div class="col-md-12 mt-2"><label class="labels user-email">ایمیل</label><input type="text" class="form-control" placeholder="" value=""></div>
+
+                        <div class="col-md-12 mt-2">
+                            <label class="labels user-name">نام کاربری</label>
+                            <input type="text" class="form-control" placeholder="" value="{{ \Illuminate\Support\Facades\Auth::user()->name }}">
+                        </div>
+
+                        <div class="col-md-12 mt-2">
+                            <label class="labels user-email">ایمیل</label>
+                            <input type="text" class="form-control" placeholder="" value="{{ \Illuminate\Support\Facades\Auth::user()->email }}">
+                        </div>
 
                     </div>
                     <div class="row mt-3">
@@ -44,6 +57,7 @@
                     <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">ذخیره پروفایل</button></div>
                 </div>
             </div>
+
            {{-- <div class="col-md-4">
                 <div class="p-3 py-5">
                     <div class="d-flex justify-content-between align-items-center experience"><span>Edit Experience</span><span class="border px-3 p-1 add-experience"><i class="fa fa-plus"></i>&nbsp;Experience</span></div><br>
@@ -56,26 +70,11 @@
     </div>
 @endsection
 @section('custom_script')
-    <script src="{{ asset('js/dropzone_min_js/dropzone.min.js') }}"></script>
     <script type="text/javascript">
 
-        Dropzone.options.dropzoneForm = {
-            autoProcessQueue : false,
-            acceptedFiles : ".png,.jpg,.gif,.bmp,.jpeg",
 
-            init:function () {
-                var submitBtn = document.querySelector("#submit_image");
-                myDropzone = this;
-
-                submitBtn.addEventListener('click',function () {
-                myDropzone.processQueue();
-                });
-                this.on("complete",function () {
-                    console.log('image send');
-                })
-            }
-        }
 
     </script>
+
 @endsection
 
