@@ -316,8 +316,10 @@ body {
     cursor: pointer;
     border: solid 1px #BA68C8
 }
+.user-profile .user-email,
 .user-profile .user-name ,
-.user-profile .user-family{
+.user-profile .first-name ,
+.user-profile .last-name{
     font-size:1rem;
 }
 /******** section media query **********/

@@ -7,7 +7,10 @@
 
         <div class="row user-profile">
             <div class="col-md-3 border-right">
-                <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold">Edogaru</span><span class="text-black-50">edogaru@mail.com.my</span><span> </span></div>
+                <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                    <img class="rounded-circle mt-5" width="150px" src="#" alt="image_user">
+                    <span class="font-weight-bold mt-2"><button class="btn btn-primary profile-button">آپلود عکس</button></span>
+                </div>
             </div>
             <div class="col-md-5 border-right">
                 <div class="p-3 py-5">
@@ -16,52 +19,36 @@
                     </div>
                     <div class="row mt-2">
                         <div class="col-md-6">
-                            <label class="labels user-name">نام</label>
+                            <label class="labels first-name">نام</label>
                             <input type="text" class="form-control"  value="">
                         </div>
                         <div class="col-md-6">
-                            <label class="labels user-family">نام خانوادگی</label>
+                            <label class="labels last-name">نام خانوادگی</label>
                             <input type="text" class="form-control" value="" >
                         </div>
                     </div>
                     <div class="row mt-3">
-                        <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text" class="form-control" placeholder="enter phone number" value=""></div>
-                        <div class="col-md-12"><label class="labels">Address Line 1</label><input type="text" class="form-control" placeholder="enter address line 1" value=""></div>
-                        <div class="col-md-12"><label class="labels">Address Line 2</label><input type="text" class="form-control" placeholder="enter address line 2" value=""></div>
-                        <div class="col-md-12"><label class="labels">Postcode</label><input type="text" class="form-control" placeholder="enter address line 2" value=""></div>
-                        <div class="col-md-12"><label class="labels">State</label><input type="text" class="form-control" placeholder="enter address line 2" value=""></div>
-                        <div class="col-md-12"><label class="labels">Area</label><input type="text" class="form-control" placeholder="enter address line 2" value=""></div>
-                        <div class="col-md-12"><label class="labels">Email ID</label><input type="text" class="form-control" placeholder="enter email id" value=""></div>
-                        <div class="col-md-12"><label class="labels">Education</label><input type="text" class="form-control" placeholder="education" value=""></div>
+                        <div class="col-md-12 mt-2"><label class="labels user-name">نام کاربری</label><input type="text" class="form-control" placeholder="" value=""></div>
+                        <div class="col-md-12 mt-2"><label class="labels user-email">ایمیل</label><input type="text" class="form-control" placeholder="" value=""></div>
+
                     </div>
                     <div class="row mt-3">
-                        <div class="col-md-6"><label class="labels">Country</label><input type="text" class="form-control" placeholder="country" value=""></div>
-                        <div class="col-md-6"><label class="labels">State/Region</label><input type="text" class="form-control" value="" placeholder="state"></div>
+                      {{--  <div class="col-md-6"><label class="labels">Country</label><input type="text" class="form-control" placeholder="country" value=""></div>
+                        <div class="col-md-6"><label class="labels">State/Region</label><input type="text" class="form-control" value="" placeholder="state"></div>--}}
                     </div>
-                    <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Save Profile</button></div>
+                    <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">ذخیره پروفایل</button></div>
                 </div>
             </div>
-            <div class="col-md-4">
+           {{-- <div class="col-md-4">
                 <div class="p-3 py-5">
                     <div class="d-flex justify-content-between align-items-center experience"><span>Edit Experience</span><span class="border px-3 p-1 add-experience"><i class="fa fa-plus"></i>&nbsp;Experience</span></div><br>
                     <div class="col-md-12"><label class="labels">Experience in Designing</label><input type="text" class="form-control" placeholder="experience" value=""></div> <br>
                     <div class="col-md-12"><label class="labels">Additional Details</label><input type="text" class="form-control" placeholder="additional details" value=""></div>
                 </div>
-            </div>
+            </div>--}}
         </div>
 
     </div>
-{{--        <div class="row d-flex mt-5  justify-content-center align-items-center">--}}
-{{--            <div class="col-lg-3" style="border:1px solid red;height: 200px">--}}
-{{--                image--}}
-{{--            </div>--}}
-{{--            <div class="col-lg-3" style="border:1px solid red;height: 200px">--}}
-{{--                specification--}}
-{{--            </div>--}}
-
-{{--        </div>--}}
-
-
 @endsection
 @section('custom_script')
 
