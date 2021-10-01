@@ -274,6 +274,52 @@ body {
 .validation-error{
     height: 70px;
 }
+/************ profile style ************/
+
+.user-profile .form-control:focus {
+    box-shadow: none;
+    border-color: #BA68C8
+}
+
+.user-profile .profile-button {
+    background: rgb(99, 39, 120);
+    box-shadow: none;
+    border: none
+}
+
+.user-profile .profile-button:hover {
+    background: #682773
+}
+
+.user-profile .profile-button:focus {
+    background: #682773;
+    box-shadow: none
+}
+
+.user-profile .profile-button:active {
+    background: #682773;
+    box-shadow: none
+}
+
+.user-profile .back:hover {
+    color: #682773;
+    cursor: pointer
+}
+
+.user-profile .labels {
+    font-size: 11px
+}
+
+.user-profile .add-experience:hover {
+    background: #BA68C8;
+    color: #fff;
+    cursor: pointer;
+    border: solid 1px #BA68C8
+}
+.user-profile .user-name ,
+.user-profile .user-family{
+    font-size:1rem;
+}
 /******** section media query **********/
 @media screen and (max-width: 991px) {
 

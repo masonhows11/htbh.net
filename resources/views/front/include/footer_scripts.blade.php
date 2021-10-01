@@ -8,6 +8,6 @@
         $('.alert-warning').fadeIn().delay(3000).fadeOut();
     });
 </script>
-@yield('custome-script')
+@yield('custom_script')
 </body>
 </html>
