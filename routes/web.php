@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\Auth\ImageController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,8 +35,12 @@ Route::post('/resetPassCheckEmail',[ResetPasswordController::class,'resetPassChe
 Route::get('/resetPassHandleForm/{token}/{email}',[ResetPasswordController::class,'resetPassHandleForm'])->name('resetPassHandleForm');
 Route::post('/resetPassHandle',[ResetPasswordController::class,'resetPassHandle'])->name('resetPassHandle');
 
+
 Route::get('/loginForm',[LoginController::class,'loginForm'])->name('loginForm');
 Route::post('/login',[LoginController::class,'login'])->name('login');
 
-Route::get('/profile',[LoginController::class,'profile'])->name('profile');
+Route::get('/profile',[LoginController::class,'profile'])->name('profile')->middleware('auth');
+
+Route::post('/imageStore',[ImageController::class,'store'])->name('imageStore')->middleware('auth');
+
 Route::get('/logOut',[LoginController::class,'logOut'])->name('logOut');
