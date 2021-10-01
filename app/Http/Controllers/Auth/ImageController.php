@@ -13,29 +13,21 @@ class ImageController extends Controller
     //
     public function store(Request $request)
     {
-
-        //return $request;
-
         $dest = 'images/users';
         $file = $request->file('avatar');
         $image_name_save =  'UIMG'.date('YmdHis') . uniqid('', true) . '.jpg';
+        $move = $file->move(public_path($dest),$image_name_save);
 
-        $save_avatar = $file->move(public_path($dest),$image_name_save);
-        if (!$save_avatar) {
+        if (!$move) {
             return response()->json(['status' => 500, 'message' => 'ذخیره سازی عکس موفقیت آمیز نبود.']);
-        } else {
-            $userInfo = User::where('id', Auth::id())->first();
-            $userPhoto = $userInfo->avatar;
-            if ($userPhoto != '') {
-                unlink($dest . $userPhoto);
-            }
-            User::where('id', Auth::id())->update(['avatar' => $image_name_save]);
-            return response()
-                ->json(['status' => 200,
-                         'message' => 'ذخیره سازی عکس با موفقیت انجام شد.',
-                        'name' => $image_name_save]);
-
-
         }
+        $userInfo = User::where('id', Auth::id())->first();
+        $userPhoto = $userInfo->avatar;
+        if ($userPhoto != '') {
+            unlink($dest . $userPhoto);
+        }
+        User::where('id', Auth::id())->update(['avatar' => $image_name_save]);
+
+        return response()->json(['status' => 200, 'message' => 'ذخیره سازی عکس با موفقیت انجام شد.', 'name' => $image_name_save]);
     }
 }
