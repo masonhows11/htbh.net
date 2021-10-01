@@ -9,10 +9,12 @@
             <div class="col-md-3 border-right">
                 <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                    {{-- <img class="rounded-circle mt-5" width="150px" src="#" alt="image_user">--}}
-                    <form action="" id="drop_zone_Form" class="drop_zone">
-
+                    <form action="{{ route('imageStore') }}" id="dropzoneForm" class="dropzone">
+                        @csrf
                     </form>
-                    <span class="font-weight-bold mt-2"><button class="btn btn-primary profile-button">آپلود عکس</button></span>
+                    <span class="font-weight-bold mt-2">
+                        <button type="button" id="submit_image" class="btn btn-primary profile-button">آپلود عکس</button>
+                    </span>
                 </div>
             </div>
             <div class="col-md-5 border-right">
@@ -55,5 +57,25 @@
 @endsection
 @section('custom_script')
     <script src="{{ asset('js/dropzone_min_js/dropzone.min.js') }}"></script>
+    <script type="text/javascript">
+
+        Dropzone.options.dropzoneForm = {
+            autoProcessQueue : false,
+            acceptedFiles : ".png,.jpg,.gif,.bmp,.jpeg",
+
+            init:function () {
+                var submitBtn = document.querySelector("#submit_image");
+                myDropzone = this;
+
+                submitBtn.addEventListener('click',function () {
+                myDropzone.processQueue();
+                });
+                this.on("complete",function () {
+                    console.log('image send');
+                })
+            }
+        }
+
+    </script>
 @endsection
 
