@@ -8,7 +8,10 @@
         <div class="row user-profile">
             <div class="col-md-3 border-right">
                 <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                    <img class="rounded-circle mt-5" width="150px" src="#" alt="image_user">
+                   {{-- <img class="rounded-circle mt-5" width="150px" src="#" alt="image_user">--}}
+                    <form action="" id="drop_zone_Form" class="drop_zone">
+
+                    </form>
                     <span class="font-weight-bold mt-2"><button class="btn btn-primary profile-button">آپلود عکس</button></span>
                 </div>
             </div>
@@ -51,6 +54,6 @@
     </div>
 @endsection
 @section('custom_script')
-
+    <script src="{{ asset('js/dropzone_min_js/dropzone.min.js') }}"></script>
 @endsection
 
