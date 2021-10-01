@@ -9,16 +9,17 @@
 
             <div class="col-md-3 border-right">
                 <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                    <img class="mt-5 img-thumbnail"  src="#" id="profile-image" alt="image_user">
-
-                   {{-- <form action="{{ route('imageStore') }}" id="dropzoneForm" class="dropzone mt-4" enctype="multipart/form-data">
-                        @csrf
-                    </form>--}}
-
-
-                    <span class="font-weight-bold mt-2">
+                    <img class="mt-5 img-thumbnail image-previewer"
+                         src=""
+                         id="profile-image"
+                         alt="image_user">
+                    <div class="form-group p-3">
+                        <label for="">یک عکس انتخاب کنید...</label>
+                        <input type="file" name="avatar" id="avatar" value="">
+                    </div>
+                   {{-- <span class="font-weight-bold mt-2">
                         <button type="button" id="submit_image" class="btn btn-primary profile-button">آپلود عکس</button>
-                    </span>
+                    </span>--}}
                 </div>
             </div>
 
@@ -41,12 +42,12 @@
 
                         <div class="col-md-12 mt-2">
                             <label class="labels user-name">نام کاربری</label>
-                            <input type="text" class="form-control" placeholder="" value="{{ \Illuminate\Support\Facades\Auth::user()->name }}">
+                            <input type="text" class="form-control" placeholder="" value="{{ $user->name }}">
                         </div>
 
                         <div class="col-md-12 mt-2">
                             <label class="labels user-email">ایمیل</label>
-                            <input type="text" class="form-control" placeholder="" value="{{ \Illuminate\Support\Facades\Auth::user()->email }}">
+                            <input type="text" class="form-control" placeholder="" value="{{ $user->email }}">
                         </div>
 
                     </div>
@@ -72,7 +73,21 @@
 @section('custom_script')
     <script type="text/javascript">
 
-
+        $('#avatar').ijaboCropTool({
+            preview : '.image-previewer',
+            setRatio:1,
+            allowedExtensions: ['jpg', 'jpeg','png'],
+            buttonsText:['CROP','QUIT'],
+            buttonsColor:['#30bf7d','#ee5155', -15],
+            processUrl:'{{ route("imageStore") }}',
+            withCSRF:['_token','{{ csrf_token() }}'],
+            onSuccess:function(message, element, status){
+                alert(message);
+            },
+            onError:function(message, element, status){
+                alert(message);
+            }
+        });
 
     </script>
 
