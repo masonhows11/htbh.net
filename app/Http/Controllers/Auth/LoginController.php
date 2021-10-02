@@ -58,6 +58,16 @@ class LoginController extends Controller
         return $request;
     }
 
+    public function editEmailForm()
+    {
+
+    }
+
+    public function editEmail(Request $request)
+    {
+
+    }
+
     public function logOut(Request $request)
     {
         Auth::logout();
