@@ -24,6 +24,8 @@ class RegisterController extends Controller
       // return $request;
 
         $request->validate([
+            'first_name'=>'required',
+            'last_name'=>'required',
             'name'=>'required|max:30|unique:users',
             'email'=>'required|email|unique:users',
             'password'=>['required','confirmed', Password::min(8)->mixedCase()->numbers()->symbols()],
@@ -41,14 +43,16 @@ class RegisterController extends Controller
 
             },
         ],$messages = [
-            'name.unique' => 'این نام کاربری تکراری است',
-            'name.required' => 'نام کاربری را وارد کنید ',
-            'email.required' => 'آدرس ایمیل را وارد کنید',
-            'email.unique' => 'این ایمیل تکراری است',
-            'password.required' => 'رمز عبور را وارد کنید',
+            'name.unique' => 'این نام کاربری تکراری است.',
+            'name.required' => 'نام کاربری را وارد کنید.',
+            'first_name.required' => 'نام خود را وارد کنید.',
+            'last_name.required'=>'نام خانوادگی خود را وارد کنید.',
+            'email.required' => 'آدرس ایمیل را وارد کنید.',
+            'email.unique' => 'این ایمیل تکراری است.',
+            'password.required' => 'رمز عبور را وارد کنید.',
             'password.mixedCase' => 'رمز عبور باید شامل حداقل یک کاراکتر بزرگ و یک کاراکتر کوچک باشد.',
-            'password.min' => 'حداقل تعداد کاراکتر رمز عبور ۸ کاراکتر',
-            'password.confirmed' => 'رمز عبور و تکرار آن یکی نیستند'
+            'password.min' => 'حداقل تعداد کاراکتر رمز عبور ۸ کاراکتر.',
+            'password.confirmed' => 'رمز عبور و تکرار آن یکی نیستند.'
         ]);
 
             $code = Str::random();

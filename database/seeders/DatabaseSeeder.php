@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
         DB::table('users')->insert([
+            'first_name'=>'naeem',
+            'last_name'=>'soltany',
             'name'=>'mason',
             'email'=>'mason.hows11@gmail.com',
             'email_verified_at'=>Carbon::now(),

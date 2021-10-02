@@ -46,39 +46,39 @@
                     <form action="{{ route('register') }}" method="post">
                         @csrf
                         <div class="form-group mb-3">
+                            <label for="name" class="mb-2">نام</label>
+                            <input type="text" class="form-control text-right @error('first_name') is-invalid @enderror"
+                                   name="first_name"
+                                    value="{{ old('first_name') }}">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="name" class="mb-2">نام خانوادگی</label>
+                            <input type="text" class="form-control text-right @error('last_name') is-invalid @enderror"
+                                   name="last_name"
+                                   value="{{ old('last_name') }}">
+                        </div>
+                        <div class="form-group mb-3">
                             <label for="name" class="mb-2">نام کاربری</label>
                             <input type="text" class="form-control text-right @error('name') is-invalid @enderror"
                                    name="name"
                                    id="name" value="{{ old('name') }}">
-                            {{--  @error('name')
-                              <div class="alert alert-danger">{{ $message }}</div>
-                              @enderror--}}
                         </div>
                         <div class="form-group mb-3">
                             <label for="email" class="mb-2">ایمیل</label>
                             <input type="email" class="form-control @error('email') is-invalid @enderror" name="email"
                                    id="email" value="{{ old('email')  }}">
-                            {{--  @error('email')
-                              <div class="alert alert-danger">{{ $message }}</div>
-                              @enderror--}}
                         </div>
                         <div class="form-group mb-3">
                             <label for="pass" class="mb-2">رمز عبور</label>
                             <input type="password" class="form-control @error('password') is-invalid @enderror"
                                    name="password"
                                    id="pass">
-                            {{--@error('password')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror--}}
                         </div>
                         <div class="form-group mb-3">
                             <label for="confirmPass" class="mb-2">تکرار رمز عبور</label>
                             <input type="password" name="password_confirmation"
                                    class="form-control @error('password_confirmation') is-invalid @enderror"
                                    id="confirmPass">
-                            {{--@error('password_confirmation')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror--}}
                         </div>
                         <div class="form-group">
                             <div class="g-recaptcha" data-sitekey="{{config('services.recaptcha.key')}}"></div>

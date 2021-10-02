@@ -30,34 +30,38 @@
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <h4 class="text-center h4">تنظیمات پروفایل</h4>
                     </div>
-                    <div class="row mt-2">
-                        <div class="col-md-6">
-                            <label class="labels first-name">نام</label>
-                            <input type="text" class="form-control"  value="">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="labels last-name">نام خانوادگی</label>
-                            <input type="text" class="form-control" value="" >
-                        </div>
-                    </div>
-                    <div class="row mt-3">
+                    <form action="{{ route('updateProfile') }}" method="post">
+                        @csrf
+                            <div class="row mt-2">
 
-                        <div class="col-md-12 mt-2">
-                            <label class="labels user-name">نام کاربری</label>
-                            <input type="text" class="form-control" placeholder="" value="{{ $user->name }}">
-                        </div>
+                                <div class="col-md-6">
+                                    <label class="labels first-name">نام</label>
+                                    <input type="text" class="form-control"  value="{{ $user->first_name }}">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="labels last-name">نام خانوادگی</label>
+                                    <input type="text" class="form-control" value="{{ $user->last_name }}" >
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-md-12 mt-2">
+                                    <label class="labels user-name">نام کاربری</label>
+                                    <input type="text" name="name" class="form-control" placeholder="" value="{{ $user->name }}">
+                                </div>
 
-                        <div class="col-md-12 mt-2">
-                            <label class="labels user-email">ایمیل</label>
-                            <input type="text" class="form-control" placeholder="" value="{{ $user->email }}">
-                        </div>
-
-                    </div>
-                    <div class="row mt-3">
-                      {{--  <div class="col-md-6"><label class="labels">Country</label><input type="text" class="form-control" placeholder="country" value=""></div>
-                        <div class="col-md-6"><label class="labels">State/Region</label><input type="text" class="form-control" value="" placeholder="state"></div>--}}
-                    </div>
-                    <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">ذخیره پروفایل</button></div>
+                                <div class="col-md-12 mt-2">
+                                    <label class="labels user-email">ایمیل</label>
+                                    <input type="text" name="email" class="form-control" placeholder="" value="{{ $user->email }}">
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                              {{--  <div class="col-md-6"><label class="labels">Country</label><input type="text" class="form-control" placeholder="country" value=""></div>
+                                <div class="col-md-6"><label class="labels">State/Region</label><input type="text" class="form-control" value="" placeholder="state"></div>--}}
+                            </div>
+                            <div class="mt-5 text-center">
+                                <button class="btn btn-primary profile-button" type="submit">ذخیره پروفایل</button>
+                            </div>
+                    </form>
                 </div>
             </div>
 
