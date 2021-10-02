@@ -322,6 +322,13 @@ body {
 .user-profile .last-name{
     font-size:1rem;
 }
+.user-profile .user-email-text{
+    font-size:1.2rem;
+
+}
+.user-profile .user-email-body{
+    border-bottom:2px solid #BA68C8;
+}
 .user-profile,
 .user-profile .user-info,
 .user-profile .user-avatar {

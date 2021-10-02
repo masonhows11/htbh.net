@@ -62,11 +62,11 @@
 
                             <div class="col-md-6">
                                 <label class="labels first-name">نام</label>
-                                <input type="text" class="form-control" value="{{ $user->first_name }}">
+                                <input type="text" name="first_name" class="form-control" value="{{ $user->first_name }}">
                             </div>
                             <div class="col-md-6">
                                 <label class="labels last-name">نام خانوادگی</label>
-                                <input type="text" class="form-control" value="{{ $user->last_name }}">
+                                <input type="text" name="last_name" class="form-control" value="{{ $user->last_name }}">
                             </div>
                         </div>
                         <div class="row mt-3">
@@ -76,10 +76,11 @@
                                        value="{{ $user->name }}">
                             </div>
 
-                            <div class="col-md-12 mt-2">
+                            <div class="col-md-12 mt-3 user-email-body">
                                 <label class="labels user-email">ایمیل</label>
-                                <input type="text" class="form-control" readonly value="{{ $user->email }}">
+                                <p class="mt-3 user-email-text text-left">{{ $user->email }}</p>
                             </div>
+                            <input type="hidden" name="email" value="{{ $user->email }}">
                         </div>
                       {{--  <div class="row mt-3">
                             <div class="col-md-6"><label class="labels">Country</label><input type="text" class="form-control" placeholder="country" value=""></div>
