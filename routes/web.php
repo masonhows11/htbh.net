@@ -7,6 +7,7 @@ use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\ImageController;
+use App\Http\Controllers\Auth\ProfileController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,10 +39,11 @@ Route::post('/resetPassHandle',[ResetPasswordController::class,'resetPassHandle'
 
 Route::get('/loginForm',[LoginController::class,'loginForm'])->name('loginForm');
 Route::post('/login',[LoginController::class,'login'])->name('login');
+Route::get('/logOut',[LoginController::class,'logOut'])->name('logOut');
 
-Route::get('/profile',[LoginController::class,'profile'])->name('profile')->middleware('auth');
-Route::post('/updateProfile',[LoginController::class,'updateProfile'])->name('updateProfile')->middleware('auth');
+Route::get('/profile',[ProfileController::class,'profile'])->name('profile')->middleware('auth');
+Route::post('/updateProfile',[ProfileController::class,'updateProfile'])->name('updateProfile')->middleware('auth');
 
 Route::post('/imageStore',[ImageController::class,'store'])->name('imageStore')->middleware('auth');
 
-Route::get('/logOut',[LoginController::class,'logOut'])->name('logOut');
+

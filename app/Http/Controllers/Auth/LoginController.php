@@ -47,26 +47,7 @@ class LoginController extends Controller
         return redirect()->back()->with('error', 'نام کاربری یا رمز عبور اشتباه است.');
 
     }
-    public function profile()
-    {
-        $user = Auth::user();
-        return view('auth.profile')->with('user',$user);
-    }
 
-    public function updateProfile(Request $request)
-    {
-        return $request;
-    }
-
-    public function editEmailForm()
-    {
-
-    }
-
-    public function editEmail(Request $request)
-    {
-
-    }
 
     public function logOut(Request $request)
     {
