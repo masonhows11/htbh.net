@@ -9,9 +9,11 @@
 
             <div class="col-md-3 border-right">
                 <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                    <img class="mt-5 img-thumbnail image-previewer"
+                    <img class="mt-5 img-rounded image-previewer"
                          src="{{  $user->avatar == '' ? asset('images/users/no-user.png')  : asset('images/users/'.$user->avatar)  }}"
                          id="profile-image"
+                         width="280px"
+                         height="240px"
                          alt="image_user">
                     <div class="form-group p-3">
                         <label for="">یک عکس انتخاب کنید...</label>
