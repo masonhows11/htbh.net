@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
-    //
+
     public function loginForm()
     {
         return view('auth.login_user');

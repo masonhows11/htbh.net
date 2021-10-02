@@ -51,20 +51,21 @@
 
                                 <div class="col-md-12 mt-2">
                                     <label class="labels user-email">ایمیل</label>
-                                    <input type="text" name="email" class="form-control" placeholder="" value="{{ $user->email }}">
+                                    <input type="text"  class="form-control" readonly value="{{ $user->email }}">
                                 </div>
                             </div>
                             <div class="row mt-3">
                               {{--  <div class="col-md-6"><label class="labels">Country</label><input type="text" class="form-control" placeholder="country" value=""></div>
                                 <div class="col-md-6"><label class="labels">State/Region</label><input type="text" class="form-control" value="" placeholder="state"></div>--}}
                             </div>
+
                             <div class="mt-5 text-center">
-                                <button class="btn btn-primary profile-button" type="submit">ذخیره پروفایل</button>
+                                <button class="btn btn-primary profile-button" type="submit">ویرایش پروفایل</button>
+                                <a href="#" class="btn btn-primary profile-button" type="button">تغییر آدرس ایمیل</a>
                             </div>
                     </form>
                 </div>
             </div>
-
            {{-- <div class="col-md-4">
                 <div class="p-3 py-5">
                     <div class="d-flex justify-content-between align-items-center experience"><span>Edit Experience</span><span class="border px-3 p-1 add-experience"><i class="fa fa-plus"></i>&nbsp;Experience</span></div><br>
