@@ -322,6 +322,12 @@ body {
 .user-profile .last-name{
     font-size:1rem;
 }
+.user-profile,
+.user-profile .user-info,
+.user-profile .user-avatar {
+height: auto;
+}
+
 /******** section media query **********/
 @media screen and (max-width: 991px) {
 
