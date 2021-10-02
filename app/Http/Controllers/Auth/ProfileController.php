@@ -18,13 +18,11 @@ class ProfileController extends Controller
 
     public function updateProfile(Request $request)
     {
-        //return $request;
         $user = User::where('email',$request->email)->first();
         if(!$user)
         {
             return redirect()->back()->with('error','کاربری با این مشخصات وجود ندارد.');
         }
-
         $request->validate([
             'first_name' => 'nullable|min:5',
             'last_name'=> 'nullable|min:5',
