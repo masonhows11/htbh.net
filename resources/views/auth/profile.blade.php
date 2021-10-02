@@ -38,7 +38,7 @@
 
             <div class="col-md-3  border-right user-avatar">
                 <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                    <img class="mt-5 img-rounded image-previewer"
+                    <img class="mt-2 img-rounded image-previewer"
                          src="{{  $user->avatar == '' ? asset('images/users/no-user.png')  : asset('images/users/'.$user->avatar)  }}"
                          id="profile-image"
                          width="280px"
