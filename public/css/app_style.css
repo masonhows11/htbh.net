@@ -334,7 +334,10 @@ body {
 .user-profile .user-avatar {
 height: auto;
 }
-
+.edit-email-wrapper .btn-primary:hover{
+    background-color:transparent;
+    color: #000000;
+}
 /******** section media query **********/
 @media screen and (max-width: 991px) {
 

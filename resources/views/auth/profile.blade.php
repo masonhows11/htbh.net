@@ -88,7 +88,7 @@
 
                         <div class="mt-5 text-center">
                             <button class="btn btn-primary profile-button" type="submit">ویرایش پروفایل</button>
-                            <a href="#" class="btn btn-primary profile-button" type="button">تغییر آدرس ایمیل</a>
+                            <a href="/editEmailForm?user={{$user->email}}" class="btn btn-primary profile-button" type="button">تغییر آدرس ایمیل</a>
                         </div>
                     </form>
                 </div>

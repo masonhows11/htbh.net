@@ -32,7 +32,6 @@ class ProfileController extends Controller
             'last_name.min'=>'نام خانوادگی حداقل ۱۰ کاراکتر باشد.',
              'name.min' => 'نام کاربری حداقل ۱۰ کاراکتر باشد.',
         ]);
-
         try {
             $user->first_name = $request->first_name;
             $user->last_name = $request->last_name;
@@ -48,13 +47,29 @@ class ProfileController extends Controller
 
     }
 
-    public function editEmailForm()
+    public function editEmailForm(Request $request)
     {
-
+        $user = User::where('email',$request->user)->first();
+        return view('auth.edit_email')->with('user',$user);
     }
 
     public function editEmail(Request $request)
     {
+        $user = User::where('email',$request->email)->first();
+        $request->validate([
+            'email' => ['nullable','email',Rule::unique('users')->ignore($user->id)]
+        ],$messages =[
+            'email.email' => 'آدرس ایمیل وارد شده معتبر نمی باشد.',
+        ]);
+        try {
 
+            $user->email = $request->email;
+            $user->save();
+
+            return redirect()->back()->with('success','پروفایل با موفقیت بروزرسانی شد.');
+        }catch (\Exception $ex)
+        {
+            return $ex->getMessage();
+        }
     }
 }
