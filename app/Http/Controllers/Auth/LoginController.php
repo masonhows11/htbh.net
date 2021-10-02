@@ -53,6 +53,11 @@ class LoginController extends Controller
         return view('auth.profile')->with('user',$user);
     }
 
+    public function updateProfile(Request $request)
+    {
+        return $request;
+    }
+
     public function logOut(Request $request)
     {
         Auth::logout();

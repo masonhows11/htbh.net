@@ -40,6 +40,7 @@ Route::get('/loginForm',[LoginController::class,'loginForm'])->name('loginForm')
 Route::post('/login',[LoginController::class,'login'])->name('login');
 
 Route::get('/profile',[LoginController::class,'profile'])->name('profile')->middleware('auth');
+Route::get('/updateProfile',[LoginController::class,'updateProfile'])->name('updateProfile')->middleware('auth');
 
 Route::post('/imageStore',[ImageController::class,'store'])->name('imageStore')->middleware('auth');
 
