@@ -37,7 +37,8 @@
                 <div class="row d-flex justify-content-center mt-2">
                     <div class="col-md-4">
                         <label class="labels first-name text-lg font-medium">ایمیل :</label>
-                        <input type="email" name="email" class="form-control @error('email') is_invalid @enderror " value="{{ $user->email }}">
+                        <input type="email" name="email" class="form-control @error('email') is_invalid @enderror" value="{{ $user->email }}">
+                        <input type="hidden" name="old_email" value="{{ $user->email }}">
                     </div>
                 </div>
                 <div class="mt-5 text-center">
