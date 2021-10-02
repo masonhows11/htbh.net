@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Events\RegisterUserEvent;
+use App\Events\ChangeUserEmailEvent;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -74,10 +74,14 @@ class ProfileController extends Controller
             return $ex->getMessage();
         }
 
-
+        ChangeUserEmailEvent::dispatch($user->email,$encrypted);
 
         Auth::logout();
         $request->session()->invalidate();
         return redirect('/loginForm')->with('success', 'لینک فعال سازی برای شما ارسال شد.');
+    }
+    public function confirmEditEmail(Request $request)
+    {
+        return $request;
     }
 }

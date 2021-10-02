@@ -45,6 +45,7 @@ Route::get('/profile',[ProfileController::class,'profile'])->name('profile')->mi
 Route::post('/updateProfile',[ProfileController::class,'updateProfile'])->name('updateProfile')->middleware('auth');
 Route::get('/editEmailForm',[ProfileController::class,'editEmailForm'])->name('editEmailForm')->middleware('auth');
 Route::post('/editEmail',[ProfileController::class,'editEmail'])->name('editEmail')->middleware('auth');
+Route::post('/confirmEditEmail',[ProfileController::class,'confirmEditEmail'])->name('confirmEditEmail');
 
 
 Route::post('/imageStore',[ImageController::class,'store'])->name('imageStore')->middleware('auth');

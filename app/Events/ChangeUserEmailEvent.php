@@ -2,6 +2,7 @@
 
 namespace App\Events;
 
+use App\Models\User;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
@@ -14,14 +15,20 @@ class ChangeUserEmailEvent
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
+    public $user;
+    public $code;
+
     /**
      * Create a new event instance.
      *
-     * @return void
+     * @param User $user
+     * @param $code
      */
-    public function __construct()
+    public function __construct(User $user,$code)
     {
         //
+        $this->user = $user;
+        $this->code = $code;
     }
 
     /**
@@ -29,8 +36,8 @@ class ChangeUserEmailEvent
      *
      * @return \Illuminate\Broadcasting\Channel|array
      */
-    public function broadcastOn()
-    {
-        return new PrivateChannel('channel-name');
-    }
+    /* public function broadcastOn()
+     {
+         return new PrivateChannel('channel-name');
+     }*/
 }
