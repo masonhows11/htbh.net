@@ -30,7 +30,7 @@ class SendLinkChangeEmailListener
     {
         //
         Mail::to($event->user->email)
-            ->send(new ChangeUserEmailMail($event->user,$event->code));
+            ->send(new ChangeUserEmailMail($event->user,$event->encrypted));
 
     }
 }

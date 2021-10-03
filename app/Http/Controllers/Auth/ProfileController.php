@@ -74,14 +74,15 @@ class ProfileController extends Controller
             return $ex->getMessage();
         }
 
-        ChangeUserEmailEvent::dispatch($user->email,$encrypted);
+        ChangeUserEmailEvent::dispatch($user,$encrypted);
 
         Auth::logout();
         $request->session()->invalidate();
         return redirect('/loginForm')->with('success', 'لینک فعال سازی برای شما ارسال شد.');
     }
-    public function confirmEditEmail(Request $request)
+
+    public function confirmEditEmail($id,$code)
     {
-        return $request;
+        return $id.$code;
     }
 }

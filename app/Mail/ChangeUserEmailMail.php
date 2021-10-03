@@ -19,13 +19,13 @@ class ChangeUserEmailMail extends Mailable
      * Create a new message instance.
      *
      * @param User $user
-     * @param $code
+     * @param $encrypted
      */
-    public function __construct(User $user,$code)
+    public function __construct(User $user,$encrypted)
     {
         //
         $this->user =  $user;
-        $this->encrypted = $code;
+        $this->encrypted = $encrypted;
     }
 
     /**
@@ -35,7 +35,7 @@ class ChangeUserEmailMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('لینک تایید تغییر آدرس ایمیل.')
+        return $this->subject('.لینک تایید تغییر آدرس ایمیل')
             ->markdown('emails.email_change_email')
             ->with([
                 'name'=>$this->user->name,
