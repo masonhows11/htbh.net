@@ -47,8 +47,6 @@ class ProfileController extends Controller
         } catch (\Exception $ex) {
             return $ex->getMessage();
         }
-
-
     }
 
     public function editEmailForm(Request $request)
@@ -60,7 +58,6 @@ class ProfileController extends Controller
     public function editEmail(Request $request)
     {
         $user = User::where('email', $request->old_email)->first();
-
         $request->validate([
             'email' => ['nullable', 'email', Rule::unique('users')->ignore($user->id)]
         ], $messages = [
@@ -78,9 +75,7 @@ class ProfileController extends Controller
         } catch (\Exception $ex) {
             return $ex->getMessage();
         }
-
         ChangeUserEmailEvent::dispatch($user,$encrypted);
-
         Auth::logout();
         $request->session()->invalidate();
         return redirect('/loginForm')->with('success', 'لینک فعال سازی برای شما ارسال شد.');
@@ -90,12 +85,10 @@ class ProfileController extends Controller
     {
         $isValid = CheckLinkTime::checkLinkExpireEditEmail($id, $code);
         $decrypted_code = Crypt::decryptString($code);
-
         if ($isValid == true) {
             $user = User::where('id', $id)
                 ->where('activation_code', $decrypted_code)
                 ->first();
-
             if (!$user) {
                 return redirect()->route('loginForm')
                     ->with('error', 'کاربر مورد نظر پیدا نشد.');
