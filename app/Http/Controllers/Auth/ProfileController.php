@@ -70,7 +70,7 @@ class ProfileController extends Controller
 
             $code = Str::random();
             $user->email = $request->email;
-            $user->created_at = Carbon::now();
+            $user->updated_at = Carbon::now();
             $user->email_verified_at = null;
             $user->activation_code = $code;
             $user->save();
@@ -88,13 +88,14 @@ class ProfileController extends Controller
 
     public function confirmEditEmail($id,$code)
     {
-
-
-        $isValid = CheckLinkTime::checkLinkExpireTime($id, $code);
-        return $isValid;
+        $isValid = CheckLinkTime::checkLinkExpireEditEmail($id, $code);
         $decrypted_code = Crypt::decryptString($code);
+
         if ($isValid == true) {
-            $user = User::where('id', $id)->where('activation_code', $decrypted_code)->first();
+            $user = User::where('id', $id)
+                ->where('activation_code', $decrypted_code)
+                ->first();
+
             if (!$user) {
                 return redirect()->route('loginForm')
                     ->with('error', 'کاربر مورد نظر پیدا نشد.');

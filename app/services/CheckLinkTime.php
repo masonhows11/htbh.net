@@ -25,18 +25,38 @@ class CheckLinkTime
             ->where('id', '=', $id)
             ->select('created_at')->first();
         if (!$link) {
-          // return false;
-            return  'user not found';
+          return false;
         }
         if ($link) {
             $expired = Carbon::parse($link->created_at)->addMinutes(1)->isPast();
             if ($expired) {
-               // return false;
-                return 'link expired';
+              return false;
             }
         }
-       //return true;
-        return 'link done';
+       return true;
+    }
+
+    public static function checkLinkExpireEditEmail($id, $code)
+    {
+        try {
+            $decrypted_code = Crypt::decryptString($code);
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+        $link = DB::table('users')
+            ->where('activation_code', '=', $decrypted_code)
+            ->where('id', '=', $id)
+            ->select('updated_at')->first();
+        if (!$link) {
+            return false;
+        }
+        if ($link) {
+            $expired = Carbon::parse($link->updated_at)->addMinutes(1)->isPast();
+            if ($expired) {
+                return false;
+            }
+        }
+        return true;
     }
 
 }
