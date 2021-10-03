@@ -23,7 +23,7 @@ class VerifiedUser
         if($current_user->email_verified_at == null)
         {
             return redirect()->route('loginForm')
-                ->with('error','کاربر گرامی حساب کاربری شما فعال نشده است.');
+                ->with('error','کاربر گرامی حساب شما فعال نشده است.');
         }
         return $next($request);
     }

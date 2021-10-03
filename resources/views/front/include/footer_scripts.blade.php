@@ -3,10 +3,10 @@
 <script src="{{ asset('js/ijaboCropTool.min.js') }}"></script>
 <script>
     $(document).ready(function () {
-        $('.alert-success').fadeIn().delay(3000).fadeOut();
+        $('.alert-success').fadeIn().delay(7000).fadeOut();
     });
     $(document).ready(function () {
-        $('.alert-warning').fadeIn().delay(3000).fadeOut();
+        $('.alert-warning').fadeIn().delay(7000).fadeOut();
     });
 </script>
 @yield('custom_script')
