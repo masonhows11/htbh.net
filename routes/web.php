@@ -35,12 +35,12 @@ Route::post('/resetPassHandle',[ResetPasswordController::class,'resetPassHandle'
 
 
 Route::get('/loginForm',[LoginController::class,'loginForm'])->name('loginForm');
-Route::post('/login',[LoginController::class,'login'])->name('login')->middleware('throttle:3,1');
+Route::post('/login',[LoginController::class,'login'])->name('login')->middleware(['throttle:3,1']);
 Route::get('/logOut',[LoginController::class,'logOut'])->name('logOut');
 
-Route::get('/profile',[ProfileController::class,'profile'])->name('profile')->middleware('auth');
-Route::post('/updateProfile',[ProfileController::class,'updateProfile'])->name('updateProfile')->middleware('auth');
-Route::get('/editEmailForm',[ProfileController::class,'editEmailForm'])->name('editEmailForm')->middleware('auth');
+Route::get('/profile',[ProfileController::class,'profile'])->name('profile')->middleware('auth','verifiedUser');
+Route::post('/updateProfile',[ProfileController::class,'updateProfile'])->name('updateProfile')->middleware('auth','verifiedUser');
+Route::get('/editEmailForm',[ProfileController::class,'editEmailForm'])->name('editEmailForm')->middleware('auth','verifiedUser');
 Route::post('/editEmail',[ProfileController::class,'editEmail'])->name('editEmail')->middleware('auth');
 Route::get('/confirmEditEmail/{id}/{code}',[ProfileController::class,'confirmEditEmail'])->name('confirmEditEmail');
 
