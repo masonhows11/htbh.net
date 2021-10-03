@@ -22,18 +22,21 @@ class CheckLinkTime
 
         $link = DB::table('users')
             ->where('activation_code', '=', $decrypted_code)
-            ->where('id', '=', $id)->select('created_at')->first();
+            ->where('id', '=', $id)
+            ->select('created_at')->first();
         if (!$link) {
-           return false;
+          // return false;
+            return  'user not found';
         }
         if ($link) {
             $expired = Carbon::parse($link->created_at)->addMinutes(1)->isPast();
             if ($expired) {
-                return false;
+               // return false;
+                return 'link expired';
             }
         }
-       return true;
-
+       //return true;
+        return 'link done';
     }
 
 }

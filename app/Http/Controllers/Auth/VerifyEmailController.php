@@ -33,8 +33,6 @@ class VerifyEmailController extends Controller
                 return redirect()->route('loginForm')->with('success', 'حساب کاربری شما با موفقیت فعال شد.');
             }
         }
-
-
         return redirect()->route('loginForm')->with('error','لینک فعال سازی معتبر نمی باشد.');
 
 

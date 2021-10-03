@@ -23,6 +23,8 @@ class DatabaseSeeder extends Seeder
             'name'=>'mason',
             'email'=>'mason.hows11@gmail.com',
             'email_verified_at'=>Carbon::now(),
-            'password'=>Hash::make('1289..//nS'),]);
+            'password'=>Hash::make('1289..//nS'),
+            'created_at'=> Carbon::now(),
+            'updated_at'=> Carbon::now(),]);
     }
 }
