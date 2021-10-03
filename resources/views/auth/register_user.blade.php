@@ -39,9 +39,6 @@
 
 
             <div class="row d-flex  register-content justify-content-center">
-                <div class="col-lg-4 d-flex justify-content-center login-image">
-                    <img src="{{asset('/images/vector-register.png')}}" class="img-fluid" alt="">
-                </div>
                 <div class="col-lg-4 user-reg-content">
                     <form action="{{ route('register') }}" method="post">
                         @csrf

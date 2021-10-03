@@ -28,14 +28,14 @@ Route::get('/verifyEmail/{id}/{code}',[VerifyEmailController::class,'verifyEmail
 Route::get('/resendVerifyEmailForm',[VerifyEmailController::class,'resendVerifyEmailForm'])->name('resendVerifyEmailForm');
 Route::post('/checkEmail',[VerifyEmailController::class,'checkEmailVerify'])->name('checkEmail');
 
-Route::get('/resetPassForm',[ResetPasswordController::class,'resetPassForm'])->name('resetPassForm');
+Route::get('/resetPassForm',[ResetPasswordController::class,'resetPassForm'])->name('resetPassForm')->middleware('auth');
 Route::post('/resetPassCheckEmail',[ResetPasswordController::class,'resetPassCheckEmail'])->name('resetPassCheckEmail');
 Route::get('/resetPassHandleForm/{token}/{email}',[ResetPasswordController::class,'resetPassHandleForm'])->name('resetPassHandleForm');
 Route::post('/resetPassHandle',[ResetPasswordController::class,'resetPassHandle'])->name('resetPassHandle');
 
 
 Route::get('/loginForm',[LoginController::class,'loginForm'])->name('loginForm');
-Route::post('/login',[LoginController::class,'login'])->name('login');
+Route::post('/login',[LoginController::class,'login'])->name('login')->middleware('throttle:3,1');
 Route::get('/logOut',[LoginController::class,'logOut'])->name('logOut');
 
 Route::get('/profile',[ProfileController::class,'profile'])->name('profile')->middleware('auth');
