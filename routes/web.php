@@ -21,9 +21,6 @@ use App\Http\Controllers\Auth\ProfileController;
 
 Route::get('/',[HomeController::class,'home'])->name('home');
 
-
-
-
 Route::get('/registerForm',[RegisterController::class,'registerForm'])->name('registerForm');
 Route::post('/register',[RegisterController::class,'register'])->name('register');
 
