@@ -10,6 +10,6 @@ class AdminController extends Controller
     //
     public function admin()
     {
-        return view('admin.include.master_admin');
+        return view('admin.include.master');
     }
 }

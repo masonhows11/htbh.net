@@ -49,6 +49,6 @@ Route::get('/confirmEditEmail/{id}/{code}',[ProfileController::class,'confirmEdi
 Route::post('/imageStore',[ImageController::class,'store'])->name('imageStore')->middleware('auth');
 
 
-Route::get('/admin',[AdminController::class,'admin']);
+Route::get('/admin',[AdminController::class,'admin'])->name('admin');
 
 
