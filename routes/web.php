@@ -8,6 +8,7 @@ use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\ImageController;
 use App\Http\Controllers\Auth\ProfileController;
+use App\Http\Controllers\Admin\AdminController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -46,5 +47,8 @@ Route::get('/confirmEditEmail/{id}/{code}',[ProfileController::class,'confirmEdi
 
 
 Route::post('/imageStore',[ImageController::class,'store'])->name('imageStore')->middleware('auth');
+
+
+Route::get('/admin',[AdminController::class,'admin']);
 
 

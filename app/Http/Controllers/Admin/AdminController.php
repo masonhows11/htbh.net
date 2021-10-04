@@ -8,4 +8,8 @@ use Illuminate\Http\Request;
 class AdminController extends Controller
 {
     //
+    public function admin()
+    {
+        return view('admin.include.master_admin');
+    }
 }
