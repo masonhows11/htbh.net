@@ -26,9 +26,6 @@
                         <a class="nav-link text-white" href="{{ route('loginForm') }}">ورود</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="{{ route('admin') }}">مدیریت</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link text-white" href="{{ route('registerForm') }}">ثبت نام</a>
                     </li>
                 @endif
