@@ -51,4 +51,10 @@ Route::post('/imageStore',[ImageController::class,'store'])->name('imageStore')-
 
 Route::get('/admin/index',[AdminController::class,'admin'])->name('admin_dash');
 
+Route::group(['prefix' => 'admin', 'middleware' => 'role:admin'], function () {
+
+    Route::get('/users', [UserController::class, 'index'])->name('users');
+    Route::get('/userDelete', [UserController::class, 'delete']);
+
+});
 
