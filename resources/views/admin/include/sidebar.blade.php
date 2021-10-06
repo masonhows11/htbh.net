@@ -4,10 +4,10 @@
         <!-- Sidebar user panel -->
         <div class="user-panel">
             <div class="pull-right image">
-                <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <img src="{{ asset('admin/images/user-100.png') }}" class="img-circle" alt="User Image">
             </div>
             <div class="pull-right info">
-                <p>علیرضا حسینی زاده</p>
+                <p>Mason hows11</p>
                 <a href="#"><i class="fa fa-circle text-success"></i> آنلاین</a>
             </div>
         </div>
@@ -22,6 +22,7 @@
             </div>
         </form>
         <!-- /.search form -->
+        
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">منو</li>

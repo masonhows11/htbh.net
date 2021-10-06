@@ -1,6 +1,6 @@
 <header class="main-header">
     <!-- Logo -->
-    <a href="index2.html" class="logo">
+    <a href="#" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini">پنل</span>
         <!-- logo for regular state and mobile devices -->
@@ -14,12 +14,6 @@
         </a>
 
 
-        <!-- Delete This after download -->
-        <a href="https://github.com/hosseinizadeh/AdminLTE_Persian" class="btn hidden-xs" style="margin:6px 100px;padding:9px 50px;background-color:#d61577;border-color:#ad0b5d;font-weight:bold;color:#FFF">دانلود رایگان قالب</a>
-        <!-- End Delete-->
-
-
-
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
                 <!-- Messages: style can be found in dropdown.less-->
@@ -29,71 +23,23 @@
                         <span class="label label-success">4</span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li class="header">۴ پیام خوانده نشده</li>
+                        <li class="header">N پیام خوانده نشده</li>
                         <li>
                             <!-- inner menu: contains the actual data -->
                             <ul class="menu">
                                 <li><!-- start message -->
                                     <a href="#">
                                         <div class="pull-right">
-                                            <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                            <img src="{{ asset('admin/images/user-100.png') }}" class="img-circle" alt="User Image">
                                         </div>
                                         <h4>
-                                            علیرضا
+                                            Mason
                                             <small><i class="fa fa-clock-o"></i> ۵ دقیقه پیش</small>
                                         </h4>
                                         <p>متن پیام</p>
                                     </a>
                                 </li>
                                 <!-- end message -->
-                                <li>
-                                    <a href="#">
-                                        <div class="pull-right">
-                                            <img src="dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
-                                        </div>
-                                        <h4>
-                                            نگین
-                                            <small><i class="fa fa-clock-o"></i> ۲ ساعت پیش</small>
-                                        </h4>
-                                        <p>متن پیام</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="pull-right">
-                                            <img src="dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
-                                        </div>
-                                        <h4>
-                                            نسترن
-                                            <small><i class="fa fa-clock-o"></i> امروز</small>
-                                        </h4>
-                                        <p>متن پیام</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="pull-right">
-                                            <img src="dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
-                                        </div>
-                                        <h4>
-                                            نگین
-                                            <small><i class="fa fa-clock-o"></i> دیروز</small>
-                                        </h4>
-                                        <p>متن پیام</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="pull-right">
-                                            <img src="dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
-                                        </div>
-                                        <h4>
-                                            نسترن
-                                            <small><i class="fa fa-clock-o"></i> ۲ روز پیش</small>
-                                        </h4>
-                                        <p>متن پیام</p>
-                                    </a>
-                                </li>
                             </ul>
                         </li>
                         <li class="footer"><a href="#">نمایش تمام پیام ها</a></li>
@@ -221,16 +167,16 @@
                 <!-- User Account: style can be found in dropdown.less -->
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-                        <span class="hidden-xs">علیرضا حسینی زاده</span>
+                        <img src="{{ asset('admin/images/user-100.png') }}" class="user-image" alt="User">
+                        <span class="hidden-xs">Mason hows11</span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->
                         <li class="user-header">
-                            <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                            <img src="{{ asset('admin/images/user-100.png') }}" class="img-circle" alt="User Image">
 
                             <p>
-                                علیرضا حسینی زاده
+                                Mason hows11
                                 <small>مدیریت کل سایت</small>
                             </p>
                         </li>
