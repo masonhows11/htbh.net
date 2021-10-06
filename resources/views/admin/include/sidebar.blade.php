@@ -36,7 +36,7 @@
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="#"><i class="fa fa-circle-o"></i>لیست کاربران</a></li>
+                    <li><a href="/admin/users"><i class="fa fa-circle-o"></i>لیست کاربران</a></li>
                 </ul>
             </li>
 

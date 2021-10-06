@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\ImageController;
 use App\Http\Controllers\Auth\ProfileController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AdminUserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -51,9 +52,11 @@ Route::post('/imageStore',[ImageController::class,'store'])->name('imageStore')-
 
 Route::get('/admin/index',[AdminController::class,'admin'])->name('admin_dash');
 
-Route::group(['prefix' => 'admin', 'middleware' => 'role:admin'], function () {
+//, 'middleware' => 'role:admin'
+Route::group(['prefix' => 'admin'], function () {
 
-    Route::get('/users', [UserController::class, 'index'])->name('users');
+    Route::get('/users', [AdminUserController::class, 'index'])->name('users');
+  /*  Route::get('/edit',[AdminUserController::class,'edit']);*/
     Route::get('/userDelete', [UserController::class, 'delete']);
 
 });
