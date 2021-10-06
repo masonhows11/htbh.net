@@ -1,4 +1,22 @@
-.users-table .fa-remove,
+
 .users-table .fa-edit{
-    font-size:2.1rem;
+    font-size:2.3rem;
+}
+.users-table .fa-remove{
+    font-size:2.7rem;
+}
+.users-table .fa-remove:hover
+{
+    cursor: pointer;
+}
+.users-table{
+    margin-top: 20px;
+}
+.alert-section .alert-box{
+    height: 100px;
+}
+.alert-section {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
 }
