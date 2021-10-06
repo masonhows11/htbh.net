@@ -21,8 +21,8 @@
                 <td>{{ $user->name }}</td>
                 <td>{{ $user->email }}</td>
                 <td>
+                    <span><a href="/admin/edit?user={{ $user->id }}" class="text-info text-bold"><i class="fa fa-edit"></i></a></span>
                     <span><a href="#" class="text-primary text-bold"><i class="fa fa-remove"></i></a></span>
-                    <span><a href="#" class="text-info text-bold"><i class="fa fa-edit"></i></a></span>
                 </td>
             </tr>
             @endforeach

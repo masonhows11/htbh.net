@@ -17,4 +17,19 @@ class AdminUserController extends Controller
             ->with('users',$users);
 
     }
+
+    public function edit(Request $request)
+    {
+        return $request;
+    }
+
+    public function update(Request $request)
+    {
+
+    }
+
+    public function delete(Request $request)
+    {
+        return $request;
+    }
 }
