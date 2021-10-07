@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AdminEditUserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -26,8 +27,9 @@ class AdminUserController extends Controller
 
     }
 
-    public function update(Request $request)
+    public function update(AdminEditUserRequest $request)
     {
+        $validated = $request->validated();
 
     }
 
