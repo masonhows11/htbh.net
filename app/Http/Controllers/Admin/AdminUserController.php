@@ -20,7 +20,10 @@ class AdminUserController extends Controller
 
     public function edit(Request $request)
     {
-        return $request;
+        $user = User::findOrFail($request->user);
+        return view('admin.users.edit')
+            ->with('user',$user);
+
     }
 
     public function update(Request $request)
