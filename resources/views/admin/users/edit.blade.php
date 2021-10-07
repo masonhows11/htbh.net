@@ -5,6 +5,12 @@
 @section('main_content')
     <div class="container">
 
+        <div class="row alert-section">
+            <div class="col-lg-6 alert-box" style="border: 1px solid red">
+
+            </div>
+        </div>
+        
 
     </div>
 @endsection
