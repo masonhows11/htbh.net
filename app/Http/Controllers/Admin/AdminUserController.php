@@ -49,6 +49,17 @@ class AdminUserController extends Controller
 
     public function delete(Request $request)
     {
-        return $request;
+        $user = User::find($request->user_id);
+        if(!$user){
+            return response()->json(['warning' => 'کاربر مورد نظر وجود ندارد.', 'status' => 404], 200);
+        }
+        try {
+            User::destroy($request->user_id);
+            return response()->json(['success' => 'کاربر مورد نظر با موفقیت حذف شد.', 'status' => 200], 200);
+        }catch (\Exception $ex)
+        {
+            return response()->json(['exception'=>$ex->getMessage(),'status'=>500],500) ;
+        }
+
     }
 }
