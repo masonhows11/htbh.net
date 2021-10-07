@@ -57,7 +57,7 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::get('/users', [AdminUserController::class, 'index'])->name('users');
     Route::get('/edit',[AdminUserController::class,'edit']);
-    Route::post('/update',[AdminUserController::class,'update']);
+    Route::post('/update',[AdminUserController::class,'update'])->name('userUpdate');
     Route::get('/userDelete', [AdminUserController::class, 'delete']);
 
 });

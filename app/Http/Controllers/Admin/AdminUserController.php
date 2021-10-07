@@ -27,9 +27,12 @@ class AdminUserController extends Controller
 
     }
 
+
     public function update(AdminEditUserRequest $request)
     {
+
         $validated = $request->validated();
+        return $validated;
 
     }
 

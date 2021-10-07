@@ -13,14 +13,15 @@
 
         <div class="row edit-user-section">
             <div class="col-lg-6">
-                <form action="/admin/update" method="post">
+                <form action="{{ route('userUpdate') }}" method="post">
+                    @csrf
                     <div class="form-group">
                         <label for="name">نام کاربری:</label>
-                        <input type="text" class="form-control" value="{{ $user->email }}" id="name">
+                        <input type="text" class="form-control" value="{{ $user->name }}" id="name">
                     </div>
                     <div class="form-group">
                         <label for="email">ایمیل:</label>
-                        <input type="email" class="form-control" value="{{ $user->name }}" id="email">
+                        <input type="email" class="form-control" value="{{ $user->email }}" id="email">
                     </div>
                     <button type="submit" class="btn btn-default">ذخیره</button>
                 </form>
