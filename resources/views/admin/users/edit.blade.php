@@ -7,6 +7,7 @@
 
         <div class="row alert-section">
             <div class="col-lg-6 alert-box">
+                @include('admin.include.alert')
                 @if ($errors->any())
                     <div class="alert alert-danger">
                         <ul>
@@ -24,6 +25,15 @@
                 <form action="{{ route('userUpdate') }}" method="post">
                     @csrf
                     <input type="hidden" name="user" value="{{ $user->id }}">
+
+                    <div class="form-group">
+                        <label for="f_name">نام:</label>
+                        <input type="text" name="first_name" class="form-control" value="{{ $user->first_name }}" id="f_name">
+                    </div>
+                    <div class="form-group">
+                        <label for="l_name">نام خانوادگی:</label>
+                        <input type="text" name="last_name" class="form-control" value="{{ $user->last_name }}" id="l_name">
+                    </div>
                     <div class="form-group">
                         <label for="name">نام کاربری:</label>
                         <input type="text" name="name" class="form-control" value="{{ $user->name }}" id="name">

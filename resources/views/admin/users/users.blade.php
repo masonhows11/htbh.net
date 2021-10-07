@@ -6,8 +6,8 @@
     <div class="container">
 
         <div class="row alert-section">
-                <div class="col-lg-6 alert-box" style="border: 1px solid red">
-
+                <div class="col-lg-6 alert-box">
+                    @include('admin.include.alert')
                 </div>
         </div>
         <table class="table table-bordered users-table">

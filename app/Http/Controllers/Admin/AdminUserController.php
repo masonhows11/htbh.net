@@ -32,8 +32,17 @@ class AdminUserController extends Controller
     {
 
         $validated = $request->validated();
-
-       return $validated;
+        try {
+            User::where('id',$request->user)
+                ->update(['name'=>$request->safe()->name,
+                    'first_name'=>$request->safe()->first_name,
+                    'last_name'=>$request->safe()->last_name,
+                    'email'=>$request->safe()->email]);
+            return redirect(route('users'))->with('success','کاربر با موفقیت ویرایش شد.');
+        }catch (\Exception $ex)
+        {
+            return $ex->getMessage();
+        }
 
 
     }

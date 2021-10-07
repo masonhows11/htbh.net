@@ -31,7 +31,9 @@ class AdminEditUserRequest extends FormRequest
 
         return [
             'email' => ['required','email','exists:users', Rule::unique('users')->ignore($user->id)],
-            'name' =>'required|exists:users,name|min:5'
+            'name' =>['required','min:5',Rule::unique('users')->ignore($user->id)],
+            'first_name' => [],
+            'last_name' => [],
         ];
     }
 
@@ -42,7 +44,7 @@ class AdminEditUserRequest extends FormRequest
             'email.email' =>'آدرس ایمیل وارد شده معتبر نمی باشد.',
             'email.exists'=>'آدرس ایمیل وارد شده تکراری است.',
             'name.required' => 'نام کاربری را وارد کنید.',
-            'name.exists'=> 'نام کاربری تکراری است.',
+            'name.unique'=> 'نام کاربری تکراری است.',
             'name.min' => 'نام کاربری حداقل ۶ کاراکتر باید داشته باشد',
         ];
     }
