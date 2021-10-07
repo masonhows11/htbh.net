@@ -32,7 +32,9 @@ class AdminUserController extends Controller
     {
 
         $validated = $request->validated();
-        return $validated;
+
+       return $validated;
+
 
     }
 

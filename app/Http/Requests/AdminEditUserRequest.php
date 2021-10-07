@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Models\User;
+use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -29,8 +30,8 @@ class AdminEditUserRequest extends FormRequest
         $user = User::findOrFail($request->user);
 
         return [
-            'email' => ['required','email','exists:email', Rule::unique('users')->ignore($user->id)],
-            'name' =>'required|unique:users|min:6'
+            'email' => ['required','email','exists:users', Rule::unique('users')->ignore($user->id)],
+            'name' =>'required|exists:users,name|min:5'
         ];
     }
 
@@ -39,9 +40,9 @@ class AdminEditUserRequest extends FormRequest
         return [
             'email.required' => 'آدرس ایمیل خود را وارد کنید.',
             'email.email' =>'آدرس ایمیل وارد شده معتبر نمی باشد.',
-            'exists:email'=>'آدرس ایمیل وارد شده تکراری است.',
+            'email.exists'=>'آدرس ایمیل وارد شده تکراری است.',
             'name.required' => 'نام کاربری را وارد کنید.',
-            'name.unique'=> 'نام کاربری تکراری است.',
+            'name.exists'=> 'نام کاربری تکراری است.',
             'name.min' => 'نام کاربری حداقل ۶ کاراکتر باید داشته باشد',
         ];
     }
