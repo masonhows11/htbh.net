@@ -37,5 +37,10 @@
     </div>
 @endsection
 @section('admin_scripts')
+    <script>
+        $(document).on('click','#deleteItem',function (event) {
+        event.preventDefault();
 
+        })
+    </script>
 @endsection
