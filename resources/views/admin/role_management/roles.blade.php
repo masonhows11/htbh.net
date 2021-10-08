@@ -12,13 +12,19 @@
             </div>
         </div>
 
-
-        <div class="row add-model-btn">
-            <div class="col-lg-6">
-                <a href="#" class="btn btn-primary">نقش جدید</a>
-            </div>
-        </div>
         <div class="row admin-content-models">
+
+            <div class="col-lg-6">
+                <form action="#" method="post">
+
+                    <div class="form-group">
+                        <label for="role">نام نقش</label>
+                        <input type="text" name="name" class="form-control" id="role">
+                    </div>
+
+                    <button type="submit" class="btn btn-success">ذخیره</button>
+                </form>
+            </div>
 
             <div class="col-lg-6">
                 <table class="table table-bordered users-table">
