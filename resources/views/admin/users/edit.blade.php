@@ -42,7 +42,8 @@
                         <label for="email">ایمیل:</label>
                         <input type="email" name="email" class="form-control" value="{{ $user->email }}" id="email">
                     </div>
-                    <button type="submit" class="btn btn-default">ذخیره</button>
+                    <button type="submit" class="btn btn-success">ذخیره</button>
+                    <a href="{{ route('users') }}" class="btn btn-default">انصراف</a>
                 </form>
             </div>
         </div>

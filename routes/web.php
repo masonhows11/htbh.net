@@ -10,6 +10,7 @@ use App\Http\Controllers\Auth\ImageController;
 use App\Http\Controllers\Auth\ProfileController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminUserController;
+use App\Http\Controllers\Admin\AdminRoleController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -62,3 +63,7 @@ Route::group(['prefix' => 'admin'], function () {
 
 });
 
+Route::group(['prefix'=>'admin'],function (){
+
+    Route::get('/roles',[AdminRoleController::class,'index']);
+});

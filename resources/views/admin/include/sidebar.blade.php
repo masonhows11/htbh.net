@@ -40,6 +40,35 @@
                 </ul>
             </li>
 
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-user-o"></i>
+                    <span>مدیریت نقش ها</span>
+                    <span class="pull-left-container">
+              <i class="fa fa-angle-right pull-left"></i>
+            </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="#"><i class="fa fa-circle-o"></i>لیست نقش ها</a></li>
+                    <li><a href="#"><i class="fa fa-circle-o"></i>تخصیص نقش ها</a></li>
+                </ul>
+            </li>
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-user-o"></i>
+                    <span>مدیریت مجوزها</span>
+                    <span class="pull-left-container">
+              <i class="fa fa-angle-right pull-left"></i>
+            </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="#"><i class="fa fa-circle-o"></i>لیست مجوزها</a></li>
+                    <li><a href="#"><i class="fa fa-circle-o"></i>تخصیص مجوزها</a></li>
+                </ul>
+            </li>
+
+
             <li>
                 <a href="pages/calendar.html">
                     <i class="fa fa-calendar"></i> <span>تقویم</span>
