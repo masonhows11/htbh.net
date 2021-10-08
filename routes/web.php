@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\AdminPermController;
 use App\Http\Controllers\Admin\AdminRoleAssignController;
 use App\Http\Controllers\Admin\AdminPermAssignController;
 
+use App\Http\Controllers\Admin\AdminCategoryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -103,5 +104,16 @@ Route::group(['prefix'=>'admin/permAssign','middleware'=>'role:admin'],function 
     Route::get('/list',[AdminPermAssignController::class,'index'])->name('listRoles');
     Route::get('/assignPermForm',[AdminPermAssignController::class,'assignForm'])->name('assignPermForm');
     Route::post('/assignPerm',[AdminPermAssignController::class,'assign'])->name('assignPerm');
+
+});
+
+Route::group(['prefix'=>'admin/category','middleware'=>'role:admin'],function (){
+
+    Route::get('/index',[AdminCategoryController::class,''])->name('');
+    Route::get('/add',[AdminCategoryController::class,''])->name('');
+    Route::post('/store',[AdminCategoryController::class,''])->name('');
+    Route::get('/edit',[AdminCategoryController::class,''])->name('');
+    Route::post('/updated',[AdminCategoryController::class,''])->name('');
+    
 
 });
