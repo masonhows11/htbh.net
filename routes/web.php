@@ -8,10 +8,16 @@ use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\ImageController;
 use App\Http\Controllers\Auth\ProfileController;
+
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminUserController;
+
 use App\Http\Controllers\Admin\AdminRoleController;
 use App\Http\Controllers\Admin\AdminPermController;
+
+use App\Http\Controllers\Admin\AdminRoleAssignController;
+use App\Http\Controllers\Admin\AdminPermAssignController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -82,4 +88,20 @@ Route::group(['prefix'=>'admin','middleware'=>'role:admin'],function (){
     Route::get('/editPerm',[AdminPermController::class,'edit'])->name('editPerm');
     Route::post('/updatePerm',[AdminPermController::class,'update'])->name('updatePerm');
     Route::get('/deletePerm',[AdminPermController::class,'delete'])->name('deletePerm');
+});
+
+Route::group(['prefix'=>'admin/roleAssign','middleware'=>'role:admin'],function (){
+
+    Route::get('/list',[AdminRoleAssignController::class,'index'])->name('listUsers');
+    Route::get('/assignRoleForm',[AdminRoleAssignController::class,'assignForm'])->name('assignRoleForm');
+    Route::post('/assignRole',[AdminRoleAssignController::class,'assign'])->name('assignRole');
+
+});
+
+Route::group(['prefix'=>'admin/permAssign','middleware'=>'role:admin'],function (){
+
+    Route::get('/list',[AdminPermAssignController::class,'index'])->name('listRoles');
+    Route::get('/assignPermForm',[AdminPermAssignController::class,'assignForm'])->name('assignPermForm');
+    Route::post('/assignPerm',[AdminPermAssignController::class,'assign'])->name('assignPerm');
+
 });

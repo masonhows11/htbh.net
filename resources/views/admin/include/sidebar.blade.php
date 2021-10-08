@@ -50,7 +50,7 @@
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="{{ route('roles') }}"><i class="fa fa-circle-o"></i>لیست نقش ها</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i>تخصیص نقش ها</a></li>
+                    <li><a href="{{ route('listUsers') }}"><i class="fa fa-circle-o"></i>تخصیص نقش ها</a></li>
                 </ul>
             </li>
 
