@@ -6,12 +6,12 @@
     <div class="container">
 
         <div class="row alert-section">
-            <div class="col-lg-6 alert-box">
+            <div class="col-lg-6 col-md-6 col-xs-6 alert-box">
                 @include('admin.include.alert')
             </div>
         </div>
         <div class="row admin-content-models">
-            <div class="col-lg-6">
+            <div class="col-lg-6 col-md-6 col-xs-6">
                 <table class="table table-bordered users-table">
                     <thead>
                     <tr>

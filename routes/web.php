@@ -68,4 +68,8 @@ Route::group(['prefix' => 'admin','middleware'=>'role:admin'], function () {
 Route::group(['prefix'=>'admin','middleware'=>'role:admin'],function (){
 
     Route::get('/roles',[AdminRoleController::class,'index'])->name('roles');
+    Route::post('/storeRole',[AdminRoleController::class,'store'])->name('storeNewRole');
+    Route::get('/editRole',[AdminRoleController::class,'edit'])->name('editRole');
+    Route::post('/updateRole',[AdminRoleController::class,'update'])->name('updateRole');
+    Route::get('/deleteRole',[AdminRoleController::class,'delete'])->name('deleteRole');
 });
