@@ -41,11 +41,15 @@
                             <td>{{ $role->id }}</td>
                             <td>{{ $role->name }}</td>
                             <td>
-                             <span><a href="/admin/editRole?role={{ $role->id }}" class="text-info text-bold"><i
-                                    class="fa fa-edit"></i></a></span>
-
-                                <span><i class="fa fa-remove text-primary" data-role-id="{{ $role->id }}"
-                                         id="deleteItem"></i></span>
+                                @if($role->name === 'admin')
+                                @else
+                                    <span>
+                                 <a href="/admin/editRole?role={{ $role->id }}" class="text-info text-bold"><i class="fa fa-edit"></i></a>
+                             </span>
+                                    <span>
+                                 <i class="fa fa-remove text-primary" data-role-id="{{ $role->id }}" id="deleteItem"></i>
+                             </span>
+                                @endif
 
                             </td>
                         </tr>
