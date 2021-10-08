@@ -65,5 +65,5 @@ Route::group(['prefix' => 'admin'], function () {
 
 Route::group(['prefix'=>'admin'],function (){
 
-    Route::get('/roles',[AdminRoleController::class,'index']);
+    Route::get('/roles',[AdminRoleController::class,'index'])->name('roles');
 });
