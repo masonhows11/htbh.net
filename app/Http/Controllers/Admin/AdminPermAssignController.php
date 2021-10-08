@@ -26,12 +26,21 @@ class AdminPermAssignController extends Controller
     public function assign(Request $request)
     {
         $role = Role::findById($request->id);
-        if($role->syncPermissions($request->perms)){
+        if(!$role)
+        {
+            return  redirect()->back()->with('error','نقش مورد نظر وجود ندارد.');
+        }
+        try {
+            $role->syncPermissions($request->perms);
             return redirect()->route('listRoles')
-                ->with('success','تخصیص مجوز با موفقیت انجام شد.');
-        }else
+                ->with('success','بروز رسانی مجوز با موفقیت انجام شد.');
+        }catch (\Exception $ex)
+        {
             return redirect()->route('listRoles')
-                ->with('error','خطا در تخصیص مجوزها');
+                ->with('error',$ex->getMessage());
+        }
+
+        return redirect()->route('listRoles')->with('error','خطا در تخصیص مجوزها');
 
     }
 }
