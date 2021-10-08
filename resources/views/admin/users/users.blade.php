@@ -10,32 +10,38 @@
                 @include('admin.include.alert')
             </div>
         </div>
-        <table class="table table-bordered users-table">
-            <thead>
-            <tr>
-                <th>شناسه</th>
-                <th>نام کاربری</th>
-                <th>ایمیل</th>
-                <th>عملیات</th>
-            </tr>
-            </thead>
-            <tbody>
-            @foreach($users as $user)
-                <tr>
-                    <td>{{ $user->id }}</td>
-                    <td>{{ $user->name }}</td>
-                    <td>{{ $user->email }}</td>
-                    <td>
+        <div class="row">
+            <div class="col-lg-6">
+                <table class="table table-bordered users-table">
+                    <thead>
+                    <tr>
+                        <th>شناسه</th>
+                        <th>نام کاربری</th>
+                        <th>ایمیل</th>
+                        <th>عملیات</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($users as $user)
+                        <tr>
+                            <td>{{ $user->id }}</td>
+                            <td>{{ $user->name }}</td>
+                            <td>{{ $user->email }}</td>
+                            <td>
                         <span><a href="/admin/edit?user={{ $user->id }}" class="text-info text-bold"><i
                                     class="fa fa-edit"></i></a></span>
-
-                        <span><i class="fa fa-remove text-primary" data-user-id="{{ $user->id }}"
-                                 id="deleteItem"></i></span>
-                    </td>
-                </tr>
-            @endforeach
-            </tbody>
-        </table>
+                                @if($user->hasRole('admin'))
+                                @else
+                                    <span><i class="fa fa-remove text-primary" data-user-id="{{ $user->id }}"
+                                             id="deleteItem"></i></span>
+                                @endif
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
     </div>
 @endsection
@@ -53,8 +59,8 @@
                 cancelButtonColor: '#d33',
                 confirmButtonText: 'بله حذف کن!',
                 cancelButtonText: 'خیر',
-            }).then((result)=>{
-                    // confirmed scope start
+            }).then((result) => {
+                // confirmed scope start
                 if (result.isConfirmed) {
                     // ajax scope start
                     $.ajaxSetup({

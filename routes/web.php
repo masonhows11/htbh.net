@@ -24,6 +24,8 @@ use App\Http\Controllers\Admin\AdminRoleController;
 
 Route::get('/',[HomeController::class,'home'])->name('home');
 
+////////////////////////////////////////// auth section routes ////////////////////////////////////////////
+
 Route::get('/registerForm',[RegisterController::class,'registerForm'])->name('registerForm');
 Route::post('/register',[RegisterController::class,'register'])->name('register');
 
@@ -51,9 +53,9 @@ Route::get('/confirmEditEmail/{id}/{code}',[ProfileController::class,'confirmEdi
 Route::post('/imageStore',[ImageController::class,'store'])->name('imageStore')->middleware('auth');
 
 
-Route::get('/admin/index',[AdminController::class,'admin'])->name('admin_dash')->middleware(['role:admin']);
+/////////////////////////////////// admin section routes ////////////////////////////////////////////////////
 
-//, 'middleware' => 'role:admin'
+Route::get('/admin/index',[AdminController::class,'admin'])->name('admin_dash')->middleware(['role:admin']);
 Route::group(['prefix' => 'admin','middleware'=>'role:admin'], function () {
 
     Route::get('/users', [AdminUserController::class, 'index'])->name('users');
