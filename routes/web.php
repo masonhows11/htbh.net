@@ -51,10 +51,10 @@ Route::get('/confirmEditEmail/{id}/{code}',[ProfileController::class,'confirmEdi
 Route::post('/imageStore',[ImageController::class,'store'])->name('imageStore')->middleware('auth');
 
 
-Route::get('/admin/index',[AdminController::class,'admin'])->name('admin_dash');
+Route::get('/admin/index',[AdminController::class,'admin'])->name('admin_dash')->middleware(['role:admin']);
 
 //, 'middleware' => 'role:admin'
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin','middleware'=>'role:admin'], function () {
 
     Route::get('/users', [AdminUserController::class, 'index'])->name('users');
     Route::get('/edit',[AdminUserController::class,'edit']);
@@ -63,7 +63,7 @@ Route::group(['prefix' => 'admin'], function () {
 
 });
 
-Route::group(['prefix'=>'admin'],function (){
+Route::group(['prefix'=>'admin','middleware'=>'role:admin'],function (){
 
     Route::get('/roles',[AdminRoleController::class,'index'])->name('roles');
 });
