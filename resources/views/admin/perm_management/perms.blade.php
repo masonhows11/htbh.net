@@ -20,7 +20,7 @@
                     @csrf
                     <div class="form-group">
                         <label for="perm">نام مجوز</label>
-                        <input type="text" name="perm" class="form-control" id="perm">
+                        <input type="text" name="name" class="form-control" id="perm">
                     </div>
 
                     <button type="submit" class="btn btn-success">ذخیره</button>
@@ -63,8 +63,8 @@
     <script>
         $(document).on('click', '#deleteItem', function (event) {
             event.preventDefault();
-            let role_id = event.target.getAttribute('data-role-id');
-            let role_element = event.target.closest('tr');
+            let perm_id = event.target.getAttribute('data-perm-id');
+            let perm_element = event.target.closest('tr');
             swal.fire({
                 title: 'آیا مطمئن هستید این ایتم حذف شود؟',
                 icon: 'error',
@@ -84,11 +84,11 @@
                     });
                     $.ajax({
                         method: 'GET',
-                        url: '{{ route('deleteRole') }}',
-                        data: {role_id: role_id},
+                        url: '{{ route('deletePerm') }}',
+                        data: {perm_id:perm_id},
                     }).done(function (data) {
                         if (data['status'] === 200) {
-                            role_element.remove();
+                            perm_element.remove();
                             swal.fire({
                                 icon: 'success',
                                 text: data['success'],

@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
 use Spatie\Permission\Models\Permission;
 
 class AdminPermController extends Controller
@@ -15,7 +14,7 @@ class AdminPermController extends Controller
     public function index()
     {
         $perms = Permission::all();
-        return view('admin.perm_management.index')
+        return view('admin.perm_management.perms')
             ->with('perms',$perms);
     }
 
@@ -26,19 +25,21 @@ class AdminPermController extends Controller
             ->forgetCachedPermissions();
 
          $request->validate([
-            'name' => 'required|unique:permissions|max:25',
+            'name' => 'required|unique:permissions|min:5',
         ],$messages=[
-            'name.required'=>'نام نقش را وارد کنید',
-            'name.unique'=>'این نقش تکراری است',
-            'name.max'=>'حداکثر ۳۰ کاراکتر'
+            'name.required'=>'نام مجوز را وارد کنید',
+            'name.unique'=>'این مجوز تکراری است',
+            'name.min'=>'حداکثر ۵ کاراکتر'
         ]);
 
-        if(Permission::create(['name'=>$request->name])){
+        try {
+            Permission::create(['name'=>$request->name]);
             return redirect()->back()->with('success','مجوز مورد نظر ذخیره شد');
-        }else
+        }catch (\Exception $ex)
         {
-            return redirect()->back()->with('error','خطا در ذخیره سازی');
+            return redirect()->back()->with('error',$ex->getMessage());
         }
+        return redirect()->back()->with('error','خطا در ذخیره سازی');
 
     }
     public function edit(Request $request)
@@ -47,7 +48,7 @@ class AdminPermController extends Controller
             ->forgetCachedPermissions();
 
         $perm = Permission::findById($request->perm);
-        return view('admin.perm_management.edit_perm')->with('perm',$perm);
+        return view('admin.perm_management.edit')->with('perm',$perm);
     }
 
     public function update(Request $request)
@@ -60,17 +61,39 @@ class AdminPermController extends Controller
         if(!$perm){
             return redirect()->back()->with('error','مجوز مورد نظر وجود ندارد');
         }
-        DB::table('permissions')
-            ->where('id',$perm->id)
-            ->update(['name'=>$request->name]);
-        return  redirect()->route('perms')->with('success','بروز رسانی با موفقیت انجام شد.');
+        $request->validate([
+            'name' => 'required|unique:permissions|min:5',
+        ],$messages=[
+            'name.required'=>'نام مجوز را وارد کنید',
+            'name.unique'=>'این مجوز تکراری است',
+            'name.min'=>'حداکثر ۵ کاراکتر'
+        ]);
+        try {
+            DB::table('permissions')
+                ->where('id',$perm->id)
+                ->update(['name'=>$request->name]);
+            return  redirect()->route('perms')->with('success','بروز رسانی با موفقیت انجام شد.');
+        }catch (\Exception $ex)
+        {
+            return redirect()->back()->with('error', $ex->getMessage());
+        }
+        return redirect()->back()->with(['error'=>'خطا در بروز رسانی ']);
 
     }
     protected function delete(Request $request)
     {
 
-        DB::table('permissions')->where('id',$request->perm)->delete();
-        return  redirect()->route('perms')->with('success','مجوز مورد نظر با موفقیت حذف شد.');
+        $perm = Permission::findById($request->perm_id);
+        if(!$perm){
+            return response()->json(['warning' => 'نقش مورد نظر وجود ندارد.', 'status' => 404], 200);
+        }
+        try {
+            Permission::destroy($request->perm_id);
+            return response()->json(['success' => 'نقش مورد نظر با موفقیت حذف شد.', 'status' => 200], 200);
+        }catch (\Exception $ex)
+        {
+            return response()->json(['exception'=>$ex->getMessage(),'status'=>500],500) ;
+        }
 
     }
 }
