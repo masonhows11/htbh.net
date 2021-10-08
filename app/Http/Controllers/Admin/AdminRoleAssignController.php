@@ -18,7 +18,7 @@ class AdminRoleAssignController extends Controller
 
     public function assignForm(Request $request)
     {
-        $user = User::find($request->user);
+        $user = User::findOrFail($request->user);
         $roles = Role::all();
 
         return view('admin.role_assignment.assign')
@@ -28,13 +28,18 @@ class AdminRoleAssignController extends Controller
     public function assign(Request $request)
     {
 
-        $user = User::find($request->id);
-        if($user->syncRoles($request->roles)){
+        $user = User::findOrFail($request->id);
+
+        try {
+            $user->syncRoles($request->roles);
             return redirect()->route('listUsers')
                 ->with('success','تخصیص نقش ها با موفقیت انجام شد.');
-        }else
+        }catch (\Exception $ex)
+        {
             return redirect()->route('listUsers')
-                ->with('error','خطا در تخصیص نقش ها');
+                ->with('error',$ex->getMessage());
+        }
+            return redirect()->route('listUsers')->with('error','خطا در تخصیص نقش ها');
     }
 
 }
