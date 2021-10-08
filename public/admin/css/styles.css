@@ -25,3 +25,8 @@
      display: flex;
      flex-direction: column;
 }
+.add-model-btn,
+.admin-content-models {
+    display: flex;
+    justify-content: center;
+}

@@ -12,9 +12,14 @@
             </div>
         </div>
 
-        <a href="#" class="btn btn-primary">نقش جدید</a>
 
-        <div class="row">
+        <div class="row add-model-btn">
+            <div class="col-lg-6">
+                <a href="#" class="btn btn-primary">نقش جدید</a>
+            </div>
+        </div>
+        <div class="row admin-content-models">
+
             <div class="col-lg-6">
                 <table class="table table-bordered users-table">
                     <thead>

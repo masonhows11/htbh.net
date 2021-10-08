@@ -10,7 +10,7 @@
                 @include('admin.include.alert')
             </div>
         </div>
-        <div class="row">
+        <div class="row admin-content-models">
             <div class="col-lg-6">
                 <table class="table table-bordered users-table">
                     <thead>
