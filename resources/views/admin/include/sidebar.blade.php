@@ -63,7 +63,7 @@
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="#"><i class="fa fa-circle-o"></i>لیست مجوزها</a></li>
+                    <li><a href="{{ route('perms') }}"><i class="fa fa-circle-o"></i>لیست مجوزها</a></li>
                     <li><a href="#"><i class="fa fa-circle-o"></i>تخصیص مجوزها</a></li>
                 </ul>
             </li>

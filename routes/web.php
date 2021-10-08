@@ -11,6 +11,7 @@ use App\Http\Controllers\Auth\ProfileController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\AdminRoleController;
+use App\Http\Controllers\Admin\AdminPermController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -72,4 +73,13 @@ Route::group(['prefix'=>'admin','middleware'=>'role:admin'],function (){
     Route::get('/editRole',[AdminRoleController::class,'edit'])->name('editRole');
     Route::post('/updateRole',[AdminRoleController::class,'update'])->name('updateRole');
     Route::get('/deleteRole',[AdminRoleController::class,'delete'])->name('deleteRole');
+});
+
+Route::group(['prefix'=>'admin','middleware'=>'role:admin'],function (){
+
+    Route::get('/perms',[AdminPermController::class,'index'])->name('perms');
+    Route::post('/storePerm',[AdminPermController::class,'store'])->name('storeNewPerm');
+    Route::get('/editPerm',[AdminPermController::class,'edit'])->name('editPerm');
+    Route::post('/updatePerm',[AdminPermController::class,'update'])->name('updatePerm');
+    Route::get('/deletePerm',[AdminPermController::class,'delete'])->name('deletePerm');
 });
