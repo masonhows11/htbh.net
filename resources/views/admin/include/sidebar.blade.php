@@ -77,8 +77,7 @@
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="{{ route('perms') }}"><i class="fa fa-circle-o"></i>لیست دسته بندی ها</a></li>
-                    <li><a href="{{ route('listRoles') }}"><i class="fa fa-circle-o"></i>ویرایش دسته بندی ها</a></li>
+                    <li><a href="{{route('listCategory')}}"><i class="fa fa-circle-o"></i>لیست دسته بندی ها</a></li>
                 </ul>
             </li>
 

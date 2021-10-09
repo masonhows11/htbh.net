@@ -109,11 +109,11 @@ Route::group(['prefix'=>'admin/permAssign','middleware'=>'role:admin'],function 
 
 Route::group(['prefix'=>'admin/category','middleware'=>'role:admin'],function (){
 
-    Route::get('/index',[AdminCategoryController::class,''])->name('');
+    Route::get('/index',[AdminCategoryController::class,'index'])->name('listCategory');
     Route::get('/add',[AdminCategoryController::class,''])->name('');
     Route::post('/store',[AdminCategoryController::class,''])->name('');
-    Route::get('/edit',[AdminCategoryController::class,''])->name('');
+    Route::get('/edit',[AdminCategoryController::class,''])->name('edit');
     Route::post('/updated',[AdminCategoryController::class,''])->name('');
-    
+
 
 });
