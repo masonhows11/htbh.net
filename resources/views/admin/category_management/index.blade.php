@@ -14,19 +14,19 @@
         <div class="row admin-content-models">
 
             <div class="col-lg-6 col-md-6 col-xs-6">
-                <form action="/action_page.php">
+                <form action="{{ route('storeNewCategory') }}" method="post">
+                    @csrf
                     <div class="form-group">
-                        <label for="email">Email address:</label>
-                        <input type="email" class="form-control" id="email">
+                        <label for="title">عنوان دسته بندی به فارسی</label>
+                        <input type="text" class="form-control @error('title') is-invalid @enderror " id="title">
                     </div>
                     <div class="form-group">
-                        <label for="pwd">Password:</label>
-                        <input type="password" class="form-control" id="pwd">
+                        <label for="name">نام دسته بندی به انگلیسی</label>
+                        <input type="text" class="form-control @error('name') is-invalid @enderror " id="name">
                     </div>
-                    <div class="checkbox">
-                        <label><input type="checkbox"> Remember me</label>
-                    </div>
-                    <button type="submit" class="btn btn-default">Submit</button>
+
+
+                    <button type="submit" class="btn btn-success">ذخیره</button>
                 </form>
             </div>
 
