@@ -24,6 +24,15 @@
                         <label for="name">نام دسته بندی به انگلیسی</label>
                         <input type="text" class="form-control @error('name') is-invalid @enderror " id="name">
                     </div>
+                    <div class="form-group">
+                        <label for="parent">انتخاب دسته بندی والد</label>
+                        <select class="form-control" id="parent" name="parent">
+                            <option value=""></option>
+                            @foreach($categories as $cat)
+                                <option value="{{ $cat->id }}">{{ $cat->title}}</option>
+                            @endforeach
+                        </select>
+                    </div>
 
 
                     <button type="submit" class="btn btn-success">ذخیره</button>
