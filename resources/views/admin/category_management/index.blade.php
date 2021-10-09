@@ -22,7 +22,7 @@
                                name="title"
                                class="form-control  @error('title') is-invalid @enderror"
                                id="title"
-                                value="{{ old('title') }}">
+                               value="{{ old('title') }}">
                     </div>
                     <div class="form-group">
                         <label for="name">نام دسته بندی به انگلیسی</label>
@@ -30,7 +30,7 @@
                                name="name"
                                class="form-control @error('name') is-invalid @enderror"
                                id="name"
-                                value="{{ old('name') }}">
+                               value="{{ old('name') }}">
                     </div>
                     <div class="form-group">
                         <label for="parent">انتخاب دسته بندی والد</label>
@@ -47,6 +47,24 @@
                 </form>
             </div>
 
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-xs-6">
+                @if(!$parent_categories->isEmpty())
+                    @foreach($parent_categories as $cat)
+                        <ul>
+                            <li>{{ $cat->title }}</li>
+                        @if(!$cat->child->isEmpty())
+                            @foreach($cat->child as $cat)
+                                <ul>{{ $cat->title }}</ul>
+                            @endforeach
+                        @endif
+                        </ul>
+                    @endforeach
+                @else
+                    <p>دسته بندی وجود ندارد</p>
+                @endif
+            </div>
         </div>
 
 
