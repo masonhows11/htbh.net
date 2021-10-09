@@ -12,4 +12,24 @@ class AdminCategoryController extends Controller
     {
         return view('admin.category_management.index');
     }
+
+    public function store(Request $request)
+    {
+
+    }
+
+    public function edit(Request $request)
+    {
+
+    }
+
+    public function update(Request $request)
+    {
+
+    }
+
+    public function delete(Request $request)
+    {
+
+    }
 }
