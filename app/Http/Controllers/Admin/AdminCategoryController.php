@@ -44,13 +44,19 @@ class AdminCategoryController extends Controller
             } catch (\Exception $ex) {
                     return view('errors.store_error');
             }
+        }else {
+            try {
+                Category::create([
+                    'name' => $request->name,
+                    'title' => $request->title,
+                ]);
+                return redirect()->back()->with('success', 'دسته بندی مورد با موفقیت ذخیره شد.');
+            } catch (\Exception $ex) {
+                return view('errors.store_error');
+            }
         }
 
-        Category::create([
-            'name' => $request->name,
-            'title' => $request->title,
-        ]);
-        return redirect()->back()->with('success', 'دسته بندی مورد با موفقیت ذخیره شد.');
+
     }
 
     public function edit(Request $request)

@@ -18,11 +18,19 @@
                     @csrf
                     <div class="form-group">
                         <label for="title">عنوان دسته بندی به فارسی</label>
-                        <input type="text" class="form-control @error('title') is-invalid @enderror " id="title">
+                        <input type="text"
+                               name="title"
+                               class="form-control  @error('title') is-invalid @enderror"
+                               id="title"
+                                value="{{ old('title') }}">
                     </div>
                     <div class="form-group">
                         <label for="name">نام دسته بندی به انگلیسی</label>
-                        <input type="text" class="form-control @error('name') is-invalid @enderror " id="name">
+                        <input type="text"
+                               name="name"
+                               class="form-control @error('name') is-invalid @enderror"
+                               id="name"
+                                value="{{ old('name') }}">
                     </div>
                     <div class="form-group">
                         <label for="parent">انتخاب دسته بندی والد</label>
