@@ -102,7 +102,11 @@ class AdminCategoryController extends Controller
 
     public function detachParent(Request $request)
     {
-        $category = Category::findOrFail($request->cat);
+        try {
+            $category = Category::findOrFail($request->cat);
+        } catch (\Exception $ex) {
+            return view('errors.error_not_found_model');
+        }
         $category->parent_id = null;
         $category->save();
         return redirect('/admin/category/index')->with('success', 'دسته بندی مورد نظر با موفقیت ویرایش شد.');
@@ -112,7 +116,7 @@ class AdminCategoryController extends Controller
     {
 
         try {
-            $cat = Category::findOrFail($request->cat);
+            $category = Category::findOrFail($request->cat);
         } catch (\Exception $ex) {
             return view('errors.error_not_found_model');
         }
