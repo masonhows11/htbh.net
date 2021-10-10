@@ -17,6 +17,7 @@
                 <form action="{{ route('updateCategory') }}" class="category-form" method="post">
                     @csrf
                     <input type="hidden" name="id" value="{{ $category->id }}">
+                    <input type="hidden" name="old_parent" value="{{ $category->parent_id }}">
 
                     <div class="form-group">
                         <label for="title">عنوان دسته بندی به فارسی</label>
@@ -35,7 +36,7 @@
                         <input type="text" class="form-control @error('slug') is-invalid @enderror" name="slug"
                                id="slug" placeholder="نام دسته بندی" value="{{ $category->slug}}">
                     </div>
-                    <div class="form-group">
+                   <div class="form-group">
                         <label for="name">دسته بندی والد</label>
                         <input type="text"
                                class="form-control"
@@ -43,12 +44,12 @@
                                readonly
                                value="{{ $parent != null ? $parent->title : '' }}">
                     </div>
-                    <div class="form-group">
+                  <div class="form-group">
                             <label for="parent">انتخاب دسته بندی والد</label>
                         <select class="form-control" id="parent" name="parent">
                             <option value=""></option>
                             @foreach($categories as $cat)
-                                <option value="{{ $cat->id }}">{{ $cat->title}}</option>
+                                <option value="{{ $cat->id }}">{{  $cat->title }}</option>
                             @endforeach
                         </select>
                     </div>
