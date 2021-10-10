@@ -48,7 +48,7 @@
             </div>
 
         </div>
-        <div class="row admin-content-models">
+        <div class="row category-content-section">
             <div class="col-lg-6 col-md-6 col-xs-6">
                 <ul class="list-group">
                     @if(!$parent_categories->isEmpty())

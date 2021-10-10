@@ -32,3 +32,11 @@
     justify-content: center;
     background-color:white;
 }
+.category-content-section{
+    min-height: 500px;
+    overflow-y: hidden;
+    margin-top:5rem;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+}
