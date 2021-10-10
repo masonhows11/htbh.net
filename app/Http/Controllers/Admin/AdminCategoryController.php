@@ -69,6 +69,10 @@ class AdminCategoryController extends Controller
 
     }
 
+    public function detachParent(Request $request)
+    {
+
+    }
     public function delete(Request $request)
     {
 

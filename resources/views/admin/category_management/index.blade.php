@@ -48,22 +48,33 @@
             </div>
 
         </div>
-        <div class="row">
+        <div class="row admin-content-models">
             <div class="col-lg-6 col-md-6 col-xs-6">
-                @if(!$parent_categories->isEmpty())
-                    @foreach($parent_categories as $cat)
-                        <ul>
-                            <li>{{ $cat->title }}</li>
-                        @if(!$cat->child->isEmpty())
-                            @foreach($cat->child as $cat)
-                                <ul>{{ $cat->title }}</ul>
-                            @endforeach
-                        @endif
-                        </ul>
-                    @endforeach
-                @else
-                    <p>دسته بندی وجود ندارد</p>
-                @endif
+                <ul class="list-group">
+                    @if(!$parent_categories->isEmpty())
+                        @foreach($parent_categories as $cat)
+                           <li>
+                              <h5 class="parent ">{{ $cat->title }}</h5>
+                               @if($cat->parent_id != null )
+                                   <a href="/admin/category/edit?cat={{ $cat->id }}" class="label label-info">ویرایش</a>
+                                   <a href="/admin/category/delete?cat={{ $cat->id }}" class="label label-danger">حذف</a>
+                                   <a href="/admin/category/detachParent?cat={{ $cat->id  }}"
+                                      class="label label-warning">حذف از والد </a>
+                               @else
+                                   <a href="/admin/category/edit?cat={{ $cat->id }}" class="label label-info ">ویرایش</a>
+                                   <a href="/admin/category/delete?cat={{ $cat->id }}" class="label label-danger">حذف</a>
+                               @endif
+
+                               @if (count($cat->child))
+                                   @include('admin.category_management.child',
+                                      ['child'=>$cat->child])
+                               @endif
+                           </li>
+                        @endforeach
+                    @else
+                        <p>دسته بندی وجود ندارد</p>
+                    @endif
+                </ul>
             </div>
         </div>
 
