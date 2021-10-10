@@ -19,6 +19,7 @@ use App\Http\Controllers\Admin\AdminRoleAssignController;
 use App\Http\Controllers\Admin\AdminPermAssignController;
 
 use App\Http\Controllers\Admin\AdminCategoryController;
+use App\Http\Controllers\Admin\AdminPostController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -115,6 +116,18 @@ Route::group(['prefix'=>'admin/category','middleware'=>'role:admin'],function ()
     Route::post('/updated',[AdminCategoryController::class,'update'])->name('updateCategory');
     Route::get('/detachParent',[AdminCategoryController::class,'detachParent'])->name('detachParent');
     Route::get('/delete',[AdminCategoryController::class,'delete'])->name('deleteCategory');
+
+
+});
+
+Route::group(['prefix'=>'admin/article','middleware'=>'role:admin'],function (){
+
+    Route::get('/index',[AdminPostController::class,'index'])->name('articles');
+    Route::post('/store',[AdminPostController::class,'store'])->name('storeNewArticle');
+    Route::get('/edit',[AdminPostController::class,'edit'])->name('editArticle');
+    Route::post('/updated',[AdminPostController::class,'update'])->name('updateArticle');
+    Route::get('/confirm',[AdminPostController::class,'confirm'])->name('confirmArticle');
+    Route::get('/delete',[AdminPostController::class,'delete'])->name('deleteArticle');
 
 
 });

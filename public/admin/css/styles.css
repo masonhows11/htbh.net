@@ -40,6 +40,7 @@
     justify-content: center;
     background-color: white;
 }
+.article-section,
 .category-form{
     margin:10px 0 10px 0;
 }
@@ -51,4 +52,15 @@
 }
 .category-content-section ul{
     list-style-type: none;
+}
+.category-article {
+   
+    margin-bottom: 80px;
+}
+
+.category-article-content{
+    margin:10px 0 10px 0;
+}
+.category-article .nav-tabs{
+
 }

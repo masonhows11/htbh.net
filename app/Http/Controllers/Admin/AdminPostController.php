@@ -13,6 +13,8 @@ class AdminPostController extends Controller
     {
         $posts = Post::all();
 
+        return view('admin.post_management.index');
+
 
     }
 
@@ -35,14 +37,16 @@ class AdminPostController extends Controller
 
     }
 
+    public function confirm(Request $request){
+
+    }
+
     public function delete(Request $request)
     {
 
     }
 
-    public function approvedPost(Request $request){
 
-    }
 
 
 }

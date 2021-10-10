@@ -70,7 +70,7 @@
 
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-user-o"></i>
+                    <i class="fa fa-list-alt"></i>
                     <span> مدیریت دسته بندی ها</span>
                     <span class="pull-left-container">
               <i class="fa fa-angle-right pull-left"></i>
@@ -78,6 +78,19 @@
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="{{route('listCategory')}}"><i class="fa fa-circle-o"></i>لیست دسته بندی ها</a></li>
+                </ul>
+            </li>
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-newspaper-o"></i>
+                    <span> مدیریت مقالات</span>
+                    <span class="pull-left-container">
+              <i class="fa fa-angle-right pull-left"></i>
+            </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="{{route('articles')}}"><i class="fa fa-circle-o"></i>لیست مقالات</a></li>
                 </ul>
             </li>
 
