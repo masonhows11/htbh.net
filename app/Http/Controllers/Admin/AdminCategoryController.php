@@ -70,6 +70,7 @@ class AdminCategoryController extends Controller
 
     public function update(Request $request)
     {
+        //return $request;
         $request->validate([
             'name' => 'required|min:3',
             'title' => 'required|min:3',
