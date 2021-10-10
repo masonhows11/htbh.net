@@ -33,10 +33,13 @@
     background-color:white;
 }
 .category-content-section{
-    min-height: 500px;
-    overflow-y: hidden;
+    height:600px;
+    overflow-y:scroll;
     margin-top:5rem;
     display: flex;
     justify-content: center;
     background-color: white;
+}
+.category-content-section .parent:hover{
+    cursor: pointer;
 }
