@@ -42,7 +42,7 @@ class AdminCategoryController extends Controller
                 ]);
                 return redirect()->back()->with('success', 'دسته بندی مورد با موفقیت ذخیره شد.');
             } catch (\Exception $ex) {
-                return view('errors.store_error');
+                return view('errors.error_store_model');
             }
         } else {
             try {
@@ -112,9 +112,9 @@ class AdminCategoryController extends Controller
     {
 
         try {
-            $cat = Category::find($request->cat);
+            $cat = Category::findOrFail($request->cat);
         } catch (\Exception $ex) {
-            return view('errors.delete_error');
+            return view('errors.');
         }
         Category::destroy($request->cat);
         return redirect('/admin/category/index')->with('success', 'دسته بندی مورد نظر حذف شد.');
