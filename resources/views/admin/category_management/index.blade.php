@@ -57,12 +57,11 @@
                               <h5 class="parent ">{{ $cat->title }}</h5>
                                @if($cat->parent_id != null )
                                    <a href="/admin/category/edit?cat={{ $cat->id }}" class="label label-info">ویرایش</a>
-                                   <a href="/admin/category/delete?cat={{ $cat->id }}" class="label label-danger">حذف</a>
-                                   <a href="/admin/category/detachParent?cat={{ $cat->id  }}"
-                                      class="label label-warning">حذف از والد </a>
+                                   <a href="/admin/category/delete?cat={{ $cat->id }}" id="deleteItem" class="label label-danger">حذف</a>
+                                   <a href="/admin/category/detachParent?cat={{ $cat->id  }}" class="label label-warning">حذف از والد </a>
                                @else
                                    <a href="/admin/category/edit?cat={{ $cat->id }}" class="label label-info ">ویرایش</a>
-                                   <a href="/admin/category/delete?cat={{ $cat->id }}" class="label label-danger">حذف</a>
+                                   <a href="/admin/category/delete?cat={{ $cat->id }}"  class="label label-danger">حذف</a>
                                @endif
 
                                @if (count($cat->child))
