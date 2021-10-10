@@ -75,6 +75,13 @@ class AdminCategoryController extends Controller
     }
     public function delete(Request $request)
     {
+
+        try {
+            $cat = Category::find($request->cat);
+        }catch (\Exception $ex)
+        {
+            return view('errors.delete_error');
+        }
         Category::destroy($request->cat);
         return redirect('/admin/category/index')->with('success', 'دسته بندی مورد نظر حذف شد.');
     }
