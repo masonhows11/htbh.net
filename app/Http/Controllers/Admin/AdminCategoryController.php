@@ -62,8 +62,10 @@ class AdminCategoryController extends Controller
     public function edit(Request $request)
     {
         $category = Category::find($request->cat);
+        $parent = Category::getParent($category->parent_id);
         $categories = Category::all();
-        return view('admin.category_management.edit')->with(['category' => $category, 'categories' => $categories]);
+        return view('admin.category_management.edit')
+            ->with(['category' => $category, 'categories' => $categories,'parent'=>$parent]);
     }
 
     public function update(Request $request)

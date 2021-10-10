@@ -28,6 +28,9 @@ class Category extends Model
     {
         return $this->HasMany(Category::class,'parent_id');
     }
-
+    public static function getParent($parent_id)
+    {
+      return  self::where('id',$parent_id)->first();
+    }
 
 }

@@ -35,7 +35,14 @@
                         <input type="text" class="form-control @error('slug') is-invalid @enderror" name="slug"
                                id="slug" placeholder="نام دسته بندی" value="{{ $category->slug}}">
                     </div>
-
+                    <div class="form-group">
+                        <label for="name">دسته بندی والد</label>
+                        <input type="text"
+                               class="form-control"
+                               id="name"
+                               readonly
+                               value="{{ $parent != null ? $parent->title : '' }}">
+                    </div>
                     <div class="form-group">
                             <label for="parent">انتخاب دسته بندی والد</label>
                         <select class="form-control" id="parent" name="parent">

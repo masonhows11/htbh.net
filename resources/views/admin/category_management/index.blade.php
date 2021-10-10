@@ -32,6 +32,7 @@
                                id="name"
                                value="{{ old('name') }}">
                     </div>
+
                     <div class="form-group">
                         <label for="parent">انتخاب دسته بندی والد</label>
                         <select class="form-control" id="parent" name="parent">
