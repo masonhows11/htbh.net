@@ -114,7 +114,7 @@ class AdminCategoryController extends Controller
         try {
             $cat = Category::findOrFail($request->cat);
         } catch (\Exception $ex) {
-            return view('errors.');
+            return view('errors.error_not_found_model');
         }
         Category::destroy($request->cat);
         return redirect('/admin/category/index')->with('success', 'دسته بندی مورد نظر حذف شد.');

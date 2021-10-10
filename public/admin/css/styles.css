@@ -40,6 +40,15 @@
     justify-content: center;
     background-color: white;
 }
+.category-form{
+    margin:10px 0 10px 0;
+}
 .category-content-section .parent:hover{
     cursor: pointer;
+}
+.no-categories{
+    margin-top:12px;
+}
+.category-content-section ul{
+    list-style-type: none;
 }

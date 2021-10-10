@@ -14,7 +14,7 @@
         <div class="row admin-content-models">
 
             <div class="col-lg-6 col-md-6 col-xs-6">
-                <form action="{{ route('storeNewCategory') }}" method="post">
+                <form action="{{ route('storeNewCategory') }}" class="category-form" method="post">
                     @csrf
                     <div class="form-group">
                         <label for="title">عنوان دسته بندی به فارسی</label>
@@ -54,7 +54,7 @@
                     @if(!$parent_categories->isEmpty())
                         @foreach($parent_categories as $cat)
                            <li>
-                              <h5 class="parent ">{{ $cat->title }}</h5>
+                              <h5 class="parent well well-sm">{{ $cat->title }}</h5>
                                @if($cat->parent_id != null )
                                    <a href="/admin/category/edit?cat={{ $cat->id }}" class="label label-info">ویرایش</a>
                                    <a href="/admin/category/delete?cat={{ $cat->id }}" id="deleteItem" class="label label-danger">حذف</a>
@@ -71,7 +71,10 @@
                            </li>
                         @endforeach
                     @else
-                        <p>دسته بندی وجود ندارد</p>
+                        <div class="alert alert-danger no-categories">
+                            <p class="text-center ">دسته بندی وجود ندارد</p>
+                        </div>
+
                     @endif
                 </ul>
             </div>
