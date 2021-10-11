@@ -13,18 +13,28 @@
 
         <div class="row category-article">
 
-                <ul class="nav nav-tabs nav-justified">
-                    <li role="presentation" class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Menu 1
-                            <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Submenu 1-1</a></li>
-                            <li><a href="#">Submenu 1-2</a></li>
-                            <li><a href="#">Submenu 1-3</a></li>
-                        </ul>
-                    </li>
-                </ul>
+            <ul class="nav nav-tabs nav-justified">
+                @if(!$parent_categories->isEmpty())
+                    @foreach($parent_categories as $cat)
+                        <li role="presentation" class="dropdown">
+                            <a class="dropdown-toggle category-item" data-toggle="dropdown" href="#">
+                                {{ $cat->title }}
+                                <span class="caret"></span></a>
+                            @if(count($cat->child))
+                                <ul class="dropdown-menu">
+                                 @include('admin.post_management.child',['child'=>$cat->child])
+                                </ul>
+                            @endif
+
+                        </li>
+                    @endforeach
+                @endif
+            </ul>
         </div>
+
+        {{--@foreach($cat->child as $cat)
+            <li><a href="#">{{ $cat->title }}</a></li>
+        @endforeach --}}
 
         <div class="row admin-content-models">
 

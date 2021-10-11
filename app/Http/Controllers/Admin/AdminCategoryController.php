@@ -20,16 +20,15 @@ class AdminCategoryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|unique:categories|min:3',
-            'title' => 'required|unique:categories|min:3',
+            'name' => 'required|min:3',
+            'title' => 'required|min:3',
 
         ], $message = [
             'name.required' => 'نام دسته بندی را وارد کنید',
-            'name.unique' => 'این نام تکراری است',
             'name.min' => ' حداکثر ۳ کاراکتر ',
             'title.min' => ' حداکثر ۳ کاراکتر ',
             'title.required' => 'عنوان دسته بندی را وارد کنید',
-            'title.unique' => 'این عنوان تکراری است',
+
 
         ]);
 

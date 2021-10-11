@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -12,8 +13,9 @@ class AdminPostController extends Controller
     public function index()
     {
         $posts = Post::all();
-
-        return view('admin.post_management.index');
+        $parent_categories = Category::where('parent_id', null)->get();
+        return view('admin.post_management.index')
+            ->with('parent_categories',$parent_categories);
 
 
     }

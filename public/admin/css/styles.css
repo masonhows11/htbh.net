@@ -67,4 +67,13 @@
 .category-article  .dropdown:hover .dropdown-menu{
     display: block;
 }
-
+.child-category {
+    list-style: none;
+}
+.category-article a.category-item
+{
+    color: #0a0a0a;
+}
+.category-article a.category-item:hover{
+    /*background-color: #555;*/
+}
