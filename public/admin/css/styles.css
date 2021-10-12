@@ -77,3 +77,10 @@
 .dropdown-menu .child-cat > .child-category:hover{
     background-color: #e1e3e9;
 }
+.dropdown-menu .child-cat > .child-category{
+    height:2.5rem;
+}
+.dropdown-menu .child-cat > li > .category-item{
+    line-height:normal;
+    padding-right:1rem;
+}
