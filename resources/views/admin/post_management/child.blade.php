@@ -5,7 +5,7 @@
          </a>
 
             @if (count($sub_cat->child))
-                <ul>
+                <ul class="child-cat">
                 @include('admin.post_management.child',
                     ['child'=>$sub_cat->child])
                 </ul>
