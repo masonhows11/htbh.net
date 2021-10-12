@@ -40,9 +40,13 @@
     justify-content: center;
     background-color: white;
 }
-.article-section,
+
 .category-form{
     margin:10px 0 10px 0;
+}
+.article-section{
+    margin-top:20px;
+    margin-bottom:20px;
 }
 .category-content-section .parent:hover{
     cursor: pointer;
@@ -55,10 +59,6 @@
 }
 .category-article {
     margin-bottom: 80px;
-}
-
-.category-article-content{
-    margin:10px 0 10px 0;
 }
 /************** post management category menu dropdown hover style ****************/
 .category-article ul .dropdown-item{
@@ -83,4 +83,7 @@
 .dropdown-menu .child-cat > li > .category-item{
     line-height:normal;
     padding-right:1rem;
+}
+.add-post-content{
+    margin-top:220px;
 }

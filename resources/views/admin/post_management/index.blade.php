@@ -1,6 +1,6 @@
 @extends('admin.include.master')
 @section('page_title')
-    مقالات
+    مدیریت مقالات
 @endsection
 @section('main_content')
     <div class="container">
@@ -30,7 +30,7 @@
                 @endif
             </ul>
         </div>
-        <div class="row admin-content-models">
+        <div class="row admin-content-models add-post-content">
             <div class="col-lg-6 col-md-6 col-xs-6 article-section">
                 <table class="table table-bordered">
                     <thead>
