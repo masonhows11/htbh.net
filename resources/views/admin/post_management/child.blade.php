@@ -2,13 +2,14 @@
 <li  role="presentation" class="dropdown child-category">
         <a class="dropdown-toggle category-item" data-toggle="dropdown" href="#">
             {{ $sub_cat->title }}
-           </a>
-        <ul>
+         </a>
+
             @if (count($sub_cat->child))
+                <ul>
                 @include('admin.post_management.child',
                     ['child'=>$sub_cat->child])
+                </ul>
             @endif
-        </ul>
 </li>
 @endforeach
 

@@ -25,19 +25,12 @@
                                  @include('admin.post_management.child',['child'=>$cat->child])
                                 </ul>
                             @endif
-
                         </li>
                     @endforeach
                 @endif
             </ul>
         </div>
-
-        {{--@foreach($cat->child as $cat)
-            <li><a href="#">{{ $cat->title }}</a></li>
-        @endforeach --}}
-
         <div class="row admin-content-models">
-
             <div class="col-lg-6 col-md-6 col-xs-6 article-section">
                 <table class="table table-bordered">
                     <thead>
