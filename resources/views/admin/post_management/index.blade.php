@@ -32,6 +32,10 @@
             </div>
         </div>
 
+        <div class="row add-post-button">
+            <a href="{{ route('newArticle') }}" class="btn btn-success">ایجاد مقاله جدید</a>
+        </div>
+
         <div class="row admin-content-models add-post-content">
             <div class="col-lg-6 col-md-6 col-xs-6 article-section">
                 <table class="table table-bordered">

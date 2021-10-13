@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class AdminPostController extends Controller
 {
-    //
+
     public function index()
     {
         $posts = Post::all();
@@ -21,7 +21,8 @@ class AdminPostController extends Controller
 
     public function listPostBaseCategory(Request $request)
     {
-        //return $request;
+
+
         $request->validate([
             'category' => 'required|exists:categories,name'
         ],$message = [
@@ -29,6 +30,8 @@ class AdminPostController extends Controller
             'category.exists'=>'دسته بندی مورد نظر وجود ندارد.',
         ]);
         $categories = Category::all();
+
+
         if ($request->filled('category')) {
             try
             {
@@ -42,6 +45,9 @@ class AdminPostController extends Controller
 
     public function create()
     {
+
+        $categories = Category::all();
+        return view('admin.post_management.create')->with(['categories'=>$categories]);
 
     }
 
