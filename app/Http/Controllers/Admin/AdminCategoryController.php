@@ -31,30 +31,25 @@ class AdminCategoryController extends Controller
 
 
         ]);
+        try {
 
-        if ($request->has('parent')) {
-            try {
+            if ($request->filled('parent')) {
                 Category::create([
                     'name' => $request->name,
                     'title' => $request->title,
                     'parent_id' => $request->parent,
                 ]);
                 return redirect()->back()->with('success', 'دسته بندی مورد با موفقیت ذخیره شد.');
-            } catch (\Exception $ex) {
-                return view('errors.error_store_model');
-            }
-        } else {
-            try {
+            } else {
                 Category::create([
                     'name' => $request->name,
                     'title' => $request->title,
                 ]);
                 return redirect()->back()->with('success', 'دسته بندی مورد با موفقیت ذخیره شد.');
-            } catch (\Exception $ex) {
-                return view('errors.store_error');
             }
+        } catch (\Exception $ex) {
+            return view('errors.error_store_model');
         }
-
 
     }
 
@@ -69,7 +64,7 @@ class AdminCategoryController extends Controller
 
     public function update(Request $request)
     {
-       
+
         $request->validate([
             'name' => 'required|min:3',
             'title' => 'required|min:3',
@@ -91,8 +86,9 @@ class AdminCategoryController extends Controller
             return redirect()->back()->with('error', 'دسته بندی مورد نظر وجود ندارد');
         }
 
-        if ($request->filled('parent')) {
-            try {
+        try {
+
+            if ($request->filled('parent')) {
                 Category::where('id', $request->id)
                     ->update(['name' => $request->name,
                         'title' => $request->title,
@@ -100,35 +96,26 @@ class AdminCategoryController extends Controller
                         'parent_id' => $request->parent]);
 
                 return redirect('/admin/category/index')->with('success', 'دسته بندی مورد با موفقیت ویرایش شد.');
-            } catch (\Exception $ex) {
-                return view('errors.error_store_model');
-            }
-        } else if($request->filled('old_parent')) {
-            try {
+            } elseif ($request->filled('old_parent')) {
+                Category::where('id', $request->id)
+                    ->update(['name' => $request->name,
+                        'title' => $request->title,
+                        'slug' => $request->slug,
+                        'parent_id' => $request->old_parent]);
+                return redirect('/admin/category/index')->with('success', 'دسته بندی مورد با موفقیت ویرایش شد.');
+            } else
                 Category::where('id', $request->id)
                     ->update(['name' => $request->name,
                         'title' => $request->title,
                         'slug' => $request->slug,
                         'parent_id' => $request->old_parent]);
 
-                return redirect('/admin/category/index')->with('success', 'دسته بندی مورد با موفقیت ویرایش شد.');
-
-            } catch (\Exception $ex) {
-                return view('errors.error_store_model');
-            }
-        }
-        try {
-            Category::where('id', $request->id)
-                ->update(['name' => $request->name,
-                    'title' => $request->title,
-                    'slug' => $request->slug,
-                    'parent_id' => $request->old_parent]);
-
             return redirect('/admin/category/index')->with('success', 'دسته بندی مورد با موفقیت ویرایش شد.');
 
         } catch (\Exception $ex) {
             return view('errors.error_store_model');
         }
+
 
     }
 

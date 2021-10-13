@@ -28,7 +28,7 @@ class AdminPostController extends Controller
             'category.required'=>'یک دسته بندی انتخاب کنید.',
             'category.exists'=>'دسته بندی مورد نظر وجود ندارد.',
         ]);
-
+        $categories = Category::all();
         if ($request->filled('category')) {
             try
             {
