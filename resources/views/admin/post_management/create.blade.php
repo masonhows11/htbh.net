@@ -16,7 +16,17 @@
 
                 <form action="{{ route('storeNewArticle') }}" method="post">
                 @csrf
+                    <div class="form-group">
+                        <label for="title">عنوان مقاله به فارسی :</label>
+                        <input type="text" name="title" class="form-control" id="title">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">نام مقاله به انگلیسی :</label>
+                        <input type="text" name="name" class="form-control" id="name">
+                    </div>
 
+
+                    <button type="submit" class="btn btn-success">ذخیره</button>
                 </form>
 
             </div>

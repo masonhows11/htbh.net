@@ -33,4 +33,9 @@ class Category extends Model
       return  self::where('id',$parent_id)->first();
     }
 
+    public function posts(){
+
+        return $this->belongsToMany(Post::class);
+    }
+
 }
