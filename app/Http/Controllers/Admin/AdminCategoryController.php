@@ -69,6 +69,7 @@ class AdminCategoryController extends Controller
 
     public function update(Request $request)
     {
+       
         $request->validate([
             'name' => 'required|min:3',
             'title' => 'required|min:3',
@@ -116,6 +117,19 @@ class AdminCategoryController extends Controller
                 return view('errors.error_store_model');
             }
         }
+        try {
+            Category::where('id', $request->id)
+                ->update(['name' => $request->name,
+                    'title' => $request->title,
+                    'slug' => $request->slug,
+                    'parent_id' => $request->old_parent]);
+
+            return redirect('/admin/category/index')->with('success', 'دسته بندی مورد با موفقیت ویرایش شد.');
+
+        } catch (\Exception $ex) {
+            return view('errors.error_store_model');
+        }
+
     }
 
     public function detachParent(Request $request)
