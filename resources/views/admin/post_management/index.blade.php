@@ -11,25 +11,24 @@
             </div>
         </div>
 
-        <div class="row category-article">
 
-            <ul class="nav nav-tabs nav-justified">
-                @if(!$parent_categories->isEmpty())
-                    @foreach($parent_categories as $cat)
-                        <li role="presentation" class="dropdown">
-                            <a class="dropdown-toggle category-item" data-toggle="dropdown" href="#">
-                                {{ $cat->title }}
-                                <span class="caret"></span></a>
-                            @if(count($cat->child))
-                                <ul class="dropdown-menu">
-                                 @include('admin.post_management.child',['child'=>$cat->child])
-                                </ul>
-                            @endif
-                        </li>
-                    @endforeach
-                @endif
-            </ul>
+        <div class="row category-dropdown-article">
+            <div class="col-lg-6 col-md-6">
+                <form action="" method="post">
+                    @csrf
+                    <div class="form-group">
+                        <label for="cat-dropdown">انتخاب یک دسته بندی :</label>
+                        <select class="form-control" id="cat-dropdown">
+                            <option value=""></option>
+                            @foreach($categories as $category)
+                                <option name="category" value="{{ $category->name }}">{{ $category->title }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </form>
+            </div>
         </div>
+
         <div class="row admin-content-models add-post-content">
             <div class="col-lg-6 col-md-6 col-xs-6 article-section">
                 <table class="table table-bordered">
@@ -37,6 +36,7 @@
                     <tr>
                         <th>شناسه</th>
                         <th>عنوان</th>
+                        <th>تایید</th>
                         <th>عملیات</th>
                     </tr>
                     </thead>

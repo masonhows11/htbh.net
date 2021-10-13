@@ -13,13 +13,18 @@ class AdminPostController extends Controller
     public function index()
     {
         $posts = Post::all();
+        $categories = Category::all();
         $parent_categories = Category::where('parent_id', null)->get();
         return view('admin.post_management.index')
-            ->with('parent_categories',$parent_categories);
-
-
+            ->with(['parent_categories'=>$parent_categories,
+                'posts'=>$posts,
+                'categories'=>$categories]);
     }
 
+    public function listPostBaseCategory(Request $request)
+    {
+
+    }
     public function create()
     {
 

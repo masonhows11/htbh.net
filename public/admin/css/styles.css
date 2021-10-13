@@ -61,16 +61,16 @@
     margin-bottom: 80px;
 }
 /************** post management category menu dropdown hover style ****************/
-.category-article ul .dropdown-item{
+.category-menu-article ul .dropdown-item{
     display: none;
 }
-.category-article  .dropdown:hover .dropdown-menu{
+.category-menu-article  .dropdown:hover .dropdown-menu{
     display: block;
 }
 .child-category {
     list-style: none;
 }
-.category-article a.category-item
+.category-menu-article a.category-item
 {
     color: #0a0a0a;
 }
@@ -85,5 +85,13 @@
     padding-right:1rem;
 }
 .add-post-content{
-    margin-top:220px;
+    margin-top:80px;
 }
+
+.category-dropdown-article{
+
+    display: flex;
+    justify-content: center;
+}
+/************** media query *************/
+
