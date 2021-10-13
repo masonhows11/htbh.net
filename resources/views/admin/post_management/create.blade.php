@@ -19,12 +19,12 @@
 
                     <div class="form-group">
                         <label for="title">عنوان مقاله به فارسی :</label>
-                        <input type="text" name="title"  class="form-control" id="title">
+                        <input type="text" name="title"  class="form-control" id="title" value="{{ old('title') }}">
                     </div>
 
                     <div class="form-group">
                         <label for="name">نام مقاله به انگلیسی :</label>
-                        <input type="text" name="name" class="form-control" id="name">
+                        <input type="text" name="name" class="form-control" id="name" value="{{ old('name') }}">
                     </div>
 
 
@@ -35,8 +35,14 @@
                         <input type="text" id="image_label" class="form-control" name="image" aria-label="Image" aria-describedby="button-image">
                     </div>
 
-                    <div class="form-group">
-
+                    <div class="form-group category-chosen">
+                        <label for="category">انتخاب دسته بندی :</label>
+                        <select name="category[]" data-placeholder="دسته بندی های مورد نظر را انتخاب کنید.." id="category"  multiple class="form-control chosen-select">
+                            <option value=""></option>
+                            @foreach($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->title }}</option>
+                            @endforeach
+                        </select>
                     </div>
 
 
@@ -81,5 +87,6 @@
         function fmSetLink($url) {
             document.getElementById('image_label').value = $url;
         }
+        $(".chosen-select").chosen({disable_search_threshold: 10,rtl:true});
     </script>
 @endsection
