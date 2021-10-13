@@ -27,12 +27,12 @@
                         <input type="text" name="name" class="form-control" id="name">
                     </div>
 
-                    <div class="form-group">
-                        <img src="" width="200" height="200"  class="img-thumbnail image-previewer" alt="post_image">
-                    </div>
-                    <div class="form-group">
-                        <label for="">انتخاب تصویر:</label>
-                        <input type="file" name="image" id="files">
+                    <div class="input-group">
+                        <input type="text" id="image_label" class="form-control" name="image"
+                               aria-label="Image" aria-describedby="button-image">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="button" id="button-image">انتخاب عکس</button>
+                        </div>
                     </div>
 
                     <div class="form-group">
@@ -61,22 +61,20 @@
             removePlugins: 'image',
         });
     </script>
+    <script src="{{ asset('vendor/file-manager/js/file-manager.js') }}"></script>
     <script>
-        $('#files').ijaboCropTool({
-            preview : '.image-previewer',
-            setRatio:1,
-            allowedExtensions: ['jpg', 'jpeg','png'],
-            buttonsText:['CROP','QUIT'],
-            buttonsColor:['#30bf7d','#ee5155', -15],
-            processUrl:'{{ route("postImage") }}',
-            withCSRF:['_token','{{ csrf_token() }}'],
-            onSuccess:function(message,element, status){
-                alert(message);
+        document.addEventListener("DOMContentLoaded", function() {
 
-            },
-            onError:function(message, element, status){
-                alert(message);
-            }
+            document.getElementById('button-image').addEventListener('click', (event) => {
+                event.preventDefault();
+
+                window.open('/file-manager/fm-button', 'fm', 'width=1400,height=800');
+            });
         });
+
+        // set file link
+        function fmSetLink($url) {
+            document.getElementById('image_label').value = $url;
+        }
     </script>
 @endsection

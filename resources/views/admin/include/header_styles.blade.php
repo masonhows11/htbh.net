@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="{{ asset('admin/plugins/Ionicons/css/ionicons.min.css') }}">
 <link rel="stylesheet" href="{{ asset('admin/css/AdminLTE.css') }}">
 <link rel="stylesheet" href="{{ asset('admin/css/skins/_all-skins.min.css') }}">
-<link rel="stylesheet" href="{{ asset('admin/css/ijaboCropTool.min.css') }}">
+<link rel="stylesheet" href="{{ asset('vendor/file-manager/css/file-manager.css') }}">
 <link rel="stylesheet" href="{{ asset('admin/css/styles.css') }}">
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
