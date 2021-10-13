@@ -14,17 +14,31 @@ class AdminPostController extends Controller
     {
         $posts = Post::all();
         $categories = Category::all();
-        $parent_categories = Category::where('parent_id', null)->get();
         return view('admin.post_management.index')
-            ->with(['parent_categories'=>$parent_categories,
-                'posts'=>$posts,
+            ->with(['posts'=>$posts,
                 'categories'=>$categories]);
     }
 
     public function listPostBaseCategory(Request $request)
     {
+        $request->validate([
+            'category' => 'required|exists:categories'
+        ],$message = [
+            'category.required'=>'یک دسته بندی انتخاب کنید.',
+            'category.exists'=>'دسته بندی مورد نظر وجود ندارد.',
+        ]);
+
+        if ($request->filled('category')) {
+            try
+            {
+
+            }catch (\Exception $ex){
+
+            }
+        }
 
     }
+
     public function create()
     {
 

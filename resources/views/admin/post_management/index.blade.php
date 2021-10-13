@@ -14,7 +14,7 @@
 
         <div class="row category-dropdown-article">
             <div class="col-lg-6 col-md-6">
-                <form action="" method="post">
+                <form action="{{route('listPostCategory')}}" method="post">
                     @csrf
                     <div class="form-group">
                         <label for="cat-dropdown">انتخاب یک دسته بندی :</label>
@@ -24,6 +24,9 @@
                                 <option name="category" value="{{ $category->name }}">{{ $category->title }}</option>
                             @endforeach
                         </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-success" value="دریافت مقالات">
                     </div>
                 </form>
             </div>
