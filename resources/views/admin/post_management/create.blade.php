@@ -27,13 +27,18 @@
                         <input type="text" name="name" class="form-control" id="name">
                     </div>
 
-                    <div class="input-group">
-                        <input type="text" id="image_label" class="form-control" name="image"
-                               aria-label="Image" aria-describedby="button-image">
-                        <div class="input-group-append">
-                            <button class="btn btn-default" type="button" id="button-image">انتخاب عکس</button>
-                        </div>
+
+                    <div class="form-group">
+                        <button class="btn btn-default" type="button" id="button-image">انتخاب عکس</button>
                     </div>
+                    <div class="form-group">
+                        <input type="text" id="image_label" class="form-control" name="image" aria-label="Image" aria-describedby="button-image">
+                    </div>
+
+                    <div class="form-group">
+
+                    </div>
+
 
                     <div class="form-group">
                         <label for="">توضیحات:</label>
