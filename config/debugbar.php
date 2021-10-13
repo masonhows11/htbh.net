@@ -28,14 +28,14 @@ return [
      | DebugBar stores data for session/ajax requests.
      | You can disable this, so the debugbar stores data in headers/session,
      | but this can cause problems with large data collectors.
-     | By default, file storage (in the storage folder) is used. Redis and PDO
+     | By default, files storage (in the storage folder) is used. Redis and PDO
      | can also be used. For PDO, run the package migrations first.
      |
      */
     'storage' => [
         'enabled'    => true,
-        'driver'     => 'file', // redis, file, pdo, socket, custom
-        'path'       => storage_path('debugbar'), // For file driver
+        'driver'     => 'files', // redis, files, pdo, socket, custom
+        'path'       => storage_path('debugbar'), // For files driver
         'connection' => null,   // Leave null for default connection (Redis/PDO)
         'provider'   => '', // Instance of StorageInterface for custom driver
         'hostname'   => '127.0.0.1', // Hostname to use with the "socket" driver
@@ -169,7 +169,7 @@ return [
             'label' => true,  // show complete route on bar
         ],
         'logs' => [
-            'file' => null,
+            'files' => null,
         ],
         'cache' => [
             'values' => true, // collect cache values

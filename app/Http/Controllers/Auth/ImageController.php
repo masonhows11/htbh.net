@@ -16,7 +16,7 @@ class ImageController extends Controller
         $dest = 'images/users/';
         $file = $request->file('avatar');
         $image_name_save = 'UIMG' . date('YmdHis') . uniqid('', true) . '.jpg';
-        /// upload file to server
+        /// upload files to server
         $move = $file->move(public_path($dest), $image_name_save);
 
         if (!$move) {

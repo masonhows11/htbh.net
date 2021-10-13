@@ -101,7 +101,7 @@ return [
      * the migrations to register the 'team_foreign_key', you must set this to true
      * before doing the migration. If you already did the migration then you must make a new
      * migration to also add 'team_foreign_key' to 'roles', 'model_has_roles', and
-     * 'model_has_permissions'(view the latest version of package's migration file)
+     * 'model_has_permissions'(view the latest version of package's migration files)
      */
 
     'teams' => false,
@@ -146,7 +146,7 @@ return [
         /*
          * You may optionally indicate a specific cache driver to use for permission and
          * role caching using any of the `store` drivers listed in the cache.php config
-         * file. Using 'default' here means to use the `default` set in cache.php.
+         * files. Using 'default' here means to use the `default` set in cache.php.
          */
 
         'store' => 'default',
