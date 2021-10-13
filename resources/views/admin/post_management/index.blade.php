@@ -18,10 +18,10 @@
                     @csrf
                     <div class="form-group">
                         <label for="cat-dropdown">انتخاب یک دسته بندی :</label>
-                        <select class="form-control" id="cat-dropdown">
+                        <select class="form-control input-sm"  name="category" id="cat-dropdown">
                             <option value=""></option>
                             @foreach($categories as $category)
-                                <option name="category" value="{{ $category->name }}">{{ $category->title }}</option>
+                                <option value="{{ $category->name }}">{{ $category->title }}</option>
                             @endforeach
                         </select>
                     </div>

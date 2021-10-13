@@ -21,8 +21,9 @@ class AdminPostController extends Controller
 
     public function listPostBaseCategory(Request $request)
     {
+        //return $request;
         $request->validate([
-            'category' => 'required|exists:categories'
+            'category' => 'required|exists:categories,name'
         ],$message = [
             'category.required'=>'یک دسته بندی انتخاب کنید.',
             'category.exists'=>'دسته بندی مورد نظر وجود ندارد.',
