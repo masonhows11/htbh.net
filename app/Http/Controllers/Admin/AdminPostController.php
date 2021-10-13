@@ -51,21 +51,7 @@ class AdminPostController extends Controller
 
     }
 
-    public function storePostImage(Request $request)
-    {
-        $path = 'app/public/images/posts/';
-        $file = $request->file('image');
-        $new_image_name = 'UIMG'.date('Ymd').uniqid().'.jpg';
-        $upload = $file->move(storage_path($path), $new_image_name);
-        if($upload){
-            return response()
-                ->json(['status'=>1, 'msg'=>'Image has been cropped successfully.','name'=>$new_image_name]);
-        }else{
-            return response()
-                ->json(['status'=>0, 'msg'=>'Something went wrong, try again later']);
-        }
 
-    }
     public function store(Request $request){
 
     }

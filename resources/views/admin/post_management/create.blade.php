@@ -31,7 +31,7 @@
                         <input type="text" id="image_label" class="form-control" name="image"
                                aria-label="Image" aria-describedby="button-image">
                         <div class="input-group-append">
-                            <button class="btn btn-outline-secondary" type="button" id="button-image">انتخاب عکس</button>
+                            <button class="btn btn-default" type="button" id="button-image">انتخاب عکس</button>
                         </div>
                     </div>
 
