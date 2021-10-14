@@ -13,7 +13,7 @@ class AdminPostController extends Controller
 
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::orderBy('created_at','asc')->get();
         $categories = Category::all();
         return view('admin.post_management.index')
             ->with(['posts' => $posts,
@@ -76,7 +76,7 @@ class AdminPostController extends Controller
             'image.required' => 'انخاب عکس الزامی است.',
         ]);
 
-      
+
         $categories = Category::all();
         try {
 
