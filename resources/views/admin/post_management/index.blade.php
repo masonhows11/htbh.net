@@ -52,7 +52,7 @@
                     <tr>
                         <td>{{ $post->id }}</td>
                         <td>{{ $post->title }}</td>
-                        <td>{{ $post->approved }}</td>
+                        <td><span  data-post-id="{{ $post->id }}" id="confirmPost">{{ $post->approved }}</span></td>
                         <td>
                             <span>
                                 <a href="/admin/article/edit?post={{ $post->id }}" class="text-info text-bold"><i class="fa fa-edit"></i></a>

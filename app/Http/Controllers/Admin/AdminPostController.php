@@ -118,11 +118,11 @@ class AdminPostController extends Controller
 
         $post = Post::findOrFail($request->post_id);
         if(!$post){
-            return response()->json(['warning' => 'نقش مورد نظر وجود ندارد.', 'status' => 404], 200);
+            return response()->json(['warning' => 'مقاله مورد نظر وجود ندارد.', 'status' => 404], 200);
         }
         try {
             Post::destroy($request->post_id);
-            return response()->json(['success' => 'نقش مورد نظر با موفقیت حذف شد.', 'status' => 200], 200);
+            return response()->json(['success' => 'مقاله نظر با موفقیت حذف شد.', 'status' => 200], 200);
         }catch (\Exception $ex)
         {
             return response()->json(['exception'=>$ex->getMessage(),'status'=>500],500) ;
