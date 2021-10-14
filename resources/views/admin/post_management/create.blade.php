@@ -19,12 +19,12 @@
 
                     <div class="form-group">
                         <label for="title">عنوان مقاله به فارسی :</label>
-                        <input type="text" name="title"  class="form-control" id="title" value="{{ old('title') }}">
+                        <input type="text" name="title"  class="form-control @error('title') is-invalid @enderror" id="title" value="{{ old('title') }}">
                     </div>
 
                     <div class="form-group">
                         <label for="name">نام مقاله به انگلیسی :</label>
-                        <input type="text" name="name" class="form-control" id="name" value="{{ old('name') }}">
+                        <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" id="name" value="{{ old('name') }}">
                     </div>
 
 
@@ -32,12 +32,16 @@
                         <button class="btn btn-default" type="button" id="button-image">انتخاب عکس</button>
                     </div>
                     <div class="form-group">
-                        <input type="text" id="image_label" class="form-control" name="image" aria-label="Image" aria-describedby="button-image">
+                        <input type="text" id="image_label" class="form-control @error('image') is-invalid @enderror" value="{{ old('image') }}" name="image" aria-label="Image" aria-describedby="button-image">
                     </div>
 
                     <div class="form-group category-chosen">
                         <label for="category">انتخاب دسته بندی :</label>
-                        <select name="category[]" data-placeholder="دسته بندی های مورد نظر را انتخاب کنید.." id="category"  multiple class="form-control chosen-select">
+                        <select name="category[]"
+                                data-placeholder="دسته بندی های مورد نظر را انتخاب کنید.."
+                                id="category"
+                                multiple
+                                class="form-control chosen-select @error('category') is-invalid @enderror">
                             <option value=""></option>
                             @foreach($categories as $category)
                                 <option value="{{ $category->id }}">{{ $category->title }}</option>

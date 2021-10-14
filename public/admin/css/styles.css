@@ -92,6 +92,9 @@
     display: flex;
     justify-content: center;
 }
+.admin-add-post{
+    margin-top: 40px;
+}
 .admin-add-post > div{
     padding:14px 0 14px 0;
 }
