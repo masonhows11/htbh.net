@@ -112,22 +112,29 @@ class AdminPostController extends Controller
 
     public function confirm(Request $request)
     {
-        $course = Post::findOrFail($request->post_id);
-        if ($course->status_publish == 0) {
-            $course->status_publish = 1;
-            $course->course_status = 1;
-        } else {
-            $course->status_publish = 0;
-            $course->course_status = 0;
+
+        try {
+            $post = Post::findOrFail($request->post_id);
+        }catch (\Exception $ex){
+            return response()->json(['error' => 'مقله مورد نظر وجود ندارد.', 'status' => 404], 404);
         }
 
-        $course->save();
-        $publish_status = $course->status_publish;
-        if ($course->save()) {
+        try {
+            if($post)
+            {
+                if ($post->approved == 0) {
+                    $post->approved = 1;
+                } else {
+                    $post->approved = 0;
 
-            return response()->json(['success' => '.وضعیت انتشار با موفقیت تغییر کرد', 'publish' => $publish_status, 'status' => 200], 200);
+                }
+                $post->save();
+                $approved = $post->approved;
+                return response()->json(['success' => '.وضعیت انتشار با موفقیت تغییر کرد', 'publish' => $approved, 'status' => 200], 200);
+            }
+        }catch (\Exception $ex){
+            return response()->json(['error' => '.عملیات انتشار انجام نشد', 'status' => 500], 500);
         }
-        return response()->json(['error' => '.عملیات انتشار انجام نشد', 'status' => 500], 500);
     }
 
     public function delete(Request $request)

@@ -127,7 +127,7 @@
         });
     </script>
     <script>
-        $(document).on('click', '#publish_course', function (event) {
+        $(document).on('click', '#approvePost', function (event) {
             event.preventDefault();
             let  post_id = event.target.getAttribute('data-post-id');
             $.ajaxSetup({
