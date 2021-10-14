@@ -14,7 +14,7 @@ class AdminPostController extends Controller
 
     public function index()
     {
-        $posts = Post::orderBy('created_at','asc')->get();
+        $posts = Post::orderBy('created_at', 'asc')->get();
         $categories = Category::all();
         return view('admin.post_management.index')
             ->with(['posts' => $posts,
@@ -81,18 +81,18 @@ class AdminPostController extends Controller
         $categories = Category::all();
         try {
 
-        $image_name = GetImageName::getName($request->image);
-        Post::create([
-            'title'=>$request->title,
-            'name'=>$request->name,
-            'description' => $request->description,
-            'image'=> $image_name,
-            'user_id'=> Auth::id(),
-        ])->categories()->sync($request->category);
+            $image_name = GetImageName::getName($request->image);
+            Post::create([
+                'title' => $request->title,
+                'name' => $request->name,
+                'description' => $request->description,
+                'image' => $image_name,
+                'user_id' => Auth::id(),
+            ])->categories()->sync($request->category);
 
-        return redirect()
-            ->route('articles')
-            ->with(['categories'=>$categories,'success'=>'مقاله جدید با موفقیت ایجاد شد.']);
+            return redirect()
+                ->route('articles')
+                ->with(['categories' => $categories, 'success' => 'مقاله جدید با موفقیت ایجاد شد.']);
 
         } catch (\Exception $ex) {
             return view('errors.error_store_model');
@@ -102,6 +102,14 @@ class AdminPostController extends Controller
 
     public function edit(Request $request)
     {
+        try {
+            $post = Post::findOrFail($request->post);
+        } catch (\Exception $ex) {
+            return redirect()->back()->with(['error' => 'مقاله مورد نظر وجود ندارد.']);
+        }
+        $categories = Category::all();
+        return view('admin.post_management.edit')
+            ->with(['post' => $post, 'categories' => $categories]);
 
     }
 
@@ -115,24 +123,23 @@ class AdminPostController extends Controller
 
         try {
             $post = Post::findOrFail($request->post_id);
-        }catch (\Exception $ex){
-            return response()->json(['error' => 'مقله مورد نظر وجود ندارد.', 'status' => 404], 404);
+        } catch (\Exception $ex) {
+            return response()->json(['error' => 'مقاله مورد نظر وجود ندارد.', 'status' => 404], 404);
         }
 
         try {
-            if($post)
-            {
-                if ($post->approved == 0) {
-                    $post->approved = 1;
-                } else {
-                    $post->approved = 0;
 
-                }
-                $post->save();
-                $approved = $post->approved;
-                return response()->json(['success' => '.وضعیت انتشار با موفقیت تغییر کرد', 'publish' => $approved, 'status' => 200], 200);
+            if ($post->approved == 0) {
+                $post->approved = 1;
+            } else {
+                $post->approved = 0;
+
             }
-        }catch (\Exception $ex){
+            $post->save();
+            $approved = $post->approved;
+            return response()->json(['success' => '.وضعیت انتشار با موفقیت تغییر کرد', 'publish' => $approved, 'status' => 200], 200);
+
+        } catch (\Exception $ex) {
             return response()->json(['error' => '.عملیات انتشار انجام نشد', 'status' => 500], 500);
         }
     }
@@ -141,15 +148,14 @@ class AdminPostController extends Controller
     {
 
         $post = Post::findOrFail($request->post_id);
-        if(!$post){
+        if (!$post) {
             return response()->json(['warning' => 'مقاله مورد نظر وجود ندارد.', 'status' => 404], 200);
         }
         try {
             Post::destroy($request->post_id);
             return response()->json(['success' => 'مقاله نظر با موفقیت حذف شد.', 'status' => 200], 200);
-        }catch (\Exception $ex)
-        {
-            return response()->json(['exception'=>$ex->getMessage(),'status'=>500],500) ;
+        } catch (\Exception $ex) {
+            return response()->json(['exception' => $ex->getMessage(), 'status' => 500], 500);
         }
     }
 

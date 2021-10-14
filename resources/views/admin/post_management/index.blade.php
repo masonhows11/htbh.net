@@ -18,7 +18,7 @@
                     @csrf
                     <div class="form-group">
                         <label for="cat-dropdown">انتخاب یک دسته بندی :</label>
-                        <select class="form-control input-sm"  name="category" id="cat-dropdown">
+                        <select class="form-control input-sm" name="category" id="cat-dropdown">
                             <option value=""></option>
                             @foreach($categories as $category)
                                 <option value="{{ $category->name }}">{{ $category->title }}</option>
@@ -49,20 +49,22 @@
                     </thead>
                     <tbody>
                     @foreach($posts as $post)
-                    <tr>
-                        <td>{{ $post->id }}</td>
-                        <td>{{ $post->title }}</td>
-                        <td><span  data-post-id="{{ $post->id }}" class="btn btn-default" id="approvePost">{{ $post->approved == 1 ? 'منتشر شده':'منتشر نشده' }}</span></td>
-                        <td>
+                        <tr>
+                            <td>{{ $post->id }}</td>
+                            <td>{{ $post->title }}</td>
+                            <td><span data-post-id="{{ $post->id }}" class="btn btn-default"
+                                      id="approvePost">{{ $post->approved == 1 ? 'منتشر شده':'منتشر نشده' }}</span></td>
+                            <td>
                             <span>
-                                <a href="/admin/article/edit?post={{ $post->id }}" class="text-info text-bold"><i class="fa fa-edit"></i></a>
+                                <a href="/admin/article/edit?post={{ $post->id }}" class="text-info text-bold"><i
+                                        class="fa fa-edit"></i></a>
                             </span>
-                            <span>
+                                <span>
                                 <i class="fa fa-remove text-primary" data-post-id="{{ $post->id }}" id="deleteItem"></i>
                             </span>
 
-                        </td>
-                    </tr>
+                            </td>
+                        </tr>
                     @endforeach
                     </tbody>
                 </table>
@@ -97,7 +99,7 @@
                     $.ajax({
                         method: 'GET',
                         url: '{{ route('deleteArticle') }}',
-                        data: {post_id:post_id},
+                        data: {post_id: post_id},
                     }).done(function (data) {
                         if (data['status'] === 200) {
                             post_element.remove();
@@ -119,17 +121,15 @@
                                 text: data['error'],
                             })
                         }
-                    });
-                    // ajax scope end
-                }
-                // confirmed scope end
+                    });// ajax scope end
+                }// confirmed scope end
             });
         });
     </script>
     <script>
         $(document).on('click', '#approvePost', function (event) {
             event.preventDefault();
-            let  post_id = event.target.getAttribute('data-post-id');
+            let post_id = event.target.getAttribute('data-post-id');
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -138,26 +138,22 @@
             $.ajax({
                 method: 'POST',
                 url: '{{ route('approveArticle') }}',
-                data: {post_id:post_id},
+                data: {post_id: post_id},
             }).done(function (data) {
                 console.log(data);
-                if(data['status'] === 200)
-                {
-                    if(data['publish'] == 0)
-                    {
+                if (data['status'] === 200) {
+                    if (data['publish'] == 0) {
                         event.target.innerText = 'منتشر نشده';
                     }
-                    if (data['publish'] == 1){
+                    if (data['publish'] == 1) {
                         event.target.innerText = 'منتشر شده';
                     }
-
                     swal.fire({
                         icon: 'success',
                         text: data['success'],
                     })
                 }
-                if(data['status'] === 500)
-                {
+                if (data['status'] === 500) {
                     swal.fire({
                         icon: 'error',
                         text: data['error'],
