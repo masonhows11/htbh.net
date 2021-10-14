@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use App\services\GetImageName;
+use Illuminate\Support\Facades\Auth;
 
 class AdminPostController extends Controller
 {
@@ -86,6 +87,7 @@ class AdminPostController extends Controller
             'name'=>$request->name,
             'description' => $request->description,
             'image'=> $image_name,
+            'user_id'=> Auth::id(),
         ])->categories()->sync($request->category);
 
         return redirect()
