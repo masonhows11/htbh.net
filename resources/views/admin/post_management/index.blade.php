@@ -54,6 +54,12 @@
                         <td>{{ $post->title }}</td>
                         <td>{{ $post->approved }}</td>
                         <td>
+                            <span>
+                                <a href="/admin/article/edit?post={{ $post->id }}" class="text-info text-bold"><i class="fa fa-edit"></i></a>
+                            </span>
+                            <span>
+                                <i class="fa fa-remove text-primary" data-post-id="{{ $post->id }}" id="deleteItem"></i>
+                            </span>
 
                         </td>
                     </tr>
@@ -64,4 +70,60 @@
         </div>
 
     </div>
+@endsection
+@section('admin_scripts')
+    <script>
+        $(document).on('click', '#deleteItem', function (event) {
+            event.preventDefault();
+            let post_id = event.target.getAttribute('data-post-id');
+            let post_element = event.target.closest('tr');
+            swal.fire({
+                title: 'آیا مطمئن هستید این ایتم حذف شود؟',
+                icon: 'error',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'بله حذف کن!',
+                cancelButtonText: 'خیر',
+            }).then((result) => {
+                // confirmed scope start
+                if (result.isConfirmed) {
+                    // ajax scope start
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }
+                    });
+                    $.ajax({
+                        method: 'GET',
+                        url: '{{ route('deleteArticle') }}',
+                        data: {post_id:post_id},
+                    }).done(function (data) {
+                        if (data['status'] === 200) {
+                            post_element.remove();
+                            swal.fire({
+                                icon: 'success',
+                                text: data['success'],
+                            })
+                        }
+                        if (data['status'] === 404) {
+                            swal.fire({
+                                icon: 'warning',
+                                text: data['warning'],
+                            })
+                        }
+                    }).fail(function (data) {
+                        if (data['status'] === 500) {
+                            swal.fire({
+                                icon: 'error',
+                                text: data['error'],
+                            })
+                        }
+                    });
+                    // ajax scope end
+                }
+                // confirmed scope end
+            });
+        });
+    </script>
 @endsection

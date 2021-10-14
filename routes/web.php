@@ -126,7 +126,7 @@ Route::group(['prefix'=>'admin/article','middleware'=>'role:admin'],function (){
     Route::get('/create',[AdminPostController::class,'create'])->name('newArticle');
     Route::post('/store',[AdminPostController::class,'store'])->name('storeNewArticle');
     Route::get('/edit',[AdminPostController::class,'edit'])->name('editArticle');
-    Route::post('/updated',[AdminPostController::class,'update'])->name('updateArticle');
+    Route::post('/update',[AdminPostController::class,'update'])->name('updateArticle');
     Route::get('/confirm',[AdminPostController::class,'confirm'])->name('confirmArticle');
     Route::get('/delete',[AdminPostController::class,'delete'])->name('deleteArticle');
     Route::post('/listPostCategory',[AdminPostController::class,'listPostBaseCategory'])->name('listPostCategory');
