@@ -14,8 +14,10 @@
         <div class="row admin-content-models admin-add-post">
             <div class="col-lg-8 col-md-8">
 
-                <form action="{{ route('storeNewArticle') }}" method="post">
+                <form action="{{ route('updateArticle') }}" method="post">
                     @csrf
+
+                    <input type="hidden" name="id" value="{{ $post->id }}">
 
                     <div class="form-group">
                         <label for="title">عنوان مقاله به فارسی :</label>
@@ -43,8 +45,8 @@
                                 multiple
                                 class="form-control chosen-select @error('category') is-invalid @enderror">
                             <option value=""></option>
-                            @foreach($categories as $category)
-                                <option value="{{ $category->id }}">{{ $category->title }}</option>
+                           @foreach($categories as $category)
+                                <option value="{{ $category->id }}" {{ in_array($category->id,$post->categories()->pluck('category_id')->toArray())?'selected':''}}>{{  $category->title  }}</option>
                             @endforeach
                         </select>
                     </div>

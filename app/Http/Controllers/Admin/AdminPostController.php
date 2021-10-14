@@ -116,6 +116,44 @@ class AdminPostController extends Controller
     public function update(Request $request)
     {
 
+        $request->validate([
+            'category' => 'required',
+            'title' => 'required|min:3|max:50',
+            'name' => 'required|min:3|max:30',
+            'description' => 'required|min:10',
+            'image' => 'required',
+        ], $message = [
+            'category.required' => 'یک دسته بندی انتخاب کنید.',
+            'title.required' => 'عنوان مقاله الزامی است.',
+            'title.min' => 'حداقل ۵ کاراکتر.',
+            'title.max' => 'حداکثر ۴۰ کاراکتر.',
+            'name.required' => 'نام مقاله الزامی است.',
+            'name.min' => 'حداقل ۵ کاراکتر.',
+            'name.max' => 'حداکثر ۴۰ کاراکتر.',
+            'description.required' => 'توضیحات الزامی است.',
+            'description.min' => 'حداقل ۱۰ کاراکتر',
+            'image.required' => 'انخاب عکس الزامی است.',
+        ]);
+
+
+        try {
+            $image_name = GetImageName::getName($request->image);
+            $post = Post::findOrFail($request->id);
+            $post->title = $request->title;
+            $post->name = $request->name;
+            $post->description = $request->description;
+            $post->image = $image_name;
+            $post->save();
+            $post->categories()->sync($request->category);
+
+            return redirect(route('articles'))
+                ->with(['success' => 'مقاله  با موفقیت ویرایش شد.']);
+
+        } catch (\Exception $ex) {
+            return view('errors.error_store_model');
+        }
+
+
     }
 
     public function confirm(Request $request)
