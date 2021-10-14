@@ -112,7 +112,22 @@ class AdminPostController extends Controller
 
     public function confirm(Request $request)
     {
+        $course = Post::findOrFail($request->post_id);
+        if ($course->status_publish == 0) {
+            $course->status_publish = 1;
+            $course->course_status = 1;
+        } else {
+            $course->status_publish = 0;
+            $course->course_status = 0;
+        }
 
+        $course->save();
+        $publish_status = $course->status_publish;
+        if ($course->save()) {
+
+            return response()->json(['success' => '.وضعیت انتشار با موفقیت تغییر کرد', 'publish' => $publish_status, 'status' => 200], 200);
+        }
+        return response()->json(['error' => '.عملیات انتشار انجام نشد', 'status' => 500], 500);
     }
 
     public function delete(Request $request)
