@@ -19,7 +19,6 @@
                     <div class="form-group">
                         <label for="cat-dropdown">انتخاب یک دسته بندی :</label>
                         <select class="form-control input-sm" name="category" id="cat-dropdown">
-                            <option value=""></option>
                             @foreach($categories as $category)
                                 <option value="{{ $category->name }}">{{ $category->title }}</option>
                             @endforeach
@@ -36,40 +35,41 @@
             <a href="{{ route('newArticle') }}" class="btn btn-success">ایجاد مقاله جدید</a>
         </div>
 
-        <div class="row admin-content-models add-post-content">
-            <div class="col-lg-6 col-md-6 col-xs-6 article-section">
-                <table class="table table-bordered">
-                    <thead>
-                    <tr>
-                        <th>شناسه</th>
-                        <th>عنوان</th>
-                        <th>تایید</th>
-                        <th>عملیات</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($posts as $post)
+
+            <div class="row admin-content-models add-post-content">
+                <div class="col-lg-6 col-md-6 col-xs-6 article-section">
+                    <table class="table table-bordered">
+                        <thead>
                         <tr>
-                            <td>{{ $post->id }}</td>
-                            <td>{{ $post->title }}</td>
-                            <td><span data-post-id="{{ $post->id }}" class="btn btn-default"
-                                      id="approvePost">{{ $post->approved == 1 ? 'منتشر شده':'منتشر نشده' }}</span></td>
-                            <td>
+                            <th>شناسه</th>
+                            <th>عنوان</th>
+                            <th>تایید</th>
+                            <th>عملیات</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($posts as $post)
+                            <tr>
+                                <td>{{ $post->id }}</td>
+                                <td>{{ $post->title }}</td>
+                                <td><span data-post-id="{{ $post->id }}" class="btn btn-default"
+                                          id="approvePost">{{ $post->approved == 1 ? 'منتشر شده':'منتشر نشده' }}</span></td>
+                                <td>
                             <span>
                                 <a href="/admin/article/edit?post={{ $post->id }}" class="text-info text-bold"><i
                                         class="fa fa-edit"></i></a>
                             </span>
-                                <span>
+                                    <span>
                                 <i class="fa fa-remove text-primary" data-post-id="{{ $post->id }}" id="deleteItem"></i>
                             </span>
 
-                            </td>
-                        </tr>
-                    @endforeach
-                    </tbody>
-                </table>
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
 
     </div>
 @endsection

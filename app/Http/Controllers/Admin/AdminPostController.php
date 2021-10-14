@@ -8,6 +8,7 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use App\services\GetImageName;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class AdminPostController extends Controller
 {
@@ -24,7 +25,6 @@ class AdminPostController extends Controller
     public function listPostBaseCategory(Request $request)
     {
 
-
         $request->validate([
             'category' => 'required|exists:categories,name'
         ], $message = [
@@ -32,32 +32,31 @@ class AdminPostController extends Controller
             'category.exists' => 'دسته بندی مورد نظر وجود ندارد.',
         ]);
         $categories = Category::all();
-
-
         if ($request->filled('category')) {
             try {
 
+              $posts =
+                  DB::table('posts')
+                      ->join('category_post','posts.id','=','category_post.post_id')
+                      ->join('categories','categories.id','=','category_post.category_id')
+                      ->select('posts.*')->where('categories.name','=',$request->category)->get();
+               return view('admin.post_management.index')->with(['posts'=>$posts,'categories'=>$categories]);
 
             } catch (\Exception $ex) {
-
+                    return view('errors.error_not_found_model');
             }
         }
-
     }
 
     public function create()
     {
-
         $categories = Category::all();
         return view('admin.post_management.create')->with(['categories' => $categories]);
-
     }
 
 
     public function store(Request $request)
     {
-
-
         $request->validate([
             'category' => 'required',
             'title' => 'required|min:3|max:50',
@@ -77,10 +76,8 @@ class AdminPostController extends Controller
             'image.required' => 'انخاب عکس الزامی است.',
         ]);
 
-
         $categories = Category::all();
         try {
-
             $image_name = GetImageName::getName($request->image);
             Post::create([
                 'title' => $request->title,
@@ -134,8 +131,6 @@ class AdminPostController extends Controller
             'description.min' => 'حداقل ۱۰ کاراکتر',
             'image.required' => 'انخاب عکس الزامی است.',
         ]);
-
-
         try {
             $image_name = GetImageName::getName($request->image);
             $post = Post::findOrFail($request->id);
@@ -164,14 +159,12 @@ class AdminPostController extends Controller
         } catch (\Exception $ex) {
             return response()->json(['error' => 'مقاله مورد نظر وجود ندارد.', 'status' => 404], 404);
         }
-
         try {
 
             if ($post->approved == 0) {
                 $post->approved = 1;
             } else {
                 $post->approved = 0;
-
             }
             $post->save();
             $approved = $post->approved;
