@@ -36,9 +36,9 @@
         </div>
 
 
-            <div class="row admin-content-models list-post-content">
+            <div class="row admin-content-models list-post-content" >
 
-                <div class="col-lg-6 col-md-6 col-xs-6 article-section">
+                <div class="col-lg-6 col-md-6 col-xs-6 article-section" >
                     <table class="table table-bordered">
                         <thead>
                         <tr>
@@ -71,9 +71,11 @@
                         </tbody>
                     </table>
                 </div>
+
                 <div class="paginate-sec">
                     {{ $posts->links() }}
                 </div>
+
             </div>
 
     </div>

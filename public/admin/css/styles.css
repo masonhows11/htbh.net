@@ -1,13 +1,13 @@
 
-.add-post-content .fa-edit,
+.list-post-content .fa-edit,
 .users-table .fa-edit{
     font-size:2.3rem;
 }
-.add-post-content .fa-remove,
+.list-post-content .fa-remove,
 .users-table .fa-remove{
     font-size:2.7rem;
 }
-.add-post-content .fa-remove:hover,
+.list-post-content .fa-remove:hover,
 .users-table .fa-remove:hover
 {
     cursor: pointer;
@@ -91,10 +91,15 @@
     margin-top:40px;
     height: 420px;
 }
-
+.list-post-content .article-section{
+    min-height:280px;
+}
 .category-dropdown-article{
     display: flex;
     justify-content: center;
+}
+.list-post-content .paginate-sec{
+    margin-top:2rem;
 }
 .admin-add-post{
     margin-top: 40px;
