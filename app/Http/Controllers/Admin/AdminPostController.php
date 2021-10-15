@@ -15,7 +15,7 @@ class AdminPostController extends Controller
 
     public function index()
     {
-        $posts = Post::orderBy('created_at', 'asc')->get();
+        $posts = Post::orderBy('created_at', 'asc')->paginate('3');
         $categories = Category::all();
         return view('admin.post_management.index')
             ->with(['posts' => $posts,
@@ -32,20 +32,18 @@ class AdminPostController extends Controller
             'category.exists' => 'دسته بندی مورد نظر وجود ندارد.',
         ]);
         $categories = Category::all();
-        if ($request->filled('category')) {
-            try {
 
-              $posts =
-                  DB::table('posts')
-                      ->join('category_post','posts.id','=','category_post.post_id')
-                      ->join('categories','categories.id','=','category_post.category_id')
-                      ->select('posts.*')->where('categories.name','=',$request->category)->get();
-               return view('admin.post_management.index')->with(['posts'=>$posts,'categories'=>$categories]);
-
-            } catch (\Exception $ex) {
-                    return view('errors.error_not_found_model');
-            }
+        try {
+            $posts =
+                DB::table('posts')
+                    ->join('category_post', 'posts.id', '=', 'category_post.post_id')
+                    ->join('categories', 'categories.id', '=', 'category_post.category_id')
+                    ->select('posts.*')->where('categories.name', '=', $request->category)->get();
+            return view('admin.post_management.index')->with(['posts' => $posts, 'categories' => $categories]);
+        } catch (\Exception $ex) {
+            return view('errors.error_not_found_model');
         }
+
     }
 
     public function create()

@@ -60,6 +60,7 @@
 
                     <div class="form-group">
                         <button type="submit" class="btn btn-success">ذخیره</button>
+                        <a href="{{ route('articles') }}" class="btn btn-default">انصراف</a>
                     </div>
 
 
