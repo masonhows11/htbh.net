@@ -38,7 +38,7 @@
 
             <div class="row admin-content-models list-post-content" >
 
-                <div class="col-lg-6 col-md-6 col-xs-6 article-section" >
+                <div class="col-lg-8 col-md-8 col-xs-8 article-section" >
                     <table class="table table-bordered">
                         <thead>
                         <tr>
