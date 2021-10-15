@@ -10,7 +10,7 @@ class Post extends Model
 {
     use HasFactory,Sluggable;
 
-
+    protected $table = 'posts';
     protected $fillable =
         ['title',
             'name',
