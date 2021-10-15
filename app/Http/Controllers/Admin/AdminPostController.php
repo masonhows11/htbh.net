@@ -16,6 +16,7 @@ class AdminPostController extends Controller
     public function index()
     {
         $posts = Post::orderBy('created_at', 'asc')->Paginate(3);
+        //dd($posts);
         $categories = Category::all();
         return view('admin.post_management.index')
             ->with(['posts' => $posts,

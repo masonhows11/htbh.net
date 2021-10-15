@@ -73,7 +73,7 @@
                 </div>
 
                 <div class="paginate-sec">
-                    {{ $posts->links() }}
+                    {{ $posts->onEachSide(3)->links() }}
                 </div>
 
             </div>
