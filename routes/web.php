@@ -140,7 +140,7 @@ Route::group(['prefix'=>'admin/course','middleware'=>'role:admin'],function (){
 
     Route::get('/index', [AdminCourseController::class, 'index'])->name('courses');
     Route::get('/create', [AdminCourseController::class, 'create'])->name('newCourse');
-    Route::post('/store', [AdminCourseController::class, 'store']);
+    Route::post('/store', [AdminCourseController::class, 'store'])->name('storeNewCourse');
     Route::get('/edit', [AdminCourseController::class, 'edit']);
     Route::post('/update', [AdminCourseController::class, 'update']);
     Route::get('/delete', [AdminCourseController::class, 'delete'])->name('deleteCourse');

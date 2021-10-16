@@ -21,9 +21,9 @@ class AdminCourseController extends Controller
 
     public function create()
     {
-        $parent_categories = Category::where('parent_id', null)->get();
-        return view('admin.training_course_management.create')
-            ->with('parent_categories', $parent_categories);
+        $categories = Category::all();
+        return view('admin.course_management.create')
+            ->with('categories', $categories);
     }
 
     public function store(Request $request)
