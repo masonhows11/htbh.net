@@ -138,8 +138,8 @@ Route::group(['prefix'=>'admin/article','middleware'=>'role:admin'],function (){
 
 Route::group(['prefix'=>'admin/course','middleware'=>'role:admin'],function (){
 
-    Route::get('/index', [AdminCourseController::class, 'index']);
-    Route::get('/create', [AdminCourseController::class, 'create']);
+    Route::get('/index', [AdminCourseController::class, 'index'])->name('courses');
+    Route::get('/create', [AdminCourseController::class, 'create'])->name('newCourse');
     Route::post('/store', [AdminCourseController::class, 'store']);
     Route::get('/edit', [AdminCourseController::class, 'edit']);
     Route::post('/update', [AdminCourseController::class, 'update']);

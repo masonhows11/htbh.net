@@ -18,7 +18,7 @@ class AdminCourseController extends Controller
             ->with(['courses'=>$courses,'categories'=>$categories]);
     }
 
-   
+
     public function create()
     {
         $parent_categories = Category::where('parent_id', null)->get();
@@ -29,7 +29,7 @@ class AdminCourseController extends Controller
     public function store(Request $request)
     {
 
-        $validated = $request->validate([
+        $request->validate([
             'title' => 'required|max:150',
             'name' => 'required|max:150',
             'description' => 'required|min:50',
@@ -89,7 +89,7 @@ class AdminCourseController extends Controller
     public function update(Request $request)
     {
 
-        $validated = $request->validate([
+        $request->validate([
             'title' => 'required|max:150',
             'name' => 'required|max:150',
             'description' => 'required|min:50',

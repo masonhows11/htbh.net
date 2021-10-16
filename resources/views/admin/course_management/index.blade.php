@@ -13,7 +13,7 @@
 
     <div class="row category-dropdown-article">
         <div class="col-lg-6 col-md-6">
-            <form action="{{route('listPostCategory')}}" method="post">
+            <form action="{{--{{route('listCourseCategory')}}--}}" method="post">
                 @csrf
                 <div class="form-group">
                     <label for="cat-dropdown">انتخاب یک دسته بندی :</label>
@@ -24,21 +24,20 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <input type="submit" class="btn btn-success" value="دریافت مقالات">
+                    <input type="submit" class="btn btn-success" value="دریافت دوره ها">
                 </div>
             </form>
         </div>
     </div>
 
     <div class="row add-course-button">
-        <a href="#" class="btn btn-success">ایجاد دوره جدید</a>
+        <a href="{{ route('newCourse') }}" class="btn btn-success">ایجاد دوره جدید</a>
     </div>
 
     @isset($courses)
-        <div class="row admin-content-models list-post-content" >
+        <div class="row admin-content-models list-course-content" >
 
-
-            <div class="col-lg-8 col-md-8 col-xs-8 article-section" >
+            <div class="col-lg-8 col-md-8 col-xs-8 course-section">
                 <table class="table table-bordered table-responsive">
                     <thead>
                     <tr>
@@ -70,12 +69,12 @@
             </div>
 
             <div class="paginate-sec">
-                {{ $posts->onEachSide(3)->links() }}
+                {{ $courses->onEachSide(3)->links() }}
             </div>
 
         </div>
     @else
-        <p class="text-center">مقاله ای برای نمایش وجود ندارد.</p>
+        <p class="text-center">n,vi ای برای نمایش وجود ندارد.</p>
     @endisset
 
 

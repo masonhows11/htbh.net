@@ -15,11 +15,10 @@ class AdminPostController extends Controller
 
     public function index()
     {
-        $posts = Post::orderBy('created_at', 'asc')->Paginate(3);
         $categories = Category::all();
+        $posts = Post::orderBy('created_at', 'asc')->Paginate(3);
         return view('admin.post_management.index')
-            ->with(['posts' => $posts,
-                'categories' => $categories]);
+            ->with(['posts' => $posts, 'categories' => $categories]);
     }
 
     public function listPostBaseCategory(Request $request)

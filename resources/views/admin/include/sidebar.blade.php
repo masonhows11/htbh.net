@@ -103,7 +103,7 @@
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="#"><i class="fa fa-circle-o"></i>لیست دوره ها</a></li>
+                    <li><a href="{{ route('courses') }}"><i class="fa fa-circle-o"></i>لیست دوره ها</a></li>
                 </ul>
             </li>
 

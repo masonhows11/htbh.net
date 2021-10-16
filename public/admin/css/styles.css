@@ -73,10 +73,12 @@
     line-height:normal;
     padding-right:1rem;
 }
+.list-course-content,
 .list-post-content{
     margin-top:1.5rem;
     height: 420px;
 }
+.list-course-content .course-section,
 .list-post-content .article-section{
     min-height:280px;
 }
@@ -84,6 +86,7 @@
     display: flex;
     justify-content: center;
 }
+.list-course-content .paginate-sec,
 .list-post-content .paginate-sec{
     margin-top:2rem;
 }
