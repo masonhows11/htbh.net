@@ -34,26 +34,29 @@
         <a href="#" class="btn btn-success">ایجاد دوره جدید</a>
     </div>
 
-    @isset($post)
+    @isset($courses)
         <div class="row admin-content-models list-post-content" >
 
 
             <div class="col-lg-8 col-md-8 col-xs-8 article-section" >
-                <table class="table table-bordered">
+                <table class="table table-bordered table-responsive">
                     <thead>
                     <tr>
-                        <th>شناسه</th>
-                        <th>عنوان</th>
-                        <th>تایید</th>
-                        <th>عملیات</th>
+                        <th class="text-center">شناسه</th>
+                        <th class="text-center">نام دوره</th>
+                        <th class="text-center">مشخصات دوره</th>
+                        <th class="text-center">وضعیت انتشار</th>
+                        <th class="text-center">ایجاد قسمت جدید</th>
+                        <th class="text-center">ویرایش</th>
+                        <th class="text-center">حذف</th>
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($posts as $post)
+                    @foreach($courses as $course)
                         <tr>
-                            <td>{{ $post->id }}</td>
-                            <td>{{ $post->title }}</td>
-                            <td><span data-post-id="{{ $post->id }}" class="btn btn-default"
+                            <td>{{ $course->id }}</td>
+                            <td>{{ $course->title }}</td>
+                            <td><span data-post-id="{{ $course->id }}" class="btn btn-default"
                                       id="approvePost">{{ $post->approved == 1 ? 'منتشر شده':'منتشر نشده' }}</span></td>
                             <td>
                             <span>
