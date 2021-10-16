@@ -35,7 +35,9 @@
             <a href="{{ route('newArticle') }}" class="btn btn-success">ایجاد مقاله جدید</a>
         </div>
 
-        @isset($post)
+        @if(count($posts) == 0)
+            <p class="text-center">مقاله ای برای نمایش وجود ندارد.</p>
+        @else
             <div class="row admin-content-models list-post-content" >
 
 
@@ -78,9 +80,9 @@
                 </div>
 
             </div>
-        @else
-        <p class="text-center">مقاله ای برای نمایش وجود ندارد.</p>
-        @endisset
+        @endif
+
+     
 
     </div>
 @endsection
