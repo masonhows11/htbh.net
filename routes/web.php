@@ -20,6 +20,9 @@ use App\Http\Controllers\Admin\AdminPermAssignController;
 
 use App\Http\Controllers\Admin\AdminCategoryController;
 use App\Http\Controllers\Admin\AdminPostController;
+
+use App\Http\Controllers\Admin\AdminCourseController;
+use App\Http\Controllers\Admin\AdminLessonController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -130,6 +133,32 @@ Route::group(['prefix'=>'admin/article','middleware'=>'role:admin'],function (){
     Route::post('/confirm',[AdminPostController::class,'confirm'])->name('approveArticle');
     Route::get('/delete',[AdminPostController::class,'delete'])->name('deleteArticle');
     Route::post('/listPostCategory',[AdminPostController::class,'listPostBaseCategory'])->name('listPostCategory');
+
+});
+
+Route::group(['prefix'=>'admin/course','middleware'=>'role:admin'],function (){
+
+    Route::get('/index', [AdminCourseController::class, 'index']);
+    Route::get('/create', [AdminCourseController::class, 'create']);
+    Route::post('/store', [AdminCourseController::class, 'store']);
+    Route::get('/edit', [AdminCourseController::class, 'edit']);
+    Route::post('/update', [AdminCourseController::class, 'update']);
+    Route::get('/delete', [AdminCourseController::class, 'delete'])->name('deleteCourse');
+    Route::post('/changePublishStatus', [AdminCourseController::class, 'changePublishStatus'])->name('changePublishStatus');
+    Route::get('/detail', [AdminCourseController::class, 'detail']);
+    Route::get('/active', [AdminCourseController::class, 'changeStatus']);
+
+});
+
+Route::group(['prefix'=>'admin/lesson','middleware'=>'role:admin'],function (){
+
+
+    Route::get('/newLesson', [AdminLessonController::class, 'createNewLesson']);
+    Route::post('/storeNewLesson', [AdminLessonController::class, 'storeNewLesson']);
+    Route::get('/editLesson', [AdminLessonController::class, 'editLesson']);
+    Route::post('/updateLesson', [AdminLessonController::class, 'updateLesson']);
+    Route::get('/deleteLesson', [AdminLessonController::class, 'deleteLesson'])->name('deleteLesson');
+
 
 
 });
