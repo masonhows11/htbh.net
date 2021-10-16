@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
+use App\Models\Course;
 use App\Models\lesson;
 use Illuminate\Http\Request;
 
@@ -10,9 +12,10 @@ class AdminCourseController extends Controller
 {
     public function index()
     {
-        $courses = Course::all();//orderBy('id','asc')->get();
-        return view('admin.training_course_management.index')
-            ->with('courses', $courses);
+        $categories = Category::all();
+        $courses = Course::orderBy('created_at','asc')->paginate(3);
+        return view('admin.course_management.index')
+            ->with(['courses'=>$courses,'categories'=>$categories]);
     }
 
     ////////////////////////////// course section ////////////////////////////
