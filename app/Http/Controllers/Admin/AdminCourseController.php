@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Course;
 use App\Models\lesson;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class AdminCourseController extends Controller
 {

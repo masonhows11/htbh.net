@@ -2,7 +2,7 @@
     margin-top: 20px;
 }
 .alert-section .alert-box{
-    height: 100px;
+    height: auto;
 }
 .edit-user-wrapper .edit-user-section,
 .alert-section {

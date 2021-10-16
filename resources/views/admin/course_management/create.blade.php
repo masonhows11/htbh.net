@@ -19,7 +19,7 @@
                     @csrf
 
                     <div class="form-group">
-                        <label for="title">عنوان:</label>
+                        <label for="title">عنوان دوره به فارسی:</label>
                         <input type="text"
                                name="title"
                                class="form-control @error('title') is-invalid @enderror"
@@ -28,7 +28,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="name">نام انگلیسی دوره:</label>
+                        <label for="name">نام  دوره به انگلیسی:</label>
                         <input type="text"
                                name="name"
                                value="{{ old('name') }}"
