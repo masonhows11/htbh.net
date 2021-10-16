@@ -168,7 +168,7 @@
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <img src="{{ asset('admin/images/user-100.png') }}" class="user-image" alt="User">
-                        <span class="hidden-xs">Mason hows11</span>
+                        <span class="hidden-xs">{{ \Illuminate\Support\Facades\Auth::user()->name }}</span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->
@@ -176,7 +176,7 @@
                             <img src="{{ asset('admin/images/user-100.png') }}" class="img-circle" alt="User Image">
 
                             <p>
-                                Mason hows11
+                                {{ \Illuminate\Support\Facades\Auth::user()->name }}
                                 <small>مدیریت کل سایت</small>
                             </p>
                         </li>

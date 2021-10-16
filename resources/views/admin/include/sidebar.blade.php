@@ -7,7 +7,7 @@
                 <img src="{{ asset('admin/images/user-100.png') }}" class="img-circle" alt="User Image">
             </div>
             <div class="pull-right info">
-                <p>Mason hows11</p>
+                <p>{{ \Illuminate\Support\Facades\Auth::user()->name }}</p>
                 <a href="#"><i class="fa fa-circle text-success"></i> آنلاین</a>
             </div>
         </div>
@@ -94,6 +94,18 @@
                 </ul>
             </li>
 
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-newspaper-o"></i>
+                    <span> مدیریت دوره های آموزشی</span>
+                    <span class="pull-left-container">
+              <i class="fa fa-angle-right pull-left"></i>
+            </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="#"><i class="fa fa-circle-o"></i>لیست دوره ها</a></li>
+                </ul>
+            </li>
 
             <li>
                 <a href="pages/calendar.html">
