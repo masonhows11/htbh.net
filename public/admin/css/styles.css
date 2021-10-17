@@ -83,6 +83,8 @@
     min-height:280px;
 }
 .category-dropdown-article{
+
+    margin-top: 20px;
     display: flex;
     justify-content: center;
 }
