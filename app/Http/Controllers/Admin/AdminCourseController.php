@@ -8,6 +8,7 @@ use App\Models\Course;
 use App\Models\lesson;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
 
 class AdminCourseController extends Controller
@@ -19,7 +20,30 @@ class AdminCourseController extends Controller
         return view('admin.course_management.index')
             ->with(['courses'=>$courses,'categories'=>$categories]);
     }
+    public function listCourseBaseCategory(Request $request)
+    {
+        $request->validate([
+            'category' => 'required|exists:categories,name'
+        ], $message = [
+            'category.required' => 'یک دسته بندی انتخاب کنید.',
+            'category.exists' => 'دسته بندی مورد نظر وجود ندارد.',
+        ]);
+        $categories = Category::all();
 
+        try {
+            $courses =
+                DB::table('courses')
+                    ->join('category_course', 'courses.id', '=', 'category_course.course_id')
+                    ->join('categories', 'categories.id', '=', 'category_course.category_id')
+                    ->select('courses.*')
+                    ->where('categories.name', '=', $request->category)
+                    ->orderBy('created_at','asc')->paginate(3);
+           return view('admin.course_management.index')->with(['courses' => $courses, 'categories' => $categories]);
+        } catch (\Exception $ex) {
+             return view('errors.error_not_found_model');
+        }
+
+    }
 
     public function create()
     {
@@ -132,6 +156,7 @@ class AdminCourseController extends Controller
         return redirect('/admin/course/index')
             ->with('success', 'دوره آموزشی با موفقیت ویرایش شد.');
     }
+
 
 
     public function delete(Request $request)

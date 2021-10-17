@@ -13,7 +13,7 @@
 
         <div class="row category-dropdown-article">
             <div class="col-lg-6 col-md-6">
-                <form action="{{--{{route('listCourseCategory')}}--}}" method="post">
+                <form action="{{route('listCourseCategory')}}" method="post">
                     @csrf
                     <div class="form-group">
                         <label for="cat-dropdown">انتخاب یک دسته بندی :</label>

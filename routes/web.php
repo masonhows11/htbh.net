@@ -139,10 +139,11 @@ Route::group(['prefix'=>'admin/article','middleware'=>'role:admin'],function (){
 Route::group(['prefix'=>'admin/course','middleware'=>'role:admin'],function (){
 
     Route::get('/index', [AdminCourseController::class, 'index'])->name('courses');
+    Route::post('/listCourseCategory',[AdminCourseController::class,'listCourseBaseCategory'])->name('listCourseCategory');
     Route::get('/create', [AdminCourseController::class, 'create'])->name('newCourse');
     Route::post('/store', [AdminCourseController::class, 'store'])->name('storeNewCourse');
     Route::get('/edit', [AdminCourseController::class, 'edit']);
-    Route::post('/update', [AdminCourseController::class, 'update']);
+    Route::post('/update', [AdminCourseController::class, 'update'])->name('updateCourse');
     Route::get('/delete', [AdminCourseController::class, 'delete'])->name('deleteCourse');
     Route::post('/changePublishStatus', [AdminCourseController::class, 'changePublishStatus'])->name('changePublishStatus');
     Route::get('/detail', [AdminCourseController::class, 'detail']);
