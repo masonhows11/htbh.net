@@ -161,6 +161,7 @@
                 if(event.target.value == 1)
                 {
                     price.disabled = true;
+                    price.value = '';
                 }
 
                 if(event.target.value == 2){

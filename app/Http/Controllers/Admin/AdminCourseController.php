@@ -156,8 +156,9 @@ class AdminCourseController extends Controller
         $course->status_paid = $request->status_paid;
         $course->level_course = $request->level_course;
         $course->image = $image_path;
+        $course->price = $request->price;
         $course->save();
-        $course->categories()->sync($request->cat);
+        $course->categories()->sync($request->category);
         return redirect('/admin/course/index')
             ->with('success', 'دوره آموزشی با موفقیت ویرایش شد.');
     }
