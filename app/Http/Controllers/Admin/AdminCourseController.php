@@ -136,11 +136,16 @@ class AdminCourseController extends Controller
 
     public function delete(Request $request)
     {
-        if (Course::destroy($request->course_id)) {
-
-            return response()->json(['success' => '.دوره مورد نظر با موفقیت حذف شد', 'status' => 200], 200);
+        $post = Course::findOrFail($request->course_id);
+        if (!$post) {
+            return response()->json(['warning' => 'مقاله مورد نظر وجود ندارد.', 'status' => 404], 200);
         }
-        return response()->json(['error' => '.عملیات حذف  انجام نشد', 'status' => 500], 500);
+        try {
+            Course::destroy($request->course_id);
+            return response()->json(['success' => 'مقاله نظر با موفقیت حذف شد.', 'status' => 200], 200);
+        } catch (\Exception $ex) {
+            return response()->json(['exception' => $ex->getMessage(), 'status' => 500], 500);
+        }
 
     }
 
