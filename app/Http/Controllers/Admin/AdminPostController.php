@@ -175,7 +175,7 @@ class AdminPostController extends Controller
     public function delete(Request $request)
     {
 
-        $post = Post::findOrFail($request->post_id);
+        $post = Post::find($request->post_id);
         if (!$post) {
             return response()->json(['warning' => 'مقاله مورد نظر وجود ندارد.', 'status' => 404], 200);
         }
