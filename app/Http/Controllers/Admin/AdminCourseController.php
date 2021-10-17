@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Course;
 use App\Models\lesson;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 
 class AdminCourseController extends Controller
@@ -37,7 +38,7 @@ class AdminCourseController extends Controller
             'status_paid' => ['between:1,2', 'required', 'numeric'],
             'level_course' => 'required',
             'image' => 'required',
-            'cat' => 'required',
+            'category' => 'required',
             'price' => ['between:0,100000000', 'numeric', Rule::requiredIf($request->status_paid == 2)],
         ], $messages = [
             'title.required' => 'فیلد عنوان الزامی است.',
@@ -56,7 +57,7 @@ class AdminCourseController extends Controller
             'price.between' => 'حدود قیمت باید بیشتر از ۱۰۰ تومان باشد.'
         ]);
         $image_path = null;
-        if ($request->has('image')) {
+        if ($request->filled('image')) {
             $image = $request->image;
             $image_path = str_replace('http://localhost/', '', $image);
         }
@@ -71,7 +72,7 @@ class AdminCourseController extends Controller
             'price' => $request->price,
             'image' => $image_path,
         ]);
-        $course->categories()->sync($request->cat);
+        $course->categories()->sync($request->category);
         return redirect('/admin/course/index')->with('success', 'دوره آموزشی با موفقیت ایجاد شد.');
     }
 
