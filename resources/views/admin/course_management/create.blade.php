@@ -63,8 +63,14 @@
 
                     <div class="form-group">
                         <label for="level_course">سطح دوره:</label>
-                        <input type="text" class="form-control @error('level_course') is-invalid @enderror"
+                        <select type="text" class="form-control @error('level_course') is-invalid @enderror"
                                name="level_course" value="{{ old('level_course') }}" id="level_course">
+                            <option value=""></option>
+                            <option value="1">مقدماتی</option>
+                            <option value="2">متوسط</option>
+                            <option value="3">پیشرفته</option>
+                            <option value="4">حرفه ای</option>
+                        </select>
                     </div>
 
 
@@ -155,6 +161,19 @@
                     price.disabled = false;
                 }
             })
+
+            $(window).on('load',function () {
+                let value = $('#paid option:selected').val();
+                if(value == 1)
+                {
+                    price.disabled = true;
+                }
+                if(value == 2)
+                {
+                    price.disabled = false;
+                }
+            });
+
         });
     </script>
 @endsection

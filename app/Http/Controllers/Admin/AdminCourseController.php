@@ -29,7 +29,7 @@ class AdminCourseController extends Controller
 
     public function store(Request $request)
     {
-
+        //return $request;
         $request->validate([
             'title' => 'required|max:150',
             'name' => 'required|max:150',
