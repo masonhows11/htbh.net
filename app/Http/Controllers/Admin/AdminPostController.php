@@ -151,11 +151,13 @@ class AdminPostController extends Controller
     public function confirm(Request $request)
     {
 
-        try {
-            $post = Post::findOrFail($request->post_id);
-        } catch (\Exception $ex) {
+
+        $post = Post::find($request->post_id);
+        if ($post) {
             return response()->json(['error' => 'مقاله مورد نظر وجود ندارد.', 'status' => 404], 404);
         }
+
+
         try {
 
             if ($post->approved == 0) {

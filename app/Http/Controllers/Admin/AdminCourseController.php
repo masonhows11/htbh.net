@@ -136,8 +136,8 @@ class AdminCourseController extends Controller
 
     public function delete(Request $request)
     {
-        $post = Course::find($request->course_id);
-        if (!$post) {
+        $course = Course::find($request->course_id);
+        if (!$course) {
             return response()->json(['warning' => 'دوره مورد نظر وجود ندارد.', 'status' => 404], 200);
         }
         try {
@@ -184,22 +184,26 @@ class AdminCourseController extends Controller
     public function changePublishStatus(Request $request)
     {
 
-        $course = Course::findOrFail($request->course_id);
-        if ($course->status_publish == 0) {
-            $course->status_publish = 1;
-            $course->course_status = 1;
-        } else {
-            $course->status_publish = 0;
-            $course->course_status = 0;
+        $course = Course::find($request->course_id);
+        if (!$course) {
+            return response()->json(['warning' => 'دوره مورد نظر وجود ندارد.', 'status' => 404], 200);
+        }
+        try {
+            if ($course->status_publish == 0) {
+                $course->status_publish = 1;
+                $course->course_status = 1;
+            } else {
+                $course->status_publish = 0;
+                $course->course_status = 0;
+            }
+            $course->save();
+            $publish_status = $course->status_publish;
+            return response()->json(['success' => 'وضعیت انتشار با موفقیت تغییر کرد.', 'publish' => $publish_status, 'status' => 200], 200);
+        }catch (\Exception $ex)
+        {
+            return response()->json(['error' => 'عملیات انتشار انجام نشد.', 'status' => 500], 500);
         }
 
-        $course->save();
-        $publish_status = $course->status_publish;
-        if ($course->save()) {
-
-            return response()->json(['success' => '.وضعیت انتشار با موفقیت تغییر کرد', 'publish' => $publish_status, 'status' => 200], 200);
-        }
-        return response()->json(['error' => '.عملیات انتشار انجام نشد', 'status' => 500], 500);
     }
 
 

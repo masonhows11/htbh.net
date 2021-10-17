@@ -58,7 +58,7 @@
                                 <td class="text-center">{{ $course->id }}</td>
                                 <td class="text-center">{{ $course->title }}</td>
                                 <td class="text-center"><a href="/admin/course/detail?course={{$course->id}}"><i class="fa fa-list-alt"></i></a></td>
-                                <td class="text-center"><button data-course-id="{{$course->id}}" id="publish_course">{{ $course->status_publish == 1 ? 'منتشر شده': 'منتشر نشده' }}</button></td>
+                                <td class="text-center"><span class="btn btn-default" data-course-id="{{$course->id}}" id="publish_course">{{ $course->status_publish == 1 ? 'منتشر شده': 'منتشر نشده' }}</span></td>
                                 <td class="text-center"><a href="/admin/course/newLesson?course={{ $course->id }}"><i class="fa fa-save"></i></a></td>
 
                                 <td>
@@ -137,7 +137,7 @@
         });
     </script>
     <script>
-        $(document).on('click', '#approvePost', function (event) {
+        $(document).on('click', '#publish_course', function (event) {
             event.preventDefault();
             let course_id = event.target.getAttribute('data-course-id');
             $.ajaxSetup({
@@ -150,7 +150,6 @@
                 url: '{{ route('changePublishStatus') }}',
                 data: {course_id:course_id},
             }).done(function (data) {
-                console.log(data);
                 if (data['status'] === 200) {
                     if (data['publish'] == 0) {
                         event.target.innerText = 'منتشر نشده';
@@ -169,9 +168,13 @@
                         text: data['error'],
                     })
                 }
-            }).fail(function (data) {
-                console.log(data);
-            });
+                if (data['status'] === 404) {
+                    swal.fire({
+                        icon: 'warning',
+                        text: data['warning'],
+                    })
+                }
+            })
         });
     </script>
 @endsection
