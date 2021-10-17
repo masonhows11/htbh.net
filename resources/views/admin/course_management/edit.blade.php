@@ -17,6 +17,7 @@
                 <form action="{{ route('updateCourse') }}" method="post">
                     @csrf
 
+                    <input type="hidden" name="id" value="{{ $course->id }}">
                     <div class="form-group">
                         <label for="title">عنوان دوره به فارسی:</label>
                         <input type="text"
@@ -64,11 +65,11 @@
                         <label for="level_course">سطح دوره:</label>
                         <select type="text" class="form-control @error('level_course') is-invalid @enderror"
                                 name="level_course" value="{{ old('level_course') }}" id="level_course">
-                            <option value=""></option>
-                            <option value="1">مقدماتی</option>
-                            <option value="2">متوسط</option>
-                            <option value="3">پیشرفته</option>
-                            <option value="4">حرفه ای</option>
+                            <option value="0">سطح دوره را انتخاب کنید..</option>
+                            <option value="1" {{ ($course->level_course == 1) ? 'selected':'' }}>مقدماتی</option>
+                            <option value="2" {{ ($course->level_course == 2) ? 'selected':'' }}>متوسط</option>
+                            <option value="3" {{ ($course->level_course == 3) ? 'selected':'' }}>  پیشرفته</option>
+                            <option value="4" {{ ($course->level_course == 4) ? 'selected':'' }}>حرفه ای</option>
                         </select>
                     </div>
 
@@ -88,7 +89,7 @@
                     <div class="form-group">
                         <label for="price">قیمت دوره:</label>
                         <input type="text" class="form-control @error('price') is-invalid @enderror"
-                               name="price" value="{{ old('price') }}" id="price">
+                               name="price" value="{{ $course->price != null ? $course->price : ''  }}" id="price">
                     </div>
 
                     <div class="input-group">

@@ -54,10 +54,10 @@ class AdminCourseController extends Controller
 
     public function store(Request $request)
     {
-        //return $request;
+
         $request->validate([
-            'title' => 'required|max:150',
-            'name' => 'required|max:150',
+            'title' => 'required|max:50',
+            'name' => 'required|max:50',
             'description' => 'required|min:50',
             'status_paid' => ['between:1,2', 'required', 'numeric'],
             'level_course' => 'required',
@@ -114,17 +114,15 @@ class AdminCourseController extends Controller
 
     public function update(Request $request)
     {
-
-        return $request;
         $request->validate([
-            'title' => 'required|max:150',
-            'name' => 'required|max:150',
+            'title' => 'required|max:50',
+            'name' => 'required|max:50',
             'description' => 'required|min:50',
             'status_paid' => 'required|integer',
             'level_course' => 'required',
             'image' => 'required',
-            'cat' => 'required',
-            ''
+            'category' => 'required',
+            'price' => ['between:0,100000000', 'numeric', Rule::requiredIf($request->status_paid == 2)],
         ], $messages = [
             'title.required' => 'فیلد عنوان الزامی است.',
             'title.max' => 'حداکثر ۵۰ کاراکتر.',
@@ -136,6 +134,10 @@ class AdminCourseController extends Controller
             'image.required' => 'فیلد تصویر الزامی است.',
             'cat.required' => 'دسته بندی الزامی است.',
             'status_paid.required' => 'نوع قیمت الزامی است.',
+            'status_paid.between' => 'نوع پرداخت را انتخاب کنید.',
+            'price.required' => 'قیمت دوره را وارد کنید.',
+            'price.numeric' => 'قیمت را به عدد وارد کنید.',
+            'price.between' => 'حدود قیمت باید بیشتر از ۱۰۰ تومان باشد.'
         ]);
 
         $image_path = null;
@@ -143,7 +145,11 @@ class AdminCourseController extends Controller
             $image = $request->image;
             $image_path = str_replace('http://localhost/storage/images/courses/', '', $image);
         }
-        $course = Course::findOrFail($request->id);
+        try {
+            $course = Course::findOrFail($request->id);
+        }catch (\Exception $ex){
+            return view('errors.error_not_found_model');
+        }
         $course->title = $request->title;
         $course->name = $request->name;
         $course->description = $request->description;
@@ -151,9 +157,7 @@ class AdminCourseController extends Controller
         $course->level_course = $request->level_course;
         $course->image = $image_path;
         $course->save();
-
         $course->categories()->sync($request->cat);
-
         return redirect('/admin/course/index')
             ->with('success', 'دوره آموزشی با موفقیت ویرایش شد.');
     }
