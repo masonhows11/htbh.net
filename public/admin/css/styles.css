@@ -98,14 +98,20 @@
 .admin-add-post > div{
     padding:14px 0 14px 0;
 }
+.list-course-content .fa-edit,
 .list-post-content .fa-edit,
 .users-table .fa-edit{
     font-size:2.3rem;
 }
+.list-course-content .fa-list-alt ,
+.list-course-content .fa-save,
+.list-course-content .fa-remove,
 .list-post-content .fa-remove,
 .users-table .fa-remove{
     font-size:2.7rem;
 }
+
+.list-course-content .fa-remove:hover,
 .list-post-content .fa-remove:hover,
 .users-table .fa-remove:hover
 {

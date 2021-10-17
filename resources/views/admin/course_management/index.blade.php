@@ -87,8 +87,8 @@
     <script>
         $(document).on('click', '#deleteItem', function (event) {
             event.preventDefault();
-            let post_id = event.target.getAttribute('data-post-id');
-            let post_element = event.target.closest('tr');
+            let course_id = event.target.getAttribute('data-course-id');
+            let course_element = event.target.closest('tr');
             swal.fire({
                 title: 'آیا مطمئن هستید این ایتم حذف شود؟',
                 icon: 'error',
@@ -108,11 +108,11 @@
                     });
                     $.ajax({
                         method: 'GET',
-                        url: '{{ route('deleteArticle') }}',
-                        data: {post_id: post_id},
+                        url: '{{ route('deleteCourse') }}',
+                        data: {course_id:course_id},
                     }).done(function (data) {
                         if (data['status'] === 200) {
-                            post_element.remove();
+                            course_element.remove();
                             swal.fire({
                                 icon: 'success',
                                 text: data['success'],
@@ -139,7 +139,7 @@
     <script>
         $(document).on('click', '#approvePost', function (event) {
             event.preventDefault();
-            let post_id = event.target.getAttribute('data-post-id');
+            let course_id = event.target.getAttribute('data-course-id');
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -147,8 +147,8 @@
             });
             $.ajax({
                 method: 'POST',
-                url: '{{ route('approveArticle') }}',
-                data: {post_id: post_id},
+                url: '{{ route('changePublishStatus') }}',
+                data: {course_id:course_id},
             }).done(function (data) {
                 console.log(data);
                 if (data['status'] === 200) {
