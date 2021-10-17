@@ -113,7 +113,7 @@
                     <input type="text"
                            id="level_course"
                            class="form-control"
-                           value="{{ $course->level_course }}"
+                           value=""
                            readonly>
                 </div>
 
@@ -122,12 +122,12 @@
                     <input type="text"
                            id="status_publish"
                            class="form-control"
-                           value="{{ $course->status_publish == 0 ? 'در حال برگذاری': 'اتمام دوره' }}"
+                           value="{{ $course->status_publish == 0 ? 'منشر شده': 'منتشر نشده' }}"
                            readonly>
                 </div>
 
                 <div>
-                    <label for="last_update">اخرین بروزرسانی:</label>
+                    <label for="last_update">آخرین بروزرسانی:</label>
                     <input type="text"
                            id="last_update"
                            @if(isset($last_update))

@@ -198,7 +198,7 @@ class AdminCourseController extends Controller
                 $seconds = $seconds + strtotime($time);
             }
             $course_time = date("H:i:s", strtotime($seconds) + $seconds);
-            return view('admin.training_course_management.details')
+            return view('admin.course_management.detail')
                 ->with(['course' => $course,
                     'course_time' => $course_time,
                     'lessons_count' => $lessons_count,
@@ -206,7 +206,7 @@ class AdminCourseController extends Controller
 
         }
 
-        return view('admin.training_course_management.details')
+        return view('admin.course_management.detail')
             ->with(['course' => $course]);
 
 
