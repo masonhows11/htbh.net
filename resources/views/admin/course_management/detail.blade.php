@@ -29,14 +29,14 @@
                     <textarea id="description"
                               class="form-control details-textarea"
                               rows="7"
-                              cols="5"
+                              cols="3"
                               readonly>
                                     {{ strip_tags($course->description) }}
                          </textarea>
                 </div>
                 <div class="course-banner-detail">
                     <label for="image">بنر دوره:</label>
-                    <img src="{{ asset($course->image) }}" id="image" class="img-rounded img-responsive"
+                    <img src="{{ asset('storage/images/courses/'.$course->image) }}" id="image" class="img-rounded img-responsive"
                          alt="course-banner">
                 </div>
 
@@ -145,7 +145,7 @@
                            @endif
                            class="form-control" readonly>
                 </div>
-                <a href="/admin/course/index" class="btn btn-default btn-return">بازگشت</a>
+                <a href="{{url()->previous() }}" class="btn btn-default btn-return">بازگشت</a>
             </div>
 
         </div>

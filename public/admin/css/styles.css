@@ -126,5 +126,9 @@
 .btn-return{
     margin-top: 1rem;
 }
+.details-textarea{
+    direction: rtl;
+    white-space: normal
+}
 /************** media query *************/
 
