@@ -22,7 +22,7 @@
                         <input type="text"
                                name="title"
                                class="form-control @error('title') is-invalid @enderror"
-                               value="{{ old('title') }}"
+                               value="{{ $course->title  }}"
                                id="title">
                     </div>
 
@@ -30,7 +30,7 @@
                         <label for="name">نام  دوره به انگلیسی:</label>
                         <input type="text"
                                name="name"
-                               value="{{ old('name') }}"
+                               value="{{ $course->name }}"
                                class="form-control @error('name') is-invalid @enderror"
                                id="name">
                     </div>
@@ -41,7 +41,7 @@
                         <textarea class="form-control @error('description') is-invalid @enderror"
                                   id="editor-text" rows="5"
                                   name="description">
-                            {{ old('description') }}
+                            {{ $course->description }}
                        </textarea>
                     </div>
 
@@ -55,7 +55,7 @@
                                 class="form-control chosen-select @error('category') is-invalid @enderror">
                             <option value=""></option>
                             @foreach($categories as $category)
-                                <option value="{{ $category->id }}">{{ $category->title }}</option>
+                                <option value="{{ $category->id }}" {{ in_array($category->id,$course->categories()->pluck('category_id')->toArray())?'selected':'' }}>{{ $category->title }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -79,8 +79,8 @@
                                 name="status_paid"
                                 id="paid">
                             <option value="0">نوع پرداخت راانتخاب کنید...</option>
-                            <option value="1">رایگان</option>
-                            <option value="2">خریدنی</option>
+                            <option value="1" {{ ($course->status_paid == 1) ? 'selected':'' }}>رایگان</option>
+                            <option value="2" {{ ($course->status_paid == 2) ? 'selected':'' }}>خریدنی</option>
                         </select>
                     </div>
 
@@ -96,7 +96,7 @@
                                id="image_label"
                                class="form-control @error('image') is-invalid @enderror"
                                name="image"
-                               value="{{ old('image') }}"
+                               value="{{ $course->image }}"
                                aria-label="Image" aria-describedby="button-image">
                         <div class="input-group-btn">
                             <button class="btn btn-default"
@@ -117,4 +117,55 @@
             </div>
         </div>
     </div>
+@endsection
+@section('admin_scripts')
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function() {
+
+            document.getElementById('button-image').addEventListener('click', (event) => {
+                event.preventDefault();
+
+                window.open('/file-manager/fm-button', 'fm', 'width=1400,height=800');
+            });
+        });
+        // set file link
+        function fmSetLink($url) {
+            document.getElementById('image_label').value = $url;
+        }
+        $(".chosen-select").chosen({disable_search_threshold: 10,rtl:true});
+    </script>
+    <script type="text/javascript" src="{{ asset('admin/ckeditor/ckeditor.js') }}"></script>
+    <script>
+        CKEDITOR.replace('editor-text', {
+            language: 'fa',
+            removePlugins: 'image',
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            let paid = document.getElementById('paid');
+            let price = document.getElementById('price');
+            $(window).on('load',function () {
+                let value = $('#paid option:selected').val();
+                if(value == 1)
+                {
+                    price.disabled = true;
+                }
+                if(value == 2)
+                {
+                    price.disabled = false;
+                }
+            });
+            paid.addEventListener("change",function (event) {
+                if(event.target.value == 1)
+                {
+                    price.disabled = true;
+                }
+
+                if(event.target.value == 2){
+                    price.disabled = false;
+                }
+            })
+        });
+    </script>
 @endsection

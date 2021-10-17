@@ -83,7 +83,7 @@ class AdminCourseController extends Controller
         $image_path = null;
         if ($request->filled('image')) {
             $image = $request->image;
-            $image_path = str_replace('http://localhost/', '', $image);
+            $image_path = str_replace('http://localhost/storage/images/courses/', '', $image);
         }
 
         $course = Course::create([
@@ -106,15 +106,16 @@ class AdminCourseController extends Controller
         $course = Course::with('categories')
             ->where('id', $request->course)->first();
 
-        $parent_categories = Category::where('parent_id', null)->get();
-        return view('admin.training_course_management.edit')
-            ->with(['parent_categories' => $parent_categories, 'course' => $course]);
+        $categories = Category::all();
+        return view('admin.course_management.edit')
+            ->with(['categories' => $categories, 'course' => $course]);
 
     }
 
     public function update(Request $request)
     {
 
+        return $request;
         $request->validate([
             'title' => 'required|max:150',
             'name' => 'required|max:150',
@@ -138,9 +139,9 @@ class AdminCourseController extends Controller
         ]);
 
         $image_path = null;
-        if ($request->has('image')) {
+        if ($request->filled('image')) {
             $image = $request->image;
-            $image_path = str_replace('http://localhost/', '', $image);
+            $image_path = str_replace('http://localhost/storage/images/courses/', '', $image);
         }
         $course = Course::findOrFail($request->id);
         $course->title = $request->title;
