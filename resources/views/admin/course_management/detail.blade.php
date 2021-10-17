@@ -108,12 +108,20 @@
                            value="{{ $course->views }}"
                            readonly>
                 </div>
+
                 <div>
+                    @if ($course->level_course == 1)
+                        @php( $level = 'مقدماتی')
+                    @elseif($course->level_course == 2)
+                        @php(  $level = 'پیشرفته' )
+                    @elseif($course->level_course == 3)
+                        @php($level = 'حرفه ای')
+                    @endif
                     <label for="level_course">سطح دوره:</label>
                     <input type="text"
                            id="level_course"
                            class="form-control"
-                           value=""
+                           value="{{ $level }}"
                            readonly>
                 </div>
 
