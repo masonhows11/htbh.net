@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Course;
 use App\Models\lesson;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
+
 
 class AdminLessonController extends Controller
 {
