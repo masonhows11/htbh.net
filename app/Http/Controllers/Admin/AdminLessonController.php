@@ -13,7 +13,7 @@ class AdminLessonController extends Controller
     {
         $course = Course::find($request->course);
         $lessons = Lesson::where('course_id', '=', $request->course)->paginate(3);
-        return view('admin.training_course_management.add_lesson')
+        return view('admin.lesson_management.create')
             ->with(['course' => $course, 'lessons' => $lessons]);
     }
 

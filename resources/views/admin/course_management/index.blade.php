@@ -49,7 +49,7 @@
                             <th class="text-center">نام دوره</th>
                             <th class="text-center">مشخصات دوره</th>
                             <th class="text-center">وضعیت انتشار</th>
-                            <th class="text-center">ایجاد قسمت جدید</th>
+                            <th class="text-center">ایجاد درس جدید</th>
                             <th class="text-center">عملیات</th>
 
                         </tr>
@@ -72,7 +72,7 @@
                                 <td class="text-center"><span class="btn btn-default" data-course-id="{{$course->id}}"
                                                               id="publish_course">{{ $course->status_publish == 1 ? 'منتشر شده': 'منتشر نشده' }}</span>
                                 </td>
-                                <td class="text-center"><a href="/admin/course/newLesson?course={{ $course->id }}"><i
+                                <td class="text-center"><a href="/admin/lesson/newLesson?course={{ $course->id }}"><i
                                             class="fa fa-save"></i></a></td>
 
                                 <td>
