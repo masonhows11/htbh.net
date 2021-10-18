@@ -61,7 +61,7 @@
 
                 <div class="flex">
                     <button type="submit" class="btn btn-success btn-save-lesson">ذخیره</button>
-                    <a href="{{ route('newLesson') }}" class="btn btn-default btn-cancel-lesson">انصراف</a>
+                    <a href="{{ route('newLesson',['course'=>$course_id]) }}" class="btn btn-default btn-cancel-lesson">انصراف</a>
                 </div>
 
             </form>
