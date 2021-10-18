@@ -105,10 +105,14 @@ class AdminLessonController extends Controller
 
     public function deleteLesson(Request $request)
     {
-      $lesson =  Lesson::where('id', '=', $request->lesson_id)
-            ->where('course_id', '=', $request->course_id)->first();
-        return $lesson;
-        try {
+
+        $lesson = Lesson::where('id', '=', $request->lesson_id)
+                ->where('course_id', '=', $request->course_id)->first();
+        if(!$lesson){
+            return response()->json(['warning' => 'درس مورد نظر وجود ندارد.', 'status' => 404], 200);
+        }
+
+      try {
              Lesson::where('id', '=', $request->lesson_id)
                 ->where('course_id', '=', $request->course_id)
                 ->delete();

@@ -130,25 +130,28 @@
                     $.ajax({
                         method: 'GET',
                         url: '{{ route('deleteLesson') }}',
-                        data: {course_id: 3, lesson_id: 3},
+                        data: {course_id:course_id, lesson_id:lesson_id},
                     }).done(function (data) {
-                        console.log(data);
-                        /*if (data['status'] === 200) {
+                        if (data['status'] === 200) {
                             course_element.remove();
                             swal.fire({
                                 icon: 'success',
                                 text: data['success'],
                             })
                         }
-                        if(data['status']===500)
-                        {
+                        if (data['status'] === 404) {
+                            swal.fire({
+                                icon: 'warning',
+                                text: data['warning'],
+                            })
+                        }
+                    }).fail(function (data) {
+                        if (data['status'] === 500) {
                             swal.fire({
                                 icon: 'error',
                                 text: data['error'],
                             })
-                        }*/
-                    }).fail(function (data) {
-                        console.log(data);
+                        }
                     });
                 }
             });
