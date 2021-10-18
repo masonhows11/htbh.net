@@ -113,9 +113,7 @@ class AdminLessonController extends Controller
         }
 
       try {
-             Lesson::where('id', '=', $request->lesson_id)
-                ->where('course_id', '=', $request->course_id)
-                ->delete();
+            $lesson->delete();
             return response()->json(['success' => 'درس مورد نظر با موفقیت حذف شد.', 'status' => 200], 200);
         }catch (\Exception $ex)
         {
