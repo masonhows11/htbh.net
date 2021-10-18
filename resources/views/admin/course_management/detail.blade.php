@@ -10,7 +10,7 @@
                 <h3>دوره:</h3>
                 <h2>{{ $course->title }}</h2>
             </div>
-            {{ $current_cat }}
+
         </div>
 
         <div class="row course-details">
@@ -37,7 +37,8 @@
                 </div>
                 <div class="course-banner-detail">
                     <label for="image">بنر دوره:</label>
-                    <img src="{{ asset('storage/images/courses/'.$course->image) }}" id="image" class="img-rounded img-responsive"
+                    <img src="{{ asset('storage/images/courses/'.$course->image) }}" height="100" id="image"
+                         class="img-rounded img-responsive"
                          alt="course-banner">
                 </div>
 
@@ -146,8 +147,18 @@
                            @endif
                            class="form-control" readonly>
                 </div>
-                {{-- url()->route('listCourseCategory',)--}}
-                <a href="{{ route('courses',['current_cat'=>$current_cat]) }}" class="btn btn-default btn-return">بازگشت</a>
+
+
+                @if( session()->has('courses_cur_route') && session('courses_cur_route') == 'index_courses' )
+                    <a href="{{ url()->previous() }}" class="btn btn-default btn-return">بازگشت</a>
+                @elseif( session()->has('courses_cur_route') && session('courses_cur_route') == 'category_courses' )
+                    <form action="{{ route('listCourseCategory') }}" method="post">
+                        @csrf
+                        <input type="hidden" name="category" value="  {{ $current_cat }}">
+                        <button type="submit" class="btn btn-default btn-return">بازگشت</button>
+                    </form>
+                @endif
+
             </div>
 
         </div>

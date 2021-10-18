@@ -37,6 +37,8 @@
         @if(count($courses) == 0)
             <p class="text-center">دوره ای برای نمایش وجود ندارد.</p>
         @else
+
+
             <div class="row admin-content-models list-course-content">
 
                 <div class="col-lg-8 col-md-8 col-xs-8 course-section">
@@ -59,16 +61,25 @@
                                 <td class="text-center">{{ $course->title }}</td>
 
                                 @if ( Illuminate\Support\Facades\Route::currentRouteName() == 'courses')
-                                    <td class="text-center"><a href="{{ route('courseDetail',['course'=>$course->id]) }}"><i class="fa fa-list-alt"></i></a></td>
+                                    <td class="text-center"><a
+                                            href="{{ route('courseDetail',['course'=>$course->id]) }}"><i
+                                                class="fa fa-list-alt"></i></a></td>
                                 @else
-                                <td class="text-center"><a href="{{ route('courseDetail',['course'=>$course->id,'category'=>$current_cat]) }}"><i class="fa fa-list-alt"></i></a></td>
+                                    <td class="text-center"><a
+                                            href="{{ route('courseDetail',['course'=>$course->id,'category'=>$current_cat]) }}"><i
+                                                class="fa fa-list-alt"></i></a></td>
                                 @endif
-                                <td class="text-center"><span class="btn btn-default" data-course-id="{{$course->id}}" id="publish_course">{{ $course->status_publish == 1 ? 'منتشر شده': 'منتشر نشده' }}</span></td>
-                                <td class="text-center"><a href="/admin/course/newLesson?course={{ $course->id }}"><i class="fa fa-save"></i></a></td>
+                                <td class="text-center"><span class="btn btn-default" data-course-id="{{$course->id}}"
+                                                              id="publish_course">{{ $course->status_publish == 1 ? 'منتشر شده': 'منتشر نشده' }}</span>
+                                </td>
+                                <td class="text-center"><a href="/admin/course/newLesson?course={{ $course->id }}"><i
+                                            class="fa fa-save"></i></a></td>
 
                                 <td>
-                                    <span><a href="/admin/course/edit?course={{ $course->id }}" class="text-info text-bold"><i class="fa fa-edit"></i></a></span>
-                                    <span><i class="fa fa-remove text-primary" data-course-id="{{ $course->id }}" id="deleteItem"></i></span>
+                                    <span><a href="/admin/course/edit?course={{ $course->id }}"
+                                             class="text-info text-bold"><i class="fa fa-edit"></i></a></span>
+                                    <span><i class="fa fa-remove text-primary" data-course-id="{{ $course->id }}"
+                                             id="deleteItem"></i></span>
                                 </td>
 
                             </tr>
@@ -77,11 +88,6 @@
                         </tbody>
                     </table>
                 </div>
-
-               {{-- <div class="paginate-sec">
-                    {{ $courses->onEachSide(3)->links() }}
-                </div>--}}
-
             </div>
         @endif
 
@@ -114,7 +120,7 @@
                     $.ajax({
                         method: 'GET',
                         url: '{{ route('deleteCourse') }}',
-                        data: {course_id:course_id},
+                        data: {course_id: course_id},
                     }).done(function (data) {
                         if (data['status'] === 200) {
                             course_element.remove();
@@ -153,7 +159,7 @@
             $.ajax({
                 method: 'POST',
                 url: '{{ route('changePublishStatus') }}',
-                data: {course_id:course_id},
+                data: {course_id: course_id},
             }).done(function (data) {
                 if (data['status'] === 200) {
                     if (data['publish'] == 0) {

@@ -9,6 +9,7 @@ use App\Models\lesson;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Validation\Rule;
 
 class AdminCourseController extends Controller
@@ -16,10 +17,14 @@ class AdminCourseController extends Controller
     public function index()
     {
         $categories = Category::all();
-        $courses = Course::orderBy('created_at','asc')->get();
+        $courses = Course::orderBy('created_at', 'asc')->get();
+
+        session()->put('courses_cur_route', 'index_courses');
+
         return view('admin.course_management.index')
-            ->with(['courses'=>$courses,'categories'=>$categories]);
+            ->with(['courses' => $courses, 'categories' => $categories]);
     }
+
     public function listCourseBaseCategory(Request $request)
     {
         $request->validate([
@@ -30,6 +35,8 @@ class AdminCourseController extends Controller
         ]);
         $categories = Category::all();
 
+        session()->put(['courses_cur_route' => 'category_courses']);
+
         try {
             $courses =
                 DB::table('courses')
@@ -37,11 +44,11 @@ class AdminCourseController extends Controller
                     ->join('categories', 'categories.id', '=', 'category_course.category_id')
                     ->select('courses.*')
                     ->where('categories.name', '=', $request->category)
-                    ->orderBy('created_at','asc')->get();
-           return view('admin.course_management.index')
-               ->with(['courses' => $courses, 'categories' => $categories,'current_cat'=>$request->category]);
+                    ->orderBy('created_at', 'asc')->get();
+            return view('admin.course_management.index')
+                ->with(['courses' => $courses, 'categories' => $categories, 'current_cat' => $request->category]);
         } catch (\Exception $ex) {
-             return view('errors.error_not_found_model');
+            return view('errors.error_not_found_model');
         }
 
     }
@@ -148,7 +155,7 @@ class AdminCourseController extends Controller
         }
         try {
             $course = Course::findOrFail($request->id);
-        }catch (\Exception $ex){
+        } catch (\Exception $ex) {
             return view('errors.error_not_found_model');
         }
         $course->title = $request->title;
@@ -163,7 +170,6 @@ class AdminCourseController extends Controller
         return redirect('/admin/course/index')
             ->with('success', 'دوره آموزشی با موفقیت ویرایش شد.');
     }
-
 
 
     public function delete(Request $request)
@@ -207,12 +213,12 @@ class AdminCourseController extends Controller
                     'course_time' => $course_time,
                     'lessons_count' => $lessons_count,
                     'last_update' => $last_update,
-                    'current_category'=>$current_cat]);
+                    'current_category' => $current_cat]);
 
         }
 
         return view('admin.course_management.detail')
-            ->with(['course' => $course,'current_cat'=>$current_cat ]);
+            ->with(['course' => $course, 'current_cat' => $current_cat]);
 
 
     }
@@ -235,16 +241,11 @@ class AdminCourseController extends Controller
             $course->save();
             $publish_status = $course->status_publish;
             return response()->json(['success' => 'وضعیت انتشار با موفقیت تغییر کرد.', 'publish' => $publish_status, 'status' => 200], 200);
-        }catch (\Exception $ex)
-        {
+        } catch (\Exception $ex) {
             return response()->json(['error' => 'عملیات انتشار انجام نشد.', 'status' => 500], 500);
         }
 
     }
-
-
-
-
 
 
 }
