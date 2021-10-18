@@ -61,7 +61,7 @@
 
                 <div class="flex">
                     <button type="submit" class="btn btn-success btn-save-lesson">ذخیره</button>
-                    <a href="{{ url()->previous() }}" class="btn btn-default btn-cancel-lesson">انصراف</a>
+                    <a href="{{route('courses') }}" class="btn btn-default btn-cancel-lesson">انصراف</a>
 
                 </div>
 
@@ -84,7 +84,7 @@
                         <td>{{ $lesson->title }}</td>
                         <td>{{ $lesson->lesson_duration }}</td>
                         <td>
-                            <span><a href="/admin/course/editLesson?lesson={{ $lesson->id }}&course={{$course->id}}"><i class="fa fa-edit"></i></a></span>
+                            <span><a href="/admin/lesson/editLesson?lesson={{ $lesson->id }}&course={{$course->id}}"><i class="fa fa-edit"></i></a></span>
 
 
                             <span class="fa fa-remove text-primary" data-lesson-id="{{ $lesson->id }}" id="deleteItem"></span>
@@ -95,12 +95,6 @@
 
             </table>
 
-        </div>
-        <div class="row row-paginate">
-            <div
-                class="col-lg-3 col-lg-offset-4 col-md-3 col-md-offset-4 col-sm-4 col-sm-offset-5 col-xs-4 col-xs-offset-4">
-                {{ $lessons->appends(['course'=>$course->id])->links() }}
-            </div>
         </div>
 
     </div>

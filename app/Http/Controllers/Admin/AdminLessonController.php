@@ -6,13 +6,15 @@ use App\Http\Controllers\Controller;
 use App\Models\Course;
 use App\Models\lesson;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 class AdminLessonController extends Controller
 {
     public function createNewLesson(Request $request)
     {
         $course = Course::find($request->course);
-        $lessons = Lesson::where('course_id', '=', $request->course)->paginate(3);
+        $lessons = Lesson::where('course_id', '=', $request->course)
+            ->orderBy('created_at','asc')->get();
         return view('admin.lesson_management.create')
             ->with(['course' => $course, 'lessons' => $lessons]);
     }
@@ -57,9 +59,9 @@ class AdminLessonController extends Controller
         $lesson = Lesson::where('id', '=', $request->lesson)
             ->where('course_id', '=', $request->course)
             ->first();
-        $course = $request->course;
+         //session()->put('newLesson',);
         return view('admin.lesson_management.edit')
-            ->with(['lesson' => $lesson, 'course' => $course]);
+            ->with(['lesson' => $lesson, 'course_id' => $request->course]);
 
 
     }
@@ -98,7 +100,7 @@ class AdminLessonController extends Controller
             return redirect()->back()->with('success', 'قسمت جدید با موفقیت ویرایش شد.');
         }catch (\Exception $ex)
         {
-            return view('errors.error_store_model');
+           return view('errors.error_store_model');
         }
 
     }

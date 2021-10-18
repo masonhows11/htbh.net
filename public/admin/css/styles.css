@@ -133,6 +133,9 @@
     direction: rtl;
     white-space: normal
 }
+.row-add-lesson{
+    margin-top: 100px;
+}
 
 
 /************** media query *************/
