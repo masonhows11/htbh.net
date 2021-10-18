@@ -202,6 +202,7 @@ class AdminCourseController extends Controller
             $last_update = Lesson::latest()->first();
             $last_update = date('Y:m:d', strtotime($last_update->created_at));
             $lessons_count = count($lessons);
+
             $seconds = null;
             for ($i = 0; $i < $lessons_count; $i++) {
 
@@ -209,12 +210,13 @@ class AdminCourseController extends Controller
                 $seconds = $seconds + strtotime($time);
             }
             $course_time = date("H:i:s", strtotime($seconds) + $seconds);
+            
             return view('admin.course_management.detail')
                 ->with(['course' => $course,
                     'course_time' => $course_time,
                     'lessons_count' => $lessons_count,
                     'last_update' => $last_update,
-                    'current_category' => $current_cat]);
+                    'current_cat' => $current_cat]);
 
         }
 
