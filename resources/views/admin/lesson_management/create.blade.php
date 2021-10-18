@@ -23,27 +23,23 @@
                 @csrf
                 <input type="hidden" id="course_id" name="id" value="{{ $course->id }}">
                 <div class="form-group">
-                    <label for="title">عنوان:</label>
+                    <label for="title">عنوان درس به فارسی:</label>
                     <input type="text"
                            name="title"
                            class="form-control @error('title') is-invalid @enderror"
                            id="title"
                            value="{{ old('title') }}">
-                    @error('title')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
+
                 </div>
 
                 <div class="form-group">
-                    <label for="name">نام انگلیسی:</label>
+                    <label for="name">نام درس به انگلیسی:</label>
                     <input type="text"
                            name="name"
                            class="form-control @error('name') is-invalid @enderror"
                            id="name"
                            value="{{ old('name') }}">
-                    @error('name')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
+
                 </div>
 
                 <div class="form-group">
@@ -53,46 +49,32 @@
                            class="form-control @error('lesson_duration') is-invalid @enderror"
                            id="lesson_duration"
                            value="{{ old('lesson_duration') }}">
-                    @error('lesson_duration')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
+
                 </div>
 
-                {{--<div class="form-group">
-                    <label for="video_path">انتخاب فایل ویدئو:</label>
-                    <input type="file"
-                           class="form-control @error('video_path') is_invalid @enderror"
-                           name="video_path" id="input_file" onchange="selectFile(event)">
-                    @error('video_path')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
-                </div>--}}
                 <div class="form-group">
                     <label for="video_path">لینک فایل آموزشی:</label>
                     <input type="text" class="form-control @error('video_path') is-invalid @enderror"
                            name="video_path">
-                    @error('video_path')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
+
                 </div>
 
                 <div class="flex">
                     <button type="submit" class="btn btn-success btn-save-lesson">ذخیره</button>
-                    <a href="/admin/course/index" class="btn btn-default btn-cancel-lesson">انصراف</a>
+                    <a href="{{ url()->previous() }}" class="btn btn-default btn-cancel-lesson">انصراف</a>
 
                 </div>
 
             </form>
         </div>
-        <div id="app" class="row list-course-lesson-row">
+        <div id="app" class="row list-course-lesson">
             <table class="table table-bordered">
                 <thead>
                 <tr>
                     <th>شناسه</th>
                     <th>عنوان</th>
                     <th>مدت زمان ویدئو</th>
-                    <th>ویرایش</th>
-                    <th>حذف</th>
+                    <th>عملیات</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -101,10 +83,11 @@
                         <td>{{ $lesson->id }}</td>
                         <td>{{ $lesson->title }}</td>
                         <td>{{ $lesson->lesson_duration }}</td>
-                        <td><a href="/admin/course/editLesson?lesson={{ $lesson->id }}&course={{$course->id}}"><i class="fa fa-edit"></i></a>
-                        </td>
                         <td>
-                            <button class="fa fa-remove" data-lesson-id="{{ $lesson->id }}" id="deleteItem"></button>
+                            <span><a href="/admin/course/editLesson?lesson={{ $lesson->id }}&course={{$course->id}}"><i class="fa fa-edit"></i></a></span>
+
+
+                            <span class="fa fa-remove text-primary" data-lesson-id="{{ $lesson->id }}" id="deleteItem"></span>
                         </td>
                     </tr>
                 @endforeach
@@ -147,11 +130,11 @@
                     $.ajax({
                         method: 'GET',
                         url: '{{ route('deleteLesson') }}',
-                        data: {course_id: course_id, lesson_id: lesson_id},
+                        data: {course_id: 3, lesson_id: 3},
                     }).done(function (data) {
-                        // console.log(data);
-                        course_element.remove();
-                        if (data['status'] === 200) {
+                        console.log(data);
+                        /*if (data['status'] === 200) {
+                            course_element.remove();
                             swal.fire({
                                 icon: 'success',
                                 text: data['success'],
@@ -163,7 +146,7 @@
                                 icon: 'error',
                                 text: data['error'],
                             })
-                        }
+                        }*/
                     }).fail(function (data) {
                         console.log(data);
                     });

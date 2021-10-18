@@ -35,6 +35,7 @@ class AdminCourseController extends Controller
         ]);
         $categories = Category::all();
 
+        session()->put(['current_category'=>$request->category]);
         session()->put(['courses_cur_route' => 'category_courses']);
 
         try {

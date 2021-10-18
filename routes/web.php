@@ -154,7 +154,7 @@ Route::group(['prefix'=>'admin/course','middleware'=>'role:admin'],function (){
 Route::group(['prefix'=>'admin/lesson','middleware'=>'role:admin'],function (){
 
 
-    Route::get('/newLesson', [AdminLessonController::class, 'createNewLesson']);
+    Route::get('/newLesson', [AdminLessonController::class, 'createNewLesson'])->name('newLesson');
     Route::post('/storeNewLesson', [AdminLessonController::class, 'storeNewLesson'])->name('storeNewLesson');
     Route::get('/editLesson', [AdminLessonController::class, 'editLesson']);
     Route::post('/updateLesson', [AdminLessonController::class, 'updateLesson']);
