@@ -10,6 +10,7 @@
                 <h3>دوره:</h3>
                 <h2>{{ $course->title }}</h2>
             </div>
+            {{ $current_cat }}
         </div>
 
         <div class="row course-details">
@@ -145,7 +146,8 @@
                            @endif
                            class="form-control" readonly>
                 </div>
-                <a href="{{url()->previous() }}" class="btn btn-default btn-return">بازگشت</a>
+                {{-- url()->route('listCourseCategory',)--}}
+                <a href="{{ route('courses',['current_cat'=>$current_cat]) }}" class="btn btn-default btn-return">بازگشت</a>
             </div>
 
         </div>

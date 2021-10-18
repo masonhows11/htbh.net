@@ -146,7 +146,7 @@ Route::group(['prefix'=>'admin/course','middleware'=>'role:admin'],function (){
     Route::post('/update', [AdminCourseController::class, 'update'])->name('updateCourse');
     Route::get('/delete', [AdminCourseController::class, 'delete'])->name('deleteCourse');
     Route::post('/changePublishStatus', [AdminCourseController::class, 'changePublishStatus'])->name('changePublishStatus');
-    Route::get('/detail', [AdminCourseController::class, 'detail']);
+    Route::get('/detail', [AdminCourseController::class, 'detail'])->name('courseDetail');
     Route::get('/active', [AdminCourseController::class, 'changeStatus']);
 
 });

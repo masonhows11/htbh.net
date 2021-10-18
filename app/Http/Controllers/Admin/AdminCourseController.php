@@ -16,7 +16,7 @@ class AdminCourseController extends Controller
     public function index()
     {
         $categories = Category::all();
-        $courses = Course::orderBy('created_at','asc')->paginate(3);
+        $courses = Course::orderBy('created_at','asc')->get();
         return view('admin.course_management.index')
             ->with(['courses'=>$courses,'categories'=>$categories]);
     }
@@ -37,8 +37,9 @@ class AdminCourseController extends Controller
                     ->join('categories', 'categories.id', '=', 'category_course.category_id')
                     ->select('courses.*')
                     ->where('categories.name', '=', $request->category)
-                    ->orderBy('created_at','asc')->paginate(3);
-           return view('admin.course_management.index')->with(['courses' => $courses, 'categories' => $categories]);
+                    ->orderBy('created_at','asc')->get();
+           return view('admin.course_management.index')
+               ->with(['courses' => $courses, 'categories' => $categories,'current_cat'=>$request->category]);
         } catch (\Exception $ex) {
              return view('errors.error_not_found_model');
         }
@@ -183,6 +184,9 @@ class AdminCourseController extends Controller
 
     public function detail(Request $request)
     {
+
+
+        $current_cat = $request->category;
         $course = Course::findOrFail($request->course);
         $lessons = Lesson::where('course_id', $request->course)
             ->select('lesson_duration')->get();
@@ -202,12 +206,13 @@ class AdminCourseController extends Controller
                 ->with(['course' => $course,
                     'course_time' => $course_time,
                     'lessons_count' => $lessons_count,
-                    'last_update' => $last_update]);
+                    'last_update' => $last_update,
+                    'current_category'=>$current_cat]);
 
         }
 
         return view('admin.course_management.detail')
-            ->with(['course' => $course]);
+            ->with(['course' => $course,'current_cat'=>$current_cat ]);
 
 
     }

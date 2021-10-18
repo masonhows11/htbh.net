@@ -57,7 +57,12 @@
                             <tr>
                                 <td class="text-center">{{ $course->id }}</td>
                                 <td class="text-center">{{ $course->title }}</td>
-                                <td class="text-center"><a href="/admin/course/detail?course={{$course->id}}"><i class="fa fa-list-alt"></i></a></td>
+
+                                @if ( Illuminate\Support\Facades\Route::currentRouteName() == 'courses')
+                                    <td class="text-center"><a href="{{ route('courseDetail',['course'=>$course->id]) }}"><i class="fa fa-list-alt"></i></a></td>
+                                @else
+                                <td class="text-center"><a href="{{ route('courseDetail',['course'=>$course->id,'category'=>$current_cat]) }}"><i class="fa fa-list-alt"></i></a></td>
+                                @endif
                                 <td class="text-center"><span class="btn btn-default" data-course-id="{{$course->id}}" id="publish_course">{{ $course->status_publish == 1 ? 'منتشر شده': 'منتشر نشده' }}</span></td>
                                 <td class="text-center"><a href="/admin/course/newLesson?course={{ $course->id }}"><i class="fa fa-save"></i></a></td>
 
@@ -73,9 +78,9 @@
                     </table>
                 </div>
 
-                <div class="paginate-sec">
+               {{-- <div class="paginate-sec">
                     {{ $courses->onEachSide(3)->links() }}
-                </div>
+                </div>--}}
 
             </div>
         @endif
