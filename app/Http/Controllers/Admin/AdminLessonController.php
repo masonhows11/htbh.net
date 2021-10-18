@@ -59,7 +59,7 @@ class AdminLessonController extends Controller
         $lesson = Lesson::where('id', '=', $request->lesson)
             ->where('course_id', '=', $request->course)
             ->first();
-         //session()->put('newLesson',);
+
         return view('admin.lesson_management.edit')
             ->with(['lesson' => $lesson, 'course_id' => $request->course]);
 
@@ -69,7 +69,7 @@ class AdminLessonController extends Controller
     public function updateLesson(Request $request)
     {
 
-       //return $request;
+
        $request->validate([
             'title' => 'required|max:100',
             'name' => 'required|max:100',

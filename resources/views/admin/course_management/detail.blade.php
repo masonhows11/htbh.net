@@ -132,7 +132,7 @@
                     <input type="text"
                            id="status_publish"
                            class="form-control"
-                           value="{{ $course->status_publish == 0 ? 'منشر شده': 'منتشر نشده' }}"
+                           value="{{ $course->status_publish == 1 ? 'منشر شده': 'منتشر نشده' }}"
                            readonly>
                 </div>
 
