@@ -52,6 +52,7 @@ class AdminLessonController extends Controller
             return redirect()->back()->with('success', 'قسمت جدید با موفقیت ایجاد شد.');
         } catch (\Exception $ex) {
             return view('errors.error_store_model');
+
         }
 
     }

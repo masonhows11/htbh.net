@@ -35,7 +35,7 @@ class AdminCourseController extends Controller
         ]);
         $categories = Category::all();
 
-        session()->put(['current_category'=>$request->category]);
+        session()->put(['current_category' => $request->category]);
         session()->put(['courses_cur_route' => 'category_courses']);
 
         try {
@@ -63,7 +63,7 @@ class AdminCourseController extends Controller
 
     public function store(Request $request)
     {
-       // return $request;
+        // return $request;
         $request->validate([
             'title' => 'required|max:50',
             'name' => 'required|max:50',
@@ -198,18 +198,15 @@ class AdminCourseController extends Controller
         $lessons = Lesson::where('course_id', $request->course)
             ->select('lesson_duration')->get();
 
+
+
         if ($lessons->isNotEmpty()) {
             $last_update = Lesson::latest()->first();
             $last_update = date('Y:m:d', strtotime($last_update->created_at));
             $lessons_count = count($lessons);
 
             $seconds = null;
-            for ($i = 0; $i < $lessons_count; $i++) {
-
-                $time = $lessons[$i]['lesson_duration'];
-                $seconds = $seconds + strtotime($time);
-            }
-            $course_time = date("H:i:s", strtotime($seconds) + $seconds);
+          
 
             return view('admin.course_management.detail')
                 ->with(['course' => $course,
@@ -219,6 +216,7 @@ class AdminCourseController extends Controller
                     'current_cat' => $current_cat]);
 
         }
+
 
         return view('admin.course_management.detail')
             ->with(['course' => $course, 'current_cat' => $current_cat]);
