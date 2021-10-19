@@ -37,7 +37,7 @@
                 </div>
                 <div class="course-banner-detail">
                     <label for="image">بنر دوره:</label>
-                    <img src="{{ asset('storage/images/courses/'.$course->image) }}" height="100" id="image"
+                    <img src="{{ asset('storage/course/'.$course->image) }}" height="100" id="image"
                          class="img-rounded img-responsive"
                          alt="course-banner">
                 </div>

@@ -63,7 +63,7 @@ class AdminCourseController extends Controller
 
     public function store(Request $request)
     {
-
+       // return $request;
         $request->validate([
             'title' => 'required|max:50',
             'name' => 'required|max:50',
@@ -92,7 +92,7 @@ class AdminCourseController extends Controller
         $image_path = null;
         if ($request->filled('image')) {
             $image = $request->image;
-            $image_path = str_replace('http://localhost/storage/images/courses/', '', $image);
+            $image_path = str_replace('http://localhost/storage/course/', '', $image);
         }
 
         $course = Course::create([
@@ -210,7 +210,7 @@ class AdminCourseController extends Controller
                 $seconds = $seconds + strtotime($time);
             }
             $course_time = date("H:i:s", strtotime($seconds) + $seconds);
-            
+
             return view('admin.course_management.detail')
                 ->with(['course' => $course,
                     'course_time' => $course_time,

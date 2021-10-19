@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Course;
 use App\Models\lesson;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Route;
 
 
 class AdminLessonController extends Controller
@@ -14,7 +15,10 @@ class AdminLessonController extends Controller
     {
         $course = Course::find($request->course);
         $lessons = Lesson::where('course_id', '=', $request->course)
-            ->orderBy('created_at','asc')->get();
+            ->orderBy('created_at', 'asc')->get();
+
+        session()->put('current_lesson', $request->fullUrl());
+
         return view('admin.lesson_management.create')
             ->with(['course' => $course, 'lessons' => $lessons]);
     }
@@ -22,7 +26,7 @@ class AdminLessonController extends Controller
 
     public function storeNewLesson(Request $request)
     {
-         $request->validate([
+        $request->validate([
             'title' => 'required|max:50',
             'name' => 'required|max:50',
             'lesson_duration' => ['required', 'regex:/^([01]?\d|2[0-3]|24(?=:00?:00?$)):([0-5]\d):([0-5]\d)$/'],
@@ -46,8 +50,7 @@ class AdminLessonController extends Controller
                 'video_path' => $request->video_path
             ]);
             return redirect()->back()->with('success', 'قسمت جدید با موفقیت ایجاد شد.');
-        }catch (\Exception $ex)
-        {
+        } catch (\Exception $ex) {
             return view('errors.error_store_model');
         }
 
@@ -70,7 +73,7 @@ class AdminLessonController extends Controller
     {
 
 
-       $request->validate([
+        $request->validate([
             'title' => 'required|max:100',
             'name' => 'required|max:100',
             'lesson_duration' => ['required', 'regex:/^([01]?\d|2[0-3]|24(?=:00?:00?$)):([0-5]\d):([0-5]\d)$/'],
@@ -86,8 +89,6 @@ class AdminLessonController extends Controller
             'video_path.required' => 'لینک فایل آموزشی را وارد کنید.',
 
         ]);
-
-
         try {
             Lesson::where('id', '=', $request->lesson_id)
                 ->where('course_id', '=', $request->course_id)
@@ -96,11 +97,13 @@ class AdminLessonController extends Controller
                     'name' => $request->name,
                     'lesson_duration' => $request->lesson_duration,
                     'video_path' => $request->video_path]);
+            if (session()->has('current_lesson')) {
+                return redirect()->to(session('current_lesson'));
+            }
 
             return redirect()->back()->with('success', 'قسمت جدید با موفقیت ویرایش شد.');
-        }catch (\Exception $ex)
-        {
-           return view('errors.error_store_model');
+        } catch (\Exception $ex) {
+            return view('errors.error_store_model');
         }
 
     }
@@ -109,16 +112,15 @@ class AdminLessonController extends Controller
     {
 
         $lesson = Lesson::where('id', '=', $request->lesson_id)
-                ->where('course_id', '=', $request->course_id)->first();
-        if(!$lesson){
+            ->where('course_id', '=', $request->course_id)->first();
+        if (!$lesson) {
             return response()->json(['warning' => 'درس مورد نظر وجود ندارد.', 'status' => 404], 200);
         }
 
-      try {
+        try {
             $lesson->delete();
             return response()->json(['success' => 'درس مورد نظر با موفقیت حذف شد.', 'status' => 200], 200);
-        }catch (\Exception $ex)
-        {
+        } catch (\Exception $ex) {
             return response()->json(['error' => 'عملیات حذف انجام نشد.', 'status' => 500], 500);
         }
     }
