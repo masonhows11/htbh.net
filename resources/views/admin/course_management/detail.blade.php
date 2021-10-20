@@ -68,9 +68,9 @@
                     <input type="text"
                            id="course_duration"
                            class="form-control"
-                           @isset($course_time)
+                         {{--  @isset($course_time)
                            value="{{ $course_time }}"
-                           @endisset
+                           @endisset--}}
 
                            readonly>
                 </div>

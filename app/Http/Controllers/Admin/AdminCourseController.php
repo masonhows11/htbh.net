@@ -195,22 +195,41 @@ class AdminCourseController extends Controller
 
         $current_cat = $request->category;
         $course = Course::findOrFail($request->course);
-        $lessons = Lesson::where('course_id', $request->course)
+        // for get  lesson_duration from each lesson
+        $duration_lessons = Lesson::where('course_id', $request->course)
             ->select('lesson_duration')->get();
 
+        //return  $duration_lessons;
 
-
-        if ($lessons->isNotEmpty()) {
+        if ($duration_lessons->isNotEmpty()) {
             $last_update = Lesson::latest()->first();
             $last_update = date('Y:m:d', strtotime($last_update->created_at));
-            $lessons_count = count($lessons);
 
-            $seconds = null;
-          
+            $lessons_count = count($duration_lessons);
+            $final = array("00","00","00");
+
+            for ($i = 0; $i < $lessons_count; $i++) {
+
+                $time = $duration_lessons[$i]['lesson_duration'];
+                $times = explode(":", $time);
+                //dd($times);
+               /* for ($i = 0; $i < count($times); $i++) {*/
+
+                    $final[0] = $final[0] + $times[0];
+                    $final[1] = $final[1] + $times[1];
+                    $final[2] = $final[2] + $times[2];
+                    dd($times,$final);
+
+            /*    }*/
+
+
+            }
+            //$course_time = date("H:i:s", strtotime($seconds) + $seconds);
+
 
             return view('admin.course_management.detail')
                 ->with(['course' => $course,
-                    'course_time' => $course_time,
+                    /* 'course_time' => $course_time,*/
                     'lessons_count' => $lessons_count,
                     'last_update' => $last_update,
                     'current_cat' => $current_cat]);
