@@ -202,29 +202,32 @@ class AdminCourseController extends Controller
         //return  $duration_lessons;
 
         if ($duration_lessons->isNotEmpty()) {
+
+            //////////////////////////////////////
             $last_update = Lesson::latest()->first();
             $last_update = date('Y:m:d', strtotime($last_update->created_at));
 
+            ////////////////////////////////////////////
             $lessons_count = count($duration_lessons);
             $final = array("00","00","00");
 
+            //////////////////////////////////////////
             for ($i = 0; $i < $lessons_count; $i++) {
-
                 $time = $duration_lessons[$i]['lesson_duration'];
                 $times = explode(":", $time);
-                //dd($times);
-               /* for ($i = 0; $i < count($times); $i++) {*/
+                //dd(gettype($times));
+                  $times_co = count($times);
+               for ($j = 0; $j < $times_co; $j++) {
 
-                    $final[0] = $final[0] + $times[0];
-                    $final[1] = $final[1] + $times[1];
-                    $final[2] = $final[2] + $times[2];
-                    dd($times,$final);
+                    $final[0] = $final[0] + $times[$j];
+                    $final[1] = $final[1] + $times[$j];
+                    $final[2] = $final[2] + $times[$j];
+                    dd($final);
 
-            /*    }*/
+               }
 
 
             }
-            //$course_time = date("H:i:s", strtotime($seconds) + $seconds);
 
 
             return view('admin.course_management.detail')
