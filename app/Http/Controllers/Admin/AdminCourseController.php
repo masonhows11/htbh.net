@@ -191,8 +191,6 @@ class AdminCourseController extends Controller
 
     public function detail(Request $request)
     {
-
-
         $current_cat = $request->category;
         $course = Course::findOrFail($request->course);
         $lessons_duration = Lesson::where('course_id', $request->course)
@@ -201,7 +199,6 @@ class AdminCourseController extends Controller
         foreach ($lessons_duration as $item) {
             $time_array[] = date('H:i:s', strtotime($item->lesson_duration));
         }
-
         if ($lessons_duration->isNotEmpty()) {
 
             $last_update = Lesson::latest()->first();
@@ -218,12 +215,8 @@ class AdminCourseController extends Controller
                     'current_cat' => $current_cat]);
 
         }
-
-
         return view('admin.course_management.detail')
             ->with(['course' => $course, 'current_cat' => $current_cat]);
-
-
     }
 
     public function changePublishStatus(Request $request)

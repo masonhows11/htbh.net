@@ -134,9 +134,15 @@
     white-space: normal
 }
 .row-add-lesson{
-    margin-top: 100px;
+    margin-top: 180px;
 }
-
+.list-course-lesson{
+    overflow: scroll;
+    height:200px;
+}
+.course-title{
+    /*margin-top:100px;*/
+}
 
 /************** media query *************/
 

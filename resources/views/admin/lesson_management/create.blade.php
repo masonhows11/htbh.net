@@ -11,11 +11,8 @@
             </div>
         </div>
 
-        <div class="page-header">
+        <div class="course-title">
             <h3>دوره آموزشی : {{ $course->title }}</h3>
-        </div>
-
-        <div class="row hr-row">
         </div>
 
         <div class="row row-add-lesson">
@@ -67,6 +64,7 @@
 
             </form>
         </div>
+
         <div id="app" class="row list-course-lesson">
             <table class="table table-bordered">
                 <thead>
