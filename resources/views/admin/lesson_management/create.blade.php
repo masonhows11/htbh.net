@@ -5,10 +5,11 @@
 @section('main_content')
     <div class="container">
 
-        <div class="row alert-section">
+        <div class="row alert-section alert-section-lesson">
             <div class="col-lg-6 col-md-6 col-xs-6 alert-box">
                 @include('admin.include.alert')
             </div>
+
         </div>
 
         <div class="course-title">
@@ -16,84 +17,90 @@
         </div>
 
         <div class="row row-add-lesson">
-            <form action="{{ route('storeNewLesson') }}" method="post" >
-                @csrf
-                <input type="hidden" id="course_id" name="id" value="{{ $course->id }}">
-                <div class="form-group">
-                    <label for="title">عنوان درس به فارسی:</label>
-                    <input type="text"
-                           name="title"
-                           class="form-control @error('title') is-invalid @enderror"
-                           id="title"
-                           value="{{ old('title') }}">
 
-                </div>
+            <div class="col-lg-8 col-md-8 col-xs-8">
+                <form action="{{ route('storeNewLesson') }}" method="post" >
+                    @csrf
+                    <input type="hidden" id="course_id" name="id" value="{{ $course->id }}">
+                    <div class="form-group">
+                        <label for="title">عنوان درس به فارسی:</label>
+                        <input type="text"
+                               name="title"
+                               class="form-control @error('title') is-invalid @enderror"
+                               id="title"
+                               value="{{ old('title') }}">
 
-                <div class="form-group">
-                    <label for="name">نام درس به انگلیسی:</label>
-                    <input type="text"
-                           name="name"
-                           class="form-control @error('name') is-invalid @enderror"
-                           id="name"
-                           value="{{ old('name') }}">
+                    </div>
 
-                </div>
+                    <div class="form-group">
+                        <label for="name">نام درس به انگلیسی:</label>
+                        <input type="text"
+                               name="name"
+                               class="form-control @error('name') is-invalid @enderror"
+                               id="name"
+                               value="{{ old('name') }}">
 
-                <div class="form-group">
-                    <label for="lesson_duration">مدت زمان ویدئو:</label>
-                    <input type="text"
-                           name="lesson_duration"
-                           class="form-control @error('lesson_duration') is-invalid @enderror"
-                           id="lesson_duration"
-                           value="{{ old('lesson_duration') }}">
+                    </div>
 
-                </div>
+                    <div class="form-group">
+                        <label for="lesson_duration">مدت زمان ویدئو:</label>
+                        <input type="text"
+                               name="lesson_duration"
+                               class="form-control @error('lesson_duration') is-invalid @enderror"
+                               id="lesson_duration"
+                               value="{{ old('lesson_duration') }}">
 
-                <div class="form-group">
-                    <label for="video_path">لینک فایل آموزشی:</label>
-                    <input type="text" class="form-control @error('video_path') is-invalid @enderror"
-                           name="video_path">
+                    </div>
 
-                </div>
+                    <div class="form-group">
+                        <label for="video_path">لینک فایل آموزشی:</label>
+                        <input type="text" class="form-control @error('video_path') is-invalid @enderror"
+                               name="video_path">
 
-                <div class="flex">
-                    <button type="submit" class="btn btn-success btn-save-lesson">ذخیره</button>
-                    <a href="{{route('courses') }}" class="btn btn-default btn-cancel-lesson">انصراف</a>
+                    </div>
 
-                </div>
+                    <div class="flex">
+                        <button type="submit" class="btn btn-success btn-save-lesson">ذخیره</button>
+                        <a href="{{route('courses') }}" class="btn btn-default btn-cancel-lesson">انصراف</a>
 
-            </form>
-        </div>
+                    </div>
+                </form>
+            </div>
 
-        <div id="app" class="row list-course-lesson">
-            <table class="table table-bordered">
-                <thead>
-                <tr>
-                    <th>شناسه</th>
-                    <th>عنوان</th>
-                    <th>مدت زمان ویدئو</th>
-                    <th>عملیات</th>
-                </tr>
-                </thead>
-                <tbody>
-                @foreach($lessons as $lesson)
+            <div class="col-lg-8 list-course-lesson">
+                <table class="table table-bordered">
+                    <thead>
                     <tr>
-                        <td>{{ $lesson->id }}</td>
-                        <td>{{ $lesson->title }}</td>
-                        <td>{{ $lesson->lesson_duration }}</td>
-                        <td>
-                            <span><a href="/admin/lesson/editLesson?lesson={{ $lesson->id }}&course={{$course->id}}"><i class="fa fa-edit"></i></a></span>
-
-
-                            <span class="fa fa-remove text-primary" data-lesson-id="{{ $lesson->id }}" id="deleteItem"></span>
-                        </td>
+                        <th>شناسه</th>
+                        <th>عنوان</th>
+                        <th>مدت زمان ویدئو</th>
+                        <th>عملیات</th>
                     </tr>
-                @endforeach
-                </tbody>
+                    </thead>
+                    <tbody>
+                    @foreach($lessons as $lesson)
+                        <tr>
+                            <td>{{ $lesson->id }}</td>
+                            <td>{{ $lesson->title }}</td>
+                            <td>{{ $lesson->lesson_duration }}</td>
+                            <td>
+                                <span><a href="/admin/lesson/editLesson?lesson={{ $lesson->id }}&course={{$course->id}}"><i class="fa fa-edit"></i></a></span>
 
-            </table>
+
+                                <span class="fa fa-remove text-primary" data-lesson-id="{{ $lesson->id }}" id="deleteItem"></span>
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
 
         </div>
+
+     {{--   <div id="app" class="row list-course-lesson">
+
+
+        </div>--}}
 
     </div>
 @endsection

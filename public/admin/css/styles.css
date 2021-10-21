@@ -134,15 +134,23 @@
     white-space: normal
 }
 .row-add-lesson{
-    margin-top: 180px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .list-course-lesson{
     overflow: scroll;
     height:200px;
 }
-.course-title{
-    /*margin-top:100px;*/
+.alert-section-lesson{
+    height: 120px;
+
 }
+.alert-section-lesson .alert-box{
+    margin-top: 0.4rem;
+}
+
 
 /************** media query *************/
 
