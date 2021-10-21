@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
+use App\services\calculate_course_time;
 
 class AdminCourseController extends Controller
 {
@@ -196,14 +197,15 @@ class AdminCourseController extends Controller
         $course = Course::findOrFail($request->course);
         $lessons_duration = Lesson::where('course_id', $request->course)
             ->select('lesson_duration')->get();
-        $time_array = [];
-       // return $lessons_duration;
 
-        foreach ($lessons_duration as $item)
-        {
-          $time_array[] = $item->lesson_duration;
+        $time_array = [];
+        foreach ($lessons_duration as $item) {
+            $time_array[] = $item->lesson_duration;
         }
-        return $time_array;
+        $timestamp = [];
+        foreach ($time_array as $item) {
+            $timestamp[] = date('H:i:s', strtotime($item));
+        }
 
 
         if ($lessons_duration->isNotEmpty()) {
@@ -211,16 +213,10 @@ class AdminCourseController extends Controller
             $last_update = Lesson::latest()->first();
             $last_update = date('Y:m:d', strtotime($last_update->created_at));
             $lessons_count = count($lessons_duration);
-
-            /*for ($i = 0; $i < $lessons_count; $i++) {
-
-
-            }*/
-
-
+            $final_time = calculate_course_time::CalculateTime($timestamp);
             return view('admin.course_management.detail')
                 ->with(['course' => $course,
-                    /*  'course_time' => $final_time,*/
+                    'course_time' => $final_time,
                     'lessons_count' => $lessons_count,
                     'last_update' => $last_update,
                     'current_cat' => $current_cat]);

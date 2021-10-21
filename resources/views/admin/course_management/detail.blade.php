@@ -68,9 +68,9 @@
                     <input type="text"
                            id="course_duration"
                            class="form-control"
-                        {{--   @if($course_time != null)
+                           @if($course_time != null)
                            value="{{ $course_time }}"
-                           @endif--}}
+                           @endif
                            readonly>
                 </div>
                 <div>

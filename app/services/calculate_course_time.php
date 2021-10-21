@@ -7,11 +7,10 @@ namespace App\services;
 class calculate_course_time
 {
 
-    private function CalculateTime()
+    public static function CalculateTime($timestamp)
     {
-       /* $times = array($time1, $time2);
         $seconds = 0;
-        foreach ($times as $time) {
+        foreach ($timestamp as $time) {
             list($hour, $minute, $second) = explode(':', $time);
             $seconds += $hour * 3600;
             $seconds += $minute * 60;
@@ -30,7 +29,8 @@ class calculate_course_time
         if ($hours < 9) {
             $hours = "0" . $hours;
         }
-        return "{$hours}:{$minutes}:{$seconds}";*/
+        $out = array($hours,$minutes,$seconds);
+        return $out = implode(":",$out);
     }
 
 }
