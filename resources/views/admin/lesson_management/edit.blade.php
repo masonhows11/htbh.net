@@ -5,18 +5,15 @@
 @section('main_content')
     <div class="container">
 
-        <div class="row alert-section">
+        <div class="row alert-section alert-section-edit-lesson">
             <div class="col-lg-6 col-md-6 col-xs-6 alert-box">
                 @include('admin.include.alert')
             </div>
         </div>
 
 
+        <div class="row row-edit-lesson">
 
-        <div class="row hr-row">
-        </div>
-
-        <div class="row row-add-lesson">
             <form action="{{ route('updateLesson') }}" method="post" >
                 @csrf
                 <input type="hidden"  name="lesson_id" value="{{ $lesson->id }}">

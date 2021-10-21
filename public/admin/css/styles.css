@@ -143,13 +143,14 @@
     overflow: scroll;
     height:200px;
 }
+.alert-section-edit-lesson,
 .alert-section-lesson{
     height: 120px;
-
 }
 .alert-section-lesson .alert-box{
     margin-top: 0.4rem;
 }
+
 
 
 /************** media query *************/
