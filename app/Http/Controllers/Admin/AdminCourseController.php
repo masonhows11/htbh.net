@@ -9,7 +9,6 @@ use App\Models\lesson;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Route;
 use Illuminate\Validation\Rule;
 
 class AdminCourseController extends Controller
@@ -198,8 +197,7 @@ class AdminCourseController extends Controller
         // for get  lesson_duration from each lesson
         $duration_lessons = Lesson::where('course_id', $request->course)
             ->select('lesson_duration')->get();
-
-        //return  $duration_lessons;
+        
 
         if ($duration_lessons->isNotEmpty()) {
 
@@ -209,25 +207,26 @@ class AdminCourseController extends Controller
 
             ////////////////////////////////////////////
             $lessons_count = count($duration_lessons);
-            $final = array("00","00","00");
+            $final = array("00", "00", "00");
 
             //////////////////////////////////////////
             for ($i = 0; $i < $lessons_count; $i++) {
+
                 $time = $duration_lessons[$i]['lesson_duration'];
                 $times = explode(":", $time);
-                //dd(gettype($times));
-                  $times_co = count($times);
-               for ($j = 0; $j < $times_co; $j++) {
 
-                    $final[0] = $final[0] + $times[$j];
-                    $final[1] = $final[1] + $times[$j];
-                    $final[2] = $final[2] + $times[$j];
-                    dd($final);
+                $times_co = count($times);
+                for ($j = 0; $j < $times_co; $j++) {
 
-               }
+                    $final[$j] = $final[$j] + $times[$j];
+
+
+                }
+
 
 
             }
+           dd(implode(":",$final));
 
 
             return view('admin.course_management.detail')
