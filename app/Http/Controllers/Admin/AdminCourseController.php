@@ -197,23 +197,19 @@ class AdminCourseController extends Controller
         $course = Course::findOrFail($request->course);
         $lessons_duration = Lesson::where('course_id', $request->course)
             ->select('lesson_duration')->get();
-
         $time_array = [];
         foreach ($lessons_duration as $item) {
-            $time_array[] = $item->lesson_duration;
+            $time_array[] = date('H:i:s', strtotime($item->lesson_duration));
         }
-        $timestamp = [];
-        foreach ($time_array as $item) {
-            $timestamp[] = date('H:i:s', strtotime($item));
-        }
-
 
         if ($lessons_duration->isNotEmpty()) {
 
             $last_update = Lesson::latest()->first();
             $last_update = date('Y:m:d', strtotime($last_update->created_at));
             $lessons_count = count($lessons_duration);
-            $final_time = calculate_course_time::CalculateTime($timestamp);
+
+            $final_time = calculate_course_time::CalculateTime($time_array);
+
             return view('admin.course_management.detail')
                 ->with(['course' => $course,
                     'course_time' => $final_time,
