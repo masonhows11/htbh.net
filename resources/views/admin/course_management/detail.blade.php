@@ -57,10 +57,11 @@
                     <input type="text"
                            id="video_count"
                            class="form-control"
+                           @isset($lessons_count)
                            @if($lessons_count != null)
                            value="{{ $lessons_count }}"
                            @endif
-
+                           @endisset
                            readonly>
                 </div>
                 <div class="">
@@ -68,9 +69,11 @@
                     <input type="text"
                            id="course_duration"
                            class="form-control"
+                           @isset($course_time)
                            @if($course_time != null)
                            value="{{ $course_time }}"
                            @endif
+                           @endisset
                            readonly>
                 </div>
                 <div>

@@ -99,7 +99,7 @@ class AdminLessonController extends Controller
                     'lesson_duration' => $request->lesson_duration,
                     'video_path' => $request->video_path]);
             if (session()->has('current_lesson')) {
-                return redirect()->to(session('current_lesson'));
+                return redirect()->to(session('current_lesson'))->with('success', 'قسمت جدید با موفقیت ویرایش شد.');
             }
 
             return redirect()->back()->with('success', 'قسمت جدید با موفقیت ویرایش شد.');
