@@ -27,12 +27,12 @@
             <li class="nav-item dropdown">
 
                 <a href="#" class="nav-link" data-bs-toggle="dropdown" role="button" aria-expanded="false">{{ $category->title }}</a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item text-center" href="#">شبکه</a></li>
-                    <li><a class="dropdown-item text-center" href="#">شبکه</a></li>
-                    <li><a class="dropdown-item text-center" href="#">شبکه</a></li>
-                    <li><a class="dropdown-item text-center" href="#">شبکه</a></li>
-                </ul>
+                @if (count($category->child))
+                    <ul class="dropdown-menu">
+                        @include('front.category.child',['child'=>$category->child])
+                    </ul>
+                @endif
+
             </li>
             @endforeach
 
