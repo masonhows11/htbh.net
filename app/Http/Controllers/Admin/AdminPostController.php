@@ -152,11 +152,9 @@ class AdminPostController extends Controller
 
 
         $post = Post::find($request->post_id);
-        if ($post) {
+        if (!$post) {
             return response()->json(['error' => 'مقاله مورد نظر وجود ندارد.', 'status' => 404], 404);
         }
-
-
         try {
 
             if ($post->approved == 0) {

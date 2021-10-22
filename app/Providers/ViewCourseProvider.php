@@ -27,7 +27,7 @@ class ViewCourseProvider extends ServiceProvider
     {
         //
         View::composer(['welcome'],function ($view) {
-            $view->with('courses',Course::orderBy('created_at','asc')->take(4)->get());
+            $view->with('courses',Course::orderBy('created_at','asc')->where('status_publish','=',1)->take(4)->get());
         });
     }
 }

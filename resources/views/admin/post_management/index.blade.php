@@ -38,10 +38,10 @@
         @if(count($posts) == 0)
             <p class="text-center">مقاله ای برای نمایش وجود ندارد.</p>
         @else
-            <div class="row admin-content-models list-post-content" >
+            <div class="row admin-content-models list-post-content">
 
 
-                <div class="col-lg-8 col-md-8 col-xs-8 article-section" >
+                <div class="col-lg-8 col-md-8 col-xs-8 article-section">
                     <table class="table table-bordered">
                         <thead>
                         <tr>
@@ -57,7 +57,8 @@
                                 <td>{{ $post->id }}</td>
                                 <td>{{ $post->title }}</td>
                                 <td><span data-post-id="{{ $post->id }}" class="btn btn-default"
-                                          id="approvePost">{{ $post->approved == 1 ? 'منتشر شده':'منتشر نشده' }}</span></td>
+                                          id="approvePost">{{ $post->approved == 1 ? 'منتشر شده':'منتشر نشده' }}</span>
+                                </td>
                                 <td>
                             <span>
                                 <a href="/admin/article/edit?post={{ $post->id }}" class="text-info text-bold"><i
@@ -81,7 +82,6 @@
 
             </div>
         @endif
-
 
 
     </div>
@@ -153,7 +153,6 @@
                 url: '{{ route('approveArticle') }}',
                 data: {post_id: post_id},
             }).done(function (data) {
-                console.log(data);
                 if (data['status'] === 200) {
                     if (data['publish'] == 0) {
                         event.target.innerText = 'منتشر نشده';
@@ -173,7 +172,10 @@
                     })
                 }
             }).fail(function (data) {
-                console.log(data);
+                swal.fire({
+                    icon: 'error',
+                    text: data,
+                })
             });
         });
     </script>
