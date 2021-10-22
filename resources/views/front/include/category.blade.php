@@ -21,8 +21,12 @@
 
         <ul class="nav justify-content-center py-3 ">
 
+
+
+            @foreach($categories as $category)
             <li class="nav-item dropdown">
-                <a href="#" class="nav-link" data-bs-toggle="dropdown" role="button" aria-expanded="false">شبکه</a>
+
+                <a href="#" class="nav-link" data-bs-toggle="dropdown" role="button" aria-expanded="false">{{ $category->title }}</a>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item text-center" href="#">شبکه</a></li>
                     <li><a class="dropdown-item text-center" href="#">شبکه</a></li>
@@ -30,54 +34,8 @@
                     <li><a class="dropdown-item text-center" href="#">شبکه</a></li>
                 </ul>
             </li>
-            <li class="nav-item dropdown">
-                <a href="#" class="nav-link" data-bs-toggle="dropdown" role="button" aria-expanded="false">سیستم عامل</a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item text-center" href="#">سیستم عامل</a></li>
-                    <li><a class="dropdown-item text-center" href="#">سیستم عامل</a></li>
-                    <li><a class="dropdown-item text-center" href="#">سیستم عامل</a></li>
-                    <li><a class="dropdown-item text-center" href="#">سیستم عامل</a></li>
-                </ul>
-            </li>
-            <li class="nav-item dropdown">
-                <a href="#" class="nav-link" data-bs-toggle="dropdown" role="button" aria-expanded="false">برنامه نویسی
-                    موبایل</a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item text-center" href="#">برنامه نویسی وب</a></li>
-                    <li><a class="dropdown-item text-center" href="#">برنامه نویسی وب</a></li>
-                    <li><a class="dropdown-item text-center" href="#">برنامه نویسی وب</a></li>
-                    <li><a class="dropdown-item text-center" href="#">برنامه نویسی وب</a></li>
-                </ul>
-            </li>
-            <li class="nav-item dropdown">
-                <a href="#" class="nav-link" data-bs-toggle="dropdown" role="button" aria-expanded="false">برنامه نویسی وب
-                    (سرور)</a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item text-center" href="#">برنامه نویسی وب</a></li>
-                    <li><a class="dropdown-item text-center" href="#">برنامه نویسی وب</a></li>
-                    <li><a class="dropdown-item text-center" href="#">برنامه نویسی وب</a></li>
-                    <li><a class="dropdown-item text-center" href="#">برنامه نویسی وب</a></li>
-                </ul>
-            </li>
-            <li class="nav-item dropdown">
-                <a href="#" class="nav-link" data-bs-toggle="dropdown" role="button" aria-expanded="false">برنامه نویسی وب
-                    (کاربر) </a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item text-center" href="#">برنامه نویسی وب</a></li>
-                    <li><a class="dropdown-item text-center" href="#">برنامه نویسی وب</a></li>
-                    <li><a class="dropdown-item text-center" href="#">برنامه نویسی وب</a></li>
-                    <li><a class="dropdown-item text-center" href="#">برنامه نویسی وب</a></li>
-                </ul>
-            </li>
-            <li class="nav-item dropdown">
-                <a href="#" class="nav-link" data-bs-toggle="dropdown" role="button" aria-expanded="false">امنیت</a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item text-center" href="#">امنیت</a></li>
-                    <li><a class="dropdown-item text-center" href="#">امنیت</a></li>
-                    <li><a class="dropdown-item text-center" href="#">امنیت</a></li>
-                    <li><a class="dropdown-item text-center" href="#">امنیت</a></li>
-                </ul>
-            </li>
+            @endforeach
+
         </ul>
 
     </div>

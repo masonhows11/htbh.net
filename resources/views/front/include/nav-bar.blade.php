@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container-fluid">
         <!-- logo  -->
-        <a class="navbar-brand" href="#"><span class="text-red-500  text-2xl font-bold">Hack</span> <span
+        <a class="navbar-brand" href="{{ route('home') }}"><span class="text-red-500  text-2xl font-bold">Hack</span> <span
                 class="text-red-500 font-black">Learn</span></a>
         <!-- toggler button  -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
