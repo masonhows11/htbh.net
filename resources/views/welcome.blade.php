@@ -21,13 +21,15 @@
             <div class="row rows-cols-1 row-cols-md-4 rows-col-lg-4 g-4">
 
 
-                @foreach($courses as $course)
+
+
+            @foreach($courses as $course)
                 <div class="col-lg">
                     <div class="card">
                         <img src="{{ asset('storage/course/'.$course->image) }}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">{{ $course->title }}</h5>
-                            <div class="teacher mt-2"> مدرس : <span>mason</span></div>
+                            <div class="teacher mt-2"> مدرس : <span>{{ $course->user->name}}</span></div>
                         </div>
                         <div class="card-footer d-flex justify-content-between">
                             <div class="paid-status"><a href="#">رایگان</a></div>
@@ -153,7 +155,7 @@
                         </div>
 
                         <div class="card-footer d-flex justify-content-between">
-                            <div class="writer"><i class="bi-person"></i> <span>mason</span></div>
+                            <div class="writer"><i class="bi-person"></i> <span>{{ $article->user->name }}</span></div>
                             <div class="continue"><a href="#">ادامه...</a></div>
                         </div>
 
