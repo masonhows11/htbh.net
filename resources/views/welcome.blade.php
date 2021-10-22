@@ -32,7 +32,7 @@
                             <div class="teacher mt-2"> مدرس : <span>{{ $course->user->name}}</span></div>
                         </div>
                         <div class="card-footer d-flex justify-content-between">
-                            <div class="paid-status"><a href="#">رایگان</a></div>
+                            <div class="paid-status"><a href="#">{{ $course->status_paid == 1 ? 'رایگان' : number_format($course->price) . '     تومان' }}</a></div>
                             <div class="continue-link"><a href="#">ادامه....</a></div>
                         </div>
                     </div>

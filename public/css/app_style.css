@@ -167,7 +167,7 @@ body {
 
 .most-visited-course .paid-status,
 .latest-course .paid-status {
-    width: 100px;
+    width: 140px;
     height: 30px;
     text-align: center;
     background-color: orangered;
