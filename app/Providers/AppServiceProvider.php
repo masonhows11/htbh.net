@@ -31,9 +31,7 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
         Paginator::useBootstrap();
 
-        View::composer(['front.include.category'],function ($view){
-           $view->with('categories',Category::where('parent_id','=',null)->get());
-        });
+
 
     }
 }

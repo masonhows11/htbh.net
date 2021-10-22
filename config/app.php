@@ -167,6 +167,7 @@ return [
         Spatie\Permission\PermissionServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
         Alexusmai\LaravelFileManager\FileManagerServiceProvider::class,
+        App\Providers\ViewCategoryServiceProvider::class,
 
         /*
          * Package Service Providers...
