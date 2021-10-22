@@ -23,9 +23,26 @@
             <div class="row rows-cols-1 row-cols-md-4 rows-col-lg-4 g-4">
 
 
+                @foreach($courses as $course)
                 <div class="col-lg">
                     <div class="card">
-                        <img src="{{ asset('images/image-course-test.jpg') }}" class="card-img-top" alt="...">
+                        <img src="{{ asset('storage/course/'.$course->image) }}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $course->title }}</h5>
+                            <div class="teacher mt-2"> مدرس : <span>mason</span></div>
+                        </div>
+                        <div class="card-footer d-flex justify-content-between">
+                            <div class="paid-status"><a href="#">رایگان</a></div>
+                            <div class="continue-link"><a href="#">ادامه....</a></div>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+
+
+               {{-- <div class="col-lg">
+                    <div class="card">
+                        <img src="images/image-course-test.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">عنوان دوره</h5>
                             <div class="teacher mt-2"> مدرس : <span>mason</span></div>
@@ -52,7 +69,6 @@
                     </div>
                 </div>
 
-
                 <div class="col-lg">
                     <div class="card">
                         <img src="images/image-course-test.jpg" class="card-img-top" alt="...">
@@ -65,21 +81,7 @@
                             <div class="continue-link"><a href="#">ادامه....</a></div>
                         </div>
                     </div>
-                </div>
-
-                <div class="col-lg">
-                    <div class="card">
-                        <img src="images/image-course-test.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">عنوان دوره</h5>
-                            <div class="teacher mt-2"> مدرس : <span>mason</span></div>
-                        </div>
-                        <div class="card-footer d-flex justify-content-between">
-                            <div class="paid-status"><a href="#">رایگان</a></div>
-                            <div class="continue-link"><a href="#">ادامه....</a></div>
-                        </div>
-                    </div>
-                </div>
+                </div>--}}
 
 
             </div>
@@ -189,14 +191,14 @@
         <div class="container">
             <div class="row rows-cols-1 row-cols-md-4 rows-col-lg-4 g-4">
 
+                @foreach($articles as $article)
                 <div class="col-lg">
                     <div class="card h-100">
-                        <img src="images/image-course-test.jpg" class="card-img-top" alt="...">
+                        <img src="{{ asset('storage/article/'.$article->image) }}" class="card-img-top" alt="...">
 
                         <div class="card-body">
-                            <h5 class="card-title">عنوان مقاله</h5>
-                            <p class="card-text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از
-                                طراحان گرافیک است.</p>
+                            <h5 class="card-title">{{ $article->title }}</h5>
+                            <p class="card-text">{{ strip_tags($article->description) }}</p>
                         </div>
 
                         <div class="card-footer d-flex justify-content-between">
@@ -206,8 +208,9 @@
 
                     </div>
                 </div>
+                @endforeach
 
-                <div class="col-lg">
+              {{--  <div class="col-lg">
                     <div class="card h-100">
                         <img src="{{ asset('images/image-course-test.jpg') }}" class="card-img-top" alt="...">
 
@@ -259,7 +262,7 @@
                         </div>
 
                     </div>
-                </div>
+                </div>--}}
 
 
             </div>

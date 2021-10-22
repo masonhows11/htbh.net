@@ -2,12 +2,11 @@
 
 namespace App\Providers;
 
-use App\Models\Post;
-
+use App\Models\Course;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
-class viewArticleProvider extends ServiceProvider
+class ViewCourseProvider extends ServiceProvider
 {
     /**
      * Register services.
@@ -27,9 +26,8 @@ class viewArticleProvider extends ServiceProvider
     public function boot()
     {
         //
-
         View::composer(['welcome'],function ($view) {
-           $view->with('articles',Post::orderBy('created_at','asc')->get());
+            $view->with('courses',Course::orderBy('created_at','asc')->get());
         });
     }
 }

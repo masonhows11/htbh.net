@@ -168,7 +168,8 @@ return [
         Barryvdh\Debugbar\ServiceProvider::class,
         Alexusmai\LaravelFileManager\FileManagerServiceProvider::class,
         App\Providers\ViewCategoryServiceProvider::class,
-        App\Providers\ViewArticleProvider::class,
+        App\Providers\viewArticleProvider::class,
+        App\Providers\ViewCourseProvider::class,
 
         /*
          * Package Service Providers...
