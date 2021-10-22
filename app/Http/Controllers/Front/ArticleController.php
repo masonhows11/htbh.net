@@ -8,4 +8,8 @@ use App\Models\Post;
 class ArticleController extends Controller
 {
     //
+    public function article()
+    {
+
+    }
 }

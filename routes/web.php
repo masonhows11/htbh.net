@@ -23,6 +23,9 @@ use App\Http\Controllers\Admin\AdminPostController;
 
 use App\Http\Controllers\Admin\AdminCourseController;
 use App\Http\Controllers\Admin\AdminLessonController;
+
+use App\Http\Controllers\Front\ArticleController;
+use App\Http\Controllers\Front\CourseController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -159,7 +162,18 @@ Route::group(['prefix'=>'admin/lesson','middleware'=>'role:admin'],function (){
     Route::get('/editLesson', [AdminLessonController::class, 'editLesson']);
     Route::post('/updateLesson', [AdminLessonController::class, 'updateLesson'])->name('updateLesson');
     Route::get('/deleteLesson', [AdminLessonController::class, 'deleteLesson'])->name('deleteLesson');
+});
 
 
+///////////////////////////////////////// front section /////////////////////////////////////////////////////
+Route::group(['prefix'=>'course'],function (){
+
+    Route::get('/course',[CourseController::class,''])->name('course');
+
+});
+
+Route::group(['prefix'=>'article'],function (){
+
+    Route::get('/article',[ArticleController::class,''])->name('article');
 
 });
