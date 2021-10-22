@@ -15,13 +15,13 @@ class AdminPostController extends Controller
 
     public function index()
     {
-        $categories = Category::all();
+
         $posts = Post::orderBy('created_at', 'asc')->Paginate(3);
         return view('admin.post_management.index')
-            ->with(['posts' => $posts, 'categories' => $categories]);
+            ->with(['posts' => $posts]);
     }
 
-    public function listPostBaseCategory(Request $request)
+   /* public function listPostBaseCategory(Request $request)
     {
 
         $request->validate([
@@ -44,25 +44,23 @@ class AdminPostController extends Controller
             return view('errors.error_not_found_model');
         }
 
-    }
+    }*/
 
     public function create()
     {
-        $categories = Category::all();
-        return view('admin.post_management.create')->with(['categories' => $categories]);
+
+        return view('admin.post_management.create');
     }
 
 
     public function store(Request $request)
     {
         $request->validate([
-            'category' => 'required',
             'title' => 'required|min:3|max:50',
             'name' => 'required|min:3|max:30',
             'description' => 'required|min:10',
             'image' => 'required',
         ], $message = [
-            'category.required' => 'یک دسته بندی انتخاب کنید.',
             'title.required' => 'عنوان مقاله الزامی است.',
             'title.min' => 'حداقل ۵ کاراکتر.',
             'title.max' => 'حداکثر ۴۰ کاراکتر.',
@@ -74,7 +72,7 @@ class AdminPostController extends Controller
             'image.required' => 'انخاب عکس الزامی است.',
         ]);
 
-        $categories = Category::all();
+       // $categories = Category::all();
         try {
             $image_name = GetImageName::getName($request->image);
             Post::create([
@@ -83,11 +81,11 @@ class AdminPostController extends Controller
                 'description' => $request->description,
                 'image' => $image_name,
                 'user_id' => Auth::id(),
-            ])->categories()->sync($request->category);
+            ]);
 
             return redirect()
                 ->route('articles')
-                ->with(['categories' => $categories, 'success' => 'مقاله جدید با موفقیت ایجاد شد.']);
+                ->with(['success' => 'مقاله جدید با موفقیت ایجاد شد.']);
 
         } catch (\Exception $ex) {
             return view('errors.error_store_model');
@@ -102,9 +100,9 @@ class AdminPostController extends Controller
         } catch (\Exception $ex) {
             return redirect()->back()->with(['error' => 'مقاله مورد نظر وجود ندارد.']);
         }
-        $categories = Category::all();
+        //$categories = Category::all();
         return view('admin.post_management.edit')
-            ->with(['post' => $post, 'categories' => $categories]);
+            ->with(['post' => $post]);
 
     }
 
@@ -112,13 +110,13 @@ class AdminPostController extends Controller
     {
 
         $request->validate([
-            'category' => 'required',
+
             'title' => 'required|min:3|max:50',
             'name' => 'required|min:3|max:30',
             'description' => 'required|min:10',
             'image' => 'required',
         ], $message = [
-            'category.required' => 'یک دسته بندی انتخاب کنید.',
+
             'title.required' => 'عنوان مقاله الزامی است.',
             'title.min' => 'حداقل ۵ کاراکتر.',
             'title.max' => 'حداکثر ۴۰ کاراکتر.',
@@ -137,7 +135,7 @@ class AdminPostController extends Controller
             $post->description = $request->description;
             $post->image = $image_name;
             $post->save();
-            $post->categories()->sync($request->category);
+            //$post->categories()->sync($request->category);
 
             return redirect(route('articles'))
                 ->with(['success' => 'مقاله  با موفقیت ویرایش شد.']);

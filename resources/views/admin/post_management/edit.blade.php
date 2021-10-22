@@ -37,7 +37,7 @@
                         <input type="text" id="image_label" class="form-control @error('image') is-invalid @enderror" value="{{ $post->image }}" name="image" aria-label="Image" aria-describedby="button-image">
                     </div>
 
-                    <div class="form-group category-chosen">
+                   {{-- <div class="form-group category-chosen">
                         <label for="category">انتخاب دسته بندی :</label>
                         <select name="category[]"
                                 data-placeholder="دسته بندی های مورد نظر را انتخاب کنید.."
@@ -49,7 +49,7 @@
                                 <option value="{{ $category->id }}" {{ in_array($category->id,$post->categories()->pluck('category_id')->toArray())?'selected':''}}>{{  $category->title  }}</option>
                             @endforeach
                         </select>
-                    </div>
+                    </div>--}}
 
 
                     <div class="form-group">

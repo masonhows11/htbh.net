@@ -11,7 +11,7 @@
             </div>
         </div>
 
-
+        {{--
         <div class="row category-dropdown-article">
             <div class="col-lg-6 col-md-6">
                 <form action="{{route('listPostCategory')}}" method="post">
@@ -29,7 +29,7 @@
                     </div>
                 </form>
             </div>
-        </div>
+        </div>--}}
 
         <div class="row add-post-button">
             <a href="{{ route('newArticle') }}" class="btn btn-success">ایجاد مقاله جدید</a>
