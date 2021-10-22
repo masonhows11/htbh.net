@@ -29,7 +29,7 @@ class viewArticleProvider extends ServiceProvider
         //
 
         View::composer(['welcome'],function ($view) {
-           $view->with('articles',Post::orderBy('created_at','asc')->get());
+           $view->with('articles',Post::orderBy('created_at','asc')->take(4)->get());
         });
     }
 }
