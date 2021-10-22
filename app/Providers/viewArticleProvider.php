@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\Post;
+use App\Models\Course;
 use Illuminate\Support\ServiceProvider;
 
 class viewArticleProvider extends ServiceProvider
