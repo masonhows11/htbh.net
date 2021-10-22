@@ -198,7 +198,7 @@
 
                         <div class="card-body">
                             <h5 class="card-title">{{ $article->title }}</h5>
-                            <p class="card-text">{{ strip_tags($article->description) }}</p>
+                            {{--<p class="card-text">{{ strip_tags($article->description) }}</p>--}}
                         </div>
 
                         <div class="card-footer d-flex justify-content-between">
