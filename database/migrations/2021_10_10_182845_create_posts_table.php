@@ -23,7 +23,8 @@ class CreatePostsTable extends Migration
             $table->unsignedBigInteger('views')->nullable();
 
             $table->unsignedBigInteger('user_id')->nullable();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('user_id')->references('id')
+                ->on('users')->onDelete('cascade')->onUpdate('cascade');
 
             $table->tinyInteger('approved')->default(0)->nullable();
             $table->timestamps();

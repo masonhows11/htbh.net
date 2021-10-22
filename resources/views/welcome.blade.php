@@ -17,9 +17,7 @@
     <!---- latest course content ---->
 
     <div class="p-5 latest-course">
-
         <div class="container">
-
             <div class="row rows-cols-1 row-cols-md-4 rows-col-lg-4 g-4">
 
 
@@ -40,54 +38,8 @@
                 @endforeach
 
 
-               {{-- <div class="col-lg">
-                    <div class="card">
-                        <img src="images/image-course-test.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">عنوان دوره</h5>
-                            <div class="teacher mt-2"> مدرس : <span>mason</span></div>
-                        </div>
-                        <div class="card-footer d-flex justify-content-between">
-                            <div class="paid-status"><a href="#">رایگان</a></div>
-                            <div class="continue-link"><a href="#">ادامه....</a></div>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="col-lg">
-                    <div class="card">
-                        <img src="images/image-course-test.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">عنوان دوره</h5>
-                            <div class="teacher mt-2"> مدرس : <span>mason</span></div>
-                        </div>
-                        <div class="card-footer d-flex justify-content-between">
-                            <div class="paid-status"><a href="#">رایگان</a></div>
-                            <div class="continue-link"><a href="#">ادامه....</a></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg">
-                    <div class="card">
-                        <img src="images/image-course-test.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">عنوان دوره</h5>
-                            <div class="teacher mt-2"> مدرس : <span>mason</span></div>
-                        </div>
-                        <div class="card-footer d-flex justify-content-between">
-                            <div class="paid-status"><a href="#">رایگان</a></div>
-                            <div class="continue-link"><a href="#">ادامه....</a></div>
-                        </div>
-                    </div>
-                </div>--}}
-
-
             </div>
         </div>
-
-
     </div>
 
     <!---- most visited-course title ---->
@@ -198,7 +150,6 @@
 
                         <div class="card-body">
                             <h5 class="card-title">{{ $article->title }}</h5>
-                            {{--<p class="card-text">{{ strip_tags($article->description) }}</p>--}}
                         </div>
 
                         <div class="card-footer d-flex justify-content-between">
@@ -210,59 +161,7 @@
                 </div>
                 @endforeach
 
-              {{--  <div class="col-lg">
-                    <div class="card h-100">
-                        <img src="{{ asset('images/image-course-test.jpg') }}" class="card-img-top" alt="...">
 
-                        <div class="card-body">
-                            <h5 class="card-title">عنوان مقاله</h5>
-                            <p class="card-text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از
-                                طراحان گرافیک است.</p>
-                        </div>
-
-                        <div class="card-footer d-flex justify-content-between">
-                            <div class="writer"><i class="bi-person"></i> <span>mason</span></div>
-                            <div class="continue"><a href="#">ادامه...</a></div>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="col-lg">
-                    <div class="card h-100">
-                        <img src="images/image-course-test.jpg" class="card-img-top" alt="...">
-
-                        <div class="card-body">
-                            <h5 class="card-title">عنوان مقاله</h5>
-                            <p class="card-text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از
-                                طراحان گرافیک است.</p>
-                        </div>
-
-                        <div class="card-footer d-flex justify-content-between">
-                            <div class="writer"><i class="bi-person"></i> <span>mason</span></div>
-                            <div class="continue"><a href="#">ادامه...</a></div>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="col-lg">
-                    <div class="card h-100">
-                        <img src="images/image-course-test.jpg" class="card-img-top" alt="...">
-
-                        <div class="card-body">
-                            <h5 class="card-title">عنوان مقاله</h5>
-                            <p class="card-text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از
-                                طراحان گرافیک است.</p>
-                        </div>
-
-                        <div class="card-footer d-flex justify-content-between">
-                            <div class="writer"><i class="bi-person"></i> <span>mason</span></div>
-                            <div class="continue"><a href="#">ادامه...</a></div>
-                        </div>
-
-                    </div>
-                </div>--}}
 
 
             </div>
