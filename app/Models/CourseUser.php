@@ -12,13 +12,13 @@ class CourseUser extends Model
     protected $table = 'course_user';
     protected $fillable = ['user_id', 'course_id'];
 
-   /* public static function checkAddOrNot($user,$course)
+   public static function checkAddOrNot($user,$course)
     {
         $added = DB::table('course_user')->where('user_id', '=', $user)->where('course_id','=',$course)->count();
         if ($added > 0 ) {
             return true;
         }
         return false;
-    }*/
+    }
 
 }
