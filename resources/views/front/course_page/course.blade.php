@@ -3,5 +3,7 @@
    {{ $course[0]->title}}
 @endsection
 @section('main_content')
+    <div class="container">
 
+    </div>
 @endsection
