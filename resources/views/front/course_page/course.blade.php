@@ -13,7 +13,7 @@
                     <div class="card">
                         <input type="hidden" id="course_id" value="{{ $course[0]->id }}">
                         <input type="hidden" id="token" value="{{ csrf_token() }}">
-                        <img src="{{ asset($course[0]->image) }}" class="card-img-top" alt="...">
+                        <img src="{{ asset('storage/course/'.$course[0]->image) }}" class="card-img-top" alt="...">
                         <div class="card-header">
                             {{$course[0]->title}}
                         </div>
@@ -70,6 +70,7 @@
                     </div>
                 </div>
                 <!-- end course body -->
+
                 <!--  start course properties and add by user     -->
                 <div class="col-md-3 mt-2 course-detail">
                     <div class="row d-flex flex-column align-content-center">
@@ -77,10 +78,7 @@
                             <p class="text-center mt-2"> {{ $course[0]->title }}</p>
                         </div>
                         <div class="col-lg-10 mt-2">
-                            @php
-                                $author = \App\Models\Course::join('users','courses.user_id','=','users.id')->select('name')->first();
-                            @endphp
-                            <p class="text-center mt-2"> مدرس : {{ $author->name }} </p>
+                            <p class="text-center mt-2"> مدرس : {{ $course[0]->user->name }} </p>
                         </div>
                         <div class="col-lg-10 mt-2">
                             <p class="text-center mt-2"> تعداد دانشجویان : {{ $course[0]->student_count }}</p>
@@ -127,9 +125,89 @@
                     </div>
                 </div>
                 <!--  end course properties and add by user   -->
-
-
         </div>
+
+
+        <!-- course lessons section -->
+        <div class="row d-flex flex-column align-content-center mt-5 course-lessons">
+            @foreach($course[0]->lessons as $lesson)
+            <div class="col-md-6 mt-2 mb-2" style="">
+                <p class="text-center">
+                    <a  class="btn btn-primary"
+                        data-bs-toggle="collapse"
+                        href="#collapseExample{{$lesson->id}}"
+                        role="button"
+                        aria-expanded="false"
+                        aria-controls="collapseExample">
+                        {{ $lesson->title }}
+                    </a>
+                </p>
+                <div class="collapse"
+                     id="collapseExample{{$lesson->id}}">
+                    <div class="card card-body">
+                        <a class="text-center" href="{{ $lesson->video_path }}">{{$lesson->video_path}}</a>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
+        <!-- end course lessons section -->
+
+        <!-- comment course section -->
+        <div class="row d-flex justify-content-center align-content-center mt-5">
+            <div class="col-lg-8">
+                <div class="row d-flex flex-column justify-content-center comments-sec">
+
+                    <div class="col-lg-12 mt-5 list-comments">
+                        @foreach($course[0]->comments as $comment)
+                            <div class="card mt-5">
+                                <div class="card-body">
+                                    <p class="card-text">
+                                        {{ $comment->description }}
+                                    </p>
+                                </div>
+                                <div class="card-footer d-flex justify-content-between">
+                                    <div><span class="users_comment">{{ $comment->user_name }}</span></div>
+                                    <div><span
+                                            class="date_comment">{{ jdate($comment->created_at)->format('%d %B %Y') }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+
+                    @if(Auth::check())
+                        <div class="col-lg-12 mt-5 mb-5 rounded-3 add-comment">
+
+                            <form action="/comment/store" method="post">
+                                @csrf
+                                <input type="hidden" name="course_id" value="{{ $course[0]->id }}">
+                                <div class="mb-5">
+                                    <label for="subject-body" class="form-label mt-5">متن دیدگاه</label>
+                                    <textarea class="form-control @error('description') is_invalid @enderror"
+                                              name="description" wrap="physical" id="subject-body" rows="6" cols="6">
+                            </textarea>
+                                    @error('description')
+                                    <div class="alert alert-danger mt-4">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="mb-3">
+                                    <button type="submit" class="btn btn-outline-primary">ارسال دیدگاه</button>
+                                </div>
+                            </form>
+                        </div>
+                    @else
+                        <div class="col-lg-9 mt-5 mb-5  message_auth">
+                            <p class="text-center">کاربر گرامی برای ثبت دیدگاه خود ابتدا <a href="/loginForm"
+                                                                                            class="text-center">وارد</a>
+                                سایت شوید با تشکر.</p>
+                        </div>
+                    @endif
+                </div>
+            </div>
+        </div>
+        <!--end comment course section -->
+
 
     </div>
 @endsection
