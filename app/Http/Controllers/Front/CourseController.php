@@ -11,11 +11,19 @@ class CourseController extends Controller
 
     public function course($course)
     {
-        // return $course;
 
-        $course = Course::with('lessons','user')
-            ->where('slug','=',$course)->get();
-        return $course;
+
+        try {
+            $course = Course::with('lessons','user')
+                ->where('slug','=',$course)->get();
+            return view('front.course_page.course')->with('course',$course);
+        }catch (\Exception $ex)
+        {
+            return view('errors.error_not_found_model');
+        }
+
+
+
 
     }
 }
