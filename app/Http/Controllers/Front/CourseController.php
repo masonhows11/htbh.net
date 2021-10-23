@@ -9,8 +9,13 @@ class CourseController extends Controller
 {
     //
 
-    public function course()
+    public function course($course)
     {
-        
+        // return $course;
+
+        $course = Course::with('lessons','user')
+            ->where('slug','=',$course)->get();
+        return $course;
+
     }
 }

@@ -33,7 +33,7 @@
                         </div>
                         <div class="card-footer d-flex justify-content-between">
                             <div class="paid-status"><a href="#">{{ $course->status_paid == 1 ? 'رایگان' : number_format($course->price) . '     تومان' }}</a></div>
-                            <div class="continue-link"><a href="#">ادامه....</a></div>
+                            <div class="continue-link"><a href="{{route('course',[$course->slug])}}">ادامه....</a></div>
                         </div>
                     </div>
                 </div>

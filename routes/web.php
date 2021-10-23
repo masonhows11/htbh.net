@@ -168,7 +168,7 @@ Route::group(['prefix'=>'admin/lesson','middleware'=>'role:admin'],function (){
 ///////////////////////////////////////// front section /////////////////////////////////////////////////////
 Route::group(['prefix'=>'course'],function (){
 
-    Route::get('/course',[CourseController::class,''])->name('course');
+    Route::get('/get/{course}',[CourseController::class,'course'])->name('course');
 
 });
 
