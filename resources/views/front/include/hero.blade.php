@@ -3,7 +3,7 @@
     <div class="row">
 
         <div class="col-lg-6 hero-image img-fluid">
-            <img src="images/hacker-activity.jpg" alt="">
+            <img src="{{ asset('images/hacker-activity.jpg')}}" alt="">
         </div>
 
         <div class="col-lg-6 hero-text">

@@ -5,7 +5,7 @@
 
             <div class="col-md mt-2 Dreaming-reality">
                 <div class="card bg-dark text-light h-100">
-                    <img src="images/01.jpg" class="card-img-top" alt="...">
+                    <img src="{{ asset('images/01.jpg')}}" class="card-img-top" alt="...">
                     <div class="card-body text-center">
                         <h5 class="card-title text-red-400">رویا پردازی واقعیت...</h5>
                         <p class="card-text">
@@ -21,7 +21,7 @@
             </div>
             <div class="col-md mt-2 road-map">
                 <div class="card bg-dark text-light h-100">
-                    <img src="images/02.jpg" class="card-img-top" alt="...">
+                    <img src="{{ asset('images/02.jpg') }}" class="card-img-top" alt="...">
                     <div class="card-body text-center">
                         <h5 class="card-title text-green-500">نقشه راه...</h5>
                         <p class="card-text">
@@ -38,7 +38,7 @@
             </div>
             <div class="col-md mt-2 interest-practice">
                 <div class="card bg-dark text-light h-100">
-                    <img src="images/03.jpg" class="card-img-top" alt="...">
+                    <img src="{{ asset('images/03.jpg') }}" class="card-img-top" alt="...">
                     <div class="card-body text-center">
                         <h5 class="card-title">علاقه و تمرین زیاد...</h5>
                         <p class="card-text">

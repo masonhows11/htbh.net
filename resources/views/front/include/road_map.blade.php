@@ -13,7 +13,7 @@
             </div>
 
             <div class="col-md network-img d-flex justify-content-end">
-                <img src="images/network.png" class="img-fluid" alt="image">
+                <img src="{{ asset('images/network.png')}}" class="img-fluid" alt="image">
             </div>
         </div>
     </div>
@@ -23,7 +23,7 @@
     <div class="container">
         <div class="row align-items-center justify-content-between">
             <div class="col-md linux-img d-flex justify-content-start">
-                <img src="images/linux.png" class="img-fluid" alt="image">
+                <img src="{{ asset('images/linux.png')}}" class="img-fluid" alt="image">
             </div>
             <div class="col-md linux-text mt-2">
                 <h3 class="h3"><strong>لینوکس</strong></h3>
@@ -58,7 +58,7 @@
                 <a href="#" class="continue-link">ادامه مطلب ...</a>
             </div>
             <div class="col-md ceh-img d-flex justify-content-end">
-                <img src="images/ceh.png" class="img-fluid" alt="image">
+                <img src="{{ asset('images/ceh.png')}}" class="img-fluid" alt="image">
             </div>
         </div>
     </div>
@@ -69,7 +69,7 @@
         <div class="row align-items-center justify-content-between">
 
             <div class="col-md programming-img d-flex justify-content-start">
-                <img src="images/programming.png" class="img-fluid" alt="image">
+                <img src="{{ asset('images/programming.png')}}" class="img-fluid" alt="image">
             </div>
 
             <div class="col-md programming-text mt-2">
@@ -106,7 +106,7 @@
             </div>
 
             <div class="col-md practice-img d-flex justify-content-end">
-                <img src="images/motivation-2.png" class="img-fluid" alt="image">
+                <img src="{{ asset('images/motivation-2.png')}}" class="img-fluid" alt="image">
             </div>
         </div>
 
