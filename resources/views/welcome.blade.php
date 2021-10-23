@@ -1,8 +1,8 @@
-@extends('front.include.master_front')
-@section('page_title')
-    خانه
-@endsection
-@section('main_content')
+@include('front.include.header')
+@include('front.include.nav-bar')
+@include('front.include.category')
+@include('front.include.hero')
+@include('front.include.boxes')
     <!---- latest course title ---->
     <div>
         <div class="container mt-5 latest-course-title">
@@ -171,4 +171,7 @@
 
     </div>
 
-@endsection
+    @include('front.include.road_map')
+    @include('front.include.footer')
+    @include('front.include.footer_scripts')
+    
