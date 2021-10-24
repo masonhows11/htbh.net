@@ -222,3 +222,8 @@
 
     </div>
 @endsection
+@section('custom_script')
+
+    
+
+@endsection
