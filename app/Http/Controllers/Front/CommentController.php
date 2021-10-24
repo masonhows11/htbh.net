@@ -5,10 +5,11 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Comment;
+use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
-    public function store(Request $request)
+    public function store(Request $request): \Illuminate\Http\RedirectResponse
     {
         // return $request;
 
@@ -23,7 +24,7 @@ class CommentController extends Controller
         if($request->filled('post_id')){
 
             Comment::create([
-                'user_name' => Auth::user()->user_name,
+                'user_name' => Auth::user()->name,
                 'user_id' => Auth::id(),
                 'email' => Auth::user()->email,
                 'post_id' => $request->post_id,
@@ -33,7 +34,7 @@ class CommentController extends Controller
 
         if ($request->filled('course_id')){
             Comment::create([
-                'user_name' => Auth::user()->user_name,
+                'user_name' => Auth::user()->name,
                 'user_id' => Auth::id(),
                 'email' => Auth::user()->email,
                 'course_id' => $request->course_id,
@@ -42,7 +43,8 @@ class CommentController extends Controller
         }
 
 
-        return redirect()->back()->with('message','دیدگاه شما با موفقیت ثبت شد، پس از بررسی نمایش داده خواهد شد.');
+        return redirect()->back()
+            ->with('message','دیدگاه شما با موفقیت ثبت شد، پس از بررسی نمایش داده خواهد شد.');
 
 
     }

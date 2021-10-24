@@ -27,11 +27,14 @@ use App\Http\Controllers\Admin\AdminLessonController;
 
 use App\Http\Controllers\Admin\AdminCommentController;
 
+
 use App\Http\Controllers\Front\ArticleController;
 use App\Http\Controllers\Front\CourseController;
 
-use App\Http\Controllers\Admin\CommentController;
+use App\Http\Controllers\Front\CommentController;
 use App\Http\Controllers\Front\LikeController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -186,7 +189,7 @@ Route::group(['prefix' => 'admin/comments', 'middleware' => 'role:admin'], funct
 
 ///////////////////////////////////////// front section /////////////////////////////////////////////////////
 Route::group(['prefix' => 'like'], function () {
-    
+
     Route::post('/addPostLike', [LikeController::class, 'postLike'])->name('add_post_Like');
     Route::get('/countPostLike', [LikeController::class, 'postLikeCount'])->name('get_post_likes');
 
@@ -196,8 +199,7 @@ Route::group(['prefix' => 'like'], function () {
 
 });
 Route::group(['prefix' => 'comment'], function () {
-
-    Route::post('/store', [CommentController::class, 'store']);
+    Route::post('/store', [CommentController::class,'store'])->name('commentStore');
 });
 
 Route::group(['prefix'=>'course'],function (){
@@ -208,6 +210,6 @@ Route::group(['prefix'=>'course'],function (){
 
 Route::group(['prefix'=>'article'],function (){
 
-    Route::get('/article',[ArticleController::class,''])->name('article');
+    Route::get('/get/article',[ArticleController::class,''])->name('article');
 
 });

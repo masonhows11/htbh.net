@@ -1,6 +1,6 @@
 @extends('front.include.master_front')
 @section('page_title')
-   {{ $course[0]->title}}
+    {{ $course->title}}
 @endsection
 @section('main_content')
     <div class="container">
@@ -8,158 +8,161 @@
 
         <div class="row d-flex justify-content-center">
 
-                <!--  start course body  -->
-                <div class="col-md-6">
-                    <div class="card">
-                        <input type="hidden" id="course_id" value="{{ $course[0]->id }}">
-                        <input type="hidden" id="token" value="{{ csrf_token() }}">
-                        <img src="{{ asset('storage/course/'.$course[0]->image) }}" class="card-img-top" alt="...">
-                        <div class="card-header">
-                            {{$course[0]->title}}
-                        </div>
+            <!--  start course body  -->
+            <div class="col-md-6">
+                <div class="card">
+                    <input type="hidden" id="course_id" value="{{ $course->id }}">
+                    <input type="hidden" id="token" value="{{ csrf_token() }}">
+                    <img src="{{ asset('storage/course/'.$course->image) }}" class="card-img-top" alt="...">
+                    <div class="card-header">
+                        {{$course->title}}
+                    </div>
 
-                        <!-------------------- card-body ------------------------->
+                    <!-------------------- card-body ------------------------->
 
-                        <div class="card-body">
-                            <p class="card-text">{{ strip_tags($course[0]->description) }}</p>
-                        </div>
+                    <div class="card-body">
+                        <p class="card-text">{{ strip_tags($course->description) }}</p>
+                    </div>
 
-                        <!---------------------- card-footer ---------------------->
+                    <!---------------------- card-footer ---------------------->
 
-                        <div class="card-footer">
-                            <div class="row d-flex flex-row justify-content-evenly">
-                                <div class="col-6">
-                                    <div class="created_date">
-                                        {{ jdate($course[0]->created_at)->format('%d %B %Y') }}
-                                    </div>
+                    <div class="card-footer">
+                        <div class="row d-flex flex-row justify-content-evenly">
+                            <div class="col-6">
+                                <div class="created_date">
+                                    {{ jdate($course->created_at)->format('%d %B %Y') }}
                                 </div>
-                                <div class="col-6 d-flex justify-content-end">
+                            </div>
+                            <div class="col-6 d-flex justify-content-end">
 
-                                    <div class="d-flex flex-row-reverse">
-                                        <div class="dislike_sec">
-                                            @if(Auth::check())
-                                                @if( Auth::user()->likes()->where('course_id','=',$course[0]->id) &&
-                                                     Auth::user()->likes()->where('course_id','=',$course[0]->id)->where('like','=',0)->first())
-                                                    <span id="dislike_count" class="dislike_count"></span>
-                                                    <i class="far fa-thumbs-down like" style="color:tomato"
-                                                       id="dislike"></i>
-                                                @else
-                                                    <span id="dislike_count" class="dislike_count"></span>
-                                                    <i class="far fa-thumbs-down like" id="dislike"></i>
-                                                @endif
+                                <div class="d-flex flex-row-reverse">
+                                    <div class="dislike_sec">
+                                        @if(Auth::check())
+                                            @if( Auth::user()->likes()->where('course_id','=',$course->id) &&
+                                                 Auth::user()->likes()->where('course_id','=',$course->id)->where('like','=',0)->first())
+                                                <span id="dislike_count" class="dislike_count"></span>
+                                                <i class="far fa-thumbs-down like" style="color:tomato"
+                                                   id="dislike"></i>
                                             @else
                                                 <span id="dislike_count" class="dislike_count"></span>
-                                                <i class="far fa-thumbs-down like_un_auth" id="dislike"></i>
+                                                <i class="far fa-thumbs-down like" id="dislike"></i>
                                             @endif
-                                        </div>
-                                        <div class="like_sec mx-2">
-                                            @if(Auth::check())
-                                                @if( Auth::user()->likes()->where('course_id','=',$course[0]->id) &&
-                                                     Auth::user()->likes()->where('course_id','=',$course[0]->id)->where('like','=',1)->first())
-                                                    <span id="like_count" class="like_count"></span>
-                                                    <i class="far fa-thumbs-up like" style="color:green" id="like"></i>
-                                                @else
-                                                    <span id="like_count" class="like_count"></span>
-                                                    <i class="far fa-thumbs-up like" id="like"></i>
-                                                @endif
+                                        @else
+                                            <span id="dislike_count" class="dislike_count"></span>
+                                            <i class="far fa-thumbs-down like_un_auth" id="dislike"></i>
+                                        @endif
+                                    </div>
+                                    <div class="like_sec mx-2">
+                                        @if(Auth::check())
+                                            @if( Auth::user()->likes()->where('course_id','=',$course->id) &&
+                                                 Auth::user()->likes()->where('course_id','=',$course->id)->where('like','=',1)->first())
+                                                <span id="like_count" class="like_count"></span>
+                                                <i class="far fa-thumbs-up like" style="color:green" id="like"></i>
                                             @else
                                                 <span id="like_count" class="like_count"></span>
-                                                <i class="far fa-thumbs-up like_un_auth" id="like"></i>
+                                                <i class="far fa-thumbs-up like" id="like"></i>
                                             @endif
-                                        </div>
+                                        @else
+                                            <span id="like_count" class="like_count"></span>
+                                            <i class="far fa-thumbs-up like_un_auth" id="like"></i>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- end course body -->
+            </div>
+            <!-- end course body -->
 
-                <!--  start course properties and add by user     -->
-                <div class="col-md-3 mt-2 course-detail">
-                    <div class="row d-flex flex-column align-content-center">
-                        <div class="col-lg-10 mt-2">
-                            <p class="text-center mt-2"> {{ $course[0]->title }}</p>
-                        </div>
-                        <div class="col-lg-10 mt-2">
-                            <p class="text-center mt-2"> مدرس : {{ $course[0]->user->name }} </p>
-                        </div>
-                        <div class="col-lg-10 mt-2">
-                            <p class="text-center mt-2 student_count"> تعداد دانشجویان : {{ $course[0]->student_count }}</p>
-                        </div>
-                        <div class="col-lg-10 mt-2">
-                            <p class="text-center mt-2 video_count"> تعداد ویدئو ها : {{ $course[0]->video_count }} </p>
-                        </div>
-                        @if ($course[0]->level_course == 1)
-                            @php( $level = 'مقدماتی')
-                        @elseif($course[0]->level_course == 2)
-                            @php(  $level = 'پیشرفته' )
-                        @elseif($course[0]->level_course == 3)
-                            @php($level = 'حرفه ای')
-                        @endif
-                        <div class="col-lg-10 mt-2">
-                            <p class="text-center mt-2 level_course"> سطح دوره : {{ $level }}</p>
-                        </div>
-                        <div class="col-lg-10 mt-2">
-                            <p class="text-center mt-2 course_duration"> مدت زمان دوره : {{ $course[0]->course_duration }} </p>
-                        </div>
-                        <div class="col-lg-10 mt-2">
-                            <p class="text-center mt-2"> وضعیت دوره
-                                : {{ $course[0]->course_status == 1 ? 'در حال برگزاری' : 'پایان دوره' }} </p>
-                        </div>
-                        <div class="col-lg-10 d-flex justify-content-center align-content-center mt-2">
-                            <div class="d-flex flex-column mt-2 mb-2">
-                                @if(\App\Models\CourseUser::checkAddOrNot(\Illuminate\Support\Facades\Auth::id(),$course[0]->id))
-                                    <p class="course-added w3-flat-turquoise">شما در این دوره ثبت نام کرده اید.</p>
-                                @else
-                                    @if($course[0]->status_paid == 1 )
-                                        <form action="/addCourse/add" method="post">
-                                            @csrf
-                                            <div class="mb-2 btn btn-danger add-course">
-                                                <input type="hidden" name="course_id" value="{{ $course[0]->id }}">
-                                                <input type="submit" class="btn btn-danger" value="ثبت نام رایگان در دوره"
-                                                       id="price">
-                                            </div>
-                                        </form>
-                                    @elseif($course[0]->status_paid == 2)
-                                        <form action="#" method="post">
-                                            <div class="mb-2"><p class="price "> {{ number_format($course[0]->price) }} تومان </p>
-                                            </div>
-                                            <div class="mb-2"><a href="#" class="btn btn-danger" id="price">خرید دروه</a></div>
-                                        </form>
-                                    @endif
-
+            <!--  start course properties and add by user     -->
+            <div class="col-md-3 mt-2 course-detail">
+                <div class="row d-flex flex-column align-content-center">
+                    <div class="col-lg-10 mt-2">
+                        <p class="text-center mt-2"> {{ $course->title }}</p>
+                    </div>
+                    <div class="col-lg-10 mt-2">
+                        <p class="text-center mt-2"> مدرس : {{ $course->user->name }} </p>
+                    </div>
+                    <div class="col-lg-10 mt-2">
+                        <p class="text-center mt-2 student_count"> تعداد دانشجویان : {{ $course->student_count }}</p>
+                    </div>
+                    <div class="col-lg-10 mt-2">
+                        <p class="text-center mt-2 video_count"> تعداد ویدئو ها : {{ $course->video_count }} </p>
+                    </div>
+                    @if ($course->level_course == 1)
+                        @php( $level = 'مقدماتی')
+                    @elseif($course->level_course == 2)
+                        @php(  $level = 'پیشرفته' )
+                    @elseif($course->level_course == 3)
+                        @php($level = 'حرفه ای')
+                    @endif
+                    <div class="col-lg-10 mt-2">
+                        <p class="text-center mt-2 level_course"> سطح دوره : {{ $level }}</p>
+                    </div>
+                    <div class="col-lg-10 mt-2">
+                        <p class="text-center mt-2 course_duration"> مدت زمان دوره
+                            : {{ $course->course_duration }} </p>
+                    </div>
+                    <div class="col-lg-10 mt-2">
+                        <p class="text-center mt-2"> وضعیت دوره
+                            : {{ $course->course_status == 1 ? 'در حال برگزاری' : 'پایان دوره' }} </p>
+                    </div>
+                    <div class="col-lg-10 d-flex justify-content-center align-content-center mt-2">
+                        <div class="d-flex flex-column mt-2 mb-2">
+                            @if(\App\Models\CourseUser::checkAddOrNot(\Illuminate\Support\Facades\Auth::id(),$course->id))
+                                <p class="course-added w3-flat-turquoise">شما در این دوره ثبت نام کرده اید.</p>
+                            @else
+                                @if($course->status_paid == 1 )
+                                    <form action="/addCourse/add" method="post">
+                                        @csrf
+                                        <div class="mb-2 btn btn-danger add-course">
+                                            <input type="hidden" name="course_id" value="{{ $course->id }}">
+                                            <input type="submit" class="btn btn-danger" value="ثبت نام رایگان در دوره"
+                                                   id="price">
+                                        </div>
+                                    </form>
+                                @elseif($course->status_paid == 2)
+                                    <form action="#" method="post">
+                                        <div class="mb-2"><p class="price "> {{ number_format($course->price) }}
+                                                تومان </p>
+                                        </div>
+                                        <div class="mb-2"><a href="#" class="btn btn-danger" id="price">خرید دروه</a>
+                                        </div>
+                                    </form>
                                 @endif
 
-                            </div>
+                            @endif
+
                         </div>
                     </div>
                 </div>
+            </div>
             <!--  end course properties and add by user   -->
         </div>
 
 
         <!-- course lessons section -->
         <div class="row d-flex flex-column align-content-center mt-5 course-lessons">
-            @foreach($course[0]->lessons as $lesson)
-            <div class="col-md-6 mt-2 mb-2" style="">
-                <p class="text-center">
-                    <a  class="btn btn-primary"
-                        data-bs-toggle="collapse"
-                        href="#collapseExample{{$lesson->id}}"
-                        role="button"
-                        aria-expanded="false"
-                        aria-controls="collapseExample">
-                        {{ $lesson->title }}
-                    </a>
-                </p>
-                <div class="collapse"
-                     id="collapseExample{{$lesson->id}}">
-                    <div class="card card-body">
-                        <a class="text-center" href="{{ $lesson->video_path }}">{{$lesson->video_path}}</a>
+            @foreach($course->lessons as $lesson)
+                <div class="col-md-6 mt-2 mb-2" style="">
+                    <p class="text-center">
+                        <a class="btn btn-primary"
+                           data-bs-toggle="collapse"
+                           href="#collapseExample{{$lesson->id}}"
+                           role="button"
+                           aria-expanded="false"
+                           aria-controls="collapseExample">
+                            {{ $lesson->title }}
+                        </a>
+                    </p>
+                    <div class="collapse"
+                         id="collapseExample{{$lesson->id}}">
+                        <div class="card card-body">
+                            <a class="text-center" href="{{ $lesson->video_path }}">{{$lesson->video_path}}</a>
+                        </div>
                     </div>
                 </div>
-            </div>
             @endforeach
         </div>
         <!-- end course lessons section -->
@@ -170,7 +173,7 @@
                 <div class="row d-flex flex-column justify-content-center comments-sec">
 
                     <div class="col-lg-12 mt-5 list-comments">
-                        @foreach($course[0]->comments as $comment)
+                        @foreach($course->comments as $comment)
                             <div class="card mt-5">
                                 <div class="card-body">
                                     <p class="card-text">
@@ -190,14 +193,14 @@
                     @if(Auth::check())
                         <div class="col-lg-12 mt-5 mb-5 rounded-3 add-comment">
 
-                            <form action="/comment/store" method="post">
+                            <form action="{{ route('commentStore') }}" method="post">
                                 @csrf
-                                <input type="hidden" name="course_id" value="{{ $course[0]->id }}">
+                                <input type="hidden" name="course_id" value="{{ $course->id }}">
                                 <div class="mb-5">
                                     <label for="subject-body" class="form-label mt-5">متن دیدگاه</label>
                                     <textarea class="form-control @error('description') is_invalid @enderror"
                                               name="description" wrap="physical" id="subject-body" rows="6" cols="6">
-                            </textarea>
+                                    </textarea>
                                     @error('description')
                                     <div class="alert alert-danger mt-4">{{ $message }}</div>
                                     @enderror
@@ -251,20 +254,15 @@
                 });
             }
 
-
             $(window).on('load', function () {
                 load_likes();
             })
-
-
             $('.like').on('click', function (event) {
                 event.preventDefault();
-
                 let like = document.getElementById('like');
                 let dis_like = document.getElementById('dislike');
                 let is_like = '';
                 if (event.target.id === 'dislike') {
-
                     is_like = false;
                 } else {
                     is_like = true;
@@ -294,6 +292,5 @@
                 });
             });
         });
-
     </script>
 @endsection

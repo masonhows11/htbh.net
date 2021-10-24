@@ -12,11 +12,11 @@ class CourseController extends Controller
 
     public function course($course)
     {
-
-
         try {
-            $course = Course::with('lessons','user')
-                ->where('slug','=',$course)->get();
+            $course = Course::with(['categories', 'likes', 'lessons', 'comments' => function ($query) {
+                $query->where('approved', 1);
+            }])->where('slug', '=', $course)->first();
+
             return view('front.course_page.course')->with('course',$course);
 
         }catch (\Exception $ex)
