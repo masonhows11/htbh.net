@@ -13,14 +13,14 @@ class LikeController extends Controller
 {
     public function postLike(Request $request)
     {
-        $sample_id = $request->sample_id;
+        $post_id = $request->post_id;
         $is_like = $request['is_like'] === 'true';
         $user_id = Auth::id();
-        $sample = Post::find($sample_id);
-        if (!$sample) {
+        $post = Post::find($post_id);
+        if (!$post) {
             return null;
         }
-        $like_exists = Like::where('sample_id', '=', $sample_id)->where('user_id', '=', $user_id)->first();
+        $like_exists = Like::where('post_id', '=', $post_id)->where('user_id', '=', $user_id)->first();
         if ($like_exists) {
             $already_like = $like_exists->like;
 
@@ -35,11 +35,11 @@ class LikeController extends Controller
         } else {
             $like = new Like();
             $like->user_id = $user_id;
-            $like->sample_id = $sample_id;
+            $like->post_id = $post_id;
             $like->like = $is_like;
             $like->save();
         }
-        $like = Like::where('sample_id', '=', $sample_id)->where('user_id', '=', $user_id)->first();
+        $like = Like::where('post_id', '=', $post_id)->where('user_id', '=', $user_id)->first();
         if ($like !== null) {
             return response()->json($like);
 
