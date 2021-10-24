@@ -17,11 +17,15 @@
                         <div class="card-header">
                             {{$course[0]->title}}
                         </div>
-                        <!--  card-body                       -->
+
+                        <!-------------------- card-body ------------------------->
+
                         <div class="card-body">
                             <p class="card-text">{{ strip_tags($course[0]->description) }}</p>
                         </div>
-                        <!-- card-footer                       -->
+
+                        <!---------------------- card-footer ---------------------->
+
                         <div class="card-footer">
                             <div class="row d-flex flex-row justify-content-evenly">
                                 <div class="col-6">
@@ -81,16 +85,23 @@
                             <p class="text-center mt-2"> مدرس : {{ $course[0]->user->name }} </p>
                         </div>
                         <div class="col-lg-10 mt-2">
-                            <p class="text-center mt-2"> تعداد دانشجویان : {{ $course[0]->student_count }}</p>
+                            <p class="text-center mt-2 student_count"> تعداد دانشجویان : {{ $course[0]->student_count }}</p>
                         </div>
                         <div class="col-lg-10 mt-2">
-                            <p class="text-center mt-2"> تعداد ویدئو ها : {{ $course[0]->video_count }} </p>
+                            <p class="text-center mt-2 video_count"> تعداد ویدئو ها : {{ $course[0]->video_count }} </p>
+                        </div>
+                        @if ($course[0]->level_course == 1)
+                            @php( $level = 'مقدماتی')
+                        @elseif($course[0]->level_course == 2)
+                            @php(  $level = 'پیشرفته' )
+                        @elseif($course[0]->level_course == 3)
+                            @php($level = 'حرفه ای')
+                        @endif
+                        <div class="col-lg-10 mt-2">
+                            <p class="text-center mt-2 level_course"> سطح دوره : {{ $level }}</p>
                         </div>
                         <div class="col-lg-10 mt-2">
-                            <p class="text-center mt-2"> سطح دوره : {{ $course[0]->level_course }}</p>
-                        </div>
-                        <div class="col-lg-10 mt-2">
-                            <p class="text-center mt-2"> مدت زمان دوره : {{ $course[0]->course_duration }} </p>
+                            <p class="text-center mt-2 course_duration"> مدت زمان دوره : {{ $course[0]->course_duration }} </p>
                         </div>
                         <div class="col-lg-10 mt-2">
                             <p class="text-center mt-2"> وضعیت دوره

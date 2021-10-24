@@ -338,6 +338,9 @@ height: auto;
     background-color:transparent;
     color: #000000;
 }
+.course-detail .course_duration , .student_count , .video_count {
+    font-family:'iransans_num',Sans-Serif;
+}
 /******** section media query **********/
 @media screen and (max-width: 991px) {
 

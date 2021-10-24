@@ -197,6 +197,7 @@ class AdminCourseController extends Controller
             ->select('lesson_duration')->get();
         $time_array = [];
         $final_time = null;
+        $lessons_count = null;
         foreach ($lessons_duration as $item) {
             $time_array[] = date('H:i:s', strtotime($item->lesson_duration));
         }
@@ -208,6 +209,7 @@ class AdminCourseController extends Controller
 
             $final_time = calculate_course_time::CalculateTime($time_array);
             $course->course_duration = $final_time;
+            $course->video_count = $lessons_count;
             $course->Save();
             return view('admin.course_management.detail')
                 ->with(['course' => $course,
@@ -218,6 +220,7 @@ class AdminCourseController extends Controller
 
         }
         $course->course_duration = $final_time;
+        $course->video_count = $lessons_count;
         $course->Save();
         return view('admin.course_management.detail')
             ->with(['course' => $course, 'current_cat' => $current_cat]);
