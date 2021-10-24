@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Models\Like;
 use Illuminate\Http\Request;
+use App\Models\Course;
+use App\Models\Post;
+use Illuminate\Support\Facades\Auth;
 
 class LikeController extends Controller
 {
@@ -12,7 +16,7 @@ class LikeController extends Controller
         $sample_id = $request->sample_id;
         $is_like = $request['is_like'] === 'true';
         $user_id = Auth::id();
-        $sample = Sample::find($sample_id);
+        $sample = Post::find($sample_id);
         if (!$sample) {
             return null;
         }
@@ -45,7 +49,7 @@ class LikeController extends Controller
         }
     }
 
-    public function postLikeCount(Request $request)
+    public function postLikeCount(Request $request): \Illuminate\Http\JsonResponse
     {
 
         $likes = Like::where('sample_id', $request->sample_id)
@@ -98,7 +102,7 @@ class LikeController extends Controller
 
     }
 
-    public function courseLikeCount(Request $request)
+    public function courseLikeCount(Request $request): \Illuminate\Http\JsonResponse
     {
         $likes = Like::where('course_id', $request->course_id)
             ->where('like', '=', 1)->count();
