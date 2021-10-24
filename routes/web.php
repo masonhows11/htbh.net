@@ -1,5 +1,6 @@
 <?php
 
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
@@ -24,8 +25,14 @@ use App\Http\Controllers\Admin\AdminPostController;
 use App\Http\Controllers\Admin\AdminCourseController;
 use App\Http\Controllers\Admin\AdminLessonController;
 
+use App\Http\Controllers\Admin\AdminCommentController;
+
 use App\Http\Controllers\Front\ArticleController;
 use App\Http\Controllers\Front\CourseController;
+
+use App\Http\Controllers\Admin\CommentController;
+use App\Http\Controllers\Front\LikeController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -163,9 +170,36 @@ Route::group(['prefix'=>'admin/lesson','middleware'=>'role:admin'],function (){
     Route::post('/updateLesson', [AdminLessonController::class, 'updateLesson'])->name('updateLesson');
     Route::get('/deleteLesson', [AdminLessonController::class, 'deleteLesson'])->name('deleteLesson');
 });
+Route::group(['prefix' => 'admin/comments', 'middleware' => 'role:admin'], function () {
 
+    Route::get('/index', [AdminCommentController::class, 'index']);
+
+    Route::get('/getSamplesComments', [AdminCommentController::class, 'getSampleComments'])->name('getSampleComments');
+    Route::get('/getTipsComments', [AdminCommentController::class, 'getTipsComments'])->name('getTipsComments');
+    Route::get('/getCreativesComments', [AdminCommentController::class, 'getCreativesComments'])->name('getCreativesComments');
+    Route::get('/getCoursesComments', [AdminCommentController::class, 'getCoursesComments'])->name('getCoursesComments');
+
+    Route::post('/confirmComment', [AdminCommentController::class, 'confirmComment'])->name('confirmComment');
+    Route::get('/deleteComment', [AdminCommentController::class, 'deleteComment'])->name('deleteComment');
+
+});
 
 ///////////////////////////////////////// front section /////////////////////////////////////////////////////
+Route::group(['prefix' => 'like'], function () {
+    
+    Route::post('/addPostLike', [LikeController::class, 'postLike'])->name('add_post_Like');
+    Route::get('/countPostLike', [LikeController::class, 'postLikeCount'])->name('get_post_likes');
+
+    Route::post('/addCourseLike', [LikeController::class, 'courseLike'])->name('add_course_Like');
+    Route::get('/countCourseLike', [LikeController::class, 'courseLikeCount'])->name('get_course_likes');
+
+
+});
+Route::group(['prefix' => 'comment'], function () {
+
+    Route::post('/store', [CommentController::class, 'store']);
+});
+
 Route::group(['prefix'=>'course'],function (){
 
     Route::get('/get/{course}',[CourseController::class,'course'])->name('course');
