@@ -233,10 +233,6 @@
     @endif
     <script type="text/javascript">
         $(document).ready(function () {
-            /*$('.add-course').on('click', function (event) {
-                event.preventDefault();
-                console.log(event);
-            });*/
             function load_likes() {
                 let course_id = document.getElementById('course_id').value;
                 $.ajaxSetup({
