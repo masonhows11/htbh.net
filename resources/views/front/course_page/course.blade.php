@@ -223,7 +223,81 @@
     </div>
 @endsection
 @section('custom_script')
+    @if(session('message'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                text: '{{ session('message') }}',
+            })
+        </script>
+    @endif
+    <script type="text/javascript">
+        $(document).ready(function () {
+            /*$('.add-course').on('click', function (event) {
+                event.preventDefault();
+                console.log(event);
+            });*/
+            function load_likes() {
+                let course_id = document.getElementById('course_id').value;
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    method: 'GET',
+                    url: '{{ route('get_course_likes') }}',
+                    data: {course_id: course_id},
+                }).done(function (data) {
 
-    
+                    document.getElementById('like_count').innerText = data['likes'];
+                    document.getElementById('dislike_count').innerText = data['dislikes'];
+                });
+            }
 
+
+            $(window).on('load', function () {
+                load_likes();
+            })
+
+
+            $('.like').on('click', function (event) {
+                event.preventDefault();
+
+                let like = document.getElementById('like');
+                let dis_like = document.getElementById('dislike');
+                let is_like = '';
+                if (event.target.id === 'dislike') {
+
+                    is_like = false;
+                } else {
+                    is_like = true;
+                }
+                let course_id = document.getElementById('course_id').value;
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    method: 'POST',
+                    url: '{{ route('add_course_Like') }}',
+                    data: {is_like: is_like, course_id: course_id},
+                }).done(function (data) {
+                    if (data['like'] == null) {
+                        dis_like.style.color = '';
+                        like.style.color = '';
+                    } else if (data['like'] === 0) {
+                        dis_like.style.color = 'tomato';
+                        like.style.color = '';
+                    } else if (data['like'] === 1) {
+                        like.style.color = 'green';
+                        dis_like.style.color = '';
+                    }
+                    load_likes();
+                });
+            });
+        });
+
+    </script>
 @endsection
