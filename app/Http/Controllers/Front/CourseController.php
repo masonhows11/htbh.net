@@ -17,7 +17,6 @@ class CourseController extends Controller
         try {
             $course = Course::with('lessons','user')
                 ->where('slug','=',$course)->get();
-                //return $course;
             return view('front.course_page.course')->with('course',$course);
 
         }catch (\Exception $ex)

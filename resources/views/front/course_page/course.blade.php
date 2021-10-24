@@ -6,7 +6,7 @@
     <div class="container">
 
 
-        <div class="row">
+        <div class="row d-flex justify-content-center">
 
                 <!--  start course body  -->
                 <div class="col-md-6">
@@ -124,7 +124,7 @@
                         </div>
                     </div>
                 </div>
-                <!--  end course properties and add by user   -->
+            <!--  end course properties and add by user   -->
         </div>
 
 
