@@ -296,6 +296,11 @@
         $('#add_comment').on('click',function (event){
            event.preventDefault();
            let description = document.getElementById('description').value;
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
             $.ajax({
                 method : 'POST',
                 url : '{{ route('commentStore') }}',

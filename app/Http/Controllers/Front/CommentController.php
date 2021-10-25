@@ -22,12 +22,9 @@ class CommentController extends Controller
         ]);*/
         $validator = Validator::make($request->all(),[
             'description' => 'required|min:20|max:400'
-        ],$messages=[
-            'description.required' => 'متن دیدگاه را وارد کنید.',
-            'description.min' => 'متن دیدگاه باید حداقل 20 کاراکتر باشد.',
         ]);
         if($validator->fails()){
-            return response()->json(['message'=>$validator]);
+            return response()->json(['message'=>withErrors($validator)]);
         }
 
         if($request->filled('post_id')){
