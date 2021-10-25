@@ -308,7 +308,7 @@
                 data : {description:description,course_id:course_id},
             }).done(function (data){
                 if (data['status'] == 200) {
-
+                    document.getElementById('description').value =''
                      Swal.fire({
                          icon: 'success',
                          text: data['message'],
