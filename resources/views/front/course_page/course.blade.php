@@ -192,21 +192,21 @@
 
                     @if(Auth::check())
                         <div class="col-lg-12 mt-5 mb-5 rounded-3 add-comment">
-
-                            <form action="{{ route('commentStore') }}" method="post">
+                                {{--{{ route('commentStore') }}--}}
+                            <form action="#">
                                 @csrf
                                 <input type="hidden" name="course_id" value="{{ $course->id }}">
                                 <div class="mb-5">
                                     <label for="subject-body" class="form-label mt-5">متن دیدگاه</label>
                                     <textarea class="form-control @error('description') is_invalid @enderror"
-                                              name="description" wrap="physical" id="subject-body" rows="6" cols="6">
+                                              name="description" wrap="physical" id="description" rows="6" cols="6">
                                     </textarea>
                                     @error('description')
                                     <div class="alert alert-danger mt-4">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="mb-3">
-                                    <button type="submit" class="btn btn-outline-primary">ارسال دیدگاه</button>
+                                    <button type="button" class="btn btn-outline-primary" id="add_comment">ارسال دیدگاه</button>
                                 </div>
                             </form>
                         </div>
@@ -221,8 +221,6 @@
             </div>
         </div>
         <!--end comment course section -->
-
-
     </div>
 @endsection
 @section('custom_script')
@@ -236,6 +234,8 @@
     @endif
     <script type="text/javascript">
         $(document).ready(function () {
+
+
             function load_likes() {
                 let course_id = document.getElementById('course_id').value;
                 $.ajaxSetup({
@@ -257,6 +257,7 @@
             $(window).on('load', function () {
                 load_likes();
             })
+
             $('.like').on('click', function (event) {
                 event.preventDefault();
                 let like = document.getElementById('like');
@@ -292,5 +293,20 @@
                 });
             });
         });
+        $('#add_comment').on('click',function (event){
+           event.preventDefault();
+           let description = document.getElementById('description').value;
+            $.ajax({
+                method : 'POST',
+                url : '{{ route('commentStore') }}',
+                data : {description:description},
+            }).done(function (data){
+                console.log(data)
+            }).fail(function (data){
+              console.log(data)
+            })
+        })
+
     </script>
+
 @endsection

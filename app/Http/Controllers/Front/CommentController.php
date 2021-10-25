@@ -6,20 +6,29 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Comment;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Response;
 class CommentController extends Controller
 {
-    public function store(Request $request): \Illuminate\Http\RedirectResponse
+    public function store(Request $request)
     {
-        // return $request;
+      // return $request;
 
-        $request->validate([
+       /* $request->validate([
             'description' => 'required|min:20|max:400'
-
         ],$messages = [
             'description.required' => 'متن دیدگاه را وارد کنید.',
             'description.min' => 'متن دیدگاه باید حداقل 20 کاراکتر باشد.',
+        ]);*/
+        $validator = Validator::make($request->all(),[
+            'description' => 'required|min:20|max:400'
+        ],$messages=[
+            'description.required' => 'متن دیدگاه را وارد کنید.',
+            'description.min' => 'متن دیدگاه باید حداقل 20 کاراکتر باشد.',
         ]);
+        if($validator->fails()){
+            return response()->json(['message'=>$validator]);
+        }
 
         if($request->filled('post_id')){
 
