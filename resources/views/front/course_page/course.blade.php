@@ -195,7 +195,7 @@
                                 {{--{{ route('commentStore') }}--}}
                             <form action="#">
                                 @csrf
-                                <input type="hidden" name="course_id" value="{{ $course->id }}">
+                                <input type="hidden" id="course_id" value="{{ $course->id }}">
                                 <div class="mb-5">
                                     <label for="subject-body" class="form-label mt-5">متن دیدگاه</label>
                                     <textarea class="form-control @error('description') is_invalid @enderror"
@@ -296,6 +296,7 @@
         $('#add_comment').on('click',function (event){
            event.preventDefault();
            let description = document.getElementById('description').value;
+           let course_id = document.getElementById('course_id').value;
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -304,11 +305,25 @@
             $.ajax({
                 method : 'POST',
                 url : '{{ route('commentStore') }}',
-                data : {description:description},
+                data : {description:description,course_id:course_id},
             }).done(function (data){
-                console.log(data)
+                if (data['status'] == 200) {
+
+                     Swal.fire({
+                         icon: 'success',
+                         text: data['message'],
+                     })
+                } else if (data['status'] == 500) {
+                   Swal.fire({
+                       icon: 'error',
+                       text: data['message'],
+                   })
+                }
             }).fail(function (data){
-              console.log(data)
+                Swal.fire({
+                    icon: 'error',
+                    text: data['message'],
+                })
             })
         })
 
