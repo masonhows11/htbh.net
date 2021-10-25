@@ -226,18 +226,8 @@
     </div>
 @endsection
 @section('custom_script')
-    @if(session('message'))
-        <script>
-            Swal.fire({
-                icon: 'success',
-                text: '{{ session('message') }}',
-            })
-        </script>
-    @endif
     <script type="text/javascript">
         $(document).ready(function () {
-
-
             function load_likes() {
                 let course_id = document.getElementById('course_id').value;
                 $.ajaxSetup({
@@ -250,16 +240,13 @@
                     url: '{{ route('get_course_likes') }}',
                     data: {course_id: course_id},
                 }).done(function (data) {
-
                     document.getElementById('like_count').innerText = data['likes'];
                     document.getElementById('dislike_count').innerText = data['dislikes'];
                 });
             }
-
             $(window).on('load', function () {
                 load_likes();
             })
-
             $('.like').on('click', function (event) {
                 event.preventDefault();
                 let like = document.getElementById('like');
@@ -295,6 +282,7 @@
                 });
             });
         });
+
         $('#add_comment').on('click', function (event) {
             event.preventDefault();
             let description = document.getElementById('description').value;
@@ -333,7 +321,5 @@
                 })
             })
         })
-
     </script>
-
 @endsection
