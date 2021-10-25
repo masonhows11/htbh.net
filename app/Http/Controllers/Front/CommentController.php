@@ -19,7 +19,7 @@ class CommentController extends Controller
             'description.min' => 'متن دیدگاه باید حداقل 20 کاراکتر باشد.',
         ]);
         if($validator->fails()){
-            return response()->json(['message'=>$validator,'status'=>403]);
+            return response()->json(['message'=>$validator->errors(),'status'=>403],200);
         }
         try {
             if($request->filled('post_id')){

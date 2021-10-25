@@ -192,7 +192,7 @@
 
                     @if(Auth::check())
                         <div class="col-lg-12 mt-5 mb-5 rounded-3 add-comment">
-                                {{--{{ route('commentStore') }}--}}
+                            {{--{{ route('commentStore') }}--}}
                             <form action="#">
                                 @csrf
                                 <input type="hidden" id="course_id" value="{{ $course->id }}">
@@ -206,7 +206,9 @@
                                     @enderror
                                 </div>
                                 <div class="mb-3">
-                                    <button type="button" class="btn btn-outline-primary" id="add_comment">ارسال دیدگاه</button>
+                                    <button type="button" class="btn btn-outline-primary" id="add_comment">ارسال
+                                        دیدگاه
+                                    </button>
                                 </div>
                             </form>
                         </div>
@@ -293,33 +295,38 @@
                 });
             });
         });
-        $('#add_comment').on('click',function (event){
-           event.preventDefault();
-           let description = document.getElementById('description').value;
-           let course_id = document.getElementById('course_id').value;
+        $('#add_comment').on('click', function (event) {
+            event.preventDefault();
+            let description = document.getElementById('description').value;
+            let course_id = document.getElementById('course_id').value;
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
             $.ajax({
-                method : 'POST',
-                url : '{{ route('commentStore') }}',
-                data : {description:description,course_id:course_id},
-            }).done(function (data){
-                if (data['status'] == 200) {
-                    document.getElementById('description').value =''
-                     Swal.fire({
-                         icon: 'success',
-                         text: data['message'],
-                     })
+                method: 'POST',
+                url: '{{ route('commentStore') }}',
+                data: {description: description, course_id: course_id},
+            }).done(function (data) {
+                if (data['status'] == 403) {
+                    Swal.fire({
+                        icon: 'info',
+                        text: data['message']['description'],
+                    })
+                } else if (data['status'] == 200) {
+                    document.getElementById('description').value = ''
+                    Swal.fire({
+                        icon: 'success',
+                        text: data['message'],
+                    })
                 } else if (data['status'] == 500) {
-                   Swal.fire({
-                       icon: 'error',
-                       text: data['message'],
-                   })
+                    Swal.fire({
+                        icon: 'error',
+                        text: data['message'],
+                    })
                 }
-            }).fail(function (data){
+            }).fail(function (data) {
                 Swal.fire({
                     icon: 'error',
                     text: data['message'],
