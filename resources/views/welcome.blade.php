@@ -38,8 +38,6 @@
                     </div>
                 </div>
                 @endforeach
-
-
             </div>
         </div>
     </div>
@@ -54,9 +52,7 @@
             </div>
         </div>
     </div>
-
     <!----most-visited-course content ---->
-
     <div class="p-5 most-visited-course">
         <div class="container">
             <div class="row rows-cols-1 row-cols-md-4 rows-col-lg-4 g-4">
@@ -144,28 +140,20 @@
     <div class="p-5 article-content">
         <div class="container">
             <div class="row rows-cols-1 row-cols-md-4 rows-col-lg-4 g-4">
-
                 @foreach($articles as $article)
                 <div class="col-lg">
                     <div class="card h-100">
                         <img src="{{ asset('storage/article/'.$article->image) }}" class="card-img-top" alt="...">
-
                         <div class="card-body">
                             <h5 class="card-title">{{ $article->title }}</h5>
                         </div>
-
                         <div class="card-footer d-flex justify-content-between">
                             <div class="writer"><i class="bi-person"></i> <span>{{ $article->user->name }}</span></div>
-                            <div class="continue"><a href="#">ادامه...</a></div>
+                            <div class="continue"><a href="{{route('article',[$article->slug])}}">ادامه...</a></div>
                         </div>
-
                     </div>
                 </div>
                 @endforeach
-
-
-
-
             </div>
         </div>
 
@@ -174,4 +162,4 @@
     @include('front.include.road_map')
     @include('front.include.footer')
     @include('front.include.footer_scripts')
-    
+

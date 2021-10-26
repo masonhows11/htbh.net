@@ -11,7 +11,7 @@
             <!--  start course body  -->
             <div class="col-md-6">
                 <div class="card">
-                    <input type="hidden" id="course_id" value="{{ $article->id }}">
+                    <input type="hidden" id="article_id" value="{{ $article->id }}">
                     <input type="hidden" id="token" value="{{ csrf_token() }}">
                     <img src="{{ asset('storage/article/'.$article->image) }}" class="card-img-top" alt="...">
                     <div class="card-header">
@@ -38,8 +38,8 @@
                                 <div class="d-flex flex-row-reverse">
                                     <div class="dislike_sec">
                                         @if(Auth::check())
-                                            @if( Auth::user()->likes()->where('article_id','=',$article->id) &&
-                                                 Auth::user()->likes()->where('article_id','=',$article->id)->where('like','=',0)->first())
+                                            @if( Auth::user()->likes()->where('post_id','=',$article->id) &&
+                                                 Auth::user()->likes()->where('post_id','=',$article->id)->where('like','=',0)->first())
                                                 <span id="dislike_count" class="dislike_count"></span>
                                                 <i class="far fa-thumbs-down like" style="color:tomato"
                                                    id="dislike"></i>
@@ -54,8 +54,8 @@
                                     </div>
                                     <div class="like_sec mx-2">
                                         @if(Auth::check())
-                                            @if( Auth::user()->likes()->where('article_id','=',$article->id) &&
-                                                 Auth::user()->likes()->where('article_id','=',$article->id)->where('like','=',1)->first())
+                                            @if( Auth::user()->likes()->where('post_id','=',$article->id) &&
+                                                 Auth::user()->likes()->where('post_id','=',$article->id)->where('like','=',1)->first())
                                                 <span id="like_count" class="like_count"></span>
                                                 <i class="far fa-thumbs-up like" style="color:green" id="like"></i>
                                             @else
@@ -107,7 +107,7 @@
                             {{--{{ route('commentStore') }}--}}
                             <form action="#">
                                 @csrf
-                                <input type="hidden" id="course_id" value="{{ $article->id }}">
+                                <input type="hidden" id="article_id" value="{{ $article->id }}">
                                 <div class="mb-5">
                                     <label for="subject-body" class="form-label mt-5">متن دیدگاه</label>
                                     <textarea class="form-control @error('description') is_invalid @enderror"
@@ -141,7 +141,7 @@
     <script type="text/javascript">
         $(document).ready(function () {
             function load_likes() {
-                let course_id = document.getElementById('course_id').value;
+                let article_id = document.getElementById('article_id').value;
                 $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -149,8 +149,8 @@
                 });
                 $.ajax({
                     method: 'GET',
-                    url: '{{ route('get_course_likes') }}',
-                    data: {course_id: course_id},
+                    url: '{{ route('get_post_likes') }}',
+                    data: {article_id:article_id},
                 }).done(function (data) {
                     document.getElementById('like_count').innerText = data['likes'];
                     document.getElementById('dislike_count').innerText = data['dislikes'];
@@ -169,7 +169,7 @@
                 } else {
                     is_like = true;
                 }
-                let course_id = document.getElementById('course_id').value;
+                let article_id = document.getElementById('article_id').value;
                 $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -177,8 +177,8 @@
                 });
                 $.ajax({
                     method: 'POST',
-                    url: '{{ route('add_course_Like') }}',
-                    data: {is_like: is_like, course_id: course_id},
+                    url: '{{ route('add_post_Like') }}',
+                    data: {is_like: is_like,article_id:article_id},
                 }).done(function (data) {
                     if (data['like'] == null) {
                         dis_like.style.color = '';
@@ -198,7 +198,7 @@
         $('#add_comment').on('click', function (event) {
             event.preventDefault();
             let description = document.getElementById('description').value;
-            let course_id = document.getElementById('course_id').value;
+            let article_id = document.getElementById('article_id').value;
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -207,7 +207,7 @@
             $.ajax({
                 method: 'POST',
                 url: '{{ route('commentStore') }}',
-                data: {description: description, course_id: course_id},
+                data: {description: description, article_id:article_id},
             }).done(function (data) {
                 if (data['status'] == 403) {
                     Swal.fire({

@@ -10,8 +10,9 @@ class ArticleController extends Controller
     //
     public function article($article)
     {
+        //return $article;
         try {
-            $article = Post::with(['likes','comments' => function ($query) {
+            $article = Post::with(['likes','user' ,'comments'=> function ($query) {
                 $query->where('approved', 1);
             }])->where('slug', '=', $article)->first();
 
@@ -19,6 +20,7 @@ class ArticleController extends Controller
 
         }catch (\Exception $ex)
         {
+            return $ex->getMessage();
             return view('errors.error_not_found_model');
         }
     }

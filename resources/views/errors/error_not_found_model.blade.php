@@ -8,6 +8,6 @@
     <title>خطای 404</title>
 </head>
 <body>
-<h1 style="text-align: center;color: #0b58a2">رکورد مورد نظر وجود ندارد...</h1>
+<h1 style="text-align: center;color: #0b58a2">...رکورد مورد نظر وجود ندارد</h1>
 </body>
 </html>
