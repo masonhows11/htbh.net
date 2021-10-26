@@ -1,6 +1,6 @@
 @extends('front.include.master_front')
 @section('page_title')
-    {{ $course->title}}
+    {{ $article->title}}
 @endsection
 @section('main_content')
     <div class="container">
@@ -11,17 +11,17 @@
             <!--  start course body  -->
             <div class="col-md-6">
                 <div class="card">
-                    <input type="hidden" id="course_id" value="{{ $course->id }}">
+                    <input type="hidden" id="course_id" value="{{ $article->id }}">
                     <input type="hidden" id="token" value="{{ csrf_token() }}">
-                    <img src="{{ asset('storage/course/'.$course->image) }}" class="card-img-top" alt="...">
+                    <img src="{{ asset('storage/article/'.$article->image) }}" class="card-img-top" alt="...">
                     <div class="card-header">
-                        {{$course->title}}
+                        {{$article->title}}
                     </div>
 
                     <!-------------------- card-body ------------------------->
 
                     <div class="card-body">
-                        <p class="card-text">{{ strip_tags($course->description) }}</p>
+                        <p class="card-text">{{ strip_tags($article->description) }}</p>
                     </div>
 
                     <!---------------------- card-footer ---------------------->
@@ -30,7 +30,7 @@
                         <div class="row d-flex flex-row justify-content-evenly">
                             <div class="col-6">
                                 <div class="created_date">
-                                    {{ jdate($course->created_at)->format('%d %B %Y') }}
+                                    {{ jdate($article->created_at)->format('%d %B %Y') }}
                                 </div>
                             </div>
                             <div class="col-6 d-flex justify-content-end">
@@ -38,8 +38,8 @@
                                 <div class="d-flex flex-row-reverse">
                                     <div class="dislike_sec">
                                         @if(Auth::check())
-                                            @if( Auth::user()->likes()->where('course_id','=',$course->id) &&
-                                                 Auth::user()->likes()->where('course_id','=',$course->id)->where('like','=',0)->first())
+                                            @if( Auth::user()->likes()->where('article_id','=',$article->id) &&
+                                                 Auth::user()->likes()->where('article_id','=',$article->id)->where('like','=',0)->first())
                                                 <span id="dislike_count" class="dislike_count"></span>
                                                 <i class="far fa-thumbs-down like" style="color:tomato"
                                                    id="dislike"></i>
@@ -54,8 +54,8 @@
                                     </div>
                                     <div class="like_sec mx-2">
                                         @if(Auth::check())
-                                            @if( Auth::user()->likes()->where('course_id','=',$course->id) &&
-                                                 Auth::user()->likes()->where('course_id','=',$course->id)->where('like','=',1)->first())
+                                            @if( Auth::user()->likes()->where('article_id','=',$article->id) &&
+                                                 Auth::user()->likes()->where('article_id','=',$article->id)->where('like','=',1)->first())
                                                 <span id="like_count" class="like_count"></span>
                                                 <i class="far fa-thumbs-up like" style="color:green" id="like"></i>
                                             @else
@@ -85,15 +85,15 @@
                 <div class="row d-flex flex-column justify-content-center comments-sec">
 
                     <div class="col-lg-12 mt-5 list-comments">
-                        @foreach($course->comments as $comment)
+                        @foreach($article->comments as $comment)
                             <div class="card mt-5">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        {{ $comment->description }}
+                                        {{ $article->description }}
                                     </p>
                                 </div>
                                 <div class="card-footer d-flex justify-content-between">
-                                    <div><span class="users_comment">{{ $comment->user_name }}</span></div>
+                                    <div><span class="users_comment">{{ $article->user_name }}</span></div>
                                     <div><span
                                             class="date_comment">{{ jdate($comment->created_at)->format('%d %B %Y') }}</span>
                                     </div>
@@ -107,7 +107,7 @@
                             {{--{{ route('commentStore') }}--}}
                             <form action="#">
                                 @csrf
-                                <input type="hidden" id="course_id" value="{{ $course->id }}">
+                                <input type="hidden" id="course_id" value="{{ $article->id }}">
                                 <div class="mb-5">
                                     <label for="subject-body" class="form-label mt-5">متن دیدگاه</label>
                                     <textarea class="form-control @error('description') is_invalid @enderror"
