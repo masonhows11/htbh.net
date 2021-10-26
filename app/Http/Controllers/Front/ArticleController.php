@@ -20,7 +20,7 @@ class ArticleController extends Controller
 
         }catch (\Exception $ex)
         {
-            return $ex->getMessage();
+
             return view('errors.error_not_found_model');
         }
     }

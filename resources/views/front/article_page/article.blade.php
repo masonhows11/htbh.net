@@ -11,7 +11,7 @@
             <!--  start course body  -->
             <div class="col-md-6">
                 <div class="card">
-                    <input type="hidden" id="article_id" value="{{ $article->id }}">
+                    <input type="hidden" id="post_id" value="{{ $article->id }}">
                     <input type="hidden" id="token" value="{{ csrf_token() }}">
                     <img src="{{ asset('storage/article/'.$article->image) }}" class="card-img-top" alt="...">
                     <div class="card-header">
@@ -107,7 +107,7 @@
                             {{--{{ route('commentStore') }}--}}
                             <form action="#">
                                 @csrf
-                                <input type="hidden" id="article_id" value="{{ $article->id }}">
+                                <input type="hidden" id="post_id" value="{{ $article->id }}">
                                 <div class="mb-5">
                                     <label for="subject-body" class="form-label mt-5">متن دیدگاه</label>
                                     <textarea class="form-control @error('description') is_invalid @enderror"
@@ -141,7 +141,7 @@
     <script type="text/javascript">
         $(document).ready(function () {
             function load_likes() {
-                let article_id = document.getElementById('article_id').value;
+                let post_id = document.getElementById('post_id').value;
                 $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -150,7 +150,7 @@
                 $.ajax({
                     method: 'GET',
                     url: '{{ route('get_post_likes') }}',
-                    data: {article_id:article_id},
+                    data: {post_id:post_id},
                 }).done(function (data) {
                     document.getElementById('like_count').innerText = data['likes'];
                     document.getElementById('dislike_count').innerText = data['dislikes'];
@@ -169,7 +169,7 @@
                 } else {
                     is_like = true;
                 }
-                let article_id = document.getElementById('article_id').value;
+                let post_id = document.getElementById('post_id').value;
                 $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -178,7 +178,7 @@
                 $.ajax({
                     method: 'POST',
                     url: '{{ route('add_post_Like') }}',
-                    data: {is_like: is_like,article_id:article_id},
+                    data: {is_like: is_like,post_id:post_id},
                 }).done(function (data) {
                     if (data['like'] == null) {
                         dis_like.style.color = '';
@@ -198,7 +198,7 @@
         $('#add_comment').on('click', function (event) {
             event.preventDefault();
             let description = document.getElementById('description').value;
-            let article_id = document.getElementById('article_id').value;
+            let post_id = document.getElementById('post_id').value;
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -207,7 +207,7 @@
             $.ajax({
                 method: 'POST',
                 url: '{{ route('commentStore') }}',
-                data: {description: description, article_id:article_id},
+                data: {description: description, post_id:post_id},
             }).done(function (data) {
                 if (data['status'] == 403) {
                     Swal.fire({

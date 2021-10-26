@@ -13,7 +13,7 @@ class LikeController extends Controller
 {
     public function postLike(Request $request)
     {
-        $post_id = $request->article_id;
+        $post_id = $request->post_id;
         $is_like = $request['is_like'] === 'true';
         $user_id = Auth::id();
         $post = Post::find($post_id);
@@ -52,10 +52,10 @@ class LikeController extends Controller
     public function postLikeCount(Request $request): \Illuminate\Http\JsonResponse
     {
 
-        $likes = Like::where('post_id', $request->article_id)
+        $likes = Like::where('post_id', $request->post_id)
             ->where('like', '=', 1)->count();
 
-        $dislikes = Like::where('post_id', $request->article_id)
+        $dislikes = Like::where('post_id', $request->post_id)
             ->where('like', '=', 0)->count();
 
         return response()
