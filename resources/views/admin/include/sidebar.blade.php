@@ -115,7 +115,8 @@
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="#"><i class="fa fa-circle-o"></i>لیست دیدگاه ها</a></li>
+                    <li><a href="#"><i class="fa fa-circle-o"></i>لیست دوره ها</a></li>
+                    <li><a href="#"><i class="fa fa-circle-o"></i>لیست مقالات</a></li>
                 </ul>
             </li>
             <li>
