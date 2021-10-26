@@ -247,6 +247,13 @@
             $(window).on('load', function () {
                 load_likes();
             })
+            $('.like_un_auth').on('click',function (event){
+                event.preventDefault();
+                Swal.fire({
+                    icon: 'info',
+                    text: 'برای ثبت like Or dislike ابتدا وارد سایت شوید.',
+                })
+            });
             $('.like').on('click', function (event) {
                 event.preventDefault();
                 let like = document.getElementById('like');
@@ -282,7 +289,6 @@
                 });
             });
         });
-
         $('#add_comment').on('click', function (event) {
             event.preventDefault();
             let description = document.getElementById('description').value;

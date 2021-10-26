@@ -18,11 +18,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
-
         app()[PermissionRegistrar::class]->forgetCachedPermissions();
-
-        //
         $user = User::create([
             'first_name'=>'naeem',
             'last_name'=> 'soltany',

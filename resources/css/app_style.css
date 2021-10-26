@@ -348,7 +348,9 @@ height: auto;
 .dislike_sec .dislike_count{
     font-family:'iransans_num',Sans-Serif;
 }
-
+.fa-thumbs-up , .fa-thumbs-down{
+    cursor: pointer;
+}
 /******** section media query **********/
 @media screen and (max-width: 991px) {
 
