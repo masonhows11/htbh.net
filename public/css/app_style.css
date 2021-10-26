@@ -341,6 +341,9 @@ height: auto;
 .course-detail .course_duration , .student_count , .video_count {
     font-family:'iransans_num',Sans-Serif;
 }
+.course-section .created_date,
+.post-section .created_date,
+.comments-sec .list-comments .date_comment,
 .like_sec .like_count,
 .dislike_sec .dislike_count{
     font-family:'iransans_num',Sans-Serif;

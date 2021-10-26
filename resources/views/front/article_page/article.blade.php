@@ -10,7 +10,7 @@
 
             <!--  start course body  -->
             <div class="col-md-6">
-                <div class="card">
+                <div class="card post-section">
                     <input type="hidden" id="post_id" value="{{ $article->id }}">
                     <input type="hidden" id="token" value="{{ csrf_token() }}">
                     <img src="{{ asset('storage/article/'.$article->image) }}" class="card-img-top" alt="...">

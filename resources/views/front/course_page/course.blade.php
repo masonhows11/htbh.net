@@ -10,7 +10,7 @@
 
             <!--  start course body  -->
             <div class="col-md-6">
-                <div class="card">
+                <div class="card course-section">
                     <input type="hidden" id="course_id" value="{{ $course->id }}">
                     <input type="hidden" id="token" value="{{ csrf_token() }}">
                     <img src="{{ asset('storage/course/'.$course->image) }}" class="card-img-top" alt="...">
