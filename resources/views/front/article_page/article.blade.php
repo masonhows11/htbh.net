@@ -89,11 +89,11 @@
                             <div class="card mt-5">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        {{ $article->description }}
+                                        {{ $comment->description }}
                                     </p>
                                 </div>
                                 <div class="card-footer d-flex justify-content-between">
-                                    <div><span class="users_comment">{{ $article->user_name }}</span></div>
+                                    <div><span class="users_comment">{{ $comment->user_name }}</span></div>
                                     <div><span
                                             class="date_comment">{{ jdate($comment->created_at)->format('%d %B %Y') }}</span>
                                     </div>

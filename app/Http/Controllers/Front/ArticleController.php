@@ -11,7 +11,7 @@ class ArticleController extends Controller
     public function article($article)
     {
         try {
-            $article = Post::with(['likes','user' ,'comments'=> function ($query) {
+            $article = Post::with(['likes','user','comments'=> function ($query) {
                 $query->where('approved', 1);
             }])->where('slug', '=', $article)->first();
             return view('front.article_page.article')->with('article',$article);
