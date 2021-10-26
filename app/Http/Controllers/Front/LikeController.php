@@ -23,14 +23,11 @@ class LikeController extends Controller
         $like_exists = Like::where('post_id', '=', $post_id)->where('user_id', '=', $user_id)->first();
         if ($like_exists) {
             $already_like = $like_exists->like;
-
             if ($already_like == $is_like) {
                 $like_exists->delete();
-
             } elseif ($already_like != $is_like) {
                 $like_exists->like = $is_like;
                 $like_exists->save();
-
             }
         } else {
             $like = new Like();
@@ -42,7 +39,6 @@ class LikeController extends Controller
         $like = Like::where('post_id', '=', $post_id)->where('user_id', '=', $user_id)->first();
         if ($like !== null) {
             return response()->json($like);
-
         }
         if ($like === null) {
             return response()->json($like);
