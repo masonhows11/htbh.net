@@ -210,6 +210,6 @@ Route::group(['prefix'=>'course'],function (){
 
 Route::group(['prefix'=>'article'],function (){
 
-    Route::get('/get/article',[ArticleController::class,''])->name('article');
+    Route::get('/get/{article}',[ArticleController::class,'article'])->name('article');
 
 });
