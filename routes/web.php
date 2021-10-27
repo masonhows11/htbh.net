@@ -198,12 +198,13 @@ Route::group(['prefix' => 'like'], function () {
 
 
 });
+
 Route::group(['prefix' => 'comment'], function () {
     Route::post('/store', [CommentController::class,'store'])->name('commentStore');
 });
 
 Route::group(['prefix'=>'course'],function (){
-
+    
     Route::get('/get/{course}',[CourseController::class,'course'])->name('course');
 
 });
