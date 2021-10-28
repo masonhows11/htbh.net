@@ -16,7 +16,9 @@
                             @endforeach
                         </select>
                     </div>
-               
+
+            </div>
+            <div class="col-lg-10 list-courses-category" style="border:1px solid red;height:100px">
 
             </div>
         </div>

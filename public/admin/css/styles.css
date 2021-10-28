@@ -153,6 +153,7 @@
 
 .category-comments{
     display: flex;
+    flex-direction: column;
     justify-content: center;
 }
 .category-comments .select-category-comment{
