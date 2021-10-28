@@ -351,6 +351,7 @@ height: auto;
 .fa-thumbs-up , .fa-thumbs-down{
     cursor: pointer;
 }
+
 /******** section media query **********/
 @media screen and (max-width: 991px) {
 
