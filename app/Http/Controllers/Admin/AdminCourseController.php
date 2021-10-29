@@ -191,22 +191,24 @@ class AdminCourseController extends Controller
 
     public function detail(Request $request)
     {
-        $current_cat = $request->category;
-        $course = Course::findOrFail($request->course);
-        $lessons_duration = Lesson::where('course_id', $request->course)
-            ->select('lesson_duration')->get();
+
 
         $time_array = [];
         $final_time = null;
         $lessons_count = null;
 
+        $current_cat = $request->category;
+        $course = Course::findOrFail($request->course);
+        $lessons_duration = Lesson::where('course_id', $request->course)
+            ->select('lesson_duration')->get();
         if ($lessons_duration->isNotEmpty()) {
 
 
             foreach ($lessons_duration as $item) {
                 $time_array[] = date('H:i:s', strtotime($item->lesson_duration));
             }
-            $last_update = Lesson::latest()->first();
+            $last_update = Lesson::where('course_id',$request->course)->latest()->first();
+
             $last_update = date('Y:m:d', strtotime($last_update->created_at));
             $lessons_count = count($lessons_duration);
 

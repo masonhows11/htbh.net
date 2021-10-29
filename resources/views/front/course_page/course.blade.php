@@ -78,6 +78,7 @@
             <!--  start course properties and add by user     -->
             <div class="col-md-3 mt-2 course-detail">
                 <div class="row d-flex flex-column align-content-center">
+
                     <div class="col-lg-10 mt-2">
                         <p class="text-center mt-2"> {{ $course->title }}</p>
                     </div>
