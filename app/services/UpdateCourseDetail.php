@@ -14,9 +14,7 @@ class UpdateCourseDetail
     {
 
         $time_array = [];
-
         $course = Course::findOrFail($course_id);
-
         foreach ($lessons_duration as $item) {
             $time_array[] = date('H:i:s', strtotime($item->lesson_duration));
         }
@@ -29,10 +27,12 @@ class UpdateCourseDetail
 
         $course->course_duration = $final_time;
         $course->video_count = $lessons_count;
-        //$course->last_update = $last_update;
+        $course->last_update = $last_update->created_at;
         $course->Save();
 
-        return array($last_update_sh,$final_time,$lessons_count);
+        return array("last_update_sh"=>$last_update_sh,
+            "final_time"=>$final_time,
+            "lessons_count"=>$lessons_count);
     }
 
 }
