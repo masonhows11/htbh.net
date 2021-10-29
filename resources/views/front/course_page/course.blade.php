@@ -100,14 +100,22 @@
                     <div class="col-lg-10 mt-2">
                         <p class="text-center mt-2 level_course"> سطح دوره : {{ $level }}</p>
                     </div>
+
                     <div class="col-lg-10 mt-2">
                         <p class="text-center mt-2 course_duration"> مدت زمان دوره
                             : {{ $course->course_duration }} </p>
                     </div>
+
+                    <div class="col-lg-10 mt-2">
+                        <p content="text-center mt-2 last_update"> آخرین بروز رسانی
+                            : {{ jdate($course->last_update)->format('%d %B %Y') }}</p>
+                    </div>
+
                     <div class="col-lg-10 mt-2">
                         <p class="text-center mt-2"> وضعیت دوره
                             : {{ $course->course_status == 1 ? 'در حال برگزاری' : 'پایان دوره' }} </p>
                     </div>
+
                     <div class="col-lg-10 d-flex justify-content-center align-content-center mt-2">
                         <div class="d-flex flex-column mt-2 mb-2">
                             @if(\App\Models\CourseUser::checkAddOrNot(\Illuminate\Support\Facades\Auth::id(),$course->id))

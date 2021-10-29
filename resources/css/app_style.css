@@ -1,7 +1,8 @@
 
-html{
-    height:100%;
+html {
+    height: 100%;
 }
+
 body {
     display: flex;
     height: 100%;
@@ -205,6 +206,7 @@ body {
     font-size: 25px;
 
 }
+
 .latest-course .card-img-top,
 .most-visited-course .card-img-top,
 .article-content .card-img-top {
@@ -213,8 +215,8 @@ body {
 
 /*************** footer style***********/
 .footer {
-    background-color:#110945;
-    margin-top:auto;
+    background-color: #110945;
+    margin-top: auto;
     height: auto;
 
 }
@@ -259,21 +261,26 @@ body {
 .contact-us .row {
     margin-top: 2.1rem;
 }
+
 /********** register user  **********/
-.register-content{
-    margin-top:30px;
+.register-content {
+    margin-top: 30px;
 }
-.alert-wrapper{
-    height:100px;
+
+.alert-wrapper {
+    height: 100px;
 }
+
 .forget-button:hover,
-.resend-button:hover{
-    color:white;
+.resend-button:hover {
+    color: white;
 }
+
 /*********** validation error***********/
-.validation-error{
+.validation-error {
     height: 70px;
 }
+
 /************ profile style ************/
 
 .user-profile .form-control:focus {
@@ -316,39 +323,50 @@ body {
     cursor: pointer;
     border: solid 1px #BA68C8
 }
+
 .user-profile .user-email,
-.user-profile .user-name ,
-.user-profile .first-name ,
-.user-profile .last-name{
-    font-size:1rem;
+.user-profile .user-name,
+.user-profile .first-name,
+.user-profile .last-name {
+    font-size: 1rem;
 }
-.user-profile .user-email-text{
-    font-size:1.2rem;
+
+.user-profile .user-email-text {
+    font-size: 1.2rem;
 
 }
-.user-profile .user-email-body{
-    border-bottom:2px solid #BA68C8;
+
+.user-profile .user-email-body {
+    border-bottom: 2px solid #BA68C8;
 }
+
 .user-profile,
 .user-profile .user-info,
 .user-profile .user-avatar {
-height: auto;
+    height: auto;
 }
-.edit-email-wrapper .btn-primary:hover{
-    background-color:transparent;
+
+.edit-email-wrapper .btn-primary:hover {
+    background-color: transparent;
     color: #000000;
 }
-.course-detail .course_duration , .student_count , .video_count {
-    font-family:'iransans_num',Sans-Serif;
+
+.course-detail .course_duration,
+.course-detail .student_count,
+.course-detail .video_count,
+.course-detail .last_update{
+    font-family:"iransans_num", Sans-Serif;
 }
+
 .course-section .created_date,
 .post-section .created_date,
 .comments-sec .list-comments .date_comment,
 .like_sec .like_count,
-.dislike_sec .dislike_count{
-    font-family:'iransans_num',Sans-Serif;
+.dislike_sec .dislike_count {
+    font-family: 'iransans_num', Sans-Serif;
 }
-.fa-thumbs-up , .fa-thumbs-down{
+
+.fa-thumbs-up, .fa-thumbs-down {
     cursor: pointer;
 }
 

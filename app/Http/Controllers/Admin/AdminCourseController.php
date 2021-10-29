@@ -211,9 +211,12 @@ class AdminCourseController extends Controller
             $lessons_count = count($lessons_duration);
 
             $final_time = calculate_course_time::CalculateTime($time_array);
+
             $course->course_duration = $final_time;
             $course->video_count = $lessons_count;
+            $course->last_update = $last_update;
             $course->Save();
+
             return view('admin.course_management.detail')
                 ->with(['course' => $course,
                     'course_time' => $final_time,
