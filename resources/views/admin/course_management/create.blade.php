@@ -32,7 +32,7 @@
                         <input type="text"
                                name="name"
                                value="{{ old('name') }}"
-                               class="form-control @error('name') is-invalid @enderror"
+                               class="form-control text-left @error('name') is-invalid @enderror"
                                id="name">
                     </div>
 

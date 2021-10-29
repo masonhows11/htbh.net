@@ -195,14 +195,17 @@ class AdminCourseController extends Controller
         $course = Course::findOrFail($request->course);
         $lessons_duration = Lesson::where('course_id', $request->course)
             ->select('lesson_duration')->get();
+
         $time_array = [];
         $final_time = null;
         $lessons_count = null;
-        foreach ($lessons_duration as $item) {
-            $time_array[] = date('H:i:s', strtotime($item->lesson_duration));
-        }
+
         if ($lessons_duration->isNotEmpty()) {
 
+
+            foreach ($lessons_duration as $item) {
+                $time_array[] = date('H:i:s', strtotime($item->lesson_duration));
+            }
             $last_update = Lesson::latest()->first();
             $last_update = date('Y:m:d', strtotime($last_update->created_at));
             $lessons_count = count($lessons_duration);
@@ -219,9 +222,6 @@ class AdminCourseController extends Controller
                     'current_cat' => $current_cat]);
 
         }
-        $course->course_duration = $final_time;
-        $course->video_count = $lessons_count;
-        $course->Save();
         return view('admin.course_management.detail')
             ->with(['course' => $course, 'current_cat' => $current_cat]);
     }

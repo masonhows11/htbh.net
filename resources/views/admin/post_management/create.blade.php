@@ -24,7 +24,7 @@
 
                     <div class="form-group">
                         <label for="name">نام مقاله به انگلیسی :</label>
-                        <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" id="name" value="{{ old('name') }}">
+                        <input type="text" name="name" class="form-control text-left @error('name') is-invalid @enderror" id="name" value="{{ old('name') }}">
                     </div>
 
 
