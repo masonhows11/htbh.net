@@ -4,7 +4,7 @@
 namespace App\services;
 
 
-class calculate_course_time
+class calculateCourseTime
 {
 
     public static function CalculateTime($timestamp): string

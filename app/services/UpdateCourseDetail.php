@@ -6,7 +6,7 @@ namespace App\services;
 
 use App\Models\Course;
 use App\Models\lesson;
-use App\services\calculate_course_time;
+use App\services\calculateCourseTime;
 
 class UpdateCourseDetail
 {
@@ -23,7 +23,7 @@ class UpdateCourseDetail
 
         $last_update_sh = date('Y:m:d', strtotime($last_update->created_at));
         $lessons_count = count($lessons_duration);
-        $final_time = calculate_course_time::CalculateTime($time_array);
+        $final_time = calculateCourseTime::CalculateTime($time_array);
 
         $course->course_duration = $final_time;
         $course->video_count = $lessons_count;

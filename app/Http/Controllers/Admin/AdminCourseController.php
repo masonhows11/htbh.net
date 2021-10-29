@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
-use App\services\calculate_course_time;
+use App\services\calculateCourseTime;
 use App\services\UpdateCourseDetail;
 
 class AdminCourseController extends Controller
