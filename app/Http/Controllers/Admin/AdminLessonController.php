@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Course;
 use App\Models\lesson;
+use App\services\UpdateCourseDetail;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 
@@ -49,9 +50,18 @@ class AdminLessonController extends Controller
                 'lesson_duration' => $request->lesson_duration,
                 'video_path' => $request->video_path
             ]);
+
+            $course = Course::findOrFail($request->id);
+            $lessons_duration = Lesson::where('course_id', $request->course)->select('lesson_duration')->get();
+
+           $detail = UpdateCourseDetail::update($lessons_duration,$course);
+
+
             return redirect()->back()->with('success', 'قسمت جدید با موفقیت ایجاد شد.');
+
         } catch (\Exception $ex) {
-            return view('errors.error_store_model');
+           // return view('errors.error_store_model');
+            return $ex->getMessage();
 
         }
 
@@ -120,6 +130,11 @@ class AdminLessonController extends Controller
 
         try {
             $lesson->delete();
+
+            $course = Course::findOrFail($request->id);
+            $lessons_duration = Lesson::where('course_id', $request->course_id)->select('lesson_duration')->get();
+            UpdateCourseDetail::update($lessons_duration,$course);
+
             return response()->json(['success' => 'درس مورد نظر با موفقیت حذف شد.', 'status' => 200], 200);
         } catch (\Exception $ex) {
             return response()->json(['error' => 'عملیات حذف انجام نشد.', 'status' => 500], 500);

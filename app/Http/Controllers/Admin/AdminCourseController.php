@@ -182,6 +182,7 @@ class AdminCourseController extends Controller
         }
         try {
             Course::destroy($request->course_id);
+
             return response()->json(['success' => 'دوره نظر با موفقیت حذف شد.', 'status' => 200], 200);
         } catch (\Exception $ex) {
             return response()->json(['exception' => $ex->getMessage(), 'status' => 500], 500);
@@ -197,10 +198,10 @@ class AdminCourseController extends Controller
         $current_cat = $request->category;
         $course = Course::findOrFail($request->course);
         $lessons_duration = Lesson::where('course_id', $request->course)->select('lesson_duration')->get();
-        $course_id = $request->course;
-        
+
         if ($lessons_duration->isNotEmpty()) {
-            $detail = UpdateCourseDetail::update($lessons_duration, $course_id , $course);
+
+            $detail = UpdateCourseDetail::update($lessons_duration, $course);
             return view('admin.course_management.detail')
                 ->with(['course' => $course,
                     'course_time' => $detail['final_time'],
