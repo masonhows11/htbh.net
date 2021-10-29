@@ -52,7 +52,7 @@ class AdminLessonController extends Controller
             ]);
 
             $course = Course::findOrFail($request->id);
-            $lessons_duration = Lesson::where('course_id', $request->course)->select('lesson_duration')->get();
+            $lessons_duration = Lesson::where('course_id', $request->id)->select('lesson_duration')->get();
 
            $detail = UpdateCourseDetail::update($lessons_duration,$course);
 
