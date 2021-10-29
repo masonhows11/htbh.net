@@ -4,11 +4,11 @@
 namespace App\services;
 
 
-class UpdateCourse
+class UpdateCourseDetail
 {
     public static function update($course)
     {
-
+        
     }
 
 }
