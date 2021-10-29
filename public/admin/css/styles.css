@@ -151,17 +151,22 @@
     margin-top: 0.4rem;
 }
 
-.category-comments{
+
+.courses-comments{
+    background:whitesmoke;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
-.category-comments .select-category-comment{
+.courses-comments .select-category-comment{
     margin-top:5rem;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
+.courses-comments .list-courses{
+    display: flex;
+    flex-direction: column;
+}
 /************** media query *************/
 
