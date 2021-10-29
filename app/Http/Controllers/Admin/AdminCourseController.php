@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
 use App\services\calculate_course_time;
+use App\services\UpdateCourseDetail;
 
 class AdminCourseController extends Controller
 {
@@ -193,37 +194,26 @@ class AdminCourseController extends Controller
     {
 
 
-        $time_array = [];
-        $final_time = null;
-        $lessons_count = null;
-
         $current_cat = $request->category;
         $course = Course::findOrFail($request->course);
         $lessons_duration = Lesson::where('course_id', $request->course)
             ->select('lesson_duration')->get();
+        $course_id = $request->course;
+
+
+
         if ($lessons_duration->isNotEmpty()) {
 
 
-            foreach ($lessons_duration as $item) {
-                $time_array[] = date('H:i:s', strtotime($item->lesson_duration));
-            }
-            $last_update = Lesson::where('course_id',$request->course)->latest()->first();
+            $detail = UpdateCourseDetail::update($lessons_duration, $course_id);
 
-            $last_update = date('Y:m:d', strtotime($last_update->created_at));
-            $lessons_count = count($lessons_duration);
-
-            $final_time = calculate_course_time::CalculateTime($time_array);
-
-            $course->course_duration = $final_time;
-            $course->video_count = $lessons_count;
-            $course->last_update = $last_update;
-            $course->Save();
+           return $detail;
 
             return view('admin.course_management.detail')
                 ->with(['course' => $course,
                     'course_time' => $final_time,
                     'lessons_count' => $lessons_count,
-                    'last_update' => $last_update,
+                    'last_update' => $last_update_sh,
                     'current_cat' => $current_cat]);
 
         }

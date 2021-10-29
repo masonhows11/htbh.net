@@ -7,7 +7,7 @@ namespace App\services;
 class calculate_course_time
 {
 
-    public static function CalculateTime($timestamp)
+    public static function CalculateTime($timestamp): string
     {
         $seconds = 0;
         foreach ($timestamp as $time) {
