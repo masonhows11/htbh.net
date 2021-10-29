@@ -203,7 +203,7 @@ class AdminCourseController extends Controller
 
         if ($lessons_duration->isNotEmpty()) {
 
-            $detail = UpdateCourseDetail::update($lessons_duration, $course_id);
+            $detail = UpdateCourseDetail::update($lessons_duration, $course_id , $course);
             return view('admin.course_management.detail')
                 ->with(['course' => $course,
                     'course_time' => $detail['final_time'],
@@ -216,7 +216,7 @@ class AdminCourseController extends Controller
             ->with(['course' => $course, 'current_cat' => $current_cat]);
     }
 
-    public function changePublishStatus(Request $request)
+    public function changePublishStatus(Request $request): \Illuminate\Http\JsonResponse
     {
 
         $course = Course::find($request->course_id);

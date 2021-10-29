@@ -10,11 +10,11 @@ use App\services\calculate_course_time;
 
 class UpdateCourseDetail
 {
-    public static function update($lessons_duration, $course_id): array
+    public static function update($lessons_duration, $course_id ,$course): array
     {
 
         $time_array = [];
-        $course = Course::findOrFail($course_id);
+
         foreach ($lessons_duration as $item) {
             $time_array[] = date('H:i:s', strtotime($item->lesson_duration));
         }
