@@ -107,7 +107,7 @@
                     </div>
 
                     <div class="col-lg-10 mt-2">
-                        <p content="text-center mt-2 last_update"> آخرین بروز رسانی
+                        <p class="text-center mt-2 last_update"> آخرین بروز رسانی
                             : {{ jdate($course->last_update)->format('%d %B %Y') }}</p>
                     </div>
 
