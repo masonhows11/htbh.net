@@ -194,26 +194,43 @@ class AdminCourseController extends Controller
     {
 
 
+        $time_array = [];
         $current_cat = $request->category;
         $course = Course::findOrFail($request->course);
         $lessons_duration = Lesson::where('course_id', $request->course)
             ->select('lesson_duration')->get();
         $course_id = $request->course;
 
-
-
         if ($lessons_duration->isNotEmpty()) {
 
 
-            $detail = UpdateCourseDetail::update($lessons_duration, $course_id);
 
-           return $detail;
+           // $detial = UpdateCourseDetail::update($lessons_duration,$course_id);
+
+            //return $detial;
+
+           foreach ($lessons_duration as $item) {
+                $time_array[] = date('H:i:s', strtotime($item->lesson_duration));
+            }
+            $last_update = Lesson::where('course_id',$request->course)->latest()->first();
+
+           return $last_update;
+
+            $last_update = date('Y:m:d', strtotime($last_update->created_at));
+            $lessons_count = count($lessons_duration);
+
+            $final_time = calculate_course_time::CalculateTime($time_array);
+
+            $course->course_duration = $final_time;
+            $course->video_count = $lessons_count;
+            $course->last_update = $last_update;
+            $course->Save();
 
             return view('admin.course_management.detail')
                 ->with(['course' => $course,
                     'course_time' => $final_time,
                     'lessons_count' => $lessons_count,
-                    'last_update' => $last_update_sh,
+                    'last_update' => $last_update,
                     'current_cat' => $current_cat]);
 
         }
