@@ -51,18 +51,16 @@ class AdminLessonController extends Controller
                 'video_path' => $request->video_path
             ]);
 
+            //////// update course detail
             $course = Course::findOrFail($request->id);
             $lessons_duration = Lesson::where('course_id', $request->id)->select('lesson_duration')->get();
-
-           $detail = UpdateCourseDetail::update($lessons_duration,$course);
+            $detail = UpdateCourseDetail::update($lessons_duration, $course);
 
 
             return redirect()->back()->with('success', 'قسمت جدید با موفقیت ایجاد شد.');
 
         } catch (\Exception $ex) {
-           // return view('errors.error_store_model');
-            return $ex->getMessage();
-
+            return view('errors.error_store_model');
         }
 
     }
@@ -131,9 +129,10 @@ class AdminLessonController extends Controller
         try {
             $lesson->delete();
 
-            $course = Course::findOrFail($request->id);
+            ////// update course detail
+            $course = Course::findOrFail($request->course_id);
             $lessons_duration = Lesson::where('course_id', $request->course_id)->select('lesson_duration')->get();
-            UpdateCourseDetail::update($lessons_duration,$course);
+            UpdateCourseDetail::update($lessons_duration, $course);
 
             return response()->json(['success' => 'درس مورد نظر با موفقیت حذف شد.', 'status' => 200], 200);
         } catch (\Exception $ex) {
