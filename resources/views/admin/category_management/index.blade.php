@@ -28,7 +28,7 @@
                         <label for="name">نام دسته بندی به انگلیسی</label>
                         <input type="text"
                                name="name"
-                               class="form-control @error('name') is-invalid @enderror"
+                               class="form-control @error('name') is-invalid @enderror text-left"
                                id="name"
                                value="{{ old('name') }}">
                     </div>
