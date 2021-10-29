@@ -51,7 +51,7 @@ class AdminLessonController extends Controller
                 'video_path' => $request->video_path
             ]);
 
-            //////// update course detail
+            /////////////////////////// update course detail
             $course = Course::findOrFail($request->id);
             $lessons_duration = Lesson::where('course_id', $request->id)->select('lesson_duration')->get();
             $detail = UpdateCourseDetail::update($lessons_duration, $course);
@@ -81,7 +81,6 @@ class AdminLessonController extends Controller
     public function updateLesson(Request $request)
     {
 
-
         $request->validate([
             'title' => 'required|max:100',
             'name' => 'required|max:100',
@@ -106,6 +105,12 @@ class AdminLessonController extends Controller
                     'name' => $request->name,
                     'lesson_duration' => $request->lesson_duration,
                     'video_path' => $request->video_path]);
+
+            /////////////////////////// update course detail
+            $course = Course::findOrFail($request->course_id);
+            $lessons_duration = Lesson::where('course_id', $request->course_id)->select('lesson_duration')->get();
+            UpdateCourseDetail::update($lessons_duration, $course);
+
             if (session()->has('current_lesson')) {
                 return redirect()->to(session('current_lesson'))->with('success', 'قسمت جدید با موفقیت ویرایش شد.');
             }
@@ -129,7 +134,7 @@ class AdminLessonController extends Controller
         try {
             $lesson->delete();
 
-            ////// update course detail
+            ///////////////////////////// update course detail
             $course = Course::findOrFail($request->course_id);
             $lessons_duration = Lesson::where('course_id', $request->course_id)->select('lesson_duration')->get();
             UpdateCourseDetail::update($lessons_duration, $course);
