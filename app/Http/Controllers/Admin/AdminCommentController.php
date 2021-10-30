@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\DB;
 class AdminCommentController extends Controller
 {
 
-    public function getCoursesComments()
+    public function getCourses()
     {
         $categories = Category::all();
         $courses = Course::all();
@@ -38,6 +38,11 @@ class AdminCommentController extends Controller
         }
 
     }
+
+    public function getCourseComments(Request $request){
+
+    }
+
 
     public function getPostsComments()
     {

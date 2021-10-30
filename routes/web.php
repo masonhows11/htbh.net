@@ -176,12 +176,15 @@ Route::group(['prefix'=>'admin/lesson','middleware'=>'role:admin'],function (){
 
 Route::group(['prefix' => 'admin/comments', 'middleware' => 'role:admin'], function () {
 
-    Route::get('/index', [AdminCommentController::class, 'index']);
 
-    Route::get('/getCourses',[AdminCommentController::class,'getCoursesCategory'])->name('getCoursesCategory');
+    Route::get('/getCourses', [AdminCommentController::class, 'getCourses'])->name('getCourses');
+    Route::get('/getCoursesCategory',[AdminCommentController::class,'getCoursesCategory'])->name('getCoursesCategory');
+    Route::get('/getCourseComments',[AdminCommentController::class,'getCourseComments'])->name('getCourseComments');
+
+
 
     Route::get('/getPostComments', [AdminCommentController::class, 'getPostsComments'])->name('getPostComments');
-    Route::get('/getCoursesComments', [AdminCommentController::class, 'getCoursesComments'])->name('getCoursesComments');
+
 
     Route::post('/confirmComment', [AdminCommentController::class, 'confirmComment'])->name('confirmComment');
     Route::get('/deleteComment', [AdminCommentController::class, 'deleteComment'])->name('deleteComment');

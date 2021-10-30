@@ -115,7 +115,7 @@
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="{{ route('getCoursesComments') }}"><i class="fa fa-circle-o"></i>لیست دوره ها</a></li>
+                    <li><a href="{{ route('getCourses') }}"><i class="fa fa-circle-o"></i>لیست دوره ها</a></li>
                     <li><a href="{{ route('getPostComments')}}"><i class="fa fa-circle-o"></i>لیست مقالات</a></li>
                 </ul>
             </li>
