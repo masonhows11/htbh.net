@@ -44,7 +44,7 @@ class AdminCommentController extends Controller
 
 
         $course_id = $request->course;
-        $comments = Course::with(['comments' => function ($query) use ($course_id) {
+        $comments = Course::with(['comments.user','comments' => function ($query) use ($course_id) {
             $query->where('course_id', '=', $course_id);
         }])->where('id',$course_id)->get();
         return $comments;

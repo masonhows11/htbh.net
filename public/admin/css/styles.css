@@ -175,5 +175,9 @@
     height: 250px;
     overflow-y: scroll;
 }
+.comments-wrapper{
+    display: flex;
+    justify-content: center;
+}
 /************** media query *************/
 
