@@ -49,8 +49,6 @@ class AdminCommentController extends Controller
                 $query->where('course_id', '=', $course_id);
             }])->where('id', $course_id)
                 ->get();
-       //return $comments;
-        //dd($comments);
         return view('admin.comment_management.comments')
             ->with(['comments' => $comments]);
 

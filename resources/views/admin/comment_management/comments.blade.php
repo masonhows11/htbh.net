@@ -21,11 +21,13 @@
                             <div class="panel-body">{{ $item->description }}</div>
                             <div class="panel-footer">
                                 <div class="form-inline">
+
                                     <div class="form-group">
                                         <input
                                             type="button"
                                             class="btn btn-success"
                                             id="approved_comment"
+                                            data-comment-id="{{ $item->id }}"
                                             value="تایید دیدگاه">
                                     </div>
                                     <div class="form-group">
@@ -33,6 +35,7 @@
                                             type="button"
                                             class="btn btn-danger"
                                             id="delete_comment"
+                                            data-comment-id="{{ $item->id }}"
                                             value="حذف دیدگاه">
                                     </div>
                                     <div class="form-group">
@@ -40,6 +43,7 @@
                                             type="button"
                                             class="btn btn-primary"
                                             id="response_comment"
+                                            data-comment-id="{{ $item->id }}"
                                             value="پاسخ دادن">
                                     </div>
                                 </div>
@@ -53,4 +57,11 @@
         </div>
 
     </div>
+@endsection
+@section('admin_scripts')
+    <script type="text/javascript">
+        
+
+
+    </script>
 @endsection
