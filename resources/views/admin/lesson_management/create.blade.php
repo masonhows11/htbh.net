@@ -146,10 +146,11 @@
                             })
                         }
                     }).fail(function (data) {
-                      if (data['status'] === 500) {
+
+                    if (data['status'] === 500) {
                             swal.fire({
                                 icon: 'error',
-                                text: data['error'],
+                                text: 'عملیات حذف انجام نشد.',
                             })
                         }
                     });

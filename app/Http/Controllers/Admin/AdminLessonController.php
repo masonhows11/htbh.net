@@ -52,7 +52,7 @@ class AdminLessonController extends Controller
                 'video_path' => $request->video_path
             ]);
 
-            /////////////////////////// update course detail
+
             $detail = UpdateCourseDetail::update($request->id);
 
 
@@ -105,7 +105,7 @@ class AdminLessonController extends Controller
                     'lesson_duration' => $request->lesson_duration,
                     'video_path' => $request->video_path]);
 
-            /////////////////////////// update course detail
+
             UpdateCourseDetail::update($request->course_id);
 
             if (session()->has('current_lesson')) {
@@ -132,13 +132,13 @@ class AdminLessonController extends Controller
         try {
             $lesson->delete();
 
-            ///////////////////////////// update course detail
+
             UpdateCourseDetail::update($request->course_id);
 
             return response()->json(['success' => 'درس مورد نظر با موفقیت حذف شد.', 'status' => 200], 200);
         } catch (\Exception $ex) {
 
-         return response()->json(['error' => 'عملیات حذف انجام نشد.', 'status' => 500], 500);
+        return response()->json(['error' => 'عملیات حذف انجام نشد.', 'status' => 500], 500);
         }
     }
 }
