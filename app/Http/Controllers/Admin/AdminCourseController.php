@@ -196,12 +196,14 @@ class AdminCourseController extends Controller
 
 
         $current_cat = $request->category;
+
         $course = Course::findOrFail($request->course);
         $lessons_duration = Lesson::where('course_id', $request->course)->select('lesson_duration')->get();
 
         if ($lessons_duration->isNotEmpty()) {
 
-            $detail = UpdateCourseDetail::update($lessons_duration, $course);
+            $detail = UpdateCourseDetail::update($request->course);
+
             return view('admin.course_management.detail')
                 ->with(['course' => $course,
                     'course_time' => $detail['final_time'],
