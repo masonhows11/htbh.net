@@ -9,7 +9,7 @@
 
             <div class="col-lg-10 select-category-comment">
 
-                <form action="{{ route('getCoursesCategory') }}" method="get">
+                <form action="{{ route('getCoursesCategory') }}" class="form-inline" method="get">
 
                     <div class="form-group">
                         <label for="se_cat">یک دسته بندی انتخاب کنید.</label>
@@ -25,7 +25,6 @@
                     </div>
 
                 </form>
-
             </div>
 
             <div class="col-lg-10 list-courses" id="list_courses">

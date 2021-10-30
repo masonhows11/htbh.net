@@ -20,7 +20,7 @@ class AdminCommentController extends Controller
     }
     public function getCoursesCategory(Request  $request)
     {
-       
+
         $categories = Category::all();
         try {
             $courses =
@@ -36,9 +36,6 @@ class AdminCommentController extends Controller
         {
             return view('errors.error_not_found_model.blade');
         }
-
-
-
 
     }
 
