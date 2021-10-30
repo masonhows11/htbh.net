@@ -16,9 +16,10 @@ class AdminCommentController extends Controller
         $categories = Category::all();
         $courses = Course::all();
         return view('admin.comment_management.courses')
-            ->with(['categories'=>$categories,'courses'=>$courses]);
+            ->with(['categories' => $categories, 'courses' => $courses]);
     }
-    public function getCoursesCategory(Request  $request)
+
+    public function getCoursesCategory(Request $request)
     {
 
         $categories = Category::all();
@@ -31,15 +32,22 @@ class AdminCommentController extends Controller
                     ->where('categories.id', '=', $request->category)
                     ->orderBy('created_at', 'asc')->get();
             return view('admin.comment_management.courses')
-                ->with(['categories'=>$categories,'courses'=>$courses]);
-        }catch (\Exception $ex)
-        {
+                ->with(['categories' => $categories, 'courses' => $courses]);
+        } catch (\Exception $ex) {
             return view('errors.error_not_found_model.blade');
         }
 
     }
 
-    public function getCourseComments(Request $request){
+    public function getCourseComments(Request $request)
+    {
+
+
+        $course_id = $request->course;
+        $comments = Course::with(['comments' => function ($query) use ($course_id) {
+            $query->where('course_id', '=', $course_id);
+        }])->where('id',$course_id)->get();
+        return $comments;
 
     }
 

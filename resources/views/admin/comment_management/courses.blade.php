@@ -42,7 +42,7 @@
                         <tr>
                             <td class="text-center">{{ $course->id }}</td>
                             <td class="text-center">{{ $course->title  }}</td>
-                            <td class="text-center"><a href="#">لیست نظرات</a></td>
+                            <td class="text-center"><a href="{{ route('getCourseComments',['course'=>$course->id]) }}">لیست نظرات</a></td>
                         </tr>
                     @endforeach
                     </tbody>
