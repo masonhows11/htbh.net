@@ -17,6 +17,7 @@ class CourseController extends Controller
                 $query->where('approved', 1);
             }])->where('slug', '=', $course)->first();
 
+
             return view('front.course_page.course')->with('course',$course);
 
         }catch (\Exception $ex)

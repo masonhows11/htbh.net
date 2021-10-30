@@ -109,7 +109,12 @@
 
                     <div class="col-lg-10 mt-2">
                         <p class="text-center mt-2 last_update"> آخرین بروز رسانی
-                            : {{ jdate($course->last_update)->format('%d %B %Y') }}</p>
+                            @if($course->last_update != null)
+                            : {{ jdate($course->last_update)->format('%d %B %Y') }}
+                            @else
+                             00:00:00
+                            @endif
+                          </p>
                     </div>
 
                     <div class="col-lg-10 mt-2">
