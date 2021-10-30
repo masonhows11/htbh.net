@@ -10,15 +10,18 @@ use App\services\calculateCourseTime;
 
 class UpdateCourseDetail
 {
-    public static function update($lessons_duration,$course): array
+    public static function update($course_id): array
     {
 
         $time_array = [];
 
+        $course = Course::findOrFail($course_id);
+        $lessons_duration = Lesson::where('course_id', $course_id)->select('lesson_duration')->get();
+
         foreach ($lessons_duration as $item) {
             $time_array[] = date('H:i:s', strtotime($item->lesson_duration));
         }
-        $last_update = Lesson::where('course_id', $course->id)->latest()->first();
+        $last_update = Lesson::where('course_id', $course_id)->latest()->first();
 
 
         $last_update_sh = date('Y:m:d', strtotime($last_update->created_at));

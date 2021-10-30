@@ -27,6 +27,7 @@ class AdminLessonController extends Controller
 
     public function storeNewLesson(Request $request)
     {
+        $course_id = $request->id;
         $request->validate([
             'title' => 'required|max:50',
             'name' => 'required|max:50',
@@ -52,9 +53,7 @@ class AdminLessonController extends Controller
             ]);
 
             /////////////////////////// update course detail
-            $course = Course::findOrFail($request->id);
-            $lessons_duration = Lesson::where('course_id', $request->id)->select('lesson_duration')->get();
-            $detail = UpdateCourseDetail::update($lessons_duration, $course);
+            $detail = UpdateCourseDetail::update($course_id);
 
 
             return redirect()->back()->with('success', 'قسمت جدید با موفقیت ایجاد شد.');
@@ -80,6 +79,7 @@ class AdminLessonController extends Controller
 
     public function updateLesson(Request $request)
     {
+        $course_id = $request->course_id;
 
         $request->validate([
             'title' => 'required|max:100',
@@ -107,9 +107,7 @@ class AdminLessonController extends Controller
                     'video_path' => $request->video_path]);
 
             /////////////////////////// update course detail
-            $course = Course::findOrFail($request->course_id);
-            $lessons_duration = Lesson::where('course_id', $request->course_id)->select('lesson_duration')->get();
-            UpdateCourseDetail::update($lessons_duration, $course);
+            UpdateCourseDetail::update($course_id);
 
             if (session()->has('current_lesson')) {
                 return redirect()->to(session('current_lesson'))->with('success', 'قسمت جدید با موفقیت ویرایش شد.');
@@ -125,23 +123,23 @@ class AdminLessonController extends Controller
     public function deleteLesson(Request $request)
     {
 
+
         $lesson = Lesson::where('id', '=', $request->lesson_id)
             ->where('course_id', '=', $request->course_id)->first();
+        $course_id = $request->course_id;
         if (!$lesson) {
             return response()->json(['warning' => 'درس مورد نظر وجود ندارد.', 'status' => 404], 200);
         }
-
         try {
             $lesson->delete();
 
             ///////////////////////////// update course detail
-            $course = Course::findOrFail($request->course_id);
-            $lessons_duration = Lesson::where('course_id', $request->course_id)->select('lesson_duration')->get();
-            UpdateCourseDetail::update($lessons_duration, $course);
+            UpdateCourseDetail::update($course_id);
 
             return response()->json(['success' => 'درس مورد نظر با موفقیت حذف شد.', 'status' => 200], 200);
         } catch (\Exception $ex) {
-            return response()->json(['error' => 'عملیات حذف انجام نشد.', 'status' => 500], 500);
+            return response()->json(['error' => $ex->getMessage(), 'status' => 500], 500);
+           //return response()->json(['error' => 'عملیات حذف انجام نشد.', 'status' => 500], 500);
         }
     }
 }

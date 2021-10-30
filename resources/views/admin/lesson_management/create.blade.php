@@ -129,8 +129,9 @@
                     $.ajax({
                         method: 'GET',
                         url: '{{ route('deleteLesson') }}',
-                        data: {course_id:course_id, lesson_id:lesson_id},
+                        data: {course_id:course_id,lesson_id:lesson_id},
                     }).done(function (data) {
+
                         if (data['status'] === 200) {
                             course_element.remove();
                             swal.fire({
@@ -145,12 +146,13 @@
                             })
                         }
                     }).fail(function (data) {
-                        if (data['status'] === 500) {
+                        console.log(data);
+                       /* if (data['status'] === 500) {
                             swal.fire({
                                 icon: 'error',
                                 text: data['error'],
                             })
-                        }
+                        }*/
                     });
                 }
             });
