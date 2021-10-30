@@ -178,6 +178,7 @@ Route::group(['prefix' => 'admin/comments', 'middleware' => 'role:admin'], funct
 
     Route::get('/index', [AdminCommentController::class, 'index']);
 
+    Route::get('/getCourses',[AdminCommentController::class,'getCoursesCategory'])->name('getCoursesCategory');
 
     Route::get('/getPostComments', [AdminCommentController::class, 'getPostsComments'])->name('getPostComments');
     Route::get('/getCoursesComments', [AdminCommentController::class, 'getCoursesComments'])->name('getCoursesComments');
@@ -204,7 +205,7 @@ Route::group(['prefix' => 'comment'], function () {
 });
 
 Route::group(['prefix'=>'course'],function (){
-    
+
     Route::get('/get/{course}',[CourseController::class,'course'])->name('course');
 
 });

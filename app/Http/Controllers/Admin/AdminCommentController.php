@@ -6,10 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Course;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AdminCommentController extends Controller
 {
-    //
+
     public function getCoursesComments()
     {
         $categories = Category::all();
@@ -17,6 +18,30 @@ class AdminCommentController extends Controller
         return view('admin.comment_management.courses')
             ->with(['categories'=>$categories,'courses'=>$courses]);
     }
+    public function getCoursesCategory(Request  $request)
+    {
+       
+        $categories = Category::all();
+        try {
+            $courses =
+                DB::table('courses')
+                    ->join('category_course', 'courses.id', '=', 'category_course.course_id')
+                    ->join('categories', 'categories.id', '=', 'category_course.category_id')
+                    ->select('courses.*')
+                    ->where('categories.id', '=', $request->category)
+                    ->orderBy('created_at', 'asc')->get();
+            return view('admin.comment_management.courses')
+                ->with(['categories'=>$categories,'courses'=>$courses]);
+        }catch (\Exception $ex)
+        {
+            return view('errors.error_not_found_model.blade');
+        }
+
+
+
+
+    }
+
     public function getPostsComments()
     {
         return view('admin.comment_management.posts');

@@ -155,18 +155,23 @@
 .courses-comments{
     background:whitesmoke;
     display: flex;
-    flex-direction: column;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
 }
 .courses-comments .select-category-comment{
     margin-top:5rem;
     display: flex;
     justify-content: center;
     align-items: center;
+    border-bottom: 2px solid #0c1021;
 }
 .courses-comments .list-courses{
     display: flex;
     flex-direction: column;
+    height: 250px;
+    overflow-y: scroll;
 }
 /************** media query *************/
 
