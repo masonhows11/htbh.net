@@ -187,7 +187,7 @@ Route::group(['prefix' => 'admin/comments', 'middleware' => 'role:admin'], funct
     Route::get('/getPostComments', [AdminCommentController::class, 'getPostsComments'])->name('getPostComments');
 
 
-    Route::post('/confirmComment', [AdminCommentController::class, 'confirmComment'])->name('confirmComment');
+    Route::post('/approvedComment', [AdminCommentController::class, 'approvedComment'])->name('approvedComment');
     Route::get('/deleteComment', [AdminCommentController::class, 'deleteComment'])->name('deleteComment');
 
 });

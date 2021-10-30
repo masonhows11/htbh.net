@@ -60,7 +60,44 @@
 @endsection
 @section('admin_scripts')
     <script type="text/javascript">
-        
+        $(document).on('click','#approved_comment',function (event) {
+            event.preventDefault();
+            let comment_id = event.target.getAttribute('data-comment-id');
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                method: 'POST',
+                url:'{{ route('approvedComment') }}',
+                data: {comment_id:comment_id},
+            }).done(function (data) {
+                console.log(data);
+            }).fail(function (data) {
+                console.log(data);
+            })
+
+        });
+
+        $(document).on('click','#delete_comment',function (event) {
+            event.preventDefault();
+            let comment_id = event.target.getAttribute('data-comment-id');
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                method: 'GET',
+                url:'{{ route('deleteComment') }}',
+                data: {comment_id:comment_id},
+            }).done(function (data) {
+                console.log(data);
+            }).fail(function (data) {
+                console.log(data);
+            })
+        })
 
 
     </script>

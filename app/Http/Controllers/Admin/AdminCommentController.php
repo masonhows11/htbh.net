@@ -54,7 +54,13 @@ class AdminCommentController extends Controller
 
     }
 
+    public function approvedComment(Request $request){
+        return $request;
+    }
 
+    public function deleteComment(Request $request){
+        return $request;
+    }
     public function getPostsComments()
     {
         return view('admin.comment_management.posts');
