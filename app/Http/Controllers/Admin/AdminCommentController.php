@@ -64,7 +64,7 @@ class AdminCommentController extends Controller
         $comment = Comment::find($request->comment_id);
 
         if (!$comment) {
-            return response()->json(['error' => 'مقاله مورد نظر وجود ندارد.', 'status' => 404], 404);
+            return response()->json(['error' => 'دیدگاه مورد نظر وجود ندارد.', 'status' => 404], 404);
         }
         try {
 
@@ -75,7 +75,7 @@ class AdminCommentController extends Controller
             }
             $comment->save();
             $approved = $comment->approved;
-            return response()->json(['success' => '.وضعیت انتشار با موفقیت تغییر کرد', 'publish' => $approved, 'status' => 200], 200);
+            return response()->json(['success' => 'وضعیت انتشار با موفقیت تغییر کرد.', 'publish' => $approved, 'status' => 200], 200);
 
         } catch (\Exception $ex) {
             return response()->json(['error' => '.عملیات انتشار انجام نشد', 'status' => 500], 500);
@@ -87,11 +87,11 @@ class AdminCommentController extends Controller
 
         $comment = Comment::find($request->comment_id);
         if (!$comment) {
-            return response()->json(['warning' => 'مقاله مورد نظر وجود ندارد.', 'status' => 404], 200);
+            return response()->json(['warning' => 'دیدگاه مورد نظر وجود ندارد.', 'status' => 404], 200);
         }
         try {
             Comment::destroy($request->comment_id);
-            return response()->json(['success' => 'مقاله نظر با موفقیت حذف شد.', 'status' => 200], 200);
+            return response()->json(['success' => 'دیدگاه با موفقیت حذف شد.', 'status' => 200], 200);
         } catch (\Exception $ex) {
             return response()->json(['exception' => $ex->getMessage(), 'status' => 500], 500);
         }

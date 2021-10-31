@@ -88,11 +88,11 @@
                     })
                 }
                 if(data['status'] === 200){
-                    if(data['publish'] == 0){
-                        event.target.innerText = 'منتشر نشده';
+                    if(data['publish'] === 0){
+                        event.target.value = 'منتشر نشده';
                     }
-                    if(data['publish'] == 1){
-                        event.target.innerText = 'منتشر شده';
+                    if(data['publish'] === 1){
+                        event.target.value = 'منتشر شده';
                     }
                     swal.fire({
                         icon: 'success',
