@@ -5,11 +5,12 @@
 @section('main_content')
     <div class="container">
 
-        <div class="row">
+       {{-- <div class="row">
+
             <div class="form-group">
-                <a href="#" class="btn btn-default">بازگشت</a>
+                <a href="{{ route('getCoursesCategory') }}" class="btn btn-default">بازگشت</a>
             </div>
-        </div>
+        </div>--}}
         <div class="row comments-wrapper">
             @foreach($comments as $comment)
                 <div class="col-lg-10 course">

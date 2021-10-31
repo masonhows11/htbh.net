@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Course;
+use http\Url;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class AdminCommentController extends Controller
 {
@@ -31,6 +33,8 @@ class AdminCommentController extends Controller
                     ->select('courses.*')
                     ->where('categories.id', '=', $request->category)
                     ->orderBy('created_at', 'asc')->get();
+
+             // return Session::get('courseCategory');
             return view('admin.comment_management.courses')
                 ->with(['categories' => $categories, 'courses' => $courses]);
         } catch (\Exception $ex) {
@@ -41,14 +45,15 @@ class AdminCommentController extends Controller
 
     public function getCourseComments(Request $request)
     {
-
+        //Session::put('courseCategory',Url()->current());
 
         $course_id = $request->course;
         $comments =
-            Course::with(['comments' => function ($query) use ($course_id) {
+            Course::with(['comments','categories' => function ($query) use ($course_id) {
                 $query->where('course_id', '=', $course_id);
             }])->where('id', $course_id)
                 ->get();
+        //return $comments;
         return view('admin.comment_management.comments')
             ->with(['comments' => $comments]);
 
