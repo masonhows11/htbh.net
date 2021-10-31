@@ -31,10 +31,10 @@
                                     <div class="form-group">
                                         <input
                                             type="button"
-                                            class="btn btn-success"
+                                            class="btn btn-default"
                                             id="approved_comment"
                                             data-comment-id="{{ $item->id }}"
-                                            value="تایید دیدگاه">
+                                            value="تایید نشده">
                                     </div>
                                     <div class="form-group">
                                         <input
@@ -66,6 +66,7 @@
 @endsection
 @section('admin_scripts')
     <script type="text/javascript">
+
         $(document).on('click','#approved_comment',function (event) {
             event.preventDefault();
             let comment_id = event.target.getAttribute('data-comment-id');

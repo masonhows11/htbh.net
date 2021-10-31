@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Course;
 use http\Url;
 use Illuminate\Http\Request;
@@ -45,7 +46,6 @@ class AdminCommentController extends Controller
 
     public function getCourseComments(Request $request)
     {
-        //Session::put('courseCategory',Url()->current());
 
         $course_id = $request->course;
         $comments =
@@ -53,18 +53,48 @@ class AdminCommentController extends Controller
                 $query->where('course_id', '=', $course_id);
             }])->where('id', $course_id)
                 ->get();
-        //return $comments;
         return view('admin.comment_management.comments')
             ->with(['comments' => $comments]);
 
     }
 
     public function approvedComment(Request $request){
-        return $request;
+
+
+        $comment = Comment::find($request->comment_id);
+
+        if (!$comment) {
+            return response()->json(['error' => 'مقاله مورد نظر وجود ندارد.', 'status' => 404], 404);
+        }
+        try {
+
+            if ($comment->approved == 0) {
+                $comment->approved = 1;
+            } else {
+                $comment->approved = 0;
+            }
+            $comment->save();
+            $approved = $comment->approved;
+            return response()->json(['success' => '.وضعیت انتشار با موفقیت تغییر کرد', 'publish' => $approved, 'status' => 200], 200);
+
+        } catch (\Exception $ex) {
+            return response()->json(['error' => '.عملیات انتشار انجام نشد', 'status' => 500], 500);
+        }
     }
 
     public function deleteComment(Request $request){
-        return $request;
+
+
+        $comment = Comment::find($request->comment_id);
+        if (!$comment) {
+            return response()->json(['warning' => 'مقاله مورد نظر وجود ندارد.', 'status' => 404], 200);
+        }
+        try {
+            Comment::destroy($request->comment_id);
+            return response()->json(['success' => 'مقاله نظر با موفقیت حذف شد.', 'status' => 200], 200);
+        } catch (\Exception $ex) {
+            return response()->json(['exception' => $ex->getMessage(), 'status' => 500], 500);
+        }
     }
     public function getPostsComments()
     {
