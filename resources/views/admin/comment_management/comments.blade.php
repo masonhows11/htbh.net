@@ -81,8 +81,36 @@
                 data: {comment_id:comment_id},
             }).done(function (data) {
                 console.log(data);
+                if(data['status'] === 404){
+                    swal.fire({
+                        icon: 'info',
+                        text: data['error'],
+                    })
+                }
+                if(data['status'] === 200){
+                    if(data['publish'] == 0){
+                        event.target.innerText = 'منتشر نشده';
+                    }
+                    if(data['publish'] == 1){
+                        event.target.innerText = 'منتشر شده';
+                    }
+                    swal.fire({
+                        icon: 'success',
+                        text: data['success'],
+                    })
+                }
+                if (data['status'] === 500) {
+                    swal.fire({
+                        icon: 'error',
+                        text: data['error'],
+                    })
+                }
             }).fail(function (data) {
                 console.log(data);
+                swal.fire({
+                    icon: 'error',
+                    text: data['error'],
+                })
             })
 
         });
@@ -90,20 +118,54 @@
         $(document).on('click','#delete_comment',function (event) {
             event.preventDefault();
             let comment_id = event.target.getAttribute('data-comment-id');
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
+            let comment_element =event.target.closest('.panel');
+            swal.fire({
+                title: 'آیا مطمئن هستید این ایتم حذف شود؟',
+                icon: 'error',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'بله حذف کن!',
+                cancelButtonText: 'خیر',
+            }).then((result) => {
+                // confirmed scope start
+                if (result.isConfirmed) {
+                    // ajax scope start
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }
+                    });
+                    $.ajax({
+                        method: 'GET',
+                        url: '{{ route('deleteComment') }}',
+                        data: {comment_id:comment_id},
+                    }).done(function (data) {
+
+                        if (data['status'] === 404) {
+                            swal.fire({
+                                icon: 'warning',
+                                text: data['warning'],
+                            })
+                        }
+                        if (data['status'] === 200) {
+                           comment_element.remove();
+                            swal.fire({
+                                icon: 'success',
+                                text: data['success'],
+                            })
+                        }
+
+                    }).fail(function (data) {
+                        if (data['status'] === 500) {
+                            swal.fire({
+                                icon: 'error',
+                                text: data['error'],
+                            })
+                        }
+                    });// ajax scope end
+                }// confirmed scope end
             });
-            $.ajax({
-                method: 'GET',
-                url:'{{ route('deleteComment') }}',
-                data: {comment_id:comment_id},
-            }).done(function (data) {
-                console.log(data);
-            }).fail(function (data) {
-                console.log(data);
-            })
         })
 
 
