@@ -34,8 +34,6 @@ class AdminCommentController extends Controller
                     ->select('courses.*')
                     ->where('categories.id', '=', $request->category)
                     ->orderBy('created_at', 'asc')->get();
-
-             // return Session::get('courseCategory');
             return view('admin.comment_management.courses')
                 ->with(['categories' => $categories, 'courses' => $courses]);
         } catch (\Exception $ex) {
@@ -53,6 +51,7 @@ class AdminCommentController extends Controller
                 $query->where('course_id', '=', $course_id);
             }])->where('id', $course_id)
                 ->get();
+       // return $comments;
         return view('admin.comment_management.comments')
             ->with(['comments' => $comments]);
 

@@ -29,20 +29,22 @@
                                 <div class="form-inline">
 
                                     <div class="form-group">
-                                        <input
+                                        <button
                                             type="button"
                                             class="btn btn-default"
                                             id="approved_comment"
-                                            data-comment-id="{{ $item->id }}"
-                                            value="تایید نشده">
+                                            data-comment-id="{{ $item->id }}">
+                                            {{ $item->approved == 1 ? 'منتشر شده' : 'منتشر نشده' }}
+                                        </button>
                                     </div>
                                     <div class="form-group">
-                                        <input
+                                        <button
                                             type="button"
                                             class="btn btn-danger"
                                             id="delete_comment"
-                                            data-comment-id="{{ $item->id }}"
-                                            value="حذف دیدگاه">
+                                            data-comment-id="{{ $item->id }}">
+                                            حذف دیدگاه
+                                        </button>
                                     </div>
                                     <div class="form-group">
                                         <input
@@ -89,10 +91,10 @@
                 }
                 if(data['status'] === 200){
                     if(data['publish'] === 0){
-                        event.target.value = 'منتشر نشده';
+                        event.target.innerText = 'منتشر نشده';
                     }
                     if(data['publish'] === 1){
-                        event.target.value = 'منتشر شده';
+                        event.target.innerText = 'منتشر شده';
                     }
                     swal.fire({
                         icon: 'success',
