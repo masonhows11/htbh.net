@@ -8,7 +8,7 @@
         <div class="row">
 
             <div class="form-group">
-                <a href="{{ route('getCourses') }}" class="btn btn-default">بازگشت</a>
+                <a href="{{ route('getPosts') }}" class="btn btn-default">بازگشت</a>
             </div>
         </div>
         <div class="row comments-wrapper">
