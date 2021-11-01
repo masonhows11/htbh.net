@@ -143,8 +143,7 @@
                         url: '{{ route('deleteComment') }}',
                         data: {post_id:comment_id},
                     }).done(function (data) {
-
-                        if (data['status'] === 404) {
+                      if (data['status'] === 404) {
                             swal.fire({
                                 icon: 'warning',
                                 text: data['warning'],
@@ -157,7 +156,6 @@
                                 text: data['success'],
                             })
                         }
-
                     }).fail(function (data) {
                         if (data['status'] === 500) {
                             swal.fire({

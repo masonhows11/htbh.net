@@ -93,8 +93,6 @@ class AdminCommentController extends Controller
         elseif($request->filled('course_id')){
             $comment = Comment::find($request->course_id);
         }
-
-
         if (!$comment) {
             return response()->json(['error' => 'دیدگاه مورد نظر وجود ندارد.', 'status' => 404], 404);
         }
@@ -108,14 +106,12 @@ class AdminCommentController extends Controller
             $comment->save();
             $approved = $comment->approved;
             return response()->json(['success' => 'وضعیت انتشار با موفقیت تغییر کرد.', 'publish' => $approved, 'status' => 200], 200);
-
         } catch (\Exception $ex) {
             return response()->json(['error' => '.عملیات انتشار انجام نشد', 'status' => 500], 500);
         }
     }
 
     public function deleteComment(Request $request){
-
 
         $comment = null;
         if($request->filled('post_id'))
@@ -125,13 +121,11 @@ class AdminCommentController extends Controller
         elseif($request->filled('course_id')){
             $comment = Comment::find($request->course_id);
         }
-        
-        $comment = Comment::find($request->comment_id);
         if (!$comment) {
             return response()->json(['warning' => 'دیدگاه مورد نظر وجود ندارد.', 'status' => 404], 200);
         }
         try {
-            Comment::destroy($request->comment_id);
+            $comment->delete();
             return response()->json(['success' => 'دیدگاه با موفقیت حذف شد.', 'status' => 200], 200);
         } catch (\Exception $ex) {
             return response()->json(['exception' => $ex->getMessage(), 'status' => 500], 500);
