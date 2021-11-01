@@ -95,7 +95,7 @@ class AdminCommentController extends Controller
             return response()->json(['exception' => $ex->getMessage(), 'status' => 500], 500);
         }
     }
-    public function getArticles()
+    public function getPosts()
     {
         $posts = Post::all();
         return view('admin.comment_management.posts')->with(['posts'=>$posts]);
