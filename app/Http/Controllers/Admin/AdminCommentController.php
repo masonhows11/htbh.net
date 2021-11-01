@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Course;
+use App\Models\Post;
 use http\Url;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -51,8 +52,7 @@ class AdminCommentController extends Controller
                 $query->where('course_id', '=', $course_id);
             }])->where('id', $course_id)
                 ->get();
-       // return $comments;
-        return view('admin.comment_management.comments')
+        return view('admin.comment_management.course_comments')
             ->with(['comments' => $comments]);
 
     }
@@ -95,9 +95,22 @@ class AdminCommentController extends Controller
             return response()->json(['exception' => $ex->getMessage(), 'status' => 500], 500);
         }
     }
-    public function getPostsComments()
+    public function getArticles()
     {
-        return view('admin.comment_management.posts');
+        $posts = Post::all();
+        return view('admin.comment_management.posts')->with(['posts'=>$posts]);
+    }
+
+    public function getPostComments(Request $request)
+    {
+        $post_id = $request->post;
+        $comments =
+            Post::with(['comments' => function ($query) use ($post_id) {
+                $query->where('post_id', '=', $post_id);
+            }])->where('id', $post_id)
+                ->get();
+        return view('admin.comment_management.post_comments')
+            ->with(['comments' => $comments]);
     }
 
 
