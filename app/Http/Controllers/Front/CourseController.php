@@ -25,8 +25,10 @@ class CourseController extends Controller
             return view('errors.error_not_found_model');
         }
 
+    }
 
-
-
+    public function method()
+    {
+        
     }
 }
