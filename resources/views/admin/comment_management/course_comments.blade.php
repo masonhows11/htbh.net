@@ -80,7 +80,7 @@
             $.ajax({
                 method: 'POST',
                 url:'{{ route('approvedComment') }}',
-                data: {comment_id:comment_id},
+                data: {course_id:comment_id},
             }).done(function (data) {
                 console.log(data);
                 if(data['status'] === 404){
@@ -141,7 +141,7 @@
                     $.ajax({
                         method: 'GET',
                         url: '{{ route('deleteComment') }}',
-                        data: {comment_id:comment_id},
+                        data: {course_id:comment_id},
                     }).done(function (data) {
 
                         if (data['status'] === 404) {

@@ -15,6 +15,11 @@ use Illuminate\Support\Facades\Session;
 class AdminCommentController extends Controller
 {
 
+
+    ////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////// course comments ///////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////
+
     public function getCourses()
     {
         $categories = Category::all();
@@ -57,10 +62,38 @@ class AdminCommentController extends Controller
 
     }
 
+    //////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////// Post comments ////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////
+    public function getPosts()
+    {
+        $posts = Post::all();
+        return view('admin.comment_management.posts')->with(['posts'=>$posts]);
+    }
+
+    public function getPostComments(Request $request)
+    {
+        $post_id = $request->post;
+        $comments =
+            Post::with(['comments' => function ($query) use ($post_id) {
+                $query->where('post_id', '=', $post_id);
+            }])->where('id', $post_id)
+                ->get();
+        return view('admin.comment_management.post_comments')
+            ->with(['comments' => $comments]);
+    }
+
     public function approvedComment(Request $request){
 
+        $comment = null;
+        if($request->filled('post_id'))
+        {
+            $comment = Comment::find($request->post_id);
+        }
+        elseif($request->filled('course_id')){
+            $comment = Comment::find($request->course_id);
+        }
 
-        $comment = Comment::find($request->comment_id);
 
         if (!$comment) {
             return response()->json(['error' => 'دیدگاه مورد نظر وجود ندارد.', 'status' => 404], 404);
@@ -84,6 +117,15 @@ class AdminCommentController extends Controller
     public function deleteComment(Request $request){
 
 
+        $comment = null;
+        if($request->filled('post_id'))
+        {
+            $comment = Comment::find($request->post_id);
+        }
+        elseif($request->filled('course_id')){
+            $comment = Comment::find($request->course_id);
+        }
+        
         $comment = Comment::find($request->comment_id);
         if (!$comment) {
             return response()->json(['warning' => 'دیدگاه مورد نظر وجود ندارد.', 'status' => 404], 200);
@@ -95,23 +137,9 @@ class AdminCommentController extends Controller
             return response()->json(['exception' => $ex->getMessage(), 'status' => 500], 500);
         }
     }
-    public function getPosts()
-    {
-        $posts = Post::all();
-        return view('admin.comment_management.posts')->with(['posts'=>$posts]);
-    }
 
-    public function getPostComments(Request $request)
-    {
-        $post_id = $request->post;
-        $comments =
-            Post::with(['comments' => function ($query) use ($post_id) {
-                $query->where('post_id', '=', $post_id);
-            }])->where('id', $post_id)
-                ->get();
-        return view('admin.comment_management.post_comments')
-            ->with(['comments' => $comments]);
-    }
+
+
 
 
 }
