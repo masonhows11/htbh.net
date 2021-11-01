@@ -7,10 +7,8 @@ use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Course;
 use App\Models\Post;
-use http\Url;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Session;
 
 class AdminCommentController extends Controller
 {
