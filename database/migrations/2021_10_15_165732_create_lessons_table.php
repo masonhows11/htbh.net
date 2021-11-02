@@ -23,6 +23,7 @@ class CreateLessonsTable extends Migration
             $table->string('title')->nullable();
             $table->string('name')->nullable();
             $table->string('slug')->nullable();
+            $table->boolean('buy_able')->default(0);
             $table->string('video_path')->nullable();
             $table->string('lesson_duration')->nullable();
             $table->timestamps();

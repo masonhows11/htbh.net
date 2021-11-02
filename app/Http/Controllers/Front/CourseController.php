@@ -8,7 +8,6 @@ use App\Models\Course;
 
 class CourseController extends Controller
 {
-    //
 
     public function course($course)
     {
@@ -16,8 +15,6 @@ class CourseController extends Controller
             $course = Course::with(['categories', 'likes', 'lessons', 'comments' => function ($query) {
                 $query->where('approved', 1);
             }])->where('slug', '=', $course)->first();
-
-
             return view('front.course_page.course')->with('course',$course);
 
         }catch (\Exception $ex)
@@ -29,6 +26,6 @@ class CourseController extends Controller
 
     public function method()
     {
-        
+
     }
 }
