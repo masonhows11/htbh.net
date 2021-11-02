@@ -52,7 +52,8 @@ class AdminLessonController extends Controller
                 'title' => $request->title,
                 'name' => $request->name,
                 'lesson_duration' => $request->lesson_duration,
-                'video_path' => $request->video_path
+                'video_path' => $request->video_path,
+                'buy_able' => $request->buy_able,
             ]);
 
 

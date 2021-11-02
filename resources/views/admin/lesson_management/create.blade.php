@@ -52,8 +52,9 @@
 
                     </div>
                     <div class="form-group">
-                        <label for="buy_able">رایگان - نقدی:</label>
-                        <select class="form-control" name="buy_able" id="buy_able">
+                        <label for="buy_able">نوع پرداخت:</label>
+                        <select class="form-control  @error('buy_able') is-invalid @enderror" name="buy_able" id="buy_able">
+                            <option></option>
                             <option value="0">رایگان</option>
                             <option value="1">نقدی</option>
                         </select>
