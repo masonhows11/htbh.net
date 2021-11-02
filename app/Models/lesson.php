@@ -13,7 +13,8 @@ class lesson extends Model
         'title',
         'name',
         'video_path',
-        'lesson_duration'];
+        'lesson_duration',
+        'buy_able'];
 
     public function sluggable(): array
     {

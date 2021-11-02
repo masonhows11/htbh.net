@@ -51,6 +51,13 @@
                                value="{{ old('lesson_duration') }}">
 
                     </div>
+                    <div class="form-group">
+                        <label for="buy_able">رایگان - نقدی:</label>
+                        <select class="form-control" name="buy_able" id="buy_able">
+                            <option value="0">رایگان</option>
+                            <option value="1">نقدی</option>
+                        </select>
+                    </div>
 
                     <div class="form-group">
                         <label for="video_path">لینک فایل آموزشی:</label>
