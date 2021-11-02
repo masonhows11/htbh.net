@@ -28,11 +28,13 @@ class AdminLessonController extends Controller
     public function storeNewLesson(Request $request)
     {
 
+       // return $request;
         $request->validate([
             'title' => 'required|max:50',
             'name' => 'required|max:50',
             'lesson_duration' => ['required', 'regex:/^([01]?\d|2[0-3]|24(?=:00?:00?$)):([0-5]\d):([0-5]\d)$/'],
-            'video_path' => 'required'
+            'video_path' => 'required',
+            'buy_able'=>'required',
         ], $messages = [
             'title.required' => 'فیلد عنوان الزامی است.',
             'title.max' => 'حداکثر ۵۰ کاراکتر.',
@@ -41,6 +43,7 @@ class AdminLessonController extends Controller
             'lesson_duration.required' => 'مدت زمان درس  را وارد کنید.',
             'lesson_duration.regex' => 'فرمت  مدت زمان را به صورت ساعت:دقیقه:ثانیه وارد کنید از چپ به راست.',
             'video_path.required' => 'لینک فایل آموزشی را وارد کنید.',
+            'buy_able.required' => 'نوع پرداخت را انتخاب کنید.',
         ]);
 
         try {
