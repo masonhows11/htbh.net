@@ -220,3 +220,4 @@ Route::group(['prefix'=>'article'],function (){
     Route::get('/get/{article}',[ArticleController::class,'article'])->name('article');
 
 });
+

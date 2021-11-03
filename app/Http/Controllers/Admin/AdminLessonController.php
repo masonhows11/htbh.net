@@ -28,7 +28,7 @@ class AdminLessonController extends Controller
     public function storeNewLesson(Request $request)
     {
 
-       // return $request;
+        
         $request->validate([
             'title' => 'required|max:50',
             'name' => 'required|max:50',
