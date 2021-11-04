@@ -1,6 +1,6 @@
 @extends('admin.include.master')
 @section('page_title')
-     لیست جلسات دوره
+     ایجاد جلسه جدید
 @endsection
 @section('main_content')
     <div class="container">
