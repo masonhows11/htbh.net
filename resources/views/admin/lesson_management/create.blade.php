@@ -1,6 +1,6 @@
 @extends('admin.include.master')
 @section('page_title')
-     لیست جلاست دوره
+     لیست جلسات دوره
 @endsection
 @section('main_content')
     <div class="container">
