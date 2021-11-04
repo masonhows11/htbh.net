@@ -133,9 +133,8 @@
 }
 .row-add-lesson{
     margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+
+
 }
 .list-course-lesson{
     overflow: scroll;

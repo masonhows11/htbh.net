@@ -18,7 +18,7 @@
 
         <div class="row row-add-lesson">
 
-            <div class="col-lg-8 col-md-8 col-xs-8">
+            <div class="col-lg-6 col-md-6 col-xs-6">
                 <form action="{{ route('storeNewLesson') }}" method="post" >
                     @csrf
                     <input type="hidden" id="course_id" name="id" value="{{ $course->id }}">
@@ -29,7 +29,6 @@
                                class="form-control @error('title') is-invalid @enderror"
                                id="title"
                                value="{{ old('title') }}">
-
                     </div>
 
                     <div class="form-group">
@@ -39,7 +38,6 @@
                                class="form-control @error('name') is-invalid @enderror text-left"
                                id="name"
                                value="{{ old('name') }}">
-
                     </div>
 
                     <div class="form-group">
@@ -49,8 +47,8 @@
                                class="form-control @error('lesson_duration') is-invalid @enderror"
                                id="lesson_duration"
                                value="{{ old('lesson_duration') }}">
-
                     </div>
+
                     <div class="form-group">
                         <label for="buy_able">نوع پرداخت:</label>
                         <select class="form-control  @error('buy_able') is-invalid @enderror" name="buy_able" id="buy_able">
@@ -64,18 +62,20 @@
                         <label for="video_path">لینک فایل آموزشی:</label>
                         <input type="text" class="form-control @error('video_path') is-invalid @enderror"
                                name="video_path">
-
                     </div>
 
                     <div class="flex">
                         <button type="submit" class="btn btn-success btn-save-lesson">ذخیره</button>
                         <a href="{{route('courses') }}" class="btn btn-default btn-cancel-lesson">انصراف</a>
-
                     </div>
+                    
                 </form>
             </div>
 
-            <div class="col-lg-8 list-course-lesson">
+            <div class="col-lg-6 col-md-6 col-xs-6 list-lessons" style="border:1px solid red">
+
+            </div>
+           {{-- <div class="col-lg-8 list-course-lesson">
                 <table class="table table-bordered">
                     <thead>
                     <tr>
@@ -101,14 +101,11 @@
                     @endforeach
                     </tbody>
                 </table>
-            </div>
+            </div>--}}
 
         </div>
 
-     {{--   <div id="app" class="row list-course-lesson">
 
-
-        </div>--}}
 
     </div>
 @endsection
