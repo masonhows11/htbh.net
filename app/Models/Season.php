@@ -10,4 +10,12 @@ class Season extends Model
     protected $table = "seasons";
     use HasFactory;
     protected $fillable = [ 'title','name','course_id','lesson_Id'];
+
+
+    public function course()
+    {
+        return $this->belongsTo(Course::class);
+    }
 }
+
+
