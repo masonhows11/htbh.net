@@ -68,7 +68,7 @@
                         <button type="submit" class="btn btn-success btn-save-lesson">ذخیره</button>
                         <a href="{{route('courses') }}" class="btn btn-default btn-cancel-lesson">انصراف</a>
                     </div>
-                    
+
                 </form>
             </div>
 

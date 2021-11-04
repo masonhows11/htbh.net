@@ -26,7 +26,7 @@ use App\Http\Controllers\Admin\AdminCourseController;
 use App\Http\Controllers\Admin\AdminLessonController;
 
 use App\Http\Controllers\Admin\AdminCommentController;
-
+use App\Http\Controllers\Admin\AdminSeasonController;
 
 use App\Http\Controllers\Front\ArticleController;
 use App\Http\Controllers\Front\CourseController;
@@ -162,6 +162,16 @@ Route::group(['prefix'=>'admin/course','middleware'=>'role:admin'],function (){
     Route::get('/detail', [AdminCourseController::class, 'detail'])->name('courseDetail');
     Route::get('/active', [AdminCourseController::class, 'changeStatus']);
 
+});
+
+Route::group(['prefix'=>'admin/season','middleware'=>'role:admin'],function (){
+
+
+    Route::get('/createSeason', [AdminSeasonController::class, 'create'])->name('newSeason');
+    Route::post('/storeSeason', [AdminSeasonController::class, 'store'])->name('storeSeason');
+    Route::get('/editSeason', [AdminSeasonController::class, 'edit']);
+    Route::post('/updateSeason', [AdminSeasonController::class, 'update'])->name('updateSeason');
+    Route::get('/deleteSeason', [AdminSeasonController::class, 'delete'])->name('deleteSeason');
 });
 
 Route::group(['prefix'=>'admin/lesson','middleware'=>'role:admin'],function (){
