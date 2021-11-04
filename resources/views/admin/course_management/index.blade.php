@@ -49,7 +49,7 @@
                             <th class="text-center">نام دوره</th>
                             <th class="text-center">مشخصات دوره</th>
                             <th class="text-center">وضعیت انتشار</th>
-                            <th class="text-center">ایجاد درس جدید</th>
+                            <th class="text-center">لیست جلسات دوره</th>
                             <th class="text-center">عملیات</th>
 
                         </tr>

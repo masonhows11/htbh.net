@@ -1,6 +1,6 @@
 @extends('admin.include.master')
 @section('page_title')
-     ایجاد درس جدید
+     لیست جلاست دوره
 @endsection
 @section('main_content')
     <div class="container">
