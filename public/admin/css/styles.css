@@ -4,7 +4,7 @@
 .alert-section .alert-box{
     height: auto;
 }
-.season_list,
+
 .edit-user-wrapper .edit-user-section,
 .alert-section {
     margin-top: 30px;
@@ -189,12 +189,20 @@
 }
 
 /************** season section **********/
+
 .alert-section-season{
     height: 150px;
     display: flex;
     justify-content: center;
 }
-
-
+.season_wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.season_wrapper .list-season{
+    margin-top:3rem;
+}
 /************** media query *************/
 

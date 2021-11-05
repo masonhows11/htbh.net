@@ -11,9 +11,9 @@
         </div>
     </div>
 
-    <div class="row season_list">
+    <div class="row season_wrapper">
 
-        <div class="col-lg-8 col-md-8 col-xs-8">
+        <div class="col-lg-8 col-md-8 col-xs-8 create_season">
             <form action="{{ route('storeSeason') }}" method="post">
                 @csrf
                 <input type="hidden" name="course" value="{{ $course->id }}">
@@ -37,6 +37,10 @@
 
                 <button type="submit" class="btn btn-success">ذخیره</button>
             </form>
+        </div>
+
+        <div class="col-lg-8 col-md-8 col-xs-8 list-season" style="border: 1px solid red">
+
         </div>
 
     </div>

@@ -36,10 +36,12 @@ class AdminSeasonController extends Controller
                 'name'=>$request->name,
                 'course_id' => $request->course,
             ]);
-            return redirect()->back()->with(['success'=>'فصل جدید با موفقیت ذخیره شد.']);
+            return redirect()
+                ->back()
+                ->with(['success'=>'فصل جدید با موفقیت ذخیره شد.']);
         }catch (\Exception $ex)
         {
-            return $ex->getMessage();
+
             return view('errors.error_store_model');
         }
 
