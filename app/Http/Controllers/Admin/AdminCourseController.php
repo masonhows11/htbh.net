@@ -153,7 +153,7 @@ class AdminCourseController extends Controller
         $image_path = null;
         if ($request->filled('image')) {
             $image = $request->image;
-            $image_path = str_replace('http://localhost/storage/images/courses/', '', $image);
+            $image_path = str_replace('http://localhost/storage/course/', '', $image);
         }
         try {
             $course = Course::findOrFail($request->id);
