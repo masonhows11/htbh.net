@@ -26,7 +26,7 @@
                     <input type="text" name="name" class="form-control" id="season">
                 </div>
 
-                <button type="submit" class="btn btn-default">Submit</button>
+                <button type="submit" class="btn btn-default">ذخیره</button>
             </form>
         </div>
 
