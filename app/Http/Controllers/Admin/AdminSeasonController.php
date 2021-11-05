@@ -15,13 +15,13 @@ class AdminSeasonController extends Controller
 
         return view('admin.season_management.create')
             ->with(['course'=>$course]);
-
-
     }
 
     public function store(Request $request)
     {
+        //return $request;
 
+        
     }
 
     public function edit(Request $request)

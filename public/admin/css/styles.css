@@ -187,5 +187,14 @@
   height: 600px;
   overflow-y: scroll;
 }
+
+/************** season section **********/
+.alert-section-season{
+    height: 150px;
+    display: flex;
+    justify-content: center;
+}
+
+
 /************** media query *************/
 
