@@ -12,7 +12,7 @@ class Season extends Model
 
     use HasFactory,Sluggable;
 
-    protected $fillable = [ 'title','name','course_id','lesson_id'];
+    protected $fillable = [ 'title','name','slug','course_id','lesson_id'];
 
 
     public function sluggable(): array

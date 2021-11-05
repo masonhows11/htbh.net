@@ -8,6 +8,6 @@
     <title>خطای ذخیره سازی</title>
 </head>
 <body>
-    <h1 style="text-align: center;color: #0b58a2">خطا در عملیات ذخیره سازی..</h1>
+    <h1 style="text-align: center;color: #0b58a2">..خطا در عملیات ذخیره سازی</h1>
 </body>
 </html>
