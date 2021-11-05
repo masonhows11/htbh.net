@@ -14,16 +14,18 @@
     <div class="row season_list">
 
         <div class="col-lg-8 col-md-8 col-xs-8">
-            <form action="/action_page.php">
+            <form action="{{ route('storeSeason') }}" method="post">
 
                 <div class="form-group">
                     <label for="season">عنوان فصل به فارسی</label>
                     <input type="text" name="title" class="form-control" id="season">
                 </div>
+
                 <div class="form-group">
                     <label for="season">نام فصل به انگلیسی</label>
                     <input type="text" name="name" class="form-control" id="season">
                 </div>
+
                 <button type="submit" class="btn btn-default">Submit</button>
             </form>
         </div>

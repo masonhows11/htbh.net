@@ -166,7 +166,6 @@ Route::group(['prefix'=>'admin/course','middleware'=>'role:admin'],function (){
 
 Route::group(['prefix'=>'admin/season','middleware'=>'role:admin'],function (){
 
-
     Route::get('/createSeason', [AdminSeasonController::class, 'create'])->name('newSeason');
     Route::post('/storeSeason', [AdminSeasonController::class, 'store'])->name('storeSeason');
     Route::get('/editSeason', [AdminSeasonController::class, 'edit']);
@@ -175,7 +174,6 @@ Route::group(['prefix'=>'admin/season','middleware'=>'role:admin'],function (){
 });
 
 Route::group(['prefix'=>'admin/lesson','middleware'=>'role:admin'],function (){
-
 
     Route::get('/newLesson', [AdminLessonController::class, 'createNewLesson'])->name('newLesson');
     Route::post('/storeNewLesson', [AdminLessonController::class, 'storeNewLesson'])->name('storeNewLesson');
