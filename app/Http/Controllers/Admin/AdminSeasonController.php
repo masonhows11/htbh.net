@@ -20,7 +20,8 @@ class AdminSeasonController extends Controller
 
     public function store(Request $request)
     {
-
+        
+    
         $request->validate([
             'title' => 'required|max:20',
             'name' => 'required|max:20',
@@ -30,6 +31,7 @@ class AdminSeasonController extends Controller
             'name.required' => 'نام را به انگلیسی وارد کنید.',
             'name.max'=> 'حداکثر ۲۰ کاراکتر.',
         ]);
+        
         try {
             Season::create([
                 'title'=>$request->title,
