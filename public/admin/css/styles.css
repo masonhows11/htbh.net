@@ -196,6 +196,7 @@
     justify-content: center;
 }
 .season_wrapper {
+    margin-top: 2rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -203,6 +204,9 @@
 }
 .season_wrapper .list-season{
     margin-top:3rem;
+}
+.course-title-form{
+    margin-bottom:2rem;
 }
 /************** media query *************/
 
