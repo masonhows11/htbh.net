@@ -103,7 +103,7 @@ class AdminSeasonController extends Controller
 
     public function delete(Request $request)
     {
-       
+
         $season = Season::where('id', '=', $request->season)
             ->where('course_id', '=', $request->course)
             ->first();

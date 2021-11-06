@@ -107,7 +107,7 @@
                         data: {season:season_id,course:course_id},
                     }).done(function (data) {
                         console.log(data);
-                   /*  if (data['status'] === 200) {
+                   if (data['status'] === 200) {
                             season_element.remove();
                             swal.fire({
                                 icon: 'success',
@@ -119,7 +119,7 @@
                                 icon: 'warning',
                                 text: data['warning'],
                             })
-                        }*/
+                        }
                     }).fail(function (data) {
                         if (data['status'] === 500) {
                             swal.fire({
