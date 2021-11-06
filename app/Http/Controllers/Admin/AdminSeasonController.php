@@ -60,13 +60,18 @@ class AdminSeasonController extends Controller
     public function edit(Request $request)
     {
 
-        $season = Season::findOrFail($request->season);
+        try {
+
+            $season = Season::findOrFail($request->season);
+            return view('admin.season_management.edit')
+                ->with(['season'=>$season]);
+        }catch (\Exception $ex)
+        {
+            return view('errors.error_not_found_model');
+        }
 
 
 
-
-        return view('admin.season_management.edit')
-            ->with(['season'=>$season]);
 
     }
 
