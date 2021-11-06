@@ -37,10 +37,11 @@
                     </div>
 
                     <button type="submit" class="btn btn-success">ذخیره</button>
+                    <a href="{{ route('courses') }}" class="btn btn-default">بازگشت</a>
                 </form>
             </div>
 
-            <div class="col-lg-8 col-md-8 col-xs-8 list-season" style="border: 1px solid red">
+            <div class="col-lg-8 col-md-8 col-xs-8 list-season">
                 <table class="table table-bordered table-responsive">
                     <thead>
                     <tr>
@@ -58,9 +59,9 @@
                                 <td>{{ $value->id }}</td>
                                 <td>{{ $value->title }}</td>
                                 <td>
-                                    <span><a href="/admin/course/edit?course={{ $course->id }}"
+                                    <span><a href="{{route('editSeason',['course'=>$value->id])}}"
                                              class="text-info text-bold"><i class="fa fa-edit"></i></a></span>
-                                    <span><i class="fa fa-remove text-primary" data-course-id="{{ $course->id }}"
+                                    <span><i class="fa fa-remove text-primary" data-season-id="{{ $value->id }}"
                                              id="deleteItem"></i></span>
                                 </td>
                             </tr>
@@ -74,4 +75,58 @@
         </div>
 
     </div>
+@endsection
+@section('admin_scripts')
+    <script>
+        $(document).on('click', '#deleteItem', function (event) {
+            event.preventDefault();
+            let season_id = event.target.getAttribute('data-season-id');
+            let season_element = event.target.closest('tr');
+            swal.fire({
+                title: 'آیا مطمئن هستید این ایتم حذف شود؟',
+                icon: 'error',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'بله حذف کن!',
+                cancelButtonText: 'خیر',
+            }).then((result) => {
+                // confirmed scope start
+                if (result.isConfirmed) {
+                    // ajax scope start
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }
+                    });
+                    $.ajax({
+                        method: 'GET',
+                        url: '{{ route('deleteSeason') }}',
+                        data: {season_id:season_id},
+                    }).done(function (data) {
+                        if (data['status'] === 200) {
+                            season_element.remove();
+                            swal.fire({
+                                icon: 'success',
+                                text: data['success'],
+                            })
+                        }
+                        if (data['status'] === 404) {
+                            swal.fire({
+                                icon: 'warning',
+                                text: data['warning'],
+                            })
+                        }
+                    }).fail(function (data) {
+                        if (data['status'] === 500) {
+                            swal.fire({
+                                icon: 'error',
+                                text: data['error'],
+                            })
+                        }
+                    });// ajax scope end
+                }// confirmed scope end
+            });
+        });
+    </script>
 @endsection
