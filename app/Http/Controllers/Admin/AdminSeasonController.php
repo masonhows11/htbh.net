@@ -12,8 +12,9 @@ class AdminSeasonController extends Controller
     //
     public function create(Request $request)
     {
-        $course = Course::findOrFail($request->course);
-
+        $course = Course::with('seasons')
+            ->where('id','=',$request->course)->get();
+    //return $course;
         return view('admin.season_management.create')
             ->with(['course'=>$course]);
     }
