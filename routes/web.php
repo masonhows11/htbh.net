@@ -168,7 +168,7 @@ Route::group(['prefix'=>'admin/season','middleware'=>'role:admin'],function (){
 
     Route::get('/createSeason', [AdminSeasonController::class, 'create'])->name('newSeason');
     Route::post('/storeSeason', [AdminSeasonController::class, 'store'])->name('storeSeason');
-    Route::get('/editSeason', [AdminSeasonController::class, 'edit']);
+    Route::get('/editSeason', [AdminSeasonController::class, 'edit'])->name('editSeason');
     Route::post('/updateSeason', [AdminSeasonController::class, 'update'])->name('updateSeason');
     Route::get('/deleteSeason', [AdminSeasonController::class, 'delete'])->name('deleteSeason');
 });

@@ -4,7 +4,7 @@
 .alert-section .alert-box{
     height: auto;
 }
-.season_list,
+
 .edit-user-wrapper .edit-user-section,
 .alert-section {
     margin-top: 30px;
@@ -100,12 +100,14 @@
 .admin-add-post > div{
     padding:14px 0 14px 0;
 }
+.list-season .fa-edit,
 .list-course-lesson .fa-edit,
 .list-course-content .fa-edit,
 .list-post-content .fa-edit,
 .users-table .fa-edit{
     font-size:2.3rem;
 }
+.list-season .fa-remove,
 .list-course-lesson .fa-remove,
 .list-course-content .fa-list-alt ,
 .list-course-content .fa-save,
@@ -114,7 +116,8 @@
 .users-table .fa-remove{
     font-size:2.7rem;
 }
-.list-course-lesson .fa-remove,
+.list-season .fa-remove:hover,
+.list-course-lesson .fa-remove:hover,
 .list-course-content .fa-remove:hover,
 .list-post-content .fa-remove:hover,
 .users-table .fa-remove:hover
@@ -189,12 +192,24 @@
 }
 
 /************** season section **********/
+
 .alert-section-season{
     height: 150px;
     display: flex;
     justify-content: center;
 }
-
-
+.season_wrapper {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.season_wrapper .list-season{
+    margin-top:3rem;
+}
+.course-title-form{
+    margin-bottom:2rem;
+}
 /************** media query *************/
 
