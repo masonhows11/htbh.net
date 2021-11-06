@@ -59,7 +59,7 @@
                                 <td>{{ $value->id }}</td>
                                 <td>{{ $value->title }}</td>
                                 <td>
-                                    <span><a href="{{route('editSeason',['course'=>$value->id])}}"
+                                    <span><a href="{{route('editSeason',['season'=>$value->id])}}"
                                              class="text-info text-bold"><i class="fa fa-edit"></i></a></span>
                                     <span><i class="fa fa-remove text-primary" data-season-id="{{ $value->id }}"
                                              id="deleteItem"></i></span>

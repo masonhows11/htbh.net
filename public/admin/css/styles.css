@@ -207,6 +207,8 @@
 }
 .season_wrapper .list-season{
     margin-top:3rem;
+    height: 250px;
+    overflow-y: scroll;
 }
 .course-title-form{
     margin-bottom:2rem;
