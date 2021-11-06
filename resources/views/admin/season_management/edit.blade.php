@@ -12,6 +12,7 @@
                 <form action="{{ route('updateSeason') }}" method="post">
                     @csrf
                     <input type="hidden" name="season" value="{{ $season->id }}">
+
                     <div class="form-group">
                         <label for="season">عنوان فصل به فارسی</label>
                         <input
