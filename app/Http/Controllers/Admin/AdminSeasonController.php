@@ -109,6 +109,21 @@ class AdminSeasonController extends Controller
 
     public function delete(Request  $request)
     {
+        return $request;
+        $season = Season::where('id', '=', $request->season)
+                        ->where('course_id','=',$request->course)
+                        ->first();
+        if (!$season) {
+            return response()->json(['warning' => 'فصل مورد نظر وجود ندارد.', 'status' => 404], 200);
+        }
+        try {
+            $season->delete();
+
+            return response()->json(['success' => 'فصل مورد نظر با موفقیت حذف شد.', 'status' => 200], 200);
+        } catch (\Exception $ex) {
+
+            return response()->json(['error' => 'عملیات حذف انجام نشد.', 'status' => 500], 500);
+        }
 
     }
 }

@@ -18,7 +18,7 @@
                 <h3 class="course-title-form">{{ $course[0]->title }}</h3>
                 <form action="{{ route('storeSeason') }}" method="post">
                     @csrf
-                    <input type="hidden" name="course" value="{{ $course[0]->id }}">
+                    <input type="hidden" name="course" id="course_id" value="{{ $course[0]->id }}">
                     <div class="form-group">
                         <label for="season">عنوان فصل به فارسی</label>
                         <input
@@ -82,6 +82,7 @@
         $(document).on('click', '#deleteItem', function (event) {
             event.preventDefault();
             let season_id = event.target.getAttribute('data-season-id');
+            let course_id = document.getElementById('course_id').value;
             let season_element = event.target.closest('tr');
             swal.fire({
                 title: 'آیا مطمئن هستید این ایتم حذف شود؟',
@@ -103,9 +104,10 @@
                     $.ajax({
                         method: 'GET',
                         url: '{{ route('deleteSeason') }}',
-                        data: {season_id:season_id},
+                        data: {season:season_id,course:course_id},
                     }).done(function (data) {
-                        if (data['status'] === 200) {
+                        console.log(data);
+                   /*  if (data['status'] === 200) {
                             season_element.remove();
                             swal.fire({
                                 icon: 'success',
@@ -117,12 +119,12 @@
                                 icon: 'warning',
                                 text: data['warning'],
                             })
-                        }
+                        }*/
                     }).fail(function (data) {
                         if (data['status'] === 500) {
                             swal.fire({
                                 icon: 'error',
-                                text: data['error'],
+                                text: 'عملیات حذف انجام نشد.',
                             })
                         }
                     });// ajax scope end
