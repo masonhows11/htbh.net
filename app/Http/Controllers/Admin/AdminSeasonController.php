@@ -22,7 +22,7 @@ class AdminSeasonController extends Controller
     public function store(Request $request)
     {
         
-    
+        
         $request->validate([
             'title' => 'required|max:20',
             'name' => 'required|max:20',

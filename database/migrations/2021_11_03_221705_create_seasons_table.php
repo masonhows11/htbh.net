@@ -17,7 +17,6 @@ class CreateSeasonsTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('name');
-            $table->string('slug');
             $table->unsignedBigInteger('course_id')->nullable();
             $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
 

@@ -4,25 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Cviebrock\EloquentSluggable\Sluggable;
+
 
 class Season extends Model
 {
     protected $table = "seasons";
 
-    use HasFactory,Sluggable;
+    use HasFactory;
 
-    protected $fillable = [ 'title','name','slug','course_id','lesson_id'];
+    protected $fillable = [ 'title','name','course_id','lesson_id'];
 
 
-    public function sluggable(): array
-    {
-        return [
-            'slug' => [
-                'source' => 'name'
-            ]
-        ];
-    }
+
 
     public function course()
     {
