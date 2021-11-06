@@ -16,10 +16,13 @@ class AdminSeasonController extends Controller
         $course = Course::with('seasons')
             ->where('id','=',$request->course)->get();
 
-        Session::forget('create_season');
-        $prev_url = Session('create_season',$request->fullUrl());
 
-        return $prev_url;
+        session()->forget('create_season');
+        Session()->regenerate();
+        session()->put('create_season',$request->fullUrl());
+
+
+
         return view('admin.season_management.create')
             ->with(['course'=>$course]);
     }
@@ -37,9 +40,6 @@ class AdminSeasonController extends Controller
             'name.required' => 'نام را به انگلیسی وارد کنید.',
             'name.max'=> 'حداکثر ۲۰ کاراکتر.',
         ]);
-
-
-
         try {
             Season::create([
                 'title'=>$request->title,
@@ -64,6 +64,7 @@ class AdminSeasonController extends Controller
 
 
 
+
         return view('admin.season_management.edit')
             ->with(['season'=>$season]);
 
@@ -71,7 +72,7 @@ class AdminSeasonController extends Controller
 
     public function update(Request $request)
     {
-        //return $request;
+
         $request->validate([
             'title' => 'required|max:20',
             'name' => 'required|max:20',
@@ -87,15 +88,16 @@ class AdminSeasonController extends Controller
                 'title'=>$request->title,
                 'name'=>$request->name,
             ]);
-           /* if (Session()->has('create_season')){
 
-                return redirect()->to(Session::get('create_season'));
-            }*/
-            return redirect(route('newSeason'))->with(['success'=>'فصل با موفقیت ویرایش شد.']);
+          if (session()->has('create_season')){
+
+              return redirect()->to(session()->get('create_season'));
+            }
+            return redirect()->back()->with(['success'=>'فصل با موفقیت ویرایش شد.']);
         }catch (\Exception $ex)
         {
 
-            return view('errors.error_store_model');
+           return view('errors.error_store_model');
         }
 
     }

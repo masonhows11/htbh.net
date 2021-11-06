@@ -13,7 +13,7 @@
 
         <div class="row season_wrapper">
 
-            <p></p>
+
             <div class="col-lg-8 col-md-8 col-xs-8 create_season">
                 <h3 class="course-title-form">{{ $course[0]->title }}</h3>
                 <form action="{{ route('storeSeason') }}" method="post">
