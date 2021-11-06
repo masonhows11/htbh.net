@@ -14,7 +14,8 @@ class AdminLessonController extends Controller
 {
     public function createNewLesson(Request $request)
     {
-        $course = Course::find($request->course);
+        $course = Course::with('seasons')
+            ->where('id','=',$request->course)->get();
         $lessons = Lesson::where('course_id', '=', $request->course)
             ->orderBy('created_at', 'asc')->get();
 

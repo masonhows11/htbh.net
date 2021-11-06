@@ -12,8 +12,9 @@
 
         </div>
 
+        @foreach($course as $item)
         <div class="course-title">
-            <h3>دوره آموزشی : {{ $course->title }}</h3>
+            <h3>دوره آموزشی : {{ $item->title }}</h3>
         </div>
 
         <div class="row row-add-lesson">
@@ -21,7 +22,7 @@
             <div class="col-lg-6 col-md-6 col-xs-6">
                 <form action="{{ route('storeNewLesson') }}" method="post" >
                     @csrf
-                    <input type="hidden" id="course_id" name="id" value="{{ $course->id }}">
+                    <input type="hidden" id="course_id" name="id" value="{{ $item->id }}">
                     <div class="form-group">
                         <label for="title">عنوان درس به فارسی:</label>
                         <input type="text"
@@ -75,35 +76,9 @@
             <div class="col-lg-6 col-md-6 col-xs-6 list-lessons" style="border:1px solid red">
 
             </div>
-           {{-- <div class="col-lg-8 list-course-lesson">
-                <table class="table table-bordered">
-                    <thead>
-                    <tr>
-                        <th>شناسه</th>
-                        <th>عنوان</th>
-                        <th>مدت زمان ویدئو</th>
-                        <th>عملیات</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($lessons as $lesson)
-                        <tr>
-                            <td>{{ $lesson->id }}</td>
-                            <td>{{ $lesson->title }}</td>
-                            <td>{{ $lesson->lesson_duration }}</td>
-                            <td>
-                                <span><a href="/admin/lesson/editLesson?lesson={{ $lesson->id }}&course={{$course->id}}"><i class="fa fa-edit"></i></a></span>
-
-
-                                <span class="fa fa-remove text-primary" data-lesson-id="{{ $lesson->id }}" id="deleteItem"></span>
-                            </td>
-                        </tr>
-                    @endforeach
-                    </tbody>
-                </table>
-            </div>--}}
 
         </div>
+        @endforeach
 
 
 
