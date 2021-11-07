@@ -31,4 +31,9 @@ class lesson extends Model
     {
         return $this->belongsTo(Course::class);
     }
+
+    public function season()
+    {
+        return $this->belongsTo(Season::class);
+    }
 }
