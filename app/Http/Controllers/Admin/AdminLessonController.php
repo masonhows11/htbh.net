@@ -31,14 +31,15 @@ class AdminLessonController extends Controller
     public function storeNewLesson(Request $request)
     {
 
-
         $request->validate([
             'title' => 'required|max:50',
             'name' => 'required|max:50',
             'lesson_duration' => ['required', 'regex:/^([01]?\d|2[0-3]|24(?=:00?:00?$)):([0-5]\d):([0-5]\d)$/'],
             'video_path' => 'required',
             'buy_able'=>'required',
+            'season' => 'required',
         ], $messages = [
+            'season.required' => 'انتخاب گروه بندی / فصل / بخش الزامی است.',
             'title.required' => 'فیلد عنوان الزامی است.',
             'title.max' => 'حداکثر ۵۰ کاراکتر.',
             'name.required' => 'فیلد نام الزامی است.',

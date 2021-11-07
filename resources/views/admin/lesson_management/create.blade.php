@@ -5,7 +5,7 @@
 @section('main_content')
     <div class="container">
 
-        <div class="row alert-section alert-section-lesson">
+        <div class="row  alert-section-lesson">
             <div class="col-lg-6 col-md-6 col-xs-6 alert-box">
                 @include('admin.include.alert')
             </div>
@@ -23,6 +23,17 @@
                 <form action="{{ route('storeNewLesson') }}" method="post" >
                     @csrf
                     <input type="hidden" id="course_id" name="id" value="{{ $item->id }}">
+
+                    <div class="form-group">
+                        <label for="select_season">فصل:</label>
+                        <select class="form-control  @error('season') is-invalid @enderror" name="season" id="select_season">
+                            <option></option>
+                            @foreach($item->seasons as $value)
+                            <option value="{{ $value->id }}">{{ $value->title }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
                     <div class="form-group">
                         <label for="title">عنوان درس به فارسی:</label>
                         <input type="text"
@@ -58,6 +69,7 @@
                             <option value="1">نقدی</option>
                         </select>
                     </div>
+
 
                     <div class="form-group">
                         <label for="video_path">لینک فایل آموزشی:</label>

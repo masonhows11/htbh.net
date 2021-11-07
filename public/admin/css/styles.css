@@ -146,10 +146,12 @@
 }
 .alert-section-edit-lesson,
 .alert-section-lesson{
-    height: 120px;
+    height: 160px;
+    display: flex;
+    justify-content: center;
 }
 .alert-section-lesson .alert-box{
-    margin-top: 0.4rem;
+  margin-top: 0.4rem;
 }
 
 .courses-comments{
