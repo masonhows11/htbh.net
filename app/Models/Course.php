@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
-use App\Models\lesson;
+use App\Models\Lesson;
 
 class Course extends Model
 {
@@ -47,7 +47,7 @@ class Course extends Model
 
     public function lessons()
     {
-        return $this->hasMany(Lesson::class);
+        return $this->hasMany(\App\Models\Lesson::class);
     }
 
     public function comments()
