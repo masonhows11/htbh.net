@@ -16,6 +16,7 @@ class AdminLessonController extends Controller
     {
         $course = Course::with('seasons')
             ->where('id','=',$request->course)->get();
+
        // return $course;
         $lessons = Lesson::where('course_id', '=', $request->course)
             ->orderBy('created_at', 'asc')->get();
@@ -53,7 +54,8 @@ class AdminLessonController extends Controller
 
         try {
             Lesson::create([
-                'course_id' => $request->id,
+                'course_id' => $request->course,
+                'season_id' => $request->season,
                 'title' => $request->title,
                 'name' => $request->name,
                 'lesson_duration' => $request->lesson_duration,
@@ -62,12 +64,13 @@ class AdminLessonController extends Controller
             ]);
 
 
-            $detail = UpdateCourseDetail::update($request->id);
+            $detail = UpdateCourseDetail::update($request->course);
 
 
             return redirect()->back()->with('success', 'قسمت جدید با موفقیت ایجاد شد.');
 
         } catch (\Exception $ex) {
+            return $ex->getMessage();
             return view('errors.error_store_model');
         }
 

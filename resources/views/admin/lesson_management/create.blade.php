@@ -22,7 +22,7 @@
             <div class="col-lg-6 col-md-6 col-xs-6">
                 <form action="{{ route('storeNewLesson') }}" method="post" >
                     @csrf
-                    <input type="hidden" id="course_id" name="id" value="{{ $item->id }}">
+                    <input type="hidden" id="course_id" name="course" value="{{ $item->id }}">
 
                     <div class="form-group">
                         <label for="select_season">فصل:</label>
