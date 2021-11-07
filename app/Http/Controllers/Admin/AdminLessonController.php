@@ -16,6 +16,7 @@ class AdminLessonController extends Controller
     {
         $course = Course::with('seasons')
             ->where('id','=',$request->course)->get();
+        return $course;
         $lessons = Lesson::where('course_id', '=', $request->course)
             ->orderBy('created_at', 'asc')->get();
 

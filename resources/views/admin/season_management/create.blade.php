@@ -74,7 +74,7 @@
             </div>
 
         </div>
-
+        
     </div>
 @endsection
 @section('admin_scripts')

@@ -9,7 +9,8 @@ class lesson extends Model
 {
     use HasFactory,Sluggable;
 
-    protected $fillable = ['course_id',
+    protected $fillable =
+        ['course_id',
         'title',
         'name',
         'video_path',

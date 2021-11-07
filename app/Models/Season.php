@@ -12,7 +12,11 @@ class Season extends Model
 
     use HasFactory;
 
-    protected $fillable = [ 'title','name','course_id','lesson_id'];
+    protected $fillable =
+        [ 'title',
+            'name',
+            'course_id',
+            'lesson_id'];
 
 
 
