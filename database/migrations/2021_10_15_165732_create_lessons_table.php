@@ -16,11 +16,11 @@ class CreateLessonsTable extends Migration
         Schema::create('lessons', function (Blueprint $table) {
             $table->id();
 
-            /*$table->unsignedBigInteger('season_id')->nullable();
+            $table->unsignedBigInteger('season_id')->nullable();
             $table->foreign('season_id')
                 ->references('id')
                 ->on('seasons')
-                ->onDelete('cascade');*/
+                ->onDelete('cascade');
 
             $table->unsignedBigInteger('course_id')->nullable();
             $table->foreign('course_id')
