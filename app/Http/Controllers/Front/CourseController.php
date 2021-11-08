@@ -15,8 +15,7 @@ class CourseController extends Controller
             $course = Course::with(['categories','likes', 'seasons.lessons', 'comments' => function ($query) {
                 $query->where('approved', 1);
             }])->where('slug', '=', $course)->first();
-
-           //return $course;
+            //return $course;
             return view('front.course_page.course')->with('course',$course);
 
         }catch (\Exception $ex)
