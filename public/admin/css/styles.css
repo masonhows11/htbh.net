@@ -216,5 +216,8 @@
 .course-title-form{
     margin-bottom:2rem;
 }
+.row-add-lesson .list-lessons{
+    margin-top:2rem;
+}
 /************** media query *************/
 

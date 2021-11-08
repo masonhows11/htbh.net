@@ -18,11 +18,11 @@ class AdminLessonController extends Controller
         $course = Course::with('seasons')
             ->where('id','=',$request->course)->get();
 
-       // return $course;
+
         $lessons = Season::with('lessons')
         ->where('course_id', '=', $request->course)
             ->orderBy('created_at', 'asc')->get();
-      // return $lessons;
+
 
         session()->put('current_lesson', $request->fullUrl());
 

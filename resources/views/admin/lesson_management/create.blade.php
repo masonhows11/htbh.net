@@ -85,8 +85,27 @@
                 </form>
             </div>
 
-            <div class="col-lg-6 col-md-6 col-xs-6 list-lessons" style="border:1px solid red">
+            <div class="col-lg-6 col-md-6 col-xs-6 list-lessons">
+                <div class="panel-group">
 
+                    @foreach($lessons as $item)
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" href="#collapse-{{ $item->id }}">{{ $item->title }}</a>
+                            </h4>
+                        </div>
+                        <div id="collapse-{{ $item->id }}" class="panel-collapse collapse">
+                            @foreach($item->lessons as $value)
+                            <ul class="list-group">
+                                <li class="list-group-item">{{ $value->title }}</li>
+                            </ul>
+                            @endforeach
+                        </div>
+                    </div>
+                    @endforeach
+
+                </div>
             </div>
 
         </div>
