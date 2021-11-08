@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Course;
 use App\Models\lesson;
+use App\Models\Season;
 use App\services\UpdateCourseDetail;
 use Illuminate\Http\Request;
 
@@ -18,8 +19,10 @@ class AdminLessonController extends Controller
             ->where('id','=',$request->course)->get();
 
        // return $course;
-        $lessons = Lesson::where('course_id', '=', $request->course)
+        $lessons = Season::with('lessons')
+        ->where('course_id', '=', $request->course)
             ->orderBy('created_at', 'asc')->get();
+      // return $lessons;
 
         session()->put('current_lesson', $request->fullUrl());
 
