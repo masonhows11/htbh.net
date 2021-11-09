@@ -110,11 +110,11 @@
                     <div class="col-lg-10 mt-2">
                         <p class="text-center mt-2 last_update"> آخرین بروز رسانی
                             @if($course->last_update != null)
-                            : {{ jdate($course->last_update)->format('%d %B %Y') }}
+                                : {{ jdate($course->last_update)->format('%d %B %Y') }}
                             @else
-                             00:00:00
+                                00:00:00
                             @endif
-                          </p>
+                        </p>
                     </div>
 
                     <div class="col-lg-10 mt-2">
@@ -157,25 +157,30 @@
 
 
         <!-- course lessons section -->
-        <div class="row d-flex flex-column align-content-center mt-5 course-lessons">
-            @foreach($course->lessons as $lesson)
-                <div class="col-md-6 mt-2 mb-2" style="">
-                    <p class="text-center">
-                        <a class="btn btn-primary"
-                           data-bs-toggle="collapse"
-                           href="#collapseExample{{$lesson->id}}"
-                           role="button"
-                           aria-expanded="false"
-                           aria-controls="collapseExample">
-                            {{ $lesson->title }}
-                        </a>
-                    </p>
-                    <div class="collapse"
-                         id="collapseExample{{$lesson->id}}">
-                        <div class="card card-body">
-                            <a class="text-center" href="{{ $lesson->video_path }}">{{$lesson->video_path}}</a>
+        <div class="row d-flex  align-content-center mt-5 course-lessons">
+
+            @foreach($course->seasons as $item)
+                <div class="accordion " id="accordion-{{$item->id}}">
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapse-{{$item->id}}" aria-expanded="true" aria-controls="collapse-{{$item->id}}">
+                                {{ $item->title }}
+                            </button>
+                        </h2>
+                        <div id="collapse-{{$item->id}}" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                             data-bs-parent="#accordion-{{$item->id}}">
+                            <div class="accordion-body">
+                                @foreach($item->lessons as $value)
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">{{ $value->title }}</li>
+                                </ul>
+                                @endforeach
+                            </div>
                         </div>
                     </div>
+
                 </div>
             @endforeach
         </div>
@@ -258,10 +263,11 @@
                     document.getElementById('dislike_count').innerText = data['dislikes'];
                 });
             }
+
             $(window).on('load', function () {
                 load_likes();
             })
-            $('.like_un_auth').on('click',function (event){
+            $('.like_un_auth').on('click', function (event) {
                 event.preventDefault();
                 Swal.fire({
                     icon: 'info',
