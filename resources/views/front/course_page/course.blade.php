@@ -125,14 +125,9 @@
                                 <p class="course-added w3-flat-turquoise">شما در این دوره ثبت نام کرده اید.</p>
                             @else
                                 @if($course->status_paid == 1 )
-                                    <form action="/addCourse/add" method="post">
-                                        @csrf
                                         <div class="mb-2 btn btn-danger add-course">
-                                            <input type="hidden" name="course_id" value="{{ $course->id }}">
-                                            <input type="submit" class="btn btn-danger" value="ثبت نام رایگان در دوره"
-                                                   id="price">
+                                            <input type="button" class="btn btn-danger" value="این دوره رایگان است">
                                         </div>
-                                    </form>
                                 @elseif($course->status_paid == 2)
                                     <form action="#" method="post">
                                         <div class="mb-2"><p class="price "> {{ number_format($course->price) }}
