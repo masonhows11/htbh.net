@@ -9,7 +9,8 @@
         <div class="row d-flex justify-content-center">
 
             <!--  start course body  -->
-            <div class="col-md-6">
+            <div class="col-lg-6">
+
                 <div class="card course-section">
                     <input type="hidden" id="course_id" value="{{ $course->id }}">
                     <input type="hidden" id="token" value="{{ csrf_token() }}">
@@ -76,7 +77,8 @@
             <!-- end course body -->
 
             <!--  start course properties and add by user     -->
-            <div class="col-md-3 mt-2 course-detail">
+            <div class="col-lg-2 mt-2 course-detail">
+                
                 <div class="row d-flex flex-column align-content-center">
                     <div class="col-lg-10 mt-2">
                         <p class="text-center mt-2"> {{ $course->title }}</p>
