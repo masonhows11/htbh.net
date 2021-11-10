@@ -6,7 +6,7 @@
     <div class="container">
 
 
-        <div class="row d-flex justify-content-center">
+        <div class="row course-wrapper d-flex justify-content-center">
 
             <!--  start course body  -->
             <div class="col-lg-6">
@@ -166,7 +166,7 @@
                                 <div class="accordion-body">
                                     @foreach($item->lessons as $value)
                                         <ul class="list-group list-group-flush">
-                                            <li class="list-group-item"><a href="">{{ $value->title }}</a><i class="fa fa-lock-open text-green-500 float-end"></i></li>
+                                            <li class="list-group-item"><a href="">{{ $value->title }}</a><span class="text-green-500 float-end">{{ $value->buy_able == 0 ? 'رایگان' : 'نقدی'  }}</span><span class="badge bg-secondary float-end ">{{date('H:i',strtotime($value->lesson_duration))}}</span></li>
                                         </ul>
                                     @endforeach
                                 </div>

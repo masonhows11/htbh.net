@@ -164,8 +164,6 @@ body {
     padding: 10px 0 18px 0;
 
 }
-
-
 .most-visited-course .paid-status,
 .latest-course .paid-status {
     width: 140px;
@@ -174,26 +172,22 @@ body {
     background-color: orangered;
     border-radius: 5px;
 }
-
 .most-visited-course .continue-link a,
 .latest-course .continue-link a {
     text-decoration: none;
     color: tomato;
     font-size: 1.1rem;
 }
-
 .most-visited-course .paid-status a,
 .latest-course .paid-status a {
     font-family: 'BYekan', sans-serif;
 }
-
 .most-visited-course .paid-status a,
 .latest-course .paid-status a {
     line-height: 28px;
     text-decoration: none;
     color: white;
 }
-
 .article-content .card .continue a {
     color: tomato;
     line-height: 28px;
@@ -206,11 +200,13 @@ body {
     font-size: 25px;
 
 }
-
 .latest-course .card-img-top,
 .most-visited-course .card-img-top,
 .article-content .card-img-top {
     height: 300px;
+}
+.course-wrapper{
+    margin-top:5rem;
 }
 
 /*************** footer style***********/
