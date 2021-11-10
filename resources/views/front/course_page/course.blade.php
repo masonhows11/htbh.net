@@ -9,7 +9,8 @@
         <div class="row d-flex justify-content-center">
 
             <!--  start course body  -->
-            <div class="col-md-6">
+            <div class="col-lg-6">
+
                 <div class="card course-section">
                     <input type="hidden" id="course_id" value="{{ $course->id }}">
                     <input type="hidden" id="token" value="{{ csrf_token() }}">
@@ -76,9 +77,9 @@
             <!-- end course body -->
 
             <!--  start course properties and add by user     -->
-            <div class="col-md-3 mt-2 course-detail">
+            <div class="col-lg-2 mt-2 course-detail">
+                
                 <div class="row d-flex flex-column align-content-center">
-
                     <div class="col-lg-10 mt-2">
                         <p class="text-center mt-2"> {{ $course->title }}</p>
                     </div>
@@ -101,12 +102,10 @@
                     <div class="col-lg-10 mt-2">
                         <p class="text-center mt-2 level_course"> سطح دوره : {{ $level }}</p>
                     </div>
-
                     <div class="col-lg-10 mt-2">
                         <p class="text-center mt-2 course_duration"> مدت زمان دوره
                             : {{ $course->course_duration }} </p>
                     </div>
-
                     <div class="col-lg-10 mt-2">
                         <p class="text-center mt-2 last_update"> آخرین بروز رسانی
                             @if($course->last_update != null)
@@ -116,12 +115,10 @@
                             @endif
                         </p>
                     </div>
-
                     <div class="col-lg-10 mt-2">
                         <p class="text-center mt-2"> وضعیت دوره
                             : {{ $course->course_status == 1 ? 'در حال برگزاری' : 'پایان دوره' }} </p>
                     </div>
-
                     <div class="col-lg-10 d-flex justify-content-center align-content-center mt-2">
                         <div class="d-flex flex-column mt-2 mb-2">
                             @if(\App\Models\CourseUser::checkAddOrNot(\Illuminate\Support\Facades\Auth::id(),$course->id))
@@ -157,32 +154,33 @@
 
 
         <!-- course lessons section -->
-        <div class="row d-flex  align-content-center mt-5 course-lessons">
+        <div class="row d-flex  justify-content-center mt-5 course-lessons">
+            <div class="col-lg-8">
+                @foreach($course->seasons as $item)
+                    <div class="accordion " id="accordion-{{$item->id}}">
 
-            @foreach($course->seasons as $item)
-                <div class="accordion " id="accordion-{{$item->id}}">
-
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingOne">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapse-{{$item->id}}" aria-expanded="true" aria-controls="collapse-{{$item->id}}">
-                                {{ $item->title }}
-                            </button>
-                        </h2>
-                        <div id="collapse-{{$item->id}}" class="accordion-collapse collapse" aria-labelledby="headingOne"
-                             data-bs-parent="#accordion-{{$item->id}}">
-                            <div class="accordion-body">
-                                @foreach($item->lessons as $value)
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">{{ $value->title }}</li>
-                                </ul>
-                                @endforeach
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse-{{$item->id}}" aria-expanded="true" aria-controls="collapse-{{$item->id}}">
+                                    {{ $item->title }}
+                                </button>
+                            </h2>
+                            <div id="collapse-{{$item->id}}" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                                 data-bs-parent="#accordion-{{$item->id}}">
+                                <div class="accordion-body">
+                                    @foreach($item->lessons as $value)
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item">{{ $value->title }}</li>
+                                        </ul>
+                                    @endforeach
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                </div>
-            @endforeach
+                    </div>
+                @endforeach
+            </div>
         </div>
         <!-- end course lessons section -->
 
