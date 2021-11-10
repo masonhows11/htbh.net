@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Course;
-use App\Models\lesson;
+use App\Models\Lesson;
 use App\Models\Season;
 use App\services\UpdateCourseDetail;
 use Illuminate\Http\Request;
