@@ -5,8 +5,8 @@
 @section('main_content')
     <div class="container">
 
-        <div class="row alert-section">
-            <div class="col-lg-6 col-md-6 col-xs-6 alert-box">
+        <div class="row category-alert-section">
+            <div class="col-lg-6 col-md-6 col-xs-6 category-alert-box">
                 @include('admin.include.alert')
             </div>
         </div>

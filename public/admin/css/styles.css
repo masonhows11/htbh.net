@@ -1,8 +1,9 @@
 .users-table{
     margin-top: 20px;
 }
-.alert-section {
+.category-alert-section {
     height: 100px;
+    margin-top: 25px;
 }
 .course-create-alert-section{
     height: 200px;
@@ -10,9 +11,8 @@
 .course-alert-section{
     height: 80px;
 }
-.alert-section{
-    margin-top: 25px;
-}
+
+.category-alert-section,
 .course-create-alert-section,
 .course-alert-section,
 .edit-user-wrapper,
