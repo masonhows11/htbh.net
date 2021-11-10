@@ -5,9 +5,12 @@
 @section('main_content')
     <div class="container">
 
-        <div class="row alert-section">
-            <div class="col-lg-6 col-md-6 col-xs-6 alert-box">
+        <div class="row course-alert-section">
+            <div class="col-lg-6 col-md-6 col-xs-6 course-alert-box">
                 @include('admin.include.alert')
+                <div class="alert alert-success">
+                    <strong>Success!</strong> Indicates a successful or positive action.
+                </div>
             </div>
         </div>
 
