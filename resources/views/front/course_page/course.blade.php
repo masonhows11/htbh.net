@@ -171,7 +171,7 @@
                                 <div class="accordion-body">
                                     @foreach($item->lessons as $value)
                                         <ul class="list-group list-group-flush">
-                                            <li class="list-group-item"><a href="">{{ $value->title }}</a></li>
+                                            <li class="list-group-item"><a href="">{{ $value->title }}</a><i class="fa fa-lock-open float-end"></i></li>
                                         </ul>
                                     @endforeach
                                 </div>
