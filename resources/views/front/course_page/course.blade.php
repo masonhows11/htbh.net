@@ -78,7 +78,7 @@
 
             <!--  start course properties and add by user     -->
             <div class="col-lg-2 mt-2 course-detail">
-                
+
                 <div class="row d-flex flex-column align-content-center">
                     <div class="col-lg-10 mt-2">
                         <p class="text-center mt-2"> {{ $course->title }}</p>
@@ -171,7 +171,7 @@
                                 <div class="accordion-body">
                                     @foreach($item->lessons as $value)
                                         <ul class="list-group list-group-flush">
-                                            <li class="list-group-item">{{ $value->title }}</li>
+                                            <li class="list-group-item"><a href="">{{ $value->title }}</a></li>
                                         </ul>
                                     @endforeach
                                 </div>
