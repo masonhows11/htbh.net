@@ -4,10 +4,16 @@
 .alert-section {
     height: 100px;
 }
-
-.edit-user-wrapper .edit-user-section,
-.alert-section {
+.course-alert-section{
+    height: 200px;
+}
+.alert-section{
     margin-top: 25px;
+}
+.course-alert-section,
+.edit-user-wrapper,
+.edit-user-section
+ {
     display: flex;
     justify-content: center;
 }
@@ -93,7 +99,9 @@
 .list-post-content .paginate-sec{
     margin-top:2rem;
 }
-.admin-add-course,
+.admin-add-course{
+    margin-top:1rem;
+}
 .admin-add-post{
     margin-top: 40px;
 }

@@ -83,7 +83,7 @@ class AdminCourseController extends Controller
             'description.min' => 'حداقل ۵۰ کاراکتر.',
             'level_course.required' => ' فیلد سطح دوره الزامی است.',
             'image.required' => 'فیلد تصویر الزامی است.',
-            'cat.required' => 'دسته بندی الزامی است.',
+            'category.required' => 'دسته بندی الزامی است.',
             'status_paid.required' => 'نوع قیمت الزامی است.',
             'status_paid.between' => 'نوع پرداخت را انتخاب کنید.',
             'price.required' => 'قیمت دوره را وارد کنید.',
