@@ -1,13 +1,13 @@
 .users-table{
     margin-top: 20px;
 }
-.alert-section .alert-box{
-    height: auto;
+.alert-section {
+    height: 100px;
 }
 
 .edit-user-wrapper .edit-user-section,
 .alert-section {
-    margin-top: 30px;
+    margin-top: 25px;
     display: flex;
     justify-content: center;
 }
@@ -24,9 +24,9 @@
 }
 
 .category-content-section{
-    height:600px;
+    height:500px;
     overflow-y:scroll;
-    margin-top:5rem;
+    margin-top:1rem;
     display: flex;
     justify-content: center;
     background-color: white;
