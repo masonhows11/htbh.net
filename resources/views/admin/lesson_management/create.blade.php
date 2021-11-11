@@ -101,10 +101,14 @@
                                 <div id="collapse-{{ $item->id }}" class="panel-collapse collapse">
                                     @foreach($item->lessons as $value)
                                         <ul class="list-group">
-                                            <li class="list-group-item">
-                                                {{ $value->title }}
-                                                 <a href="{{ route('editLesson',['lesson'=>$value->id,'course'=>$value->course_id]) }}"><span class="fa fa-edit"></span></a>
-                                                <span class="fa fa-remove text-primary" id="deleteItem" data-lesson-id="{{ $value->id }}" ></span>
+                                            <li class="list-group-item list-lessons-ul">
+                                                <div>{{ $value->title }}</div>
+                                                <div>
+                                                    <a href="{{ route('editLesson',['lesson'=>$value->id,'course'=>$value->course_id]) }}"><i
+                                                            class="fa fa-edit"></i></a>
+                                                    <i class="fa fa-remove text-primary" id="deleteItem"
+                                                          data-lesson-id="{{ $value->id }}"></i>
+                                                </div>
                                             </li>
                                         </ul>
                                     @endforeach

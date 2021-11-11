@@ -205,6 +205,10 @@
   height: 600px;
   overflow-y: scroll;
 }
+.list-lessons-ul {
+    display: flex;
+    justify-content:space-between;
+}
 
 /************** season section **********/
 
