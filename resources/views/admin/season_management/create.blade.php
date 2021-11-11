@@ -33,7 +33,7 @@
                         <input
                             type="text"
                             name="name"
-                            class="form-control @error('name') is-invalid @enderror"
+                            class="form-control @error('name') is-invalid @enderror text-left"
                             id="season">
                     </div>
 
@@ -74,7 +74,7 @@
             </div>
 
         </div>
-        
+
     </div>
 @endsection
 @section('admin_scripts')
