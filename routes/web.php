@@ -177,7 +177,7 @@ Route::group(['prefix'=>'admin/lesson','middleware'=>'role:admin'],function (){
 
     Route::get('/newLesson', [AdminLessonController::class, 'createNewLesson'])->name('newLesson');
     Route::post('/storeNewLesson', [AdminLessonController::class, 'storeNewLesson'])->name('storeNewLesson');
-    Route::get('/editLesson', [AdminLessonController::class, 'editLesson']);
+    Route::get('/editLesson', [AdminLessonController::class, 'editLesson'])->name('editLesson');
     Route::post('/updateLesson', [AdminLessonController::class, 'updateLesson'])->name('updateLesson');
     Route::get('/deleteLesson', [AdminLessonController::class, 'deleteLesson'])->name('deleteLesson');
 });
