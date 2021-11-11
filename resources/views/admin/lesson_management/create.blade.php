@@ -103,8 +103,8 @@
                                         <ul class="list-group">
                                             <li class="list-group-item">
                                                 {{ $value->title }}
-                                                 <span class="fa fa-edit"><a href="{{ route('editLesson',['lesson'=>$value->id,'course'=>$value->course_id]) }}"></a></span>
-                                                <span></span>
+                                                 <a href="{{ route('editLesson',['lesson'=>$value->id,'course'=>$value->course_id]) }}"><span class="fa fa-edit"></span></a>
+                                                <span class="fa fa-remove text-primary"></span>
                                             </li>
                                         </ul>
                                     @endforeach

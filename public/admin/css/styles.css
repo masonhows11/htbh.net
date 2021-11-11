@@ -114,14 +114,14 @@
     padding:14px 0 14px 0;
 }
 .list-season .fa-edit,
-.list-course-lesson .fa-edit,
+.list-lessons .fa-edit,
 .list-course-content .fa-edit,
 .list-post-content .fa-edit,
 .users-table .fa-edit{
     font-size:2.3rem;
 }
-.list-season .fa-remove,
-.list-course-lesson .fa-remove,
+
+.list-lessons .fa-remove,
 .list-course-content .fa-list-alt ,
 .list-course-content .fa-save,
 .list-course-content .fa-remove,
@@ -129,8 +129,8 @@
 .users-table .fa-remove{
     font-size:2.7rem;
 }
-.list-season .fa-remove:hover,
-.list-course-lesson .fa-remove:hover,
+
+.list-lessons .fa-remove:hover,
 .list-course-content .fa-remove:hover,
 .list-post-content .fa-remove:hover,
 .users-table .fa-remove:hover
