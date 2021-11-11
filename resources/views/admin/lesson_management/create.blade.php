@@ -104,7 +104,7 @@
                                             <li class="list-group-item">
                                                 {{ $value->title }}
                                                  <a href="{{ route('editLesson',['lesson'=>$value->id,'course'=>$value->course_id]) }}"><span class="fa fa-edit"></span></a>
-                                                <span class="fa fa-remove text-primary"></span>
+                                                <span class="fa fa-remove text-primary" id="deleteItem" data-lesson-id="{{ $value->id }}" ></span>
                                             </li>
                                         </ul>
                                     @endforeach
@@ -127,7 +127,7 @@
             event.preventDefault();
             let lesson_id = event.target.getAttribute('data-lesson-id');
             let course_id = document.getElementById('course_id').value;
-            let course_element = event.target.parentElement.parentElement;
+            let course_element = event.target.closest('li');
             swal.fire({
                 title: 'آیا مطمئن هستید این ایتم حذف شود؟',
                 icon: 'error',

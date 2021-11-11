@@ -82,7 +82,7 @@ class AdminLessonController extends Controller
     public function editLesson(Request $request)
     {
 
-        return $request;
+        //return $request;
         $lesson = Lesson::where('id', '=', $request->lesson)
             ->where('course_id', '=', $request->course)
             ->first();
