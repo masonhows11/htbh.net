@@ -155,22 +155,29 @@
                     <div class="accordion " id="accordion-{{$item->id}}">
 
                         <div class="accordion-item">
+
                             <h2 class="accordion-header" id="headingOne">
                                 <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapse-{{$item->id}}" aria-expanded="true" aria-controls="collapse-{{$item->id}}">
                                     {{ $item->title }}
                                 </button>
                             </h2>
-                            <div id="collapse-{{$item->id}}" class="accordion-collapse collapse" aria-labelledby="headingOne"
+
+                            <div id="collapse-{{$item->id}}" class="accordion-collapse collapse list-lessons-front" aria-labelledby="headingOne"
                                  data-bs-parent="#accordion-{{$item->id}}">
                                 <div class="accordion-body">
                                     @foreach($item->lessons as $value)
                                         <ul class="list-group list-group-flush">
-                                            <li class="list-group-item"><a href="">{{ $value->title }}</a><span class="text-green-500 float-end">{{ $value->buy_able == 0 ? 'رایگان' : 'نقدی'  }}</span><span class="badge bg-secondary float-end ">{{date('H:i',strtotime($value->lesson_duration))}}</span></li>
+                                            <li class="list-group-item">
+                                                <a href="">{{ $value->title }}</a>
+                                                <span class="badge bg-info me-2 float-end lesson-pay">{{ $value->buy_able == 0 ? 'رایگان' : 'نقدی'  }}</span>
+                                                <span class="badge bg-secondary float-end ms-2 lesson-time">{{ date('i:s',strtotime($value->lesson_duration))}}</span>
+                                            </li>
                                         </ul>
                                     @endforeach
                                 </div>
                             </div>
+
                         </div>
 
                     </div>

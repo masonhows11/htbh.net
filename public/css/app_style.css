@@ -208,7 +208,11 @@ body {
 .course-wrapper{
     margin-top:5rem;
 }
-
+/************** lessons style **********/
+.lesson-time{
+    font-family:"iransans_num",Sans-Serif;
+    margin-left: 10px
+}
 /*************** footer style***********/
 .footer {
     background-color: #110945;
