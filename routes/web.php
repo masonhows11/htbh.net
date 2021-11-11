@@ -221,6 +221,8 @@ Route::group(['prefix'=>'course'],function (){
 
     Route::get('/get/{course}',[CourseController::class,'course'])->name('course');
 
+    
+
 });
 
 Route::group(['prefix'=>'article'],function (){
