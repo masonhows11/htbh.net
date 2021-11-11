@@ -12,13 +12,14 @@ class CourseController extends Controller
     public function course($course)
     {
         try {
-            $course = Course::with(['categories','likes', 'seasons.lessons', 'comments' => function ($query) {
-                $query->where('approved', 1);
-            }])->where('slug', '=', $course)->first();
-            return view('front.course_page.course')->with('course',$course);
+            $course =
+                Course::with(['categories', 'likes', 'seasons.lessons', 'comments'
+                => function ($query) {
+                        $query->where('approved', 1);
+                    }])->where('slug', '=', $course)->first();
+            return view('front.course_page.course')->with('course', $course);
 
-        }catch (\Exception $ex)
-        {
+        } catch (\Exception $ex) {
             return view('errors.error_not_found_model');
         }
 
@@ -26,6 +27,7 @@ class CourseController extends Controller
 
     public function lessonDetail($lesson)
     {
-            return $lesson;
+        //return $lesson;
+        return view('front.course_page.lesson');
     }
 }
