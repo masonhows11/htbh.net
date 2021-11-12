@@ -370,7 +370,9 @@ body {
     cursor: pointer;
 }
 /************* lesson detail **********/
-
+.front-lesson-detail{
+    margin-top: 30px;
+}
 .front-lesson-detail .lesson-duration ,
 .front-lesson-detail .lesson-date{
     font-family: 'iransans_num',Sans-Serif;
