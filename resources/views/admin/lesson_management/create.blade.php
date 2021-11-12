@@ -98,7 +98,7 @@
                                            href="#collapse-{{ $item->id }}">{{ $item->title }}</a>
                                     </h4>
                                 </div>
-                                <div id="collapse-{{ $item->id }}" class="panel-collapse collapse">
+                                <div id="collapse-{{ $item->id }}" class="panel-collapse collapse in">
                                     @foreach($item->lessons as $value)
                                         <ul class="list-group">
                                             <li class="list-group-item list-lessons-ul">

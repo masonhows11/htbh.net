@@ -1,14 +1,17 @@
-.users-table{
+.users-table {
     margin-top: 20px;
 }
+
 .category-alert-section {
     height: 100px;
     margin-top: 25px;
 }
-.course-create-alert-section{
+
+.course-create-alert-section {
     height: 200px;
 }
-.course-alert-section{
+
+.course-alert-section {
     height: 80px;
 }
 
@@ -16,207 +19,242 @@
 .course-create-alert-section,
 .course-alert-section,
 .edit-user-wrapper,
-.edit-user-section
- {
+.edit-user-section {
     display: flex;
     justify-content: center;
 }
+
 .edit-email-wrapper {
-     display: flex;
-     flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
+
 .admin-content-models {
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    background-color:white;
+    background-color: white;
 }
 
-.category-content-section{
-    height:500px;
-    overflow-y:scroll;
-    margin-top:1rem;
+.category-content-section {
+    height: 500px;
+    overflow-y: scroll;
+    margin-top: 1rem;
     display: flex;
     justify-content: center;
     background-color: white;
 }
 
-.category-form{
-    margin:10px 0 10px 0;
+.category-form {
+    margin: 10px 0 10px 0;
 }
-.article-section{
-    margin-top:20px;
-    margin-bottom:20px;
+
+.article-section {
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
-.category-content-section .parent:hover{
+
+.category-content-section .parent:hover {
     cursor: pointer;
 }
-.no-categories{
-    margin-top:12px;
+
+.no-categories {
+    margin-top: 12px;
 }
-.category-content-section ul{
+
+.category-content-section ul {
     list-style-type: none;
 }
+
 .category-article {
     margin-bottom: 80px;
 }
+
 /************** post management category menu dropdown hover style ****************/
-.category-menu-article ul .dropdown-item{
+.category-menu-article ul .dropdown-item {
     display: none;
 }
-.category-menu-article  .dropdown:hover .dropdown-menu{
+
+.category-menu-article .dropdown:hover .dropdown-menu {
     display: block;
 }
+
 .child-category {
     list-style: none;
 }
-.category-menu-article a.category-item
-{
+
+.category-menu-article a.category-item {
     color: #0a0a0a;
 }
-.dropdown-menu .child-cat > .child-category:hover{
+
+.dropdown-menu .child-cat > .child-category:hover {
     background-color: #e1e3e9;
 }
-.dropdown-menu .child-cat > .child-category{
-    height:2.5rem;
+
+.dropdown-menu .child-cat > .child-category {
+    height: 2.5rem;
 }
-.dropdown-menu .child-cat > li > .category-item{
-    line-height:normal;
-    padding-right:1rem;
+
+.dropdown-menu .child-cat > li > .category-item {
+    line-height: normal;
+    padding-right: 1rem;
 }
+
 .list-course-content,
-.list-post-content{
-    margin-top:1.5rem;
+.list-post-content {
+    margin-top: 1.5rem;
     height: 420px;
 }
+
 .list-course-content .course-section,
-.list-post-content .article-section{
-    min-height:280px;
+.list-post-content .article-section {
+    min-height: 280px;
 }
-.category-dropdown-article{
+
+.category-dropdown-article {
     margin-top: 20px;
     display: flex;
     justify-content: center;
 }
+
 .list-course-content .paginate-sec,
-.list-post-content .paginate-sec{
-    margin-top:2rem;
+.list-post-content .paginate-sec {
+    margin-top: 2rem;
 }
-.admin-add-course{
-    margin-top:1rem;
+
+.admin-add-course {
+    margin-top: 1rem;
 }
-.admin-add-post{
+
+.admin-add-post {
     margin-top: 40px;
 }
+
 .admin-add-course > div,
-.admin-add-post > div{
-    padding:14px 0 14px 0;
+.admin-add-post > div {
+    padding: 14px 0 14px 0;
 }
+
 .list-season .fa-edit,
 .list-lessons .fa-edit,
 .list-course-content .fa-edit,
 .list-post-content .fa-edit,
-.users-table .fa-edit{
-    font-size:2.3rem;
+.users-table .fa-edit {
+    font-size: 2.3rem;
 }
 
 .list-lessons .fa-remove,
-.list-course-content .fa-list-alt ,
+.list-course-content .fa-list-alt,
 .list-course-content .fa-save,
 .list-course-content .fa-remove,
 .list-post-content .fa-remove,
-.users-table .fa-remove{
-    font-size:2.7rem;
+.users-table .fa-remove {
+    font-size: 2.7rem;
 }
 
 .list-lessons .fa-remove:hover,
 .list-course-content .fa-remove:hover,
 .list-post-content .fa-remove:hover,
-.users-table .fa-remove:hover
-{
+.users-table .fa-remove:hover {
     cursor: pointer;
 }
 
-.btn-save-model{
+.btn-save-model {
     margin-top: 2rem;
 }
-.btn-return{
+
+.btn-return {
     margin-top: 1rem;
 }
-.details-textarea{
+
+.details-textarea {
     direction: rtl;
     white-space: normal
 }
-.row-add-lesson{
+
+.row-add-lesson {
     margin-top: 20px;
 
 
 }
-.list-course-lesson{
+
+.list-course-lesson {
     overflow: scroll;
-    height:200px;
+    height: 200px;
 }
+
 .alert-section-edit-lesson,
-.alert-section-lesson{
+.alert-section-lesson {
     height: 160px;
     display: flex;
     justify-content: center;
 }
-.alert-section-lesson .alert-box{
-  margin-top: 0.4rem;
+
+.alert-section-lesson .alert-box {
+    margin-top: 0.4rem;
 }
 
-.courses-comments{
-    background:whitesmoke;
+.courses-comments {
+    background: whitesmoke;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
-.posts-section{
-    background:whitesmoke;
+
+.posts-section {
+    background: whitesmoke;
     display: flex;
     justify-content: center;
 }
-.courses-comments .select-category-comment{
-    height:100px;
+
+.courses-comments .select-category-comment {
+    height: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
     border-bottom: 2px solid #0c1021;
 }
-.courses-comments .list-courses{
+
+.courses-comments .list-courses {
     margin-top: 5rem;
     display: flex;
     flex-direction: column;
     height: 250px;
     overflow-y: scroll;
 }
-.comments-wrapper{
-    margin-top:5rem;
+
+.comments-wrapper {
+    margin-top: 5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
+
 .posts-section,
-.comments-wrapper .list-comments{
-  height: 600px;
-  overflow-y: scroll;
+.comments-wrapper .list-comments {
+    height: 600px;
+    overflow-y: scroll;
+}
+.list-lessons {
+    height: 500px;
+    overflow-y: scroll;
 }
 .list-lessons-ul {
     display: flex;
-    justify-content:space-between;
+    justify-content: space-between;
 }
 
 /************** season section **********/
 
-.alert-section-season{
+.alert-section-season {
     height: 150px;
     display: flex;
     justify-content: center;
 }
+
 .season_wrapper {
     margin-top: 2rem;
     display: flex;
@@ -224,16 +262,20 @@
     justify-content: center;
     align-items: center;
 }
-.season_wrapper .list-season{
-    margin-top:3rem;
+
+.season_wrapper .list-season {
+    margin-top: 3rem;
     height: 250px;
     overflow-y: scroll;
 }
-.course-title-form{
-    margin-bottom:2rem;
+
+.course-title-form {
+    margin-bottom: 2rem;
 }
-.row-add-lesson .list-lessons{
-    margin-top:2rem;
+
+.row-add-lesson .list-lessons {
+    margin-top: 2rem;
 }
+
 /************** media query *************/
 
