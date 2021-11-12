@@ -11,6 +11,8 @@ class AdminCategoryController extends Controller
 
     public function index()
     {
+
+
         $parent_categories = Category::where('parent_id', null)->get();
         $categories = Category::all();
         return view('admin.category_management.index')
@@ -50,7 +52,6 @@ class AdminCategoryController extends Controller
         } catch (\Exception $ex) {
             return view('errors.error_store_model');
         }
-
     }
 
     public function edit(Request $request)
@@ -90,33 +91,36 @@ class AdminCategoryController extends Controller
 
             if ($request->filled('parent')) {
                 Category::where('id', $request->id)
-                    ->update(['name' => $request->name,
+                    ->update([
+                        'name' => $request->name,
                         'title' => $request->title,
                         'slug' => $request->slug,
-                        'parent_id' => $request->parent]);
+                        'parent_id' => $request->parent
+                    ]);
 
                 return redirect('/admin/category/index')->with('success', 'دسته بندی مورد با موفقیت ویرایش شد.');
             } elseif ($request->filled('old_parent')) {
                 Category::where('id', $request->id)
-                    ->update(['name' => $request->name,
+                    ->update([
+                        'name' => $request->name,
                         'title' => $request->title,
                         'slug' => $request->slug,
-                        'parent_id' => $request->old_parent]);
+                        'parent_id' => $request->old_parent
+                    ]);
                 return redirect('/admin/category/index')->with('success', 'دسته بندی مورد با موفقیت ویرایش شد.');
             } else
                 Category::where('id', $request->id)
-                    ->update(['name' => $request->name,
+                    ->update([
+                        'name' => $request->name,
                         'title' => $request->title,
                         'slug' => $request->slug,
-                        'parent_id' => $request->old_parent]);
+                        'parent_id' => $request->old_parent
+                    ]);
 
             return redirect('/admin/category/index')->with('success', 'دسته بندی مورد با موفقیت ویرایش شد.');
-
         } catch (\Exception $ex) {
             return view('errors.error_store_model');
         }
-
-
     }
 
     public function detachParent(Request $request)
