@@ -10,13 +10,13 @@
 
 
 
-            <div class="col-lg-8 col-md-8 col-xs-8 mb-2 video-section" style="border:2px solid tomato;height:100px">
+            <div class="col-lg-8 col-md-8 col-xs-8 mb-2 video-section">
                 <h1 class="h4" class="lesson-title">{{ $lesson[0]->title }}</h1>
                 <p class="course-title">{{ $lesson[0]->course->title }}</p>
-                <div>
-                    <span class="lesson-date">{{  jdate($lesson[0]->created_at)->format('%d %B %Y')  }}</span>
-                    
-                    <span class="lesson-time">{{ $lesson[0]->lesson_duration }}</span>
+                <div class="lesson-info d-flex justify-content-start mt-2">
+                    <div class="lesson-date bg-secondary rounded-3 text-center ">زمان قرارگیری: {{  jdate($lesson[0]->created_at)->format('%d %B %Y')  }}</div>
+
+                    <div class="lesson-duration bg-secondary rounded-3 ms-2 text-center"> مدت زمان این قسمت : {{ $lesson[0]->lesson_duration }}</div>
                 </div>
 
             </div>

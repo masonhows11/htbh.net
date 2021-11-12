@@ -371,6 +371,15 @@ body {
 }
 /************* lesson detail **********/
 
+.front-lesson-detail .lesson-duration ,
+.front-lesson-detail .lesson-date{
+    font-family: 'iransans_num',Sans-Serif;
+    color: white;
+    width: 220px;
+    height:30px;
+
+}
+
 
 
 
