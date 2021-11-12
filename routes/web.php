@@ -221,7 +221,7 @@ Route::group(['prefix'=>'course'],function (){
 
     Route::get('/get/{course}',[CourseController::class,'course'])->name('course');
 
-    Route::get('/lessonDetail/{lesson}',[CourseController::class,'lessonDetail'])->name('lessonDetail');
+    Route::get('/lessonDetail/{course}/{lesson}',[CourseController::class,'lessonDetail'])->name('lessonDetail');
 });
 
 Route::group(['prefix'=>'article'],function (){
