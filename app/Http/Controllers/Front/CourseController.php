@@ -25,9 +25,11 @@ class CourseController extends Controller
 
     }
 
-    public function lessonDetail($lesson)
+    public function lessonDetail(Request $request)
     {
-        //return $lesson;
+        return $request->lesson;
+
+
         return view('front.course_page.lesson');
     }
 }
