@@ -137,9 +137,7 @@
                                         </div>
                                     </form>
                                 @endif
-
                             @endif
-
                         </div>
                     </div>
                 </div>
@@ -169,7 +167,7 @@
                                     @foreach($item->lessons as $value)
                                         <ul class="list-group list-group-flush">
                                             <li class="list-group-item">
-                                                <a href="{{ route('lesson_detail',['course'=>$course->slug,'lesson'=>$value->name]) }}">{{ $value->title }}</a>
+                                                <a href="{{ route('lesson_detail',['course'=>$course->slug,'lesson'=>$value->name,'id'=>$value->id]) }}">{{ $value->title }}</a>
                                                 <span class="badge bg-info me-2 float-end lesson-pay">{{ $value->buy_able == 0 ? 'رایگان' : 'نقدی'  }}</span>
                                                 <span class="badge bg-secondary float-end ms-2 lesson-time">{{ date('H:i:s',strtotime($value->lesson_duration))}}</span>
                                             </li>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Models\Lesson;
 use Illuminate\Http\Request;
 use App\Models\Course;
 
@@ -27,7 +28,11 @@ class CourseController extends Controller
 
     public function lessonDetail(Request $request)
     {
-        return $request->lesson;
+       //return $request;
+
+        $lesson = Lesson::with('course')
+            ->where('id','=',$request->id)->get();
+        return $lesson;
 
 
         return view('front.course_page.lesson');
