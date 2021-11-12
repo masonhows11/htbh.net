@@ -113,13 +113,14 @@ class AdminLessonController extends Controller
 
         ]);
         try {
-            Lesson::where('id', '=', $request->lesson_id)
-                ->where('course_id', '=', $request->course_id)
-                ->update([
-                    'title' => $request->title,
-                    'name' => $request->name,
-                    'lesson_duration' => $request->lesson_duration,
-                    'video_path' => $request->video_path]);
+          $lesson =  Lesson::where('id', '=', $request->lesson_id)->where('course_id', '=', $request->course_id)->first();
+
+          $lesson->slug = null;
+          $lesson->title = $request->title;
+          $lesson->name = $request->name;
+          $lesson->lesson_duration = $request->lesson_duration;
+          $lesson->video_path =$request->video_path;
+          $lesson->save();
 
 
             UpdateCourseDetail::update($request->course_id);

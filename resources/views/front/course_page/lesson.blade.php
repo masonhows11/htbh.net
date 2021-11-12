@@ -10,7 +10,7 @@
 
 
             <div class="col-lg-8 col-md-8 col-xs-8 mb-2 video-section" style="border:2px solid tomato;height:100px">
-                <p>{{ $ }}</p>
+                <p></p>
                 <p></p>
                 <div>
                     <span></span>

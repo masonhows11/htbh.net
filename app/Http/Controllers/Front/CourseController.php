@@ -32,7 +32,7 @@ class CourseController extends Controller
 
         $lesson = Lesson::with('course')
             ->where('id','=',$request->id)->get();
-           return $lesson;
+         //  return $lesson;
 
 
         return view('front.course_page.lesson')
