@@ -369,6 +369,10 @@ body {
 .fa-thumbs-up, .fa-thumbs-down {
     cursor: pointer;
 }
+/************* lesson detail **********/
+
+
+
 
 /******** section media query **********/
 @media screen and (max-width: 991px) {
