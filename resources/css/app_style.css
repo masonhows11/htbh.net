@@ -369,17 +369,22 @@ body {
 .fa-thumbs-up, .fa-thumbs-down {
     cursor: pointer;
 }
-/************* lesson video ************/
+/************* lesson section ************/
 .front-lesson-detail .video-section{
 
 }
-/*********** download section ***********/
+
 .download-section{
     height: 80px;
 }
 .lesson-empty-section{
     height: 100px;
 }
+.lesson-date , .lesson-duration{
+    height: 40px;
+    width: 240px;
+    line-height: 35px;
+}
 /******** section media query **********/
 @media screen and (max-width: 991px) {
 
@@ -395,25 +400,3 @@ body {
     }
 }
 
-
-
-/******** section media query **********/
-@media screen and (max-width: 991px) {
-
-    .search-section .search-btn {
-        display: flex;
-        justify-content: center;
-    }
-
-    .navbar-collapse .nav-link {
-        width: 200px;
-        text-align: center;
-        margin: 0 auto 0 auto !important;
-    }
-}
-
-/*
-@media screen and (max-width: 1023px) {
-
-}
-*/
