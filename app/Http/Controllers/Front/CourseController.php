@@ -28,12 +28,9 @@ class CourseController extends Controller
 
     public function lessonDetail(Request $request)
     {
-       //return $request;
-
+        
         $lesson = Lesson::with('course')
             ->where('id','=',$request->id)->get();
-       //return $lesson;
-
 
         return view('front.course_page.lesson')
             ->with(['lesson'=>$lesson]);
