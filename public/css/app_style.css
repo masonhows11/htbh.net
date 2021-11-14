@@ -369,20 +369,31 @@ body {
 .fa-thumbs-up, .fa-thumbs-down {
     cursor: pointer;
 }
-/************* lesson detail **********/
-.front-lesson-detail{
-    margin-top: 30px;
-}
-.front-lesson-detail .lesson-duration ,
-.front-lesson-detail .lesson-date{
-    font-family: 'iransans_num',Sans-Serif;
-    color: white;
-    width: 232px;
-    height:32px;
-    line-height: 30px;
+/************* lesson video ************/
+.front-lesson-detail .video-section{
 
 }
+/*********** download section ***********/
+.download-section{
+    height: 80px;
+}
+.lesson-empty-section{
+    height: 100px;
+}
+/******** section media query **********/
+@media screen and (max-width: 991px) {
 
+    .search-section .search-btn {
+        display: flex;
+        justify-content: center;
+    }
+
+    .navbar-collapse .nav-link {
+        width: 200px;
+        text-align: center;
+        margin: 0 auto 0 auto !important;
+    }
+}
 
 
 

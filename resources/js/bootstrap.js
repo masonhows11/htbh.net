@@ -4,7 +4,7 @@ window._ = require('lodash');
 import Popper from '@popperjs/core/dist/umd/popper';
 import Bundle from 'bootstrap/dist/js/bootstrap.bundle.min';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
-import plyr from  'plyr/dist/plyr.js';
+import Plyr from  'plyr/dist/plyr.js';
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -12,7 +12,7 @@ import plyr from  'plyr/dist/plyr.js';
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 try {
-    window.plyr = plyr;
+    window.Plyr = Plyr;
     window.Swal = Swal;
     window.Popper = Popper;
     window.Bundle = Bundle;

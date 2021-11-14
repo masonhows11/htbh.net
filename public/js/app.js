@@ -4049,7 +4049,7 @@ window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
  */
 
 try {
-  window.plyr = (plyr_dist_plyr_js__WEBPACK_IMPORTED_MODULE_2___default());
+  window.Plyr = (plyr_dist_plyr_js__WEBPACK_IMPORTED_MODULE_2___default());
   window.Swal = (sweetalert2_dist_sweetalert2_js__WEBPACK_IMPORTED_MODULE_1___default());
   window.Popper = (_popperjs_core_dist_umd_popper__WEBPACK_IMPORTED_MODULE_3___default());
   window.Bundle = (bootstrap_dist_js_bootstrap_bundle_min__WEBPACK_IMPORTED_MODULE_0___default());
