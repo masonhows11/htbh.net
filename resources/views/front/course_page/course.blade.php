@@ -6,6 +6,15 @@
     <div class="container">
 
 
+
+        <div class="row d-flex mt-5 justify-content-center">
+             <div class="col-lg-6">
+                 <h1 class="h1">{{$course->title}}</h1>
+             </div>
+            <div class="col-lg-2">
+
+            </div>
+        </div>
         <div class="row course-wrapper d-flex justify-content-center">
 
             <!--  start course body  -->
