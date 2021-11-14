@@ -15,6 +15,10 @@ class CreateCourseUsersTable extends Migration
     {
         Schema::create('course_users', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('course_id')->nullable();
+            $table->foreign('course_id')->references('id')->on('courses');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
