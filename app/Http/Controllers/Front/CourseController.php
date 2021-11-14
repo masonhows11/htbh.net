@@ -23,12 +23,9 @@ class CourseController extends Controller
         } catch (\Exception $ex) {
             return view('errors.error_not_found_model');
         }
-
     }
-
     public function lessonDetail(Request $request)
     {
-        
         $lesson = Lesson::with('course')
             ->where('id','=',$request->id)->get();
 
