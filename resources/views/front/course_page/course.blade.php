@@ -170,7 +170,7 @@
                                 </button>
                             </h2>
 
-                            <div id="collapse-{{$item->id}}" class="accordion-collapse collapse list-lessons-front" aria-labelledby="headingOne"
+                            <div id="collapse-{{$item->id}}" class="accordion-collapse collapse show list-lessons-front" aria-labelledby="headingOne"
                                  data-bs-parent="#accordion-{{$item->id}}">
                                 <div class="accordion-body">
                                     @foreach($item->lessons as $value)
