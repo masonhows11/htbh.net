@@ -34,7 +34,7 @@ use App\Http\Controllers\Front\CourseController;
 use App\Http\Controllers\Front\CommentController;
 use App\Http\Controllers\Front\LikeController;
 
-
+use App\Http\Controllers\CourseUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -222,7 +222,10 @@ Route::group(['prefix'=>'course'],function (){
     Route::get('/get/{course}',[CourseController::class,'course'])->name('course');
 
     Route::get('/lesson_detail/{course}/{lesson}/{id}',[CourseController::class,'lessonDetail'])->name('lesson_detail');
+
+    Route::post('/add',[CourseUserController::class,'addCourseToUser'])->name('buyCourse');
 });
+
 
 Route::group(['prefix'=>'article'],function (){
 

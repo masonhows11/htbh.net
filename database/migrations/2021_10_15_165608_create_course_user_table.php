@@ -24,8 +24,6 @@ class CreateCourseUserTable extends Migration
             $table->foreign('course_id')->references('id')
                 ->on('courses')->onDelete('cascade');
 
-            $table->unique('user_id','course_id');
-
             $table->timestamps();
         });
     }

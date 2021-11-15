@@ -6,11 +6,10 @@
     <div class="container">
 
 
-
         <div class="row d-flex mt-5 justify-content-center">
-             <div class="col-lg-6">
-                 <h1 class="h1">{{$course->title}}</h1>
-             </div>
+            <div class="col-lg-6">
+                <h1 class="h1">{{$course->title}}</h1>
+            </div>
             <div class="col-lg-2">
 
             </div>
@@ -131,20 +130,27 @@
                     <div class="col-lg-10 d-flex justify-content-center align-content-center mt-2">
                         <div class="d-flex flex-column mt-2 mb-2">
                             @if(\App\Models\CourseUser::checkAddOrNot(\Illuminate\Support\Facades\Auth::id(),$course->id))
-                                <p class="course-added w3-flat-turquoise">شما در این دوره ثبت نام کرده اید.</p>
+                                <p class="course-added text-center rounded-lg w3-flat-turquoise">شما در این دوره ثبت نام کرده اید.</p>
                             @else
                                 @if($course->status_paid == 1 )
-                                        <div class="mb-2 btn btn-danger add-course">
-                                            <input type="button" class="btn btn-danger" value="این دوره رایگان است">
-                                        </div>
+                                    <div class="mb-2 btn btn-danger add-course">
+                                        <input type="button" class="btn btn-danger" value="این دوره رایگان است">
+                                    </div>
                                 @elseif($course->status_paid == 2)
-                                    <form action="#" method="post">
-                                        <div class="mb-2"><p class="price "> {{ number_format($course->price) }}
-                                                تومان </p>
+                                    {{--------for buy course--------}}
+                                    <form action="{{ route('buyCourse') }}" method="post">
+                                        @csrf
+                                        <div class="mb-2">
+                                            <p class="price"> {{ number_format($course->price) }} تومان   </p>
+                                            <input type="hidden" name="price" value="{{ $course->price }}">
+                                            <input type="hidden" name="course" value="{{ $course->id }}">
                                         </div>
-                                        <div class="mb-2"><a href="#" class="btn btn-danger" id="price">خرید دروه</a>
+
+                                        <div class="mb-2">
+                                            <input type="submit" class="btn btn-danger" value="خرید دروه">
                                         </div>
                                     </form>
+                                    {{-------end buy course--------}}
                                 @endif
                             @endif
                         </div>
@@ -165,20 +171,24 @@
 
                             <h2 class="accordion-header" id="headingOne">
                                 <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapse-{{$item->id}}" aria-expanded="true" aria-controls="collapse-{{$item->id}}">
+                                        data-bs-target="#collapse-{{$item->id}}" aria-expanded="true"
+                                        aria-controls="collapse-{{$item->id}}">
                                     {{ $item->title }}
                                 </button>
                             </h2>
 
-                            <div id="collapse-{{$item->id}}" class="accordion-collapse collapse show list-lessons-front" aria-labelledby="headingOne"
+                            <div id="collapse-{{$item->id}}" class="accordion-collapse collapse show list-lessons-front"
+                                 aria-labelledby="headingOne"
                                  data-bs-parent="#accordion-{{$item->id}}">
                                 <div class="accordion-body">
                                     @foreach($item->lessons as $value)
                                         <ul class="list-group list-group-flush">
                                             <li class="list-group-item">
                                                 <a href="{{ route('lesson_detail',['course'=>$course->slug,'lesson'=>$value->name,'id'=>$value->id]) }}">{{ $value->title }}</a>
-                                                <span class="badge bg-info me-2 float-end lesson-pay">{{ $value->buy_able == 0 ? 'رایگان' : 'نقدی'  }}</span>
-                                                <span class="badge bg-secondary float-end ms-2 lesson-time">{{ date('H:i:s',strtotime($value->lesson_duration))}}</span>
+                                                <span
+                                                    class="badge bg-info me-2 float-end lesson-pay">{{ $value->buy_able == 0 ? 'رایگان' : 'نقدی'  }}</span>
+                                                <span
+                                                    class="badge bg-secondary float-end ms-2 lesson-time">{{ date('H:i:s',strtotime($value->lesson_duration))}}</span>
                                             </li>
                                         </ul>
                                     @endforeach
