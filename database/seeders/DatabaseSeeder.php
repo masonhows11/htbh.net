@@ -39,5 +39,9 @@ class DatabaseSeeder extends Seeder
 
         $role_admin = Role::create(['name'=>'admin']);
         $user->assignRole($role_admin);
+
+        $this->call([
+           CategorySeeder::class,
+        ]);
     }
 }
