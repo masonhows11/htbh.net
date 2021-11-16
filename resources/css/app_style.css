@@ -9,47 +9,108 @@ body {
     flex-direction: column;
     font-family: 'iransansdn', sans-serif;
 }
+
 /*********** w3 flat ui color *********/
-.w3-flat-turquoise
-{color:#fff;background-color:#1abc9c}
-.w3-flat-emerald
-{color:#fff;background-color:#2ecc71}
-.w3-flat-peter-river
-{color:#fff;background-color:#3498db}
-.w3-flat-amethyst
-{color:#fff;background-color:#9b59b6}
-.w3-flat-wet-asphalt
-{color:#fff;background-color:#34495e}
-.w3-flat-green-sea
-{color:#fff;background-color:#16a085}
-.w3-flat-nephritis
-{color:#fff;background-color:#27ae60}
-.w3-flat-belize-hole
-{color:#fff;background-color:#2980b9}
-.w3-flat-wisteria
-{color:#fff;background-color:#8e44ad}
-.w3-flat-midnight-blue
-{color:#fff;background-color:#2c3e50}
-.w3-flat-sun-flower
-{color:#fff;background-color:#f1c40f}
-.w3-flat-carrot
-{color:#fff;background-color:#e67e22}
-.w3-flat-alizarin
-{color:#fff;background-color:#e74c3c}
-.w3-flat-clouds
-{color:#000;background-color:#ecf0f1}
-.w3-flat-concrete
-{color:#fff;background-color:#95a5a6}
-.w3-flat-orange
-{color:#fff;background-color:#f39c12}
-.w3-flat-pumpkin
-{color:#fff;background-color:#d35400}
-.w3-flat-pomegranate
-{color:#fff;background-color:#c0392b}
-.w3-flat-silver
-{color:#000;background-color:#bdc3c7}
-.w3-flat-asbestos
-{color:#fff;background-color:#7f8c8d}
+.w3-flat-turquoise {
+    color: #fff;
+    background-color: #1abc9c
+}
+
+.w3-flat-emerald {
+    color: #fff;
+    background-color: #2ecc71
+}
+
+.w3-flat-peter-river {
+    color: #fff;
+    background-color: #3498db
+}
+
+.w3-flat-amethyst {
+    color: #fff;
+    background-color: #9b59b6
+}
+
+.w3-flat-wet-asphalt {
+    color: #fff;
+    background-color: #34495e
+}
+
+.w3-flat-green-sea {
+    color: #fff;
+    background-color: #16a085
+}
+
+.w3-flat-nephritis {
+    color: #fff;
+    background-color: #27ae60
+}
+
+.w3-flat-belize-hole {
+    color: #fff;
+    background-color: #2980b9
+}
+
+.w3-flat-wisteria {
+    color: #fff;
+    background-color: #8e44ad
+}
+
+.w3-flat-midnight-blue {
+    color: #fff;
+    background-color: #2c3e50
+}
+
+.w3-flat-sun-flower {
+    color: #fff;
+    background-color: #f1c40f
+}
+
+.w3-flat-carrot {
+    color: #fff;
+    background-color: #e67e22
+}
+
+.w3-flat-alizarin {
+    color: #fff;
+    background-color: #e74c3c
+}
+
+.w3-flat-clouds {
+    color: #000;
+    background-color: #ecf0f1
+}
+
+.w3-flat-concrete {
+    color: #fff;
+    background-color: #95a5a6
+}
+
+.w3-flat-orange {
+    color: #fff;
+    background-color: #f39c12
+}
+
+.w3-flat-pumpkin {
+    color: #fff;
+    background-color: #d35400
+}
+
+.w3-flat-pomegranate {
+    color: #fff;
+    background-color: #c0392b
+}
+
+.w3-flat-silver {
+    color: #000;
+    background-color: #bdc3c7
+}
+
+.w3-flat-asbestos {
+    color: #fff;
+    background-color: #7f8c8d
+}
+
 /******* header section style ********/
 .search-section {
     height: 100px;
@@ -204,6 +265,7 @@ body {
     padding: 10px 0 18px 0;
 
 }
+
 .most-visited-course .paid-status,
 .latest-course .paid-status {
     width: 140px;
@@ -212,22 +274,26 @@ body {
     background-color: orangered;
     border-radius: 5px;
 }
+
 .most-visited-course .continue-link a,
 .latest-course .continue-link a {
     text-decoration: none;
     color: tomato;
     font-size: 1.1rem;
 }
+
 .most-visited-course .paid-status a,
 .latest-course .paid-status a {
     font-family: 'BYekan', sans-serif;
 }
+
 .most-visited-course .paid-status a,
 .latest-course .paid-status a {
     line-height: 28px;
     text-decoration: none;
     color: white;
 }
+
 .article-content .card .continue a {
     color: tomato;
     line-height: 28px;
@@ -240,19 +306,23 @@ body {
     font-size: 25px;
 
 }
+
 .latest-course .card-img-top,
 .most-visited-course .card-img-top,
 .article-content .card-img-top {
     height: 300px;
 }
-.course-wrapper{
-    margin-top:2rem;
+
+.course-wrapper {
+    margin-top: 2rem;
 }
+
 /************** lessons style **********/
-.lesson-time{
-    font-family:"iransans_num",Sans-Serif;
+.lesson-time {
+    font-family: "iransans_num", Sans-Serif;
     margin-left: 10px
 }
+
 /*************** footer style***********/
 .footer {
     background-color: #110945;
@@ -394,8 +464,8 @@ body {
 .course-detail .course_duration,
 .course-detail .student_count,
 .course-detail .video_count,
-.course-detail .last_update{
-    font-family:"iransans_num", Sans-Serif;
+.course-detail .last_update {
+    font-family: "iransans_num", Sans-Serif;
 }
 
 .course-section .created_date,
@@ -410,28 +480,35 @@ body {
     cursor: pointer;
 }
 
-.course-detail .price{
+.course-detail .price {
     font-family: "iransans_num", Sans-Serif;
 }
-.course-detail .course-added{
 
+.course-detail .course-added {
+    width: 220px;
+    height: 40px;
+    line-height: 40px;
 }
+
 /************* lesson section ************/
-.front-lesson-detail .video-section{
+.front-lesson-detail .video-section {
 
 }
 
-.download-section{
+.download-section {
     height: 80px;
 }
-.lesson-empty-section{
+
+.lesson-empty-section {
     height: 100px;
 }
-.lesson-date , .lesson-duration{
+
+.lesson-date, .lesson-duration {
     height: 40px;
     width: 240px;
     line-height: 35px;
 }
+
 /******** section media query **********/
 @media screen and (max-width: 991px) {
 
