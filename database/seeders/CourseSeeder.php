@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 
 use App\Models\Course;
+use App\Models\Season;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Auth;
@@ -19,52 +20,84 @@ class CourseSeeder extends Seeder
     public function run()
     {
         //
-         $user = User::find(1);
+        $user = User::find(1);
 
-         $course1 = Course::create([
-                'title' => 'پی اچ پی مقدماتی',
-                'name' => 'php beginner',
-                'user_id' => $user->id,
-                'level_course'=> 1,
-                'status_paid' => 1,
-                'status_publish'=> 0,
-                'course_status'=>0,
-                'description'=>'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه
+        $course1 = Course::create([
+            'title' => 'پی اچ پی مقدماتی',
+            'name' => 'php beginner',
+            'user_id' => $user->id,
+            'level_course' => 1,
+            'status_paid' => 1,
+            'status_publish' => 0,
+            'course_status' => 0,
+            'description' => 'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه
                  روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. ',
-                'image'=>'php-beginner.jpg',
+            'image' => 'php-beginner.jpg',
 
-             ]);
+        ]);
 
-         $course1->categories()->attach(2);
+        $course1->categories()->attach(2);
+
+        $course1->seasons()->saveMany([
+            new Season(
+                ['title'=>'فصل اول',
+                 'name'=>'season one']
+            ),
+            new Season(
+                ['title'=>'فصل دوم',
+                    'name'=>'season two']
+            ),
+            new Season(
+                ['title'=>'فصل سوم',
+                    'name'=>'season three']
+            ),
+        ]);
 
         $course2 = Course::create([
             'title' => 'پی اچ پی پیشرفته',
             'name' => 'php advanced',
             'user_id' => $user->id,
-            'level_course'=> 3,
+            'level_course' => 3,
             'status_paid' => 2,
-            'status_publish'=> 0,
-            'course_status'=>0,
-            'price'=> '500000',
-            'description'=>'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه
+            'status_publish' => 0,
+            'course_status' => 0,
+            'price' => '500000',
+            'description' => 'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه
                  روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. ',
-            'image'=>'php-advanced.jpg',
+            'image' => 'php-advanced.jpg',
 
+        ]);
+
+        $course2->seasons()->saveMany([
+            new Season(
+                ['title'=>'فصل اول',
+                    'name'=>'season one']
+            ),
+            new Season(
+                ['title'=>'فصل دوم',
+                    'name'=>'season two']
+            ),
+            new Season(
+                ['title'=>'فصل سوم',
+                    'name'=>'season three']
+            ),
         ]);
 
         $course2->categories()->attach(2);
 
+
+        
         $course3 = Course::create([
             'title' => 'لارال مقدماتی',
             'name' => 'laravel beginner',
             'user_id' => $user->id,
-            'level_course'=> 1,
+            'level_course' => 1,
             'status_paid' => 1,
-            'status_publish'=> 0,
-            'course_status'=>0,
-            'description'=>'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه
+            'status_publish' => 0,
+            'course_status' => 0,
+            'description' => 'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه
                  روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. ',
-            'image'=>'laravel-beginner.png',
+            'image' => 'laravel-beginner.png',
 
         ]);
 
@@ -74,14 +107,14 @@ class CourseSeeder extends Seeder
             'title' => 'لاراول پیشرفته',
             'name' => 'laravel advanced',
             'user_id' => $user->id,
-            'level_course'=> 3,
+            'level_course' => 3,
             'status_paid' => 2,
-            'status_publish'=> 0,
-            'course_status'=>0,
-            'price'=> '450000',
-            'description'=>'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه
+            'status_publish' => 0,
+            'course_status' => 0,
+            'price' => '450000',
+            'description' => 'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه
                  روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. ',
-            'image'=>'laravel-advanced.png',
+            'image' => 'laravel-advanced.png',
 
         ]);
 
