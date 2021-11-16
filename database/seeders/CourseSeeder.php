@@ -108,7 +108,7 @@ class CourseSeeder extends Seeder
 
 
 
-
+        /************* Course php advanced start ***************/
 
         $course2 = Course::create([
             'title' => 'پی اچ پی پیشرفته',
@@ -126,13 +126,67 @@ class CourseSeeder extends Seeder
         ]);
 
         $course2->seasons()->saveMany([
-            new Season(['title' => 'فصل اول', 'name' => 'season one']),
-            new Season(['title' => 'فصل دوم', 'name' => 'season two']),
-            new Season(['title' => 'فصل سوم', 'name' => 'season three']),
+          $season1 =  new Season(['title' => 'فصل اول', 'name' => 'season one']),
+          $season2 =  new Season(['title' => 'فصل دوم', 'name' => 'season two']),
+          $season3 =  new Season(['title' => 'فصل سوم', 'name' => 'season three']),
         ]);
+
 
         $course2->categories()->attach(2);
 
+        $season1->lessons()->saveMany([
+            new Lesson(['title' => 'معرفی پی اچ پی', 'name' => 'php introduce',
+                'buy_able' => 0,
+                'course_id'=> $course2->id,
+                'video_path' => 'https://www.w3schools.com/',
+                'lesson_duration' => '00:10:00']),
+            new Lesson(['title' => 'معرفی پی اچ پی', 'name' => 'php introduce',
+                'buy_able' => 0,
+                'course_id'=> $course2->id,
+                'video_path' => 'https://www.w3schools.com/',
+                'lesson_duration' => '00:10:00']),
+            new Lesson(['title' => 'معرفی پی اچ پی', 'name' => 'php introduce',
+                'buy_able' => 0,
+                'course_id'=> $course2->id,
+                'video_path' => 'https://www.w3schools.com/',
+                'lesson_duration' => '00:10:00']),
+        ]);
+        $season2->lessons()->saveMany([
+            new Lesson(['title' => 'معرفی پی اچ پی', 'name' => 'php introduce',
+                'buy_able' => 0,
+                'course_id'=> $course2->id,
+                'video_path' => 'https://www.w3schools.com/',
+                'lesson_duration' => '00:10:00']),
+            new Lesson(['title' => 'معرفی پی اچ پی', 'name' => 'php introduce',
+                'buy_able' => 0,
+                'course_id'=> $course2->id,
+                'video_path' => 'https://www.w3schools.com/',
+                'lesson_duration' => '00:10:00']),
+            new Lesson(['title' => 'معرفی پی اچ پی', 'name' => 'php introduce',
+                'buy_able' => 0,
+                'course_id'=> $course2->id,
+                'video_path' => 'https://www.w3schools.com/',
+                'lesson_duration' => '00:10:00']),
+        ]);
+        $season3->lessons()->saveMany([
+            new Lesson(['title' => 'معرفی پی اچ پی', 'name' => 'php introduce',
+                'buy_able' => 0,
+                'course_id'=> $course2->id,
+                'video_path' => 'https://www.w3schools.com/',
+                'lesson_duration' => '00:10:00']),
+            new Lesson(['title' => 'معرفی پی اچ پی', 'name' => 'php introduce',
+                'buy_able' => 0,
+                'course_id'=> $course2->id,
+                'video_path' => 'https://www.w3schools.com/',
+                'lesson_duration' => '00:10:00']),
+            new Lesson(['title' => 'معرفی پی اچ پی', 'name' => 'php introduce',
+                'buy_able' => 0,
+                'course_id'=> $course2->id,
+                'video_path' => 'https://www.w3schools.com/',
+                'lesson_duration' => '00:10:00']),
+        ]);
+
+        /************* Course php advanced end ***************/
 
         $course3 = Course::create([
             'title' => 'لارال مقدماتی',
@@ -149,6 +203,8 @@ class CourseSeeder extends Seeder
         ]);
 
         $course3->categories()->attach(2);
+
+
 
         $course4 = Course::create([
             'title' => 'لاراول پیشرفته',
