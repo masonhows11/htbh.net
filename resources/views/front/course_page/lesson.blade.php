@@ -9,7 +9,7 @@
         <div class="row d-flex flex-column align-content-center justify-content-center front-lesson-detail">
 
 
-            {{-- lesson and course info section--}}
+        
             @auth
                 <div class="col-lg-8 col-md-8 col-xs-8 mb-2 lesson-info-section">
                     <h1 class="h4" class="lesson-title">{{ $lesson[0]->title }}</h1>
@@ -23,19 +23,19 @@
                         </div>
                     </div>
                 </div>
-                {{-- video section --}}
+
                 <div class="col-lg-8 col-md-8 col-xs-8 video-section mt-3">
                     <video id="player" class="mt-3" playsinline controls>
                         <source src="#" type="video/ogg" size="480"/>
                         <source src="#" type="video/ogg" size="720"/>
                         <source src="#" type="video/ogg" size="1080"/>
-                    {{--   <source src="/path/to/video.webm" type="video/webm" />--}}
+
                     <!-- Captions are optional -->
                         {{-- <track kind="captions" label="English captions" src="/path/to/captions.vtt" srclang="en" default />--}}
                     </video>
                 </div>
 
-                {{-- download link section --}}
+
                 <div
                     class="col-lg-8 col-md-8 col-xs-8 mt-2 d-flex align-items-center bg-gray-600  rounded-lg justify-content-center download-section">
                     <div>
