@@ -9,7 +9,7 @@
         <div class="row d-flex flex-column align-content-center justify-content-center front-lesson-detail">
 
 
-        
+
             @auth
                 <div class="col-lg-8 col-md-8 col-xs-8 mb-2 lesson-info-section">
                     <h1 class="h4" class="lesson-title">{{ $lesson[0]->title }}</h1>
