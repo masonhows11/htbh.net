@@ -26,4 +26,5 @@ class CourseUser extends Model
     }
 
 
+
 }
