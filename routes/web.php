@@ -34,7 +34,7 @@ use App\Http\Controllers\Front\CourseController;
 use App\Http\Controllers\Front\CommentController;
 use App\Http\Controllers\Front\LikeController;
 
-use App\Http\Controllers\CourseUserController;
+use App\Http\Controllers\Front\CourseUserController;
 
 /*
 |--------------------------------------------------------------------------
