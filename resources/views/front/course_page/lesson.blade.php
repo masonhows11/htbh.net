@@ -22,6 +22,7 @@
             </div>
 
             {{-- video section --}}
+            @if(\App\Models\CourseUser::checkAddOrNot(\Illuminate\Support\Facades\Auth::id(),$lesson[0]->course_id))
             <div class="col-lg-8 col-md-8 col-xs-8 video-section mt-3">
 
                 <video id="player" class="mt-3" playsinline controls>
@@ -43,6 +44,9 @@
                     <a href="{{ $lesson[0]->video_path }}" class="btn btn-primary">دانلود فایل ویدئو</a>
                 </div>
             </div>
+            @else
+                <p>شما به این دوره دسترسی ندارید..</p>
+            @endif
 
         </div>
 

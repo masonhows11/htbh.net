@@ -15,11 +15,15 @@ class CourseUser extends Model
 
     public static function checkAddOrNot($user,$course)
     {
-        $added = DB::table('course_user')->where('user_id', '=', $user)->where('course_id','=',$course)->count();
+        $added = DB::table('course_user')
+            ->where('user_id', '=', $user)
+            ->where('course_id','=',$course)
+            ->count();
         if ($added > 0 ) {
             return true;
         }
         return false;
     }
+
 
 }
