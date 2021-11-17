@@ -25,6 +25,26 @@ class CourseUser extends Model
         return false;
     }
 
+    public static function checkAccessLesson($lesson,$user)
+    {
+
+        $checkLesson = Lesson::where('id',$lesson)->where('buy_able','=',0)->first();
+
+        if($checkLesson){
+            return true;
+        }
+        $checkLesson = DB::table('course_user')
+            ->join('lessons','course_user.lesson_id','=','lessons.id')
+            ->where('user_id',$user)
+            ->where('lessons.buy_able','=',1)
+            ->select('lessons.*')->get();
+
+        if($checkLesson) {
+            return false;
+        }
+
+    }
+
 
 
 }
