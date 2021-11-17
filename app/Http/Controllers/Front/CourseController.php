@@ -31,5 +31,6 @@ class CourseController extends Controller
 
         return view('front.course_page.lesson')
             ->with(['lesson'=>$lesson]);
+
     }
 }

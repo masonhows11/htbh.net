@@ -19,6 +19,7 @@ class CourseUserController extends Controller
         $lessons = Lesson::where('course_id', $request->course)->select('id')->get();
         $course_id = $request->course;
 
+        
 
         foreach ($lessons as $i => $iValue) {
             $courseUser = new CourseUser();

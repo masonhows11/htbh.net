@@ -23,7 +23,7 @@
                         </div>
                     </div>
                 </div>
-
+                @if(\App\Models\CourseUser::checkAccessLesson($lesson[0]->id,\Illuminate\Support\Facades\Auth::id()))
                 <div class="col-lg-8 col-md-8 col-xs-8 video-section mt-3">
                     <video id="player" class="mt-3" playsinline controls>
                         <source src="#" type="video/ogg" size="480"/>
@@ -42,6 +42,21 @@
                         <a href="{{ $lesson[0]->video_path }}" class="btn btn-primary">دانلود فایل ویدئو</a>
                     </div>
                 </div>
+                @else
+                    <div class="col-lg-8 col-md-8 col-xs-8 video-section mt-3">
+                        <img src="{{ asset('/images/default_image_course_access.jpg') }}" class="img-responsive rounded" alt="">
+                        <p class="text-center">کاربر گرامی برای دسترسی به ویديو  دوره را خریداری نموده یا عضویت ویژه را برای خود فعال کنید.</p>
+                    </div>
+
+
+                    <div
+                        class="col-lg-8 col-md-8 col-xs-8 mt-2 d-flex align-items-center bg-gray-600  rounded-lg justify-content-center download-section">
+                        <div>
+                            {{--<a href="{{ $lesson[0]->video_path }}" class="btn btn-primary">دانلود فایل ویدئو</a>--}}
+                            <p class="text-center">کاربر گرامی برای دسترسی به دروس  دوره را خریداری نموده یا عضویت ویژه را برای خود فعال کنید.</p>
+                        </div>
+                    </div>
+                @endif
             @else
                 <div class="col-lg-8 col-md-8 col-xs-8 alert-section-course">
                     <img src="{{ asset('/images/default_image_course_access.jpg') }}" class="img-responsive rounded" alt="">
