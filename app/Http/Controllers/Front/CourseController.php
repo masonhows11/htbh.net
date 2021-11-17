@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Lesson;
 use Illuminate\Http\Request;
 use App\Models\Course;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class CourseController extends Controller
 {
@@ -26,11 +28,16 @@ class CourseController extends Controller
     }
     public function lessonDetail(Request $request)
     {
+
+
+
+
         $lesson = Lesson::with('course')
             ->where('id','=',$request->id)->get();
 
         return view('front.course_page.lesson')
             ->with(['lesson'=>$lesson]);
+
 
     }
 }

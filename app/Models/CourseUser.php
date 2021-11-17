@@ -35,16 +35,19 @@ class CourseUser extends Model
         if($checkLesson){
             return true;
         }
+
+
         $checkLesson = DB::table('course_user')
             ->join('lessons','course_user.lesson_id','=','lessons.id')
             ->where('course_user.lesson_id','=',$lesson)
-            ->where('user_id',$user)
+            ->where('course_user.user_id',$user)
             ->where('lessons.buy_able','=',1)
             ->select('course_user.*')->get();
 
-        if($checkLesson) {
+        if(count($checkLesson) > 0 ) {
             return true;
         }
+        
 
     }
 
