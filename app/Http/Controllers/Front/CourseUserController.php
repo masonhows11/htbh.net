@@ -16,6 +16,7 @@ class CourseUserController extends Controller
     public function addCourseToUser(Request $request): \Illuminate\Http\RedirectResponse
     {
 
+
         $lessons = Lesson::where('course_id', $request->course)->select('id')->get();
         $course_id = $request->course;
 

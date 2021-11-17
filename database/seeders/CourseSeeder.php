@@ -222,7 +222,65 @@ class CourseSeeder extends Seeder
 
         ]);
 
+        $course4->seasons()->saveMany([
+            $season1 =  new Season(['title' => 'فصل اول', 'name' => 'season one']),
+            $season2 =  new Season(['title' => 'فصل دوم', 'name' => 'season two']),
+            $season3 =  new Season(['title' => 'فصل سوم', 'name' => 'season three']),
+        ]);
+
         $course4->categories()->attach(2);
+
+        $season1->lessons()->saveMany([
+            new Lesson(['title' => 'لاراول پیشرفته', 'name' => 'php advanced',
+                'buy_able' => 0,
+                'course_id'=> $course4->id,
+                'video_path' => 'https://www.w3schools.com/',
+                'lesson_duration' => '00:10:00']),
+            new Lesson(['title' => 'لاراول پیشرفته', 'name' => 'php advanced',
+                'buy_able' => 1,
+                'course_id'=> $course4->id,
+                'video_path' => 'https://www.w3schools.com/',
+                'lesson_duration' => '00:10:00']),
+            new Lesson(['title' => 'لاراول پیشرفته', 'name' => 'php advanced',
+                'buy_able' => 1,
+                'course_id'=> $course4->id,
+                'video_path' => 'https://www.w3schools.com/',
+                'lesson_duration' => '00:10:00']),
+        ]);
+        $season2->lessons()->saveMany([
+            new Lesson(['title' => 'لاراول پیشرفته', 'name' => 'php advanced',
+                'buy_able' => 0,
+                'course_id'=> $course4->id,
+                'video_path' => 'https://www.w3schools.com/',
+                'lesson_duration' => '00:10:00']),
+            new Lesson(['title' => 'لاراول پیشرفته', 'name' => 'php advanced',
+                'buy_able' => 1,
+                'course_id'=> $course4->id,
+                'video_path' => 'https://www.w3schools.com/',
+                'lesson_duration' => '00:10:00']),
+            new Lesson(['title' => 'لاراول پیشرفته', 'name' => 'php advanced',
+                'buy_able' => 1,
+                'course_id'=> $course4->id,
+                'video_path' => 'https://www.w3schools.com/',
+                'lesson_duration' => '00:10:00']),
+        ]);
+        $season3->lessons()->saveMany([
+            new Lesson(['title' => 'لاراول پیشرفته', 'name' => 'php advanced',
+                'buy_able' => 0,
+                'course_id'=> $course4->id,
+                'video_path' => 'https://www.w3schools.com/',
+                'lesson_duration' => '00:10:00']),
+            new Lesson(['title' => 'لاراول پیشرفته', 'name' => 'php advanced',
+                'buy_able' => 1,
+                'course_id'=> $course4->id,
+                'video_path' => 'https://www.w3schools.com/',
+                'lesson_duration' => '00:10:00']),
+            new Lesson(['title' => 'لاراول پیشرفته', 'name' => 'php advanced',
+                'buy_able' => 1,
+                'course_id'=> $course4->id,
+                'video_path' => 'https://www.w3schools.com/',
+                'lesson_duration' => '00:10:00']),
+        ]);
 
     }
 }

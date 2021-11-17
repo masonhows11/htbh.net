@@ -47,7 +47,7 @@ class CourseUser extends Model
         if(count($checkLesson) > 0 ) {
             return true;
         }
-        
+
 
     }
 
