@@ -20,6 +20,10 @@ class CreateCourseUserTable extends Migration
             $table->foreign('user_id')->references('id')
                 ->on('users')->onDelete('cascade');
 
+            $table->unsignedBigInteger('lesson_id')->nullable();
+            $table->foreign('lesson_id')->references('id')
+                ->on('lessons')->onDelete('cascade');
+
             $table->unsignedBigInteger('course_id')->nullable();
             $table->foreign('course_id')->references('id')
                 ->on('courses')->onDelete('cascade');

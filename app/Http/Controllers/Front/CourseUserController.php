@@ -15,11 +15,7 @@ class CourseUserController extends Controller
     {
         //return $request;
 
-        $courseUser = CourseUser::create([
-            'user_id'=> Auth::id(),
-            'course_id' => $request->course,
-        ]);
-        return redirect()->back();
+       
     }
 
 
