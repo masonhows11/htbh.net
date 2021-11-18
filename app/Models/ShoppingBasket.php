@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class ShoppingBasket extends Model
 {
     use HasFactory;
+
+    protected $table = 'shopping_baskets';
+    
+    protected $fillable = [
+
+    ];
+
 }
