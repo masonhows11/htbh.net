@@ -35,7 +35,7 @@ use App\Http\Controllers\Front\CommentController;
 use App\Http\Controllers\Front\LikeController;
 
 use App\Http\Controllers\Front\CourseUserController;
-
+use App\Http\Controllers\Front\ShoppingBasketController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -225,6 +225,10 @@ Route::group(['prefix'=>'course'],function (){
 
     Route::post('/add',[CourseUserController::class,'addCourseToUser'])->name('buyCourse');
 });
+
+Route::post('/addToBasket',[ShoppingBasketController::class,'addCourse'])->name('addCourse');
+Route::get('/basket',[ShoppingBasketController::class,'showBasket'])->name('basket');
+Route::get('/getBasket',[ShoppingBasketController::class,'getBasket'])->name('getBasket');
 
 
 Route::group(['prefix'=>'article'],function (){

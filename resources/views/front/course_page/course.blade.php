@@ -138,8 +138,7 @@
                                     </div>
                                 @elseif($course->status_paid == 2)
                                     {{--------for buy course--------}}
-                                    <form action="{{ route('buyCourse') }}" method="post">
-                                        @csrf
+
                                         <div class="mb-2">
                                             <p class="price"> {{ number_format($course->price) }} تومان   </p>
                                             <input type="hidden" name="price" value="{{ $course->price }}">
@@ -149,7 +148,7 @@
                                         <div class="mb-2">
                                             <input type="submit" class="btn btn-danger" value="خرید دروه">
                                         </div>
-                                    </form>
+
                                     {{-------end buy course--------}}
                                 @endif
                             @endif

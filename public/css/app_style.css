@@ -508,7 +508,29 @@ body {
     width: 240px;
     line-height: 35px;
 }
-
+/*********** shopping basket ***********/
+.fa-shopping-basket {
+   font-size: 1.5rem;
+    color: tomato;
+}
+.basket-content {
+    width: 100px;
+    height: 30px;
+    background-color: white;
+    border-radius: 5px;
+}
+.basket-content .basket-count{
+    font-family: "iransans_num_light", Sans-Serif, serif;
+    font-size:1.3rem;
+    font-weight: bold;
+    text-decoration: underline;
+}
+.basket-content a:hover{
+   color:tomato;
+}
+.basket-content a{
+    margin-top:3px;
+}
 /******** section media query **********/
 @media screen and (max-width: 991px) {
 

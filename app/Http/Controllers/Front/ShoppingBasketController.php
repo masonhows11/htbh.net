@@ -10,5 +10,19 @@ class ShoppingBasketController extends Controller
     //
 
 
+    public function addCourse(Request $request)
+    {
+        return  $request;
+    }
+
+    public function getBasket(Request $request)
+    {
+        return $request;
+    }
+
+    public function showBasket()
+    {
+
+    }
 
 }

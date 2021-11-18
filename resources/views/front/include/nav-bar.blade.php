@@ -32,9 +32,20 @@
 
             </ul>
 
-                <ul class="navbar-nav ">
+                <ul class="navbar-nav  ">
+                    <li class="nav-item d-flex align-items-center">
+                        <div class="basket-content d-flex justify-content-around">
 
-                @if(\Illuminate\Support\Facades\Auth::check())
+                            <div>
+                                <span class="basket-count text-dark">5</span>
+                            </div>
+
+                            <div>
+                                <a href="{{ route('basket')  }}" class="fa fa-shopping-basket"></a>
+                            </div>
+                        </div>
+                    </li>
+                   @if(\Illuminate\Support\Facades\Auth::check())
                     <li class="nav-item dropdown d-flex align-items-start">
                         <a class="nav-link text-white"
                            role="button"
@@ -45,6 +56,7 @@
                         </a>
                     </li>
                     @endif
+
                 </ul>
 
 
