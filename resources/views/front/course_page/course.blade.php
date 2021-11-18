@@ -146,7 +146,7 @@
                                         </div>
 
                                         <div class="mb-2">
-                                            <input type="submit" class="btn btn-danger" value="خرید دروه">
+                                            <input type="button" id="add_to_basket" class="btn btn-danger" value="افزودن به سبد خرید">
                                         </div>
 
                                     {{-------end buy course--------}}

@@ -32,7 +32,7 @@
 
             </ul>
 
-                <ul class="navbar-nav  ">
+                <ul class="navbar-nav">
                     <li class="nav-item d-flex align-items-center">
                         <div class="basket-content d-flex justify-content-around">
 
