@@ -27,7 +27,7 @@ class CreateCourseUserTable extends Migration
             $table->unsignedBigInteger('course_id')->nullable();
             $table->foreign('course_id')->references('id')
                 ->on('courses')->onDelete('cascade');
-
+            $table->tinyInteger('Bought');
             $table->timestamps();
         });
     }

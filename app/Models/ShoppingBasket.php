@@ -11,9 +11,7 @@ class ShoppingBasket extends Model
 
     protected $table = 'shopping_baskets';
 
-    protected $fillable = [
-
-    ];
+    protected $fillable = ['course_id','user_id','qty'];
 
     public function user()
     {

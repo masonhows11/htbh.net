@@ -11,7 +11,7 @@ class CourseUser extends Model
     use HasFactory;
 
     protected $table = 'course_user';
-    protected $fillable = ['lesson_id','course_id','user_id'];
+    protected $fillable = ['lesson_id','course_id','user_id','Bought'];
 
     public static function checkAddOrNot($user,$course)
     {
