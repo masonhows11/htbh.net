@@ -15,6 +15,9 @@ class CreateShoppingBasketsTable extends Migration
     {
         Schema::create('shopping_baskets', function (Blueprint $table) {
             $table->id();
+            $table->string('course_id')->nullable();
+            $table->string('user_id')->nullable();
+            $table->unsignedBigInteger('qty');
             $table->timestamps();
         });
     }
