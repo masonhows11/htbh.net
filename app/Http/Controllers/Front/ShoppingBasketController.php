@@ -36,7 +36,7 @@ class ShoppingBasketController extends Controller
                 return response()->json(['message'=>'دوره با موفقیت به سبد خرید اضافه شد.','status'=>200],200);
             }
             if (ShoppingBasket::where('course_id','=',$request->course_id)->where('user_id','=',Auth::id())->where('qty','=',1)->first()){
-                return response()->json(['message'=>'این دوره در سبد خرید موجود است.','status'=>200],200);
+                return response()->json(['message'=>'این دوره در سبد خرید موجود است.','status'=>202],200);
             }
 
         }catch (\Exception $ex)

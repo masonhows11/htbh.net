@@ -378,10 +378,33 @@
                 url:'{{ route('addCourse') }}',
                 data:{ course_id : course_id , course_price : course_price }
             }).done(function (data) {
-                console.log(data);
+                if (data['status'] == 404) {
+                    Swal.fire({
+                        icon: 'warning',
+                        text: data['message'],
+                    })
+                } else if (data['status'] == 200) {
+                    Swal.fire({
+                        icon: 'success',
+                        text: data['message'],
+                    })
+                } else if (data['status'] == 202) {
+                    Swal.fire({
+                        icon: 'info',
+                        text: data['message'],
+                    })
+                } else if (data['status'] == 500) {
+                    Swal.fire({
+                        icon: 'error',
+                        text: data['message'],
+                    })
+                }
                 update_basket();
             }).fail(function (data) {
-                console.log(data);
+                Swal.fire({
+                    icon: 'error',
+                    text: data['message'],
+                })
             })
 
         })
@@ -404,7 +427,10 @@
                    document.getElementById('basket-count').innerHTML = data['message'];
                }
            }).fail(function (data){
-              console.log(data);
+               Swal.fire({
+                   icon: 'error',
+                   text: data['message'],
+               })
            });
         }
 
