@@ -37,7 +37,7 @@
                         <div class="basket-content d-flex justify-content-around">
 
                             <div>
-                                <span class="basket-count text-dark" id="basket-count">{{ $basket_count }}</span>
+                                <span class="basket-count text-dark" id="basket-count"> @isset($basket_count) {{ $basket_count  }} @else 0 @endisset</span>
                             </div>
 
                             <div>
