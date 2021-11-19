@@ -281,6 +281,7 @@
             }
             $(window).on('load', function () {
                 load_likes();
+                update_basket();
             })
             $('.like_un_auth').on('click', function (event) {
                 event.preventDefault();
