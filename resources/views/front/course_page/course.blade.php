@@ -141,12 +141,12 @@
 
                                         <div class="mb-2">
                                             <p class="price"> {{ number_format($course->price) }} تومان   </p>
-                                            <input type="hidden" name="price" value="{{ $course->price }}">
-                                            <input type="hidden" name="course" value="{{ $course->id }}">
+                                            <input type="hidden" name="price" id="course-price" value="{{ $course->price }}">
+                                            <input type="hidden" name="course" id="course-id" value="{{ $course->id }}">
                                         </div>
 
                                         <div class="mb-2">
-                                            <input type="button" id="add_to_basket" class="btn btn-danger" value="افزودن به سبد خرید">
+                                            <input type="button" id="add-to-basket" class="btn btn-danger" value="افزودن به سبد خرید">
                                         </div>
 
                                     {{-------end buy course--------}}
@@ -160,7 +160,7 @@
         </div>
 
 
-        <!-- course lessons section -->
+        <!-- course season and lessons section -->
         <div class="row d-flex  justify-content-center mt-5 course-lessons">
             <div class="col-lg-8">
                 @foreach($course->seasons as $item)
@@ -263,6 +263,7 @@
 @section('custom_script')
     <script type="text/javascript">
         $(document).ready(function () {
+
             function load_likes() {
                 let course_id = document.getElementById('course_id').value;
                 $.ajaxSetup({
@@ -362,6 +363,27 @@
                     text: data['message'],
                 })
             })
+        })
+
+        $('#add-to-basket').on('click',function (event) {
+            event.preventDefault();
+            let course_id = document.getElementById('course-id').value;
+            let course_price = document.getElementById('course-price').value;
+            $.ajaxSetup({
+               headers:{
+                   'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+               }
+            });
+            $.ajax({
+                method:'POST',
+                url:'{{ route('addCourse') }}',
+                data:{ course_id : course_id , course_price : course_price }
+            }).done(function (data) {
+                console.log(data);
+            }).fail(function (data) {
+                console.log(data);
+            })
+
         })
     </script>
 @endsection
