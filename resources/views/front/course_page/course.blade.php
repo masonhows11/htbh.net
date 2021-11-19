@@ -364,6 +364,7 @@
         })
 
         $('#add-to-basket').on('click',function (event) {
+
             event.preventDefault();
             let course_id = document.getElementById('course-id').value;
             let course_price = document.getElementById('course-price').value;
@@ -383,5 +384,12 @@
             })
 
         })
+
+        function update_basket()
+        {
+
+        }
+
+
     </script>
 @endsection

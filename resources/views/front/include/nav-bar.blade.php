@@ -37,7 +37,7 @@
                         <div class="basket-content d-flex justify-content-around">
 
                             <div>
-                                <span class="basket-count text-dark">5</span>
+                                <span class="basket-count text-dark" id="basket-count">5</span>
                             </div>
 
                             <div>
