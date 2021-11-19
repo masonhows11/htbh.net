@@ -387,7 +387,7 @@
 
         function update_basket()
         {
-
+           $.get("{{ route('getBasket') }}",)
         }
 
 
