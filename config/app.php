@@ -170,6 +170,7 @@ return [
         App\Providers\ViewCategoryServiceProvider::class,
         App\Providers\viewArticleProvider::class,
         App\Providers\ViewCourseProvider::class,
+        App\Providers\ViewBasketProvider::class,
 
         /*
          * Package Service Providers...

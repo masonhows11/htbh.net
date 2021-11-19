@@ -37,7 +37,7 @@
                         <div class="basket-content d-flex justify-content-around">
 
                             <div>
-                                <span class="basket-count text-dark" id="basket-count">0</span>
+                                <span class="basket-count text-dark" id="basket-count">{{ $basket_count }}</span>
                             </div>
 
                             <div>
