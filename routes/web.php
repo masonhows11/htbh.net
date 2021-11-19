@@ -226,7 +226,7 @@ Route::group(['prefix'=>'course'],function (){
     Route::post('/add',[CourseUserController::class,'addCourseToUser'])->name('buyCourse');
 });
 
-Route::post('/addToBasket',[ShoppingBasketController::class,'addCourse'])->name('addCourse');
+Route::post('/addToBasket',[ShoppingBasketController::class,'addToBasket'])->name('addCourse');
 Route::get('/basket',[ShoppingBasketController::class,'showBasket'])->name('basket');
 Route::get('/getBasket',[ShoppingBasketController::class,'getBasket'])->name('getBasket');
 
