@@ -15,7 +15,7 @@ class CreateShoppingBasketsTable extends Migration
     {
         Schema::create('shopping_baskets', function (Blueprint $table) {
             $table->id();
-            $table->string('course_id')->nullable();
+            $table->unsignedInteger('course_id')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')
                 ->on('users')->onDelete('cascade');

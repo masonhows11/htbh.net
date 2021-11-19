@@ -140,7 +140,7 @@
                                     {{--------for buy course--------}}
 
                                         <div class="mb-2">
-                                            <p class="price"> {{ number_format($course->price) }} تومان   </p>
+                                            <p class="price text-center"> {{ number_format($course->price) }} تومان   </p>
                                             <input type="hidden" name="price" id="course-price" value="{{ $course->price }}">
                                             <input type="hidden" name="course" id="course-id" value="{{ $course->id }}">
                                         </div>
@@ -158,7 +158,6 @@
             </div>
             <!--  end course properties and add by user   -->
         </div>
-
 
         <!-- course season and lessons section -->
         <div class="row d-flex  justify-content-center mt-5 course-lessons">
@@ -280,7 +279,6 @@
                     document.getElementById('dislike_count').innerText = data['dislikes'];
                 });
             }
-
             $(window).on('load', function () {
                 load_likes();
             })
