@@ -39,12 +39,9 @@ class ShoppingBasketController extends Controller
                 return response()->json(['message'=>'این دوره در سبد خرید موجود است.','status'=>200],200);
             }
 
-
-
-
         }catch (\Exception $ex)
         {
-            return Response()->json(['error'=>$ex->getMessage(),'']);
+            return Response()->json(['error'=>$ex->getMessage(),'status'=>500],500);
         }
 
 
@@ -52,7 +49,15 @@ class ShoppingBasketController extends Controller
 
     public function getBasket(Request $request)
     {
-        return $request;
+
+        try {
+            $current_basket = ShoppingBasket::where('user_id','=',Auth::id())->count();
+            return response()->json(['message'=>$current_basket,'status'=>200],200);
+        }catch (\Exception $ex)
+        {
+            return response()->json(['error'=>$ex->getMessage()],500);
+        }
+
     }
 
     public function showBasket()

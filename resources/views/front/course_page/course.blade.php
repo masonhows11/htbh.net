@@ -379,6 +379,7 @@
                 data:{ course_id : course_id , course_price : course_price }
             }).done(function (data) {
                 console.log(data);
+                update_basket();
             }).fail(function (data) {
                 console.log(data);
             })
@@ -387,7 +388,24 @@
 
         function update_basket()
         {
-           $.get("{{ route('getBasket') }}",)
+            let course_id = document.getElementById('course-id').value;
+
+           $.ajaxSetup({
+              headers:{
+                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+              },
+           });
+           $.ajax({
+               method:'GET',
+               url:'{{ route('getBasket') }}',
+               data:{course_id:course_id},
+           }).done(function (data) {
+               if(data['status']== 200){
+                   document.getElementById('basket-count').innerHTML = data['message'];
+               }
+           }).fail(function (data){
+              console.log(data);
+           });
         }
 
 
