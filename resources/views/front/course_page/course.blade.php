@@ -264,27 +264,7 @@
     <script type="text/javascript">
         $(document).ready(function () {
 
-            function update_basket() {
-                $.ajaxSetup({
-                    headers:{
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                });
-                $.ajax({
-                    method:'GET',
-                    url:'{{ route('getBasket') }}',
-                    data:{},
-                }).done(function (data) {
-                    if(data['status']== 200){
-                        document.getElementById('basket-count').innerHTML = data['message'];
-                    }
-                }).fail(function (data){
-                    Swal.fire({
-                        icon: 'error',
-                        text: data['message'],
-                    })
-                });
-            }
+
             function load_likes() {
                 let course_id = document.getElementById('course_id').value;
                 $.ajaxSetup({
@@ -417,6 +397,7 @@
                         icon: 'success',
                         text: data['message'],
                     })
+                  update_basket();
                 } else if (data['status'] == 202) {
                     Swal.fire({
                         icon: 'info',
@@ -428,7 +409,7 @@
                         text: data['message'],
                     })
                 }
-                update_basket();
+
             }).fail(function (data) {
                 Swal.fire({
                     icon: 'error',
@@ -436,7 +417,27 @@
                 });
             });
         });
-
+        function update_basket() {
+            $.ajaxSetup({
+                headers:{
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+            });
+            $.ajax({
+                method:'GET',
+                url:'{{ route('getBasket') }}',
+                data:{},
+            }).done(function (data) {
+                if(data['status']== 200){
+                    document.getElementById('basket-count').innerHTML = data['message'];
+                }
+            }).fail(function (data){
+                Swal.fire({
+                    icon: 'error',
+                    text: data['message'],
+                })
+            });
+        }
 
 
 
