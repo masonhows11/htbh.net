@@ -61,7 +61,7 @@ class ShoppingBasketController extends Controller
 
     public function showBasket()
     {
-
+        
         return view('front.basket');
 
     }
