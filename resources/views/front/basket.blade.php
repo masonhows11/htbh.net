@@ -24,11 +24,11 @@
                         <tbody>
                         @foreach($items as $item)
                         <tr>
-
                             <td>{{ $item->title }}</td>
                             <td class="item-price">{{ number_format($item->price) }} تومان   </td>
                             <td><a href="{{ route('deleteBasket',['id'=>$item->id]) }}" class="btn btn-danger">حذف</a></td>
                         </tr>
+
                         @endforeach
                         </tbody>
                     </table>
@@ -39,7 +39,6 @@
             </div>
             <div class="col-lg-3 " style="border: 2px solid orange">
 
-                
 
             </div>
 
