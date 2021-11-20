@@ -15,10 +15,15 @@ class CreateShoppingBasketsTable extends Migration
     {
         Schema::create('shopping_baskets', function (Blueprint $table) {
             $table->id();
+            
             $table->unsignedInteger('course_id')->nullable();
+            $table->foreign('course_id')->references('id')
+                ->on('courses')->onDelete('cascade');
+
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')
                 ->on('users')->onDelete('cascade');
+
             $table->unsignedBigInteger('qty');
             $table->string('price')->nullable();
             $table->timestamps();
