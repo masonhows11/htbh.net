@@ -9,7 +9,7 @@
 
 
 
-            <div class="col-lg-6 me-2" style="border: 2px solid tomato;height: 450px">
+            <div class="col-lg-6 me-2 basket-section" style="border: 2px solid tomato;height: 450px">
                 <h3 class="h4 mt-2">آیتم های سبد خرید</h3>
 
                 <form action="" method="post">
@@ -26,8 +26,8 @@
                         <tr>
 
                             <td>{{ $item->title }}</td>
-                            <td>{{ $item->price }}</td>
-                            <td><a href="#" class="btn btn-danger">حذف</a></td>
+                            <td class="item-price">{{ number_format($item->price) }} تومان   </td>
+                            <td><a href="{{ route('deleteBasket',['id'=>$item->id]) }}" class="btn btn-danger">حذف</a></td>
                         </tr>
                         @endforeach
                         </tbody>
@@ -38,6 +38,8 @@
 
             </div>
             <div class="col-lg-3 " style="border: 2px solid orange">
+
+                
 
             </div>
 

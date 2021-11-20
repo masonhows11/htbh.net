@@ -229,6 +229,7 @@ Route::group(['prefix'=>'course'],function (){
 Route::post('/addToBasket',[ShoppingBasketController::class,'addToBasket'])->name('addCourse');
 Route::get('/basket',[ShoppingBasketController::class,'showBasket'])->name('basket');
 Route::get('/getBasket',[ShoppingBasketController::class,'getBasket'])->name('getBasket');
+Route::get('/deleteBasket',[ShoppingBasketController::class,'deleteBasket'])->name('deleteBasket');
 
 
 Route::group(['prefix'=>'article'],function (){
