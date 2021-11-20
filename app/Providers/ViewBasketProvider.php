@@ -27,7 +27,7 @@ class ViewBasketProvider extends ServiceProvider
     public function boot(): void
     {
         //
-        View::composer(['welcome'],function ($view){
+        View::composer(['welcome','front.include.nav-bar'],function ($view){
            $view->with('basket_count',ShoppingBasket::where('user_id','=',Auth::id())
                ->count());
         });
