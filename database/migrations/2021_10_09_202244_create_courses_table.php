@@ -23,6 +23,10 @@ class CreateCoursesTable extends Migration
             $table->foreign('user_id')->references('id')
                 ->on('users')->onDelete('cascade');
 
+           /* $table->unsignedBigInteger('basket_id')->nullable();
+            $table->foreign('basket_id')->references('id')
+                ->on('baskets')->onDelete('cascade');*/
+
             $table->text('description');
             $table->string('image');
             $table->unsignedBigInteger('student_count')->default(0);
