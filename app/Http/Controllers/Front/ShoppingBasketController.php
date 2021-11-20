@@ -16,7 +16,6 @@ class ShoppingBasketController extends Controller
 
     public function addToBasket(Request $request)
     {
-       // return  $request;
         try {
 
             if(Course::where('id','=',$request->course_id)->doesntExist())
