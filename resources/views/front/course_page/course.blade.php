@@ -140,6 +140,7 @@
                                     {{--------for buy course--------}}
 
                                         <div class="mb-2">
+
                                             <p class="price text-center"> {{ number_format($course->price) }} تومان   </p>
                                             <input type="hidden" name="price" id="course-price" value="{{ $course->price }}">
                                             <input type="hidden" name="course" id="course-id" value="{{ $course->id }}">
@@ -263,6 +264,27 @@
     <script type="text/javascript">
         $(document).ready(function () {
 
+            function update_basket() {
+                $.ajaxSetup({
+                    headers:{
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                });
+                $.ajax({
+                    method:'GET',
+                    url:'{{ route('getBasket') }}',
+                    data:{},
+                }).done(function (data) {
+                    if(data['status']== 200){
+                        document.getElementById('basket-count').innerHTML = data['message'];
+                    }
+                }).fail(function (data){
+                    Swal.fire({
+                        icon: 'error',
+                        text: data['message'],
+                    })
+                });
+            }
             function load_likes() {
                 let course_id = document.getElementById('course_id').value;
                 $.ajaxSetup({
@@ -279,10 +301,13 @@
                     document.getElementById('dislike_count').innerText = data['dislikes'];
                 });
             }
+
+            ///////////////// load function on page load
             $(window).on('load', function () {
                 load_likes();
                 update_basket();
             })
+
             $('.like_un_auth').on('click', function (event) {
                 event.preventDefault();
                 Swal.fire({
@@ -290,6 +315,7 @@
                     text: 'برای ثبت like Or dislike ابتدا وارد سایت شوید.',
                 })
             });
+
             $('.like').on('click', function (event) {
                 event.preventDefault();
                 let like = document.getElementById('like');
@@ -324,7 +350,9 @@
                     load_likes();
                 });
             });
+
         });
+
         $('#add_comment').on('click', function (event) {
             event.preventDefault();
             let description = document.getElementById('description').value;
@@ -405,35 +433,11 @@
                 Swal.fire({
                     icon: 'error',
                     text: data['message'],
-                })
-            })
+                });
+            });
+        });
 
-        })
 
-        function update_basket()
-        {
-            let course_id = document.getElementById('course-id').value;
-
-           $.ajaxSetup({
-              headers:{
-                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-              },
-           });
-           $.ajax({
-               method:'GET',
-               url:'{{ route('getBasket') }}',
-               data:{course_id:course_id},
-           }).done(function (data) {
-               if(data['status']== 200){
-                   document.getElementById('basket-count').innerHTML = data['message'];
-               }
-           }).fail(function (data){
-               Swal.fire({
-                   icon: 'error',
-                   text: data['message'],
-               })
-           });
-        }
 
 
     </script>
