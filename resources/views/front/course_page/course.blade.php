@@ -263,8 +263,6 @@
 @section('custom_script')
     <script type="text/javascript">
         $(document).ready(function () {
-
-
             function load_likes() {
                 let course_id = document.getElementById('course_id').value;
                 $.ajaxSetup({
@@ -281,13 +279,11 @@
                     document.getElementById('dislike_count').innerText = data['dislikes'];
                 });
             }
-
             ///////////////// load function on page load
             $(window).on('load', function () {
                 load_likes();
                 update_basket();
             })
-
             $('.like_un_auth').on('click', function (event) {
                 event.preventDefault();
                 Swal.fire({
@@ -295,7 +291,6 @@
                     text: 'برای ثبت like Or dislike ابتدا وارد سایت شوید.',
                 })
             });
-
             $('.like').on('click', function (event) {
                 event.preventDefault();
                 let like = document.getElementById('like');
@@ -332,7 +327,6 @@
             });
 
         });
-
         $('#add_comment').on('click', function (event) {
             event.preventDefault();
             let description = document.getElementById('description').value;
@@ -371,9 +365,7 @@
                 })
             })
         })
-
         $('#add-to-basket').on('click',function (event) {
-
             event.preventDefault();
             let course_id = document.getElementById('course-id').value;
             let course_price = document.getElementById('course-price').value;
@@ -409,7 +401,6 @@
                         text: data['message'],
                     })
                 }
-
             }).fail(function (data) {
                 Swal.fire({
                     icon: 'error',
