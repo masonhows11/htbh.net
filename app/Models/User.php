@@ -62,7 +62,7 @@ class User extends Authenticatable
 
     public function shoppingBasket()
     {
-        return $this->hasMany(ShoppingBasket::class);
+        return $this->hasMany(Basket::class);
     }
 
 

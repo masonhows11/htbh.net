@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ShoppingBasket extends Model
+class Basket extends Model
 {
     use HasFactory;
 
-    protected $table = 'shopping_baskets';
+    protected $table = 'baskets';
 
     protected $fillable = ['course_id','user_id','qty','price'];
 

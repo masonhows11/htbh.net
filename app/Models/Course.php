@@ -65,8 +65,8 @@ class Course extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function shoppingBasket()
+    public function basket()
     {
-        return $this->belongsTo(ShoppingBasket::class);
+        return $this->belongsTo(Basket::class);
     }
 }

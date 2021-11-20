@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Models\ShoppingBasket;
+use App\Models\Basket;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -28,7 +28,7 @@ class ViewBasketProvider extends ServiceProvider
     {
         //
         View::composer(['welcome','front.include.nav-bar'],function ($view){
-           $view->with('basket_count',ShoppingBasket::where('user_id','=',Auth::id())
+           $view->with('basket_count',Basket::where('user_id','=',Auth::id())
                ->count());
         });
     }
