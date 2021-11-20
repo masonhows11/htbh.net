@@ -24,9 +24,10 @@
                         <tbody>
                         @foreach($items as $item)
                         <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+
+                            <td>{{ $item->title }}</td>
+                            <td>{{ $item->price }}</td>
+                            <td><a href="#" class="btn btn-danger">حذف</a></td>
                         </tr>
                         @endforeach
                         </tbody>

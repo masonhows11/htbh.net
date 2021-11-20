@@ -7,6 +7,7 @@ use App\Models\Course;
 use App\Models\Basket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ShoppingBasketController extends Controller
 {
@@ -61,10 +62,15 @@ class ShoppingBasketController extends Controller
     public function showBasket()
     {
         $items = Basket::join('courses','baskets.course_id','=','courses.id')
-            ->select('courses.title','baskets.price')->get();
-        return $items;
-        //return view('front.basket')->with(['items'=>$items]);
+            ->select('baskets.course_id','courses.title','baskets.price')
+            ->get();
+        return view('front.basket')->with(['items'=>$items]);
 
+    }
+
+    public function deleteBasket(Request $request)
+    {
+        return $request;
     }
 
 }
