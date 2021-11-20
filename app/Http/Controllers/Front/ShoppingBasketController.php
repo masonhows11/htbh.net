@@ -61,8 +61,8 @@ class ShoppingBasketController extends Controller
 
     public function showBasket()
     {
-        $items = ShoppingBasket::with('courses')where('user_id','=',Auth::id())->get();
-        return view('front.basket')->with(['items'=>$items]);
+       /* $items = ShoppingBasket::with('courses')where('user_id','=',Auth::id())->get();
+        return view('front.basket')->with(['items'=>$items]);*/
 
     }
 
