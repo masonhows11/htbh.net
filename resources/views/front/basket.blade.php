@@ -5,8 +5,11 @@
 @section('main_content')
     <div class="container">
 
-        <div class="row d-flex mb-4 justify-content-center">
 
+        <div class="row d-flex justify-content-center alert-basket-section">
+
+        </div>
+        <div class="row d-flex mb-4 justify-content-center">
 
 
             <div class="col-lg-6 me-2 basket-section border-solid border-4 border-indigo-600 border-opacity-100 rounded-lg">
