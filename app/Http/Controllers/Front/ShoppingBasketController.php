@@ -14,6 +14,8 @@ class ShoppingBasketController extends Controller
     //
 
 
+
+
     public function addToBasket(Request $request)
     {
         try {
@@ -69,11 +71,8 @@ class ShoppingBasketController extends Controller
             $total_price += $item->price;
         }
 
-
-
-
-
-      return view('front.basket')->with(['items'=>$items]);
+      return view('front.basket')
+          ->with(['items'=>$items,'total_price'=>$total_price]);
 
     }
 

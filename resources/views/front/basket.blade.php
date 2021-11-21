@@ -38,7 +38,15 @@
 
 
             </div>
-            <div class="col-lg-3 " style="border: 2px solid orange">
+            <div class="col-lg-3 d-flex  align-items-center flex-column" style="border: 2px solid orange">
+
+                <div class="col-lg-8 mt-5 total_price" style="border: 2px solid black;height: 30px">
+                <h4>مبلغ کل</h4>
+                </div>
+
+                <div class="col-lg-8 payable_price" style="border: 2px solid black;height: 30px">
+                    <h4>مبلغ قابل پرداخت</h4>
+                </div>
 
 
             </div>
