@@ -23,6 +23,7 @@
                         </thead>
                         <tbody>
                         @foreach($items as $item)
+
                         <tr>
                             <td>{{ $item->title }}</td>
                             <td class="item-price">{{ number_format($item->price) }} تومان   </td>

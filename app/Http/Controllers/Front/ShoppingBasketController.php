@@ -61,11 +61,19 @@ class ShoppingBasketController extends Controller
 
     public function showBasket()
     {
-        $items = Basket::join('courses','baskets.course_id','=','courses.id')
+       $items = Basket::join('courses','baskets.course_id','=','courses.id')
             ->select('baskets.id','baskets.course_id','courses.title','baskets.price')
             ->get();
+        $total_price = null;
+        foreach ($items as $item){
+            $total_price += $item->price;
+        }
 
-        return view('front.basket')->with(['items'=>$items]);
+
+
+
+
+      return view('front.basket')->with(['items'=>$items]);
 
     }
 
