@@ -532,9 +532,21 @@ body {
     margin-top:3px;
 }
 /*********** basket style **************/
+.pay-section,
+.basket-section{
+
+    height: 450px;
+}
 .pay-section .item-price,
 .basket-section .item-price{
     font-family: "iransans_num",Sans-Serif;
+}
+.pay-section .item-price{
+    height:40px;
+    line-height: 35px;
+}
+.pay-section .total_price , .pay-section{
+    height: auto;
 }
 /******** section media query **********/
 @media screen and (max-width: 991px) {

@@ -79,6 +79,9 @@ class ShoppingBasketController extends Controller
     public function deleteBasket(Request $request)
     {
         return $request;
+
+
+        Basket::destroy($request->id);
     }
 
 }

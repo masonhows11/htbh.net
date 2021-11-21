@@ -9,7 +9,7 @@
 
 
 
-            <div class="col-lg-6 me-2 basket-section" style="border: 2px solid tomato;height: 450px">
+            <div class="col-lg-6 me-2 basket-section border-solid border-4 border-indigo-600 border-opacity-100 rounded-lg">
                 <h3 class="h4 mt-2">آیتم های سبد خرید</h3>
 
                 <form action="" method="post">
@@ -35,18 +35,19 @@
                     </table>
                 </form>
             </div>
-            <div class="col-lg-3 d-flex pay-section align-items-center flex-column" style="border: 2px solid orange">
+            <div class="col-lg-3 d-flex pay-section align-items-center flex-column border-solid border-4 border-indigo-600 border-opacity-100 rounded-lg">
 
-                <div class="col-lg-8 mt-5 d-flex flex-column total_price" style="border: 2px solid black;height: auto">
+                <div class="col-lg-8 mt-5 d-flex flex-column total_price" >
                 <h4 class="text-center mt-3">مبلغ کل</h4>
-                 <p class="item-price text-center mt-3 mb-2">{{number_format($total_price)  }} تومان </p>
+                 <p class="item-price text-center mt-3 mb-2 bg-clip-content bg-red-500 rounded-2xl text-white">{{number_format($total_price)  }} تومان </p>
                 </div>
 
-                <div class="col-lg-8 d-flex flex-column payable_price" style="border: 2px solid black;height: auto">
+                <div class="col-lg-8 d-flex flex-column payable_price">
                     <h4 class="text-center mt-3">مبلغ قابل پرداخت</h4>
-                    <p class="item-price text-center mt-3 mb-2">{{ number_format( $total_price)  }} تومان </p>
+                    <p class="item-price text-center mt-3 mb-2 bg-clip-content bg-red-500 rounded-2xl text-white">{{ number_format( $total_price)  }} تومان </p>
                 </div>
 
+                <a href="#" class="btn btn-outline-primary mt-5">پرداخت</a>
 
             </div>
 
