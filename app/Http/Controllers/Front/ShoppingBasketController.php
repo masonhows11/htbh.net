@@ -7,7 +7,7 @@ use App\Models\Course;
 use App\Models\Basket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
+
 
 class ShoppingBasketController extends Controller
 {

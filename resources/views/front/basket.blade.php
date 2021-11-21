@@ -54,6 +54,7 @@
             <div
                 class="col-lg-3 d-flex pay-section align-items-center flex-column border-solid border-4 border-indigo-600 border-opacity-100 rounded-lg">
 
+                @if(count($items) != 0)
                 <div class="col-lg-8 mt-5 d-flex flex-column total_price">
                     <h4 class="text-center mt-3">مبلغ کل</h4>
                     <p class="item-price text-center mt-3 mb-2 bg-clip-content bg-red-500 rounded-2xl text-white">{{number_format($total_price)  }}
@@ -67,6 +68,7 @@
                 </div>
 
                 <a href="#" class="btn btn-outline-primary mt-5">پرداخت</a>
+                @endif
 
             </div>
 
