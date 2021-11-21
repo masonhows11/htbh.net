@@ -532,6 +532,7 @@ body {
     margin-top:3px;
 }
 /*********** basket style **************/
+.pay-section .item-price,
 .basket-section .item-price{
     font-family: "iransans_num",Sans-Serif;
 }

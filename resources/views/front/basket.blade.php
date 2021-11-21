@@ -34,18 +34,17 @@
                         </tbody>
                     </table>
                 </form>
-
-
-
             </div>
-            <div class="col-lg-3 d-flex  align-items-center flex-column" style="border: 2px solid orange">
+            <div class="col-lg-3 d-flex pay-section align-items-center flex-column" style="border: 2px solid orange">
 
-                <div class="col-lg-8 mt-5 total_price" style="border: 2px solid black;height: 30px">
-                <h4>مبلغ کل</h4>
+                <div class="col-lg-8 mt-5 d-flex flex-column total_price" style="border: 2px solid black;height: auto">
+                <h4 class="text-center mt-3">مبلغ کل</h4>
+                 <p class="item-price text-center mt-3 mb-2">{{number_format($total_price)  }} تومان </p>
                 </div>
 
-                <div class="col-lg-8 payable_price" style="border: 2px solid black;height: 30px">
-                    <h4>مبلغ قابل پرداخت</h4>
+                <div class="col-lg-8 d-flex flex-column payable_price" style="border: 2px solid black;height: auto">
+                    <h4 class="text-center mt-3">مبلغ قابل پرداخت</h4>
+                    <p class="item-price text-center mt-3 mb-2">{{ number_format( $total_price)  }} تومان </p>
                 </div>
 
 
