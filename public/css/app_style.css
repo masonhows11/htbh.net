@@ -548,6 +548,9 @@ body {
 .pay-section .total_price , .pay-section{
     height: auto;
 }
+.alert-basket-section{
+    height: 100px;
+}
 /******** section media query **********/
 @media screen and (max-width: 991px) {
 

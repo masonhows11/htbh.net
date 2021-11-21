@@ -78,10 +78,31 @@ class ShoppingBasketController extends Controller
 
     public function deleteBasket(Request $request)
     {
-        return $request;
 
 
-        Basket::destroy($request->id);
+        try {
+
+            if( Basket::where('id','=',$request->id)->doesntExist())
+            {
+                return redirect()
+                    ->back()
+                    ->with(['error'=>'آیتم مورد نظر در سبد خرید وجود ندارد.']);
+            }
+
+            Basket::destroy($request->id);
+            return redirect()
+                ->back()
+                ->with(['success'=>'آیتم مورد نظر با موفقیت حذف شد.']);
+
+
+        }catch (\Exception $ex)
+        {
+            return  view('errors.error_not_found_model');
+        }
+
+
+
+
     }
 
 }
