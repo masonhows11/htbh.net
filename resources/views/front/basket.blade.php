@@ -67,7 +67,7 @@
                         تومان </p>
                 </div>
 
-                <a href="#" class="btn btn-outline-primary mt-5">پرداخت</a>
+                <a href="{{ route('addOrder',['total_price'=>$total_price])  }}" class="btn btn-outline-primary mt-5">ثبت سفارش</a>
                 @endif
 
             </div>
