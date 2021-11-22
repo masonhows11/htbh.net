@@ -62,11 +62,14 @@ class OrderController extends Controller
         $trans->is_paid = 0;
         $trans->save();
 
+        $transactionId = $invoice->getTransactionId();
+
+        return $transactionId;
 
 
-        return Payment::purchase($invoice,function ($driver,$transactionId) {
+       /* return Payment::purchase($invoice,function ($driver,) {
 
-        })->pay()->render();
+        })->pay()->render();*/
 
 
     }

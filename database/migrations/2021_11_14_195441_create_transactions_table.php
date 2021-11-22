@@ -17,6 +17,7 @@ class CreateTransactionsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('amount');
+            $table->string('hash_id')->nullable();
             $table->string('hash_pay')->nullable();
             $table->unsignedInteger('order_id')->nullable();
             $table->tinyInteger('is_paid')->nullable();
