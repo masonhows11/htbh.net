@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use App\Models\Basket;
-use App\Models\CourseUser;
 use App\Models\Order;
 use App\Models\OrderDetails;
 use App\Models\Transaction;
@@ -63,7 +62,7 @@ class OrderController extends Controller
         $trans->is_paid = 0;
         $trans->save();
 
-       
+
 
         return Payment::purchase($invoice,function ($driver,$transactionId) {
 
