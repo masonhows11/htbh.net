@@ -30,9 +30,10 @@ class OrderController extends Controller
             $order->user_id = $item->user_id;
             $order->total_price = $request->total_price;
             $order->is_paid = 0;
+            $order->save();
         }
 
-        
+
         $order_details = new OrderDetails();
 
 
