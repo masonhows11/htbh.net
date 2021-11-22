@@ -19,7 +19,6 @@ class ShoppingBasketController extends Controller
     public function addToBasket(Request $request)
     {
         try {
-
             if(Course::where('id','=',$request->course_id)->doesntExist())
             {
                 return response()->json(['message'=>'دوره مورد نظر وجود ندارد.','status'=>404],404);
@@ -39,18 +38,14 @@ class ShoppingBasketController extends Controller
             if (Basket::where('course_id','=',$request->course_id)->where('user_id','=',Auth::id())->where('qty','=',1)->first()){
                 return response()->json(['message'=>'این دوره در سبد خرید موجود است.','status'=>202],200);
             }
-
         }catch (\Exception $ex)
         {
             return Response()->json(['error'=>$ex->getMessage(),'status'=>500],500);
         }
-
-
     }
 
     public function getBasket(Request $request)
     {
-
         try {
             $current_basket = Basket::where('user_id','=',Auth::id())->count();
             return response()->json(['message'=>$current_basket,'status'=>200],200);
@@ -58,7 +53,6 @@ class ShoppingBasketController extends Controller
         {
             return response()->json(['error'=>$ex->getMessage()],500);
         }
-
     }
 
     public function showBasket()
@@ -70,7 +64,6 @@ class ShoppingBasketController extends Controller
         foreach ($items as $item){
             $total_price += $item->price;
         }
-
       return view('front.basket')
           ->with(['items'=>$items,'total_price'=>$total_price]);
 
@@ -78,31 +71,21 @@ class ShoppingBasketController extends Controller
 
     public function deleteBasket(Request $request)
     {
-
-
         try {
-
             if( Basket::where('id','=',$request->id)->doesntExist())
             {
                 return redirect()
                     ->back()
                     ->with(['error'=>'آیتم مورد نظر در سبد خرید وجود ندارد.']);
             }
-
             Basket::destroy($request->id);
             return redirect()
                 ->back()
                 ->with(['success'=>'آیتم مورد نظر با موفقیت حذف شد.']);
-
-
         }catch (\Exception $ex)
         {
             return  view('errors.error_not_found_model');
         }
-
-
-
-
     }
 
 }
