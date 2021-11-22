@@ -11,9 +11,7 @@ class Transaction extends Model
 
     protected $table = 'transactions';
 
-    protected $fillable = [
-
-    ];
+    protected $fillable = ['user_id','amount','hash_pay','order_id','is_paid'];
 
     public function order()
     {

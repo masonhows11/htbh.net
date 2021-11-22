@@ -16,10 +16,10 @@ class CreateOrderDetailsTable extends Migration
         Schema::create('order_details', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('course_id');
-            $table->unsignedBigInteger('course_qty');
-            $table->unsignedBigInteger('course_price');
-            $table->unsignedBigInteger('order_id');
+            $table->unsignedBigInteger('course_id')->default(0);
+            $table->unsignedBigInteger('course_qty')->default(0);
+            $table->unsignedBigInteger('course_price')->default(0);
+            $table->unsignedBigInteger('order_id')->nullable();
             $table->timestamps();
         });
     }

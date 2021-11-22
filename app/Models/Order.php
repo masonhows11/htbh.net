@@ -11,9 +11,7 @@ class Order extends Model
     protected $table= 'orders';
     use HasFactory;
 
-    protected $fillable = [
-
-    ];
+    protected $fillable = ['user_id','total_price','is_paid'];
 
 
     public function orderDetails()
