@@ -233,7 +233,8 @@ Route::get('/basket',[ShoppingBasketController::class,'showBasket'])->name('bask
 Route::get('/getBasket',[ShoppingBasketController::class,'getBasket'])->name('getBasket');
 Route::get('/deleteBasket',[ShoppingBasketController::class,'deleteBasket'])->name('deleteBasket');
 
-Route::get('/addOrder',[OrderController::class,'addOrder'])->name('addOrder');
+Route::get('/payOrder',[OrderController::class,'payOrder'])->name('addOrder');
+Route::get('/verifyPay',[OrderController::class,'verifyPay'])->name('verifyPay');
 
 Route::group(['prefix'=>'article'],function (){
 
