@@ -171,6 +171,7 @@ return [
         App\Providers\viewArticleProvider::class,
         App\Providers\ViewCourseProvider::class,
         App\Providers\ViewBasketProvider::class,
+        Shetabit\Payment\Provider\PaymentServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -239,6 +240,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
+        'Payment' => Shetabit\Payment\Facade\Payment::class,
 
     ],
 
