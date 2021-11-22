@@ -53,17 +53,16 @@ class OrderController extends Controller
         $invoice->amount($order->total_price);
 
         $invoice->detail(['user'=>Auth::user()->name,'amount'=>$order->total_price]);
-        //$transactionId = $invoice->uuid();
-        return Payment::purchase($invoice,function ($driver,$transactionId) use ($order, $amount_price) {
 
-            $trans = new Transaction();
-            $trans->user_id = Auth::id();
-            $trans->amount = $amount_price;
-            $trans->hash_pay = $transactionId;
-            $trans->order_id = $order->id;
-            $trans->is_paid = 0;
-            $trans->save();
+        $trans = new Transaction();
+        $trans->user_id = Auth::id();
+        $trans->amount = $amount_price;
+        $trans->hash_pay = $invoice->getUuid();
+        $trans->order_id = $order->id;
+        $trans->is_paid = 0;
+        $trans->save();
 
+        return Payment::purchase($invoice,function ($driver,$transactionId) {
         })->pay()->render();
 
 
@@ -77,7 +76,7 @@ class OrderController extends Controller
 
             // You can show payment referenceId to the user.
             echo $receipt->getReferenceId();
-            
+
         } catch (InvalidPaymentException $exception) {
             /**
             when payment is not verified, it will throw an exception.
