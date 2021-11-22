@@ -37,8 +37,7 @@ class OrderController extends Controller
         $order->save();
 
 
-        foreach ($get_basket as $item)
-        {
+        foreach ($get_basket as $item) {
             $order_details = new OrderDetails();
             $order_details->user_id = $item->user_id;
             $order_details->course_id = $item->course_id;
@@ -52,24 +51,26 @@ class OrderController extends Controller
 
         $invoice->amount($order->total_price);
 
-        $invoice->detail(['user'=>Auth::user()->name,'amount'=>$order->total_price]);
+        $invoice->detail(['user' => Auth::user()->name, 'amount' => $order->total_price]);
+
+
+        //$invoice->transactionId(uniqid(true, 'p-h$t$*b@h'));
+        $transactionId = $invoice->getTransactionId();
 
         $trans = new Transaction();
         $trans->user_id = Auth::id();
         $trans->amount = $amount_price;
-        $trans->hash_pay = $invoice->getUuid();
+        $trans->hash_id = $invoice->getUuid();
+        $trans->hash_pay = $transactionId;
         $trans->order_id = $order->id;
         $trans->is_paid = 0;
         $trans->save();
 
-        $transactionId = $invoice->getTransactionId();
+       // return $trans;
 
-        return $transactionId;
+      return Payment::purchase($invoice,function ($driver,$transactionId) {
 
-
-       /* return Payment::purchase($invoice,function ($driver,) {
-
-        })->pay()->render();*/
+         })->pay()->render();
 
 
     }
@@ -77,7 +78,7 @@ class OrderController extends Controller
     public function verifyPay(Request $request)
     {
         try {
-            $trans = Transaction::where('hash_pay','=',$request->transaction_id)->first();
+            $trans = Transaction::where('hash_pay', '=', $request->transaction_id)->first();
             $receipt = Payment::amount($trans->total_price)->transactionId($request->transaction_id)->verify();
 
             // You can show payment referenceId to the user.
@@ -85,9 +86,9 @@ class OrderController extends Controller
 
         } catch (InvalidPaymentException $exception) {
             /**
-            when payment is not verified, it will throw an exception.
-            We can catch the exception to handle invalid payments.
-            getMessage method, returns a suitable message that can be used in user interface.
+             * when payment is not verified, it will throw an exception.
+             * We can catch the exception to handle invalid payments.
+             * getMessage method, returns a suitable message that can be used in user interface.
              **/
             echo $exception->getMessage();
         }
