@@ -54,19 +54,27 @@ class OrderController extends Controller
         $invoice->detail(['user' => Auth::user()->name, 'amount' => $order->total_price]);
 
 
-        $trans = new Transaction();
+        /*$trans = new Transaction();
         $trans->user_id = Auth::id();
         $trans->amount = $amount_price;
         $trans->hash_id = $invoice->getUuid();
         $trans->hash_pay = null;
         $trans->order_id = $order->id;
         $trans->is_paid = 0;
-        $trans->save();
+        $trans->save();*/
 
 
 
-      return Payment::purchase($invoice,function ($driver,$transactionId) {
+      return Payment::purchase($invoice,function ($driver,$transactionId) use ($order, $invoice, $amount_price) {
 
+          $trans = new Transaction();
+          $trans->user_id = Auth::id();
+          $trans->amount = $amount_price;
+          $trans->hash_id = $invoice->getUuid();
+          $trans->hash_pay = $transactionId;
+          $trans->order_id = $order->id;
+          $trans->is_paid = 0;
+          $trans->save();
          })->pay()->render();
 
 
