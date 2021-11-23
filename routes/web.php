@@ -215,6 +215,8 @@ Route::group(['prefix' => 'like'], function () {
 
 });
 
+
+
 Route::group(['prefix' => 'comment'], function () {
     Route::post('/store', [CommentController::class,'store'])->name('commentStore');
 });
@@ -225,7 +227,8 @@ Route::group(['prefix'=>'course'],function (){
 
     Route::get('/lesson_detail/{course}/{lesson}/{id}',[CourseController::class,'lessonDetail'])->name('lesson_detail');
 
-    Route::post('/add',[CourseUserController::class,'addCourseToUser'])->name('buyCourse');
+    Route::get('/coursesCategory/{category}', [CourseController::class, 'coursesCategory']);
+    //Route::post('/add',[CourseUserController::class,'addCourseToUser'])->name('buyCourse');
 });
 
 Route::post('/addToBasket',[ShoppingBasketController::class,'addToBasket'])->name('addCourse');

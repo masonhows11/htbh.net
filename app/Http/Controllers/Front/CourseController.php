@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Lesson;
 use Illuminate\Http\Request;
 use App\Models\Course;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
+
 
 class CourseController extends Controller
 {
@@ -29,15 +29,23 @@ class CourseController extends Controller
     public function lessonDetail(Request $request)
     {
 
-
-
-
         $lesson = Lesson::with('course')
             ->where('id','=',$request->id)->get();
-
         return view('front.course_page.lesson')
             ->with(['lesson'=>$lesson]);
 
 
+    }
+
+    public function coursesCategory($category)
+    {
+        $categories = Category::where('parent_id', null)->get();
+        $courses = Course::with('categories')
+            ->join('category_course', 'courses.id', '=', 'category_course.course_id')
+            ->join('categories', 'categories.id', '=', 'category_course.category_id')
+            ->where('categories.name', '=', $category)->select('courses.*')->get();
+
+        return view('front.course_page.courses_category')
+            ->with(['courses' => $courses, 'categories' => $categories]);
     }
 }
