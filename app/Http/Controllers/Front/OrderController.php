@@ -16,8 +16,6 @@ use Shetabit\Multipay\Exceptions\InvalidPaymentException;
 class OrderController extends Controller
 {
     //
-
-
     public function payOrder(Request $request)
     {
         $basket_count = Basket::where('user_id', '=', Auth::id())->count();
