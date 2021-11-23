@@ -18,9 +18,9 @@ class SendEmailVerificationLinkListener implements ShouldQueue
 
     //use InteractsWithQueue;
 
-    // public $connection = 'database';
-    //public $queue = 'RegisterUserEmailVerifyListeners';
-    public $delay = 10;
+   // public $connection = 'database';
+    //public $queue = 'RegisterUser';
+    public $delay = 5;
     public $tries = 5;
     /**
      * Create the event listener.
