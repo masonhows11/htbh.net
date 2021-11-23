@@ -8,13 +8,18 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Mail;
 
-class SendEmailVerificationLinkListener //implements ShouldQueue
+class SendEmailVerificationLinkListener implements ShouldQueue
 {
 
-    use InteractsWithQueue;
+    // for immediately redirect user to another page after register in web use implements ShouldQueue
+    // to send email verification email link in background
+    // and use this command "  php artisan queue:work " to
+    // run jobs in queue to execute jobs in queue in db and send email
 
-    public $connection = 'database';
-    public $queue = 'RegisterUserEmailVerifyListeners';
+    //use InteractsWithQueue;
+
+    // public $connection = 'database';
+    //public $queue = 'RegisterUserEmailVerifyListeners';
     public $delay = 10;
     public $tries = 5;
     /**
