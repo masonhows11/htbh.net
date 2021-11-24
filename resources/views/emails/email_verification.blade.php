@@ -5,3 +5,5 @@
     @endcomponent
     {{ config('app.name') }}
 @endcomponent
+
+
