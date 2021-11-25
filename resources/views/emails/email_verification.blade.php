@@ -10,4 +10,5 @@
     {{ config('app.name') }}
 @endcomponent
 
+{{--route('verifyEmail',[$id,$code])--}}
 
