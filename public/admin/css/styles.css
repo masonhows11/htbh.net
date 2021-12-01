@@ -1,12 +1,10 @@
 .users-table {
     margin-top: 20px;
 }
-
 .category-alert-section {
     height: 100px;
     margin-top: 25px;
 }
-
 .course-create-alert-section {
     height: 200px;
 }
@@ -14,7 +12,11 @@
 .course-alert-section {
     height: 80px;
 }
+.post-alert-section{
+    height:100px;
+}
 
+.post-alert-section,
 .category-alert-section,
 .course-create-alert-section,
 .course-alert-section,
