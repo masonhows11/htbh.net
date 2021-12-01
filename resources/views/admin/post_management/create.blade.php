@@ -35,20 +35,6 @@
                         <input type="text" id="image_label" class="form-control @error('image') is-invalid @enderror" value="{{ old('image') }}" name="image" aria-label="Image" aria-describedby="button-image">
                     </div>
 
-                 {{--   <div class="form-group category-chosen">
-                        <label for="category">انتخاب دسته بندی :</label>
-                        <select name="category[]"
-                                data-placeholder="دسته بندی های مورد نظر را انتخاب کنید.."
-                                id="category"
-                                multiple
-                                class="form-control chosen-select @error('category') is-invalid @enderror">
-                            <option value=""></option>
-                            @foreach($categories as $category)
-                                <option value="{{ $category->id }}">{{ $category->title }}</option>
-                            @endforeach
-                        </select>
-                    </div>--}}
-
 
                     <div class="form-group">
                         <label for="">توضیحات:</label>
@@ -70,7 +56,7 @@
     </div>
 @endsection
 @section('admin_scripts')
-    <script type="text/javascript" src="{{ asset('admin/ckeditor/ckeditor.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('dash/ckeditor/ckeditor.js') }}"></script>
     <script>
         CKEDITOR.replace('editor-text', {
             language: 'fa',
