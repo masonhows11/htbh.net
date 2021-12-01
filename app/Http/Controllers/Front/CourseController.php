@@ -43,7 +43,7 @@ class CourseController extends Controller
         $courses = Course::with('categories')
             ->join('category_course', 'courses.id', '=', 'category_course.course_id')
             ->join('categories', 'categories.id', '=', 'category_course.category_id')
-            ->where('categories.name', '=', $category)->select('courses.*')->get();
+            ->where('categories.name', '=', $category)->where('courses.status_publish','=',1)->select('courses.*')->get();
 
         return view('front.course_page.courses_category')
             ->with(['courses' => $courses, 'categories' => $categories]);
