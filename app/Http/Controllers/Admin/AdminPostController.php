@@ -20,31 +20,7 @@ class AdminPostController extends Controller
         return view('admin.post_management.index')
             ->with(['posts' => $posts]);
     }
-
-   /* public function listPostBaseCategory(Request $request)
-    {
-
-        $request->validate([
-            'category' => 'required|exists:categories,name'
-        ], $message = [
-            'category.required' => 'یک دسته بندی انتخاب کنید.',
-            'category.exists' => 'دسته بندی مورد نظر وجود ندارد.',
-        ]);
-        $categories = Category::all();
-        try {
-            $posts =
-                DB::table('posts')
-                    ->join('category_post', 'posts.id', '=', 'category_post.post_id')
-                    ->join('categories', 'categories.id', '=', 'category_post.category_id')
-                    ->select('posts.*')
-                    ->where('categories.name', '=', $request->category)
-                    ->orderBy('created_at','asc')->paginate(3);
-            return view('admin.post_management.index')->with(['posts' => $posts, 'categories' => $categories]);
-        } catch (\Exception $ex) {
-            return view('errors.error_not_found_model');
-        }
-
-    }*/
+    
 
     public function create()
     {
