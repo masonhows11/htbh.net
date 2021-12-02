@@ -20,7 +20,7 @@ class AdminPostController extends Controller
         return view('admin.post_management.index')
             ->with(['posts' => $posts]);
     }
-    
+
 
     public function create()
     {
@@ -48,7 +48,7 @@ class AdminPostController extends Controller
             'image.required' => 'انخاب عکس الزامی است.',
         ]);
 
-       // $categories = Category::all();
+         return $request->image;
         try {
             $image_name = GetImageName::getName($request->image);
             Post::create([
