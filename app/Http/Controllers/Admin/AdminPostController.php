@@ -3,12 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
-use App\services\GetImageName;
+use App\services\getImageName;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
+
 
 class AdminPostController extends Controller
 {
@@ -48,7 +47,7 @@ class AdminPostController extends Controller
             'image.required' => 'انخاب عکس الزامی است.',
         ]);
 
-       
+
         try {
             $image_name = getImageName::articleImage($request->image);
             Post::create([
