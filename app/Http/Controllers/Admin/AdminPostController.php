@@ -48,9 +48,7 @@ class AdminPostController extends Controller
             'image.required' => 'انخاب عکس الزامی است.',
         ]);
 
-         //return $request->image;
-        //$image_name = GetImageName::articleImage($request->image);
-        //return  $image_name;
+       
         try {
             $image_name = getImageName::articleImage($request->image);
             Post::create([
