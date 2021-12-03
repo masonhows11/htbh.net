@@ -50,7 +50,7 @@ class AdminPostController extends Controller
 
          return $request->image;
         try {
-            $image_name = GetImageName::getName($request->image);
+            $image_name = GetImageName::articleName($request->image);
             Post::create([
                 'title' => $request->title,
                 'name' => $request->name,
