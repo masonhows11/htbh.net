@@ -32,7 +32,14 @@
                         <button class="btn btn-default" type="button" id="button-image">انتخاب عکس</button>
                     </div>
                     <div class="form-group">
-                        <input type="text" id="image_label" class="form-control @error('image') is-invalid @enderror" value="{{ old('image') }}" name="image" aria-label="Image" aria-describedby="button-image">
+                        <input type="text"
+                               id="image_label"
+                               class="form-control @error('image') is-invalid @enderror"
+                               value="{{ old('image') }}"
+                               name="image"
+                               aria-label="Image"
+                               aria-describedby="button-image"
+                               readonly>
                     </div>
 
 
