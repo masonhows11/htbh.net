@@ -29,7 +29,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="name">نام  در به انگلیسی:</label>
+                    <label for="name">نام  درس به انگلیسی:</label>
                     <input type="text"
                            name="name"
                            class="form-control @error('name') is-invalid @enderror"
