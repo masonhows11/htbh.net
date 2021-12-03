@@ -28,6 +28,8 @@ class AdminCourseController extends Controller
 
     public function listCourseBaseCategory(Request $request)
     {
+
+        
         $request->validate([
             'category' => 'required|exists:categories,name'
         ], $message = [
@@ -93,7 +95,7 @@ class AdminCourseController extends Controller
         $image_path = null;
         if ($request->filled('image')) {
             $image = $request->image;
-            $image_path = str_replace('http://localhost/storage/course/', '', $image);
+            $image_path = str_replace('http://htbh.edu/storage/course/', '', $image);
         }
 
         $course = Course::create([
@@ -153,7 +155,7 @@ class AdminCourseController extends Controller
         $image_path = null;
         if ($request->filled('image')) {
             $image = $request->image;
-            $image_path = str_replace('http://localhost/storage/course/', '', $image);
+            $image_path = str_replace('http://htbh.edu/storage/course/', '', $image);
         }
         try {
             $course = Course::findOrFail($request->id);

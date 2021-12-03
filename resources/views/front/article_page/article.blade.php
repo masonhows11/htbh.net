@@ -125,7 +125,7 @@
                             </form>
                         </div>
                     @else
-                        <div class="col-lg-9 mt-5 mb-5  message_auth">
+                        <div class="col-lg-12 mt-5 mb-5 d-flex justify-content-center message_auth" style="border:1px solid red">
                             <p class="text-center">کاربر گرامی برای ثبت دیدگاه خود ابتدا <a href="/loginForm"
                                                                                             class="text-center">وارد</a>
                                 سایت شوید با تشکر.</p>
