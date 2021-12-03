@@ -4,7 +4,7 @@
         <!-- Sidebar user panel -->
         <div class="user-panel">
             <div class="pull-right image">
-                <img src="{{ asset('admin/images/user-100.png') }}" class="img-circle" alt="User Image">
+                <img src="{{ asset('dash/images/user-100.png') }}" class="img-circle" alt="User Image">
             </div>
             <div class="pull-right info">
                 <p>{{ \Illuminate\Support\Facades\Auth::user()->name }}</p>
