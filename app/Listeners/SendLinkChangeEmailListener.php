@@ -8,8 +8,16 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Mail;
 
-class SendLinkChangeEmailListener
+class SendLinkChangeEmailListener implements ShouldQueue
 {
+    // for immediately redirect user to another page after register in web use implements ShouldQueue
+    // to send email verification email link in background
+    // and use this command "  php artisan queue:work " to
+    // run jobs in queue to execute jobs in queue in db and send email
+
+    public $queue = 'ChangeUserEmail';
+    public $delay = 1;
+    public $tries = 5;
     /**
      * Create the event listener.
      *

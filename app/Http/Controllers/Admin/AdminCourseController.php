@@ -29,7 +29,7 @@ class AdminCourseController extends Controller
     public function listCourseBaseCategory(Request $request)
     {
 
-        
+
         $request->validate([
             'category' => 'required|exists:categories,name'
         ], $message = [

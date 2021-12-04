@@ -5,22 +5,18 @@ namespace App\Listeners;
 use App\Events\RegisterUserEvent;
 use App\Mail\EmailVerificationMail;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Mail;
 
 class SendEmailVerificationLinkListener implements ShouldQueue
 {
-
     // for immediately redirect user to another page after register in web use implements ShouldQueue
     // to send email verification email link in background
     // and use this command "  php artisan queue:work " to
     // run jobs in queue to execute jobs in queue in db and send email
 
-    //use InteractsWithQueue;
-
-    //public $connection = 'database';
-    //public $queue = 'RegisterUser';
-    public $delay = 5;
+    #public $connection = 'database';
+    public $queue = 'RegisterUser'; // with specific queue name work
+    public $delay = 1;
     public $tries = 5;
     /**
      * Create the event listener.

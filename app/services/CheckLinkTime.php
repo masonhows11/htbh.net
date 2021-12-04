@@ -13,7 +13,6 @@ class CheckLinkTime
 {
     public static function checkLinkExpireTime($id, $code)
     {
-
         try {
             $decrypted_code = Crypt::decryptString($code);
         } catch (\Exception $e) {
@@ -28,7 +27,7 @@ class CheckLinkTime
           return false;
         }
         if ($link) {
-            $expired = Carbon::parse($link->created_at)->addMinutes(1)->isPast();
+            $expired = Carbon::parse($link->created_at)->addMinutes(5)->isPast();
             if ($expired) {
               return false;
             }
