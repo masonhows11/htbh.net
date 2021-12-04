@@ -50,7 +50,7 @@ class CheckLinkTime
             return false;
         }
         if ($link) {
-            $expired = Carbon::parse($link->updated_at)->addMinutes(1)->isPast();
+            $expired = Carbon::parse($link->updated_at)->addMinutes(5)->isPast();
             if ($expired) {
                 return false;
             }
